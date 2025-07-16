@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --my-color: 220 50% 50%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    /* Add all color, spacing, radius, etc tokens here */
+  }
+}
+
+@layer components {
+  .btn {
+    @apply;
+  }
+}
