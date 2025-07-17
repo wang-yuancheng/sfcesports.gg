@@ -1,4 +1,4 @@
-import { AuthButton } from "@/components/auth-button";
+import { AuthButton } from "@/app/components/ui/auth/auth-button";
 import Link from "next/link";
 
 export default function ProtectedLayout({
