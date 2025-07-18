@@ -2,19 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/app/components/ui/shadcn/button";
+import { Button } from "@/components/shadcn/button";
 
 export function LoginButton() {
   return (
     <Button variant="outline" size="default" asChild>
-      <Link href="/auth/login">Log In</Link>
+      <Link href="/login">Log In</Link>
     </Button>
   );
 }
 export function SignUpButton() {
   return (
     <Button variant="default" size="default" asChild>
-      <Link href="/auth/sign-up">Sign Up</Link>
+      <Link href="/sign-up">Sign Up</Link>
     </Button>
   );
 }

@@ -1,5 +1,5 @@
-import Hero from "@/app/components/sections/Hero";
-import LogoTicker from "@/app/components/sections/LogoTicker";
+import Hero from "@/sections/Hero";
+import LogoTicker from "@/sections/LogoTicker";
 
 export default function Home() {
   return (

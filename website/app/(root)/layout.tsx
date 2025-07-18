@@ -1,5 +1,5 @@
-import Header from "@/app/components/sections/Header";
-import Footer from "@/app/components/sections/Footer";
+import Header from "@/sections/Header";
+import Footer from "@/sections/Footer";
 
 export default function Layout({
   children,

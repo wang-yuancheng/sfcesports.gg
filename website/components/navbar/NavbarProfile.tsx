@@ -1,22 +1,22 @@
-"use client"
-import { useState, useEffect } from "react"
-import Image from "next/image"
+"use client";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/app/components/ui/shadcn/dropdown-menu"
+} from "@/components/shadcn/dropdown-menu";
 
 export default function NavbarProfile() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   // Auto-close dropdown when resizing the window
   useEffect(() => {
-    const handleResize = () => setOpen(false)
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    const handleResize = () => setOpen(false);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
@@ -33,13 +33,13 @@ export default function NavbarProfile() {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end">
-        <a href="/auth/login">
+        <a href="/login">
           <DropdownMenuItem>Sign In</DropdownMenuItem>
         </a>
-        <a href="/auth/sign-up">
+        <a href="/sign-up">
           <DropdownMenuItem>Create an account</DropdownMenuItem>
         </a>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

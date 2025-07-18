@@ -57,7 +57,7 @@ export function LoginForm() {
       />
 
       <div>
-        <Link href="/auth/forgot-password">Forgot your password?</Link>
+        <Link href="/forgot-password">Forgot your password?</Link>
       </div>
 
       {error && <p>{error}</p>}
@@ -67,7 +67,7 @@ export function LoginForm() {
       </button>
 
       <p>
-        Don't have an account? <Link href="/auth/sign-up">Sign up</Link>
+        Don't have an account? <Link href="/sign-up">Sign up</Link>
       </p>
     </form>
   );

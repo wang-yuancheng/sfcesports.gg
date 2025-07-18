@@ -2,22 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/app/components/ui/shadcn/button";
-import LogoFade from "@/app/components/ui/shadcn/logofade";
+import { Button } from "@/components/shadcn/button";
+import LogoFade from "@/components/shadcn/logofade";
 
 // Custom Components
-import { CartSheetResponsive } from "@/app/components/ui/custom/CartSheet";
-import NavbarProfile from "@/app/components/ui/custom/NavbarProfile";
+import { CartSheetResponsive } from "@/components/navbar/CartSheet";
+import NavbarProfile from "@/components/navbar/NavbarProfile";
 import {
   LoginButton,
   SignUpButton,
   SearchButton,
   MenuButton,
-} from "@/app/components/ui/custom/CustomButtons";
+} from "@/components/navbar/CustomButtons";
 import {
   LongLiveDisplay,
   ShortLiveDisplay,
-} from "@/app/components/ui/custom/LiveDisplay";
+} from "@/components/navbar/LiveDisplay";
 
 const navText = "font-[600] text-[15px]";
 const navItems = [

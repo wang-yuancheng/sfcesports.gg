@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { useMediaQuery } from "@/app/hooks/useMediaQuery"
-import { Button } from "@/app/components/ui/shadcn/button"
+import * as React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { Button } from "@/components/shadcn/button";
 import {
   Sheet,
   SheetTrigger,
@@ -12,19 +12,19 @@ import {
   SheetHeader,
   SheetTitle,
   SheetDescription,
-} from "@/app/components/ui/shadcn/sheet"
+} from "@/components/shadcn/sheet";
 
-type SheetSide = "top" | "bottom" | "left" | "right"
+type SheetSide = "top" | "bottom" | "left" | "right";
 
 interface CartSheetProps {
-  side?: SheetSide
-  description?: React.ReactNode
-  emptyMessage?: React.ReactNode
-  ctaHref?: string
-  ctaLabel?: React.ReactNode
-  trigger?: React.ReactNode
-  children?: React.ReactNode
-  contentClassName?: string
+  side?: SheetSide;
+  description?: React.ReactNode;
+  emptyMessage?: React.ReactNode;
+  ctaHref?: string;
+  ctaLabel?: React.ReactNode;
+  trigger?: React.ReactNode;
+  children?: React.ReactNode;
+  contentClassName?: string;
 }
 
 export function CartSheet({
@@ -76,12 +76,12 @@ export function CartSheet({
         )}
       </SheetContent>
     </Sheet>
-  )
+  );
 }
 
 // Responsive wrapper
 export function CartSheetResponsive(props: Omit<CartSheetProps, "side">) {
-  const isSmall = useMediaQuery({ max: 640 }) 
-  const side = isSmall ? "bottom" : "right"
-  return <CartSheet side={side} {...props} />
+  const isSmall = useMediaQuery({ max: 640 });
+  const side = isSmall ? "bottom" : "right";
+  return <CartSheet side={side} {...props} />;
 }
