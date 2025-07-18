@@ -14,7 +14,7 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet";
 
-type SheetSide = "top" | "bottom" | "left" | "right";
+type SheetSide = "bottom" | "right";
 
 interface CartSheetProps {
   side?: SheetSide;

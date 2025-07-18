@@ -143,6 +143,13 @@
 @layer base {
   * {
     @apply border-border;
+    :focus {
+      outline: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid transparent;
+    }
   }
   body {
     @apply bg-background text-foreground;

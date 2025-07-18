@@ -36,20 +36,3 @@ export function SearchButton() {
     </button>
   );
 }
-
-export function MenuButton() {
-  return (
-    <button
-      className="relative rounded-md p-2 hover:bg-gray-100"
-      aria-label="Open burger menu"
-    >
-      <Image
-        alt="Menu"
-        src="/menu.svg"
-        width={22}
-        height={22}
-        className="min-w-[22px]"
-      />
-    </button>
-  );
-}

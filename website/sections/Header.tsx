@@ -1,42 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import LogoFade from "@/components/ui/logofade";
 
 // Custom Components
 import { CartSheetResponsive } from "@/components/navbar/CartSheet";
+import { MenuSheetResponsive } from "@/components/navbar/MenuSheet";
 import NavbarProfile from "@/components/navbar/NavbarProfile";
 import {
   LoginButton,
   SignUpButton,
   SearchButton,
-  MenuButton,
 } from "@/components/navbar/CustomButtons";
 import {
   LongLiveDisplay,
   ShortLiveDisplay,
 } from "@/components/navbar/LiveDisplay";
-
-const navText = "font-[600] text-[15px]";
-const navItems = [
-  { name: "Teams", href: "/teams" },
-  { name: "Events", href: "/events" },
-  { name: "Media", href: "/media" },
-  { name: "Company", href: "/about" },
-  { name: "Shop", href: "/shop" },
-  { name: "Join", href: "/join" },
-];
-
-// Check if a given link is for the current page for highlighting navbar
-function isCurrent(pathname: string, href: string) {
-  return pathname === href;
-}
+import { NavbarMain } from "@/components/navbar/NavbarMain";
 
 export default function Navbar() {
-  const pathname = usePathname();
-
   return (
     <nav className="bg-white font-bold">
       {/* Mobile */}
@@ -44,8 +26,7 @@ export default function Navbar() {
         <div className="w-full h-14 flex justify-between items-center px-4">
           {/* Left */}
           <div className="flex items-center">
-            <MenuButton />
-
+            <MenuSheetResponsive />
             <SearchButton />
           </div>
           {/* Logo Mid */}
@@ -75,25 +56,7 @@ export default function Navbar() {
             >
               <LogoFade />
             </Link>
-
-            {/* desktop navbar links */}
-            <div className="hidden sm:flex items-center justify-center pl-2">
-              <div className="flex items-center gap-2">
-                {navItems.map((item) => (
-                  <Button
-                    key={item.name}
-                    asChild
-                    variant="ghost"
-                    size="sm"
-                    className={`${navText} ${
-                      isCurrent(pathname, item.href) ? "text-orange-500" : ""
-                    }`}
-                  >
-                    <Link href={item.href}>{item.name}</Link>
-                  </Button>
-                ))}
-              </div>
-            </div>
+            <NavbarMain />
           </div>
 
           <ShortLiveDisplay />
