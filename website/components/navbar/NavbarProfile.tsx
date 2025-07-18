@@ -6,7 +6,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/shadcn/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 export default function NavbarProfile() {
   const [open, setOpen] = useState(false);

@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetTrigger,
@@ -12,7 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetDescription,
-} from "@/components/shadcn/sheet";
+} from "@/components/ui/sheet";
 
 type SheetSide = "top" | "bottom" | "left" | "right";
 

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/shadcn/button";
-import LogoFade from "@/components/shadcn/logofade";
+import { Button } from "@/components/ui/button";
+import LogoFade from "@/components/ui/logofade";
 
 // Custom Components
 import { CartSheetResponsive } from "@/components/navbar/CartSheet";
@@ -45,6 +45,7 @@ export default function Navbar() {
           {/* Left */}
           <div className="flex items-center">
             <MenuButton />
+
             <SearchButton />
           </div>
           {/* Logo Mid */}

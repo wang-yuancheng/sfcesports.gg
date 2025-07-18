@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/components/ui/button";
 
 export function LoginButton() {
   return (
