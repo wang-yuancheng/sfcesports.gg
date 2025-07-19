@@ -20,7 +20,7 @@ import { NavbarMain } from "@/components/navbar/NavbarMain";
 
 export default function Navbar() {
   return (
-    <nav className="bg-white">
+    <nav>
       {/* Mobile */}
       <div className="flex flex-col sm:hidden">
         <div className="w-full h-14 flex justify-between items-center px-4">

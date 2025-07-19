@@ -6,9 +6,11 @@ export default function Layout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <Header />
-      <div>{children}</div>
-      <Footer />
+      <div className="bg-gray-10">
+        <Header />
+        <div>{children}</div>
+        <Footer />
+      </div>
     </>
   );
 }

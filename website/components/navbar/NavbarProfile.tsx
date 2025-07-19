@@ -21,7 +21,7 @@ export default function NavbarProfile() {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <div className="relative rounded-md p-2 hover:bg-gray-100">
+        <div className="relative cursor-pointer rounded-md p-2 hover:bg-gray-100">
           <Image
             src="/profile.svg"
             alt="Profile"
