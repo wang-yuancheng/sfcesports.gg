@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "@/styles/fonts.css"
+import "@/styles/fonts.css";
+import { InitialFontWrapper } from "@/components/other/initialFontWrapper";
 
 export const metadata: Metadata = {
   title: "My App",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <InitialFontWrapper>
+        <body>{children}</body>
+      </InitialFontWrapper>
     </html>
   );
 }

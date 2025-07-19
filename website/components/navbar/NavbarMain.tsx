@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
-const navText = "font-[600] text-[15px]";
+// const navText = "font-[600] text-[15px]";
 const navItems = [
   { name: "Teams", href: "/teams" },
   { name: "Events", href: "/events" },
@@ -30,7 +30,7 @@ export const NavbarMain = () => {
             asChild
             variant="ghost"
             size="sm"
-            className={`${navText} ${
+            className={`${
               isCurrent(pathname, item.href) ? "text-orange-500" : ""
             }`}
           >
