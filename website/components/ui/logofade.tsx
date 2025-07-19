@@ -1,5 +1,5 @@
-'use client'
-import Image from 'next/image'
+"use client";
+import Image from "next/image";
 
 export default function LogoFade() {
   return (
@@ -9,8 +9,9 @@ export default function LogoFade() {
         src="/logo-color.webp"
         alt="Logo Color"
         fill
-        className="object-contain transition-opacity duration-300 group-hover:opacity-0"
         priority
+        draggable={false}
+        className="object-contain transition-opacity duration-300 group-hover:opacity-0"
       />
 
       {/* Black logo (visible on hover) */}
@@ -18,9 +19,10 @@ export default function LogoFade() {
         src="/logo-black.svg"
         alt="Logo Black"
         fill
-        className="object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         priority
+        draggable={false}
+        className="object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
       />
     </div>
-  )
+  );
 }

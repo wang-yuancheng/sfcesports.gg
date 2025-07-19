@@ -26,7 +26,13 @@ export function MenuSheet({ className, open, onOpenChange }: MenuSheetProps) {
           className="relative rounded-md p-2 hover:bg-gray-100 sm:hidden"
           aria-label="Open menu"
         >
-          <Image src="/menu.svg" alt="Menu" width={22} height={22} />
+          <Image
+            src="/menu.svg"
+            alt="Menu"
+            width={22}
+            height={22}
+            draggable={false}
+          />
         </button>
       </SheetTrigger>
 

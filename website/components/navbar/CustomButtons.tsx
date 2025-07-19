@@ -31,6 +31,7 @@ export function SearchButton() {
         src="/search.svg"
         width={22}
         height={22}
+        draggable={false}
         className="min-w-[22px]"
       />
     </button>

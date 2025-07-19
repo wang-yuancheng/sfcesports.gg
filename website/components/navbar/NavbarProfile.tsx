@@ -27,6 +27,7 @@ export default function NavbarProfile() {
             alt="Profile"
             width={22}
             height={22}
+            draggable={false}
             className="min-w-[22px]"
           />
         </div>
