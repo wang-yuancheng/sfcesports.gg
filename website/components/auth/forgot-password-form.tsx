@@ -35,7 +35,7 @@ export function ForgotPasswordForm() {
         <>
           <h2>Check Your Email</h2>
           <p>
-            If you registered using your email and password, you’ll receive a
+            If you registered using your email and password, you will receive a
             password reset email shortly.
           </p>
         </>
@@ -43,7 +43,7 @@ export function ForgotPasswordForm() {
         <form onSubmit={handleForgotPassword}>
           <h2>Reset Your Password</h2>
           <p>
-            Enter your email and we'll send you a link to reset your password.
+            Enter your email and we will send you a link to reset your password.
           </p>
 
           <label htmlFor="email">Email</label>
