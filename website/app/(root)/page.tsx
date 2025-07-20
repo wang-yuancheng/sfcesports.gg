@@ -4,8 +4,8 @@ import LogoTicker from "@/sections/LogoTicker";
 export default function Home() {
   return (
     <>
-      {/* <Hero/>
-      <LogoTicker /> */}
+      {/* <Hero/> */}
+      <LogoTicker />
     </>
   );
 }

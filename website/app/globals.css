@@ -138,6 +138,11 @@
 }
 
 @layer components {
+  .logo-ticker-image {
+    flex: 0 0 16.6667%; /* one‑sixth of the row */
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 @layer base {

@@ -17,6 +17,7 @@ const config: Config = {
       lg: "1024px",
       navbarsm: "1100px",
       navbarlg: "1350px",
+      xlg: "1440px",
     },
     extend: {
       fontFamily: {
