@@ -22,8 +22,8 @@ export default function Navbar() {
   return (
     <nav>
       {/* Mobile */}
-      <div className="flex flex-col sm:hidden">
-        <div className="w-full h-14 flex justify-between items-center px-4">
+      <div className="flex flex-col h-fit min-h-[58px] flex-shrink-0 sm:hidden">
+        <div className="w-full h-14 flex justify-between items-center px-4 flex-shrink-0">
           {/* Left */}
           <div className="flex items-center">
             <MenuSheetResponsive />
@@ -38,9 +38,6 @@ export default function Navbar() {
             <CartSheetResponsive />
             <NavbarProfile />
           </div>
-        </div>
-        <div>
-          <LongLiveDisplay />
         </div>
       </div>
 
@@ -77,7 +74,9 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-        <LongLiveDisplay />
+        <div className="navbarsm:hidden">
+          <LongLiveDisplay />
+        </div>
       </div>
     </nav>
   );
