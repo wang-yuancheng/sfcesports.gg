@@ -45,7 +45,7 @@ export function CartSheet({
             type="button"
             title="Cart Button"
             aria-label="Open cart"
-            className="relative rounded-md p-2 hover:bg-gray-100"
+            className="relative rounded-md p-2 sm:hover:bg-gray-100"
           >
             <Image
               src="/cart.svg"

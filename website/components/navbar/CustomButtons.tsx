@@ -22,7 +22,7 @@ export function SignUpButton() {
 export function SearchButton() {
   return (
     <button
-      className="relative rounded-md p-2 hover:bg-gray-100"
+      className="relative rounded-md p-2 sm:hover:bg-gray-100"
       type="button"
       title="Search Button"
     >

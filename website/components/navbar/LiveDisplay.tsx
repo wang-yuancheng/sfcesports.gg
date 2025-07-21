@@ -11,7 +11,7 @@ export function LongLiveDisplay() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex justify-center pb-8 sm:pb-5 sm:hidden">
+    <div className="flex justify-center pb-8 sm:pb-5">
       <div className="flex flex-col items-center max-w-[500px] min-w-[200px] w-full px-4">
         <motion.div
           layout

@@ -8,7 +8,7 @@ export default function Layout({
   return (
     <div>
       <Header />
-      <LongLiveDisplay />
+      <div className="sm:hidden"><LongLiveDisplay /></div>
       <main>{children}</main>
       <Footer />
     </div>
