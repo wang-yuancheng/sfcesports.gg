@@ -9,7 +9,6 @@ export default function Layout({
     <div>
       <Header />
       <LongLiveDisplay />
-
       <main>{children}</main>
       <Footer />
     </div>

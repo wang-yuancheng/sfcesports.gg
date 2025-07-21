@@ -21,7 +21,7 @@ import { NavbarMain } from "@/components/navbar/NavbarMain";
 export default function Navbar() {
   return (
     <>
-      <header className="sticky top-0 z-50 bg-gray-10/50">
+      <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div className="flex flex-col h-fit min-h-[58px] flex-shrink-0 sm:hidden">
           <div className="w-full h-14 flex justify-between items-center px-4 flex-shrink-0">
             {/* Left */}
