@@ -6,13 +6,12 @@ export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <>
-      <div className="bg-gray-10">
-        <Header />
-        <div className="sm:hidden"><LongLiveDisplay /></div>
-        <div>{children}</div>
-        <Footer />
-      </div>
-    </>
+    <div className="bg-gray-10 ">
+      <Header />
+      <LongLiveDisplay />
+
+      <main>{children}</main>
+      <Footer />
+    </div>
   );
 }

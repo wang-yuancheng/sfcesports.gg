@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import bilibiliLogo from "@/assets/bilibili.png";
-import expressvpnLogo from "@/assets/expressvpn.png";
-import creatorhubLogo from "@/assets/creatorhub.png";
-import neteaseLogo from "@/assets/netease.png";
-import redmagicLogo from "@/assets/redmagic.png";
-import shopeeLogo from "@/assets/shopee.png";
-import kooruiLogo from "@/assets/koorui.png";
-import streamelementsLogo from "@/assets/streamelements.png";
+import bilibiliLogo from "@/assets/bilibili.webp";
+import expressvpnLogo from "@/assets/expressvpn.webp";
+import creatorhubLogo from "@/assets/creatorhub.webp";
+import neteaseLogo from "@/assets/netease.webp";
+import redmagicLogo from "@/assets/redmagic.webp";
+import shopeeLogo from "@/assets/shopee.webp";
+import kooruiLogo from "@/assets/koorui.webp";
+import streamelementsLogo from "@/assets/streamelements.webp";
 
 
 const srcList = [
