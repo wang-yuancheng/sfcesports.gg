@@ -37,13 +37,13 @@ export function LongLiveDisplay() {
               delay: 0.2,
               duration: 0.1,
             }}
-            className="absolute inset-0 flex items-center justify-center rounded-md shadow-grey-10 px-3 py-3 md:py-2 bg-white w-full h-[58px]"
+            className="absolute inset-0 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white w-full h-[58px]"
           >
             <motion.div className="">LIVE DISPLAY BACK</motion.div>
           </motion.div>
 
           {/* front card */}
-          <div className="relative z-10 flex items-center justify-center rounded-md shadow-grey-10 px-3 py-3 md:py-2 bg-white w-full h-[58px]">
+          <div className="relative z-10 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white w-full h-[58px]">
             LIVE DISPLAY FRONT
           </div>
 
@@ -96,13 +96,13 @@ export function ShortLiveDisplay() {
       <motion.div
         variants={backVariant}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="absolute top-0 left-0 flex items-center justify-center rounded-md shadow-grey-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]"
+        className="absolute top-0 left-0 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]"
       >
         LIVE DISPLAY BACK
       </motion.div>
 
       {/* front card */}
-      <div className="relative z-10 flex items-center justify-center rounded-md shadow-grey-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]">
+      <div className="relative z-10 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]">
         LIVE DISPLAY FRONT
       </div>
     </motion.div>

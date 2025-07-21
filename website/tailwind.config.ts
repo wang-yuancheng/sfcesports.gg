@@ -79,12 +79,9 @@ const config: Config = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        gray: {
-          10: "#fdfdfd", 
-        },
       },
       boxShadow: {
-        "grey-10":
+        "gray-10":
           "0 1.5px 3px rgba(0, 0, 0, 0.06), 0 1px 1.5px rgba(0, 0, 0, 0.04)",
       },
     },

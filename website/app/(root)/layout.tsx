@@ -6,7 +6,7 @@ export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className="bg-gray-10 ">
+    <div>
       <Header />
       <LongLiveDisplay />
 
