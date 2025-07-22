@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { useEffect, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,67 +35,69 @@ export interface MenuSheetProps {
 
 export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
   const pathname = usePathname();
-  const ScrollWrapper = open ? RemoveScroll : React.Fragment;
 
   return (
-    <div className="sheet-under-header"><RemoveScroll enabled={open}>
-      <Sheet open={open} onOpenChange={onOpenChange} modal={false}>
-        <SheetTrigger asChild>
-          <button
-            className="relative rounded-md p-2 sm:hover:bg-gray-100 sm:hidden"
-            aria-label={open ? "Close menu" : "Open menu"}
+    <div className="sheet-under-header">
+      <RemoveScroll enabled={open}>
+        <Sheet open={open} onOpenChange={onOpenChange} modal={false}>
+          <SheetTrigger asChild>
+            <button
+              className="relative rounded-md p-2 sm:hover:bg-gray-100 sm:hidden"
+              aria-label={open ? "Close menu" : "Open menu"}
+            >
+              <Image
+                src="/menu.svg"
+                alt="Open Menu"
+                width={22}
+                height={22}
+                draggable={false}
+                className={
+                  open ? "hover:cursor-pointer hidden" : "hover:cursor-pointer"
+                } 
+              />
+              <Image
+                src="/cross.svg"
+                alt="Close Menu"
+                width={22}
+                height={22}
+                draggable={false}
+                className={
+                  open ? "hover:cursor-pointer" : "hover:cursor-pointer hidden"
+                } 
+              />
+            </button>
+          </SheetTrigger>
+
+          <SheetContent
+            side="left"
+            className="w-[min(100vw,640px)] top-[var(--header-height)] h-[calc(100vh-var(--header-height))] overflow-y-auto pt-0"
+            overlayClassName="top-[var(--header-height)] h-[calc(100vh-var(--header-height))]"
+            hideCloseButton={true}
           >
-            <Image
-              src="/menu.svg"
-              alt="Open Menu"
-              width={22}
-              height={22}
-              draggable={false}
-              className={
-                open ? "hover:cursor-pointer hidden" : "hover:cursor-pointer"
-              } // Hide when open
-            />
-            <Image
-              src="/cross.svg"
-              alt="Close Menu"
-              width={22}
-              height={22}
-              draggable={false}
-              className={
-                open ? "hover:cursor-pointer" : "hover:cursor-pointer hidden"
-              } // Show when open
-            />
-          </button>
-        </SheetTrigger>
+            <SheetHeader>
+              <SheetTitle></SheetTitle>
+            </SheetHeader>
 
-        <SheetContent
-          side="left"
-          className="w-[min(100vw,640px)] top-[var(--header-height)] h-[calc(100vh-var(--header-height))] overflow-y-auto"
-          overlayClassName="top-[var(--header-height)] h-[calc(100vh-var(--header-height))]"
-          hideCloseButton={true}
-        >
-          <SheetHeader>
-            <SheetTitle></SheetTitle>
-          </SheetHeader>
-
-          <div className="flex flex-col">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`border-b border-b-gray-200 w-full flex items-center ${
-                  isCurrent(pathname, item.href) ? "text-orange-500" : ""
-                } h-16 xxs:h-20 xs:h-24 text-[16px]`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-          <div className="flex w-20 h-20 bg-red-400">
-            <Footer />
-          </div>
-        </SheetContent>
-      </Sheet></RemoveScroll>
+            <div className="flex flex-col">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => onOpenChange?.(false)} 
+                  className={`border-b border-b-gray-200 w-full flex items-center ${
+                    isCurrent(pathname, item.href) ? "text-orange-500" : ""
+                  } h-16 xxs:h-20 xs:h-24 text-[16px]`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+            <div className="flex w-20 h-20 bg-red-400">
+              <Footer />
+            </div>
+          </SheetContent>
+        </Sheet>
+      </RemoveScroll>
     </div>
   );
 }
@@ -105,9 +107,9 @@ export function MenuSheetResponsive(
   props: Omit<MenuSheetProps, "open" | "onOpenChange">
 ) {
   const isMobile = useMediaQuery({ max: 640 });
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isMobile && open) setOpen(false);
   }, [isMobile, open]);
 
