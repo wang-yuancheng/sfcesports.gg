@@ -92,7 +92,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
                 </Link>
               ))}
             </div>
-            <div>
+            <div className="mt-5">
               <Footer />
             </div>
           </SheetContent>
