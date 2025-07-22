@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -13,7 +13,6 @@ import shopeeLogo from "@/assets/shopee.webp";
 import kooruiLogo from "@/assets/koorui.webp";
 import streamelementsLogo from "@/assets/streamelements.webp";
 
-
 const srcList = [
   { src: neteaseLogo, alt: "NetEase Logo" },
   { src: creatorhubLogo, alt: "CreatorHub Logo" },
@@ -23,40 +22,41 @@ const srcList = [
   { src: expressvpnLogo, alt: "ExpressVPN Logo" },
   { src: kooruiLogo, alt: "Koorui Logo" },
   { src: streamelementsLogo, alt: "Streamelements Logo" },
-
 ];
 
-// clamp helpers reused below
+// tailwind‑friendly size helpers
 const logoSize = "h-[clamp(24px,6vw,44px)] w-auto";
 const logoGap = "gap-[clamp(15px,10vw,100px)]";
-const logoPad = "pr-[clamp(12px,4vw,32px)]";
+const logoPad = "pr-[clamp(15px,10vw,100px)]";
 
 export default function LogoTicker() {
-  const [repeat, setRepeat] = useState(2); // how many times to duplicate srcList
+  const [sets, setSets] = useState(1);   
 
-  // Re‑calculate after every resize / zoom
   useEffect(() => {
-    function updateRepeats() {
-      // worst‑case: logo is 24 px high, ~24 px wide, gap min 12 px ⇒ ~36 px per item
-      const minItemWidth = 36;
+    function calcSets() {
+      const minItemWidth = 36;             
       const vw = window.innerWidth;
-      const minNeeded = Math.ceil(vw / minItemWidth) + 2; // +2 ≈ extra buffer
-      const cycles = Math.ceil(minNeeded / srcList.length);
-      setRepeat(cycles);
+      const itemsNeeded = Math.ceil(vw / minItemWidth);
+      const copies = Math.ceil(itemsNeeded / srcList.length);
+      setSets(copies);                    
     }
-    updateRepeats();
-    window.addEventListener("resize", updateRepeats);
-    return () => window.removeEventListener("resize", updateRepeats);
+    calcSets();
+    window.addEventListener("resize", calcSets);
+    return () => window.removeEventListener("resize", calcSets);
   }, []);
 
-  const logos = Array.from({ length: repeat }, () => srcList).flat();
+  const logos = useMemo(
+    () =>
+      Array.from({ length: sets * 2 }, () => srcList).flat(),
+    [sets]
+  );
 
   return (
     <div className="my-3 md:my-8 mx-[clamp(1.5rem,6vw,12rem)]">
       <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black,transparent)]">
         <motion.div
           className={`flex flex-none ${logoGap} ${logoPad} whitespace-nowrap`}
-          animate={{ translateX: "-50%" }}
+          animate={{ translateX: "-50%" }}         
           transition={{
             duration: 100,
             repeat: Infinity,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -53,7 +53,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
                 draggable={false}
                 className={
                   open ? "hover:cursor-pointer hidden" : "hover:cursor-pointer"
-                } 
+                }
               />
               <Image
                 src="/cross.svg"
@@ -63,7 +63,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
                 draggable={false}
                 className={
                   open ? "hover:cursor-pointer" : "hover:cursor-pointer hidden"
-                } 
+                }
               />
             </button>
           </SheetTrigger>
@@ -83,7 +83,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={() => onOpenChange?.(false)} 
+                  onClick={() => onOpenChange?.(false)}
                   className={`border-b border-b-gray-200 w-full flex items-center ${
                     isCurrent(pathname, item.href) ? "text-orange-500" : ""
                   } h-16 xxs:h-20 xs:h-24 text-[16px]`}
@@ -92,7 +92,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
                 </Link>
               ))}
             </div>
-            <div className="flex w-20 h-20 bg-red-400">
+            <div>
               <Footer />
             </div>
           </SheetContent>

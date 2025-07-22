@@ -10,7 +10,7 @@ export default function Layout({
       <Header />
       <div className="sm:hidden"><LongLiveDisplay /></div>
       <main>{children}</main>
-      <Footer />
+      <div className="mx-4"><Footer /></div>
     </div>
   );
 }
