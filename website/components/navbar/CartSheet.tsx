@@ -13,6 +13,8 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
+import cartIcon from "@/assets/icons/cart.svg";
+
 
 type SheetSide = "bottom" | "right";
 
@@ -48,7 +50,7 @@ export function CartSheet({
             className="relative rounded-md p-2 sm:hover:bg-gray-100"
           >
             <Image
-              src="/cart.svg"
+              src={cartIcon}
               alt="Cart"
               width={22}
               height={22}

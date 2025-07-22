@@ -1,13 +1,15 @@
 "use client";
 import Image from "next/image";
+import shibeLogoColor from "@/assets/logos/shibe-color.webp"
+import shibeLogoBlack from "@/assets/logos/shibe-black.svg"
 
 export default function LogoFade() {
   return (
     <div className="relative w-10 h-10 group">
       {/* Colored logo (visible by default) */}
       <Image
-        src="/logo-color.webp"
-        alt="Logo Color"
+        src={shibeLogoColor}
+        alt="Shibe Logo"
         fill
         priority
         draggable={false}
@@ -16,8 +18,8 @@ export default function LogoFade() {
 
       {/* Black logo (visible on hover) */}
       <Image
-        src="/logo-black.svg"
-        alt="Logo Black"
+        src={shibeLogoBlack}
+        alt="Shibe Logo "
         fill
         priority
         draggable={false}

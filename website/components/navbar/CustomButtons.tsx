@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import searchIcon from "@/assets/icons/search.svg";
+
 
 export function LoginButton() {
   return (
@@ -27,8 +29,8 @@ export function SearchButton() {
       title="Search Button"
     >
       <Image
+        src={searchIcon}
         alt="Search"
-        src="/search.svg"
         width={22}
         height={22}
         draggable={false}

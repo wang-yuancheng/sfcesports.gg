@@ -1,12 +1,13 @@
 import Image from "next/image";
 import React from "react";
 
-import youtubeIcon from "@/assets/youtube-icon.svg";
-import tiktokIcon from "@/assets/tiktok-icon.svg";
-import instagramIcon from "@/assets/instagram-icon.svg";
-import githubIcon from "@/assets/github-icon.svg";
-import discordIcon from "@/assets/discord-icon.svg";
-import linkedinIcon from "@/assets/linkedin-icon.svg";
+import youtubeIcon from "@/assets/logos/youtube.svg";
+import tiktokIcon from "@/assets/logos/tiktok.svg";
+import instagramIcon from "@/assets/logos/instagram.svg";
+import githubIcon from "@/assets/logos/github.svg";
+import discordIcon from "@/assets/logos/discord.svg";
+import linkedinIcon from "@/assets/logos/linkedin.svg";
+import shibeLogoBlack from "@/assets/logos/shibe-black.svg";
 
 const srcList = [
   {
@@ -50,8 +51,8 @@ export default function Footer() {
       <div className="flex flex-col text-[16px] gap-3 sm:hidden">
         <div className="relative w-full h-[50px]">
           <Image
-            src="/logo-black.svg"
-            alt="Logo"
+            src={shibeLogoBlack}
+            alt="Shibe Logo"
             width={50}
             height={50}
             draggable={false}

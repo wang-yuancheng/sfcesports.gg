@@ -7,6 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import profileIcon from "@/assets/icons/profile.svg"
 
 export default function NavbarProfile() {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function NavbarProfile() {
       <DropdownMenuTrigger asChild>
         <div className="relative cursor-pointer rounded-md p-2 sm:hover:bg-gray-100">
           <Image
-            src="/profile.svg"
+            src={profileIcon}
             alt="Profile"
             width={22}
             height={22}

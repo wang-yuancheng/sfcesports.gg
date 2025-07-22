@@ -14,6 +14,8 @@ import {
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Footer from "@/sections/Footer";
 import { RemoveScroll } from "react-remove-scroll";
+import menuIcon from "@/assets/icons/menu.svg";
+import crossIcon from "@/assets/icons/cross.svg";
 
 const navItems = [
   { name: "Teams", href: "/teams" },
@@ -46,7 +48,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
               aria-label={open ? "Close menu" : "Open menu"}
             >
               <Image
-                src="/menu.svg"
+                src={menuIcon}
                 alt="Open Menu"
                 width={22}
                 height={22}
@@ -56,7 +58,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
                 }
               />
               <Image
-                src="/cross.svg"
+                src={crossIcon}
                 alt="Close Menu"
                 width={22}
                 height={22}
