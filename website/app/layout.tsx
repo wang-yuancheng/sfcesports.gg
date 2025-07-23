@@ -4,8 +4,8 @@ import "@/styles/fonts.css";
 import { InitialFontWrapper } from "@/components/other/initialFontWrapper";
 
 export const metadata: Metadata = {
-  title: "My App",
-  description: "Powered by Next.js and Supabase",
+  title: "ShibeFanClub - SFC Esports",
+  description: "4 Years of Esports Excellence",
 };
 
 export default function RootLayout({

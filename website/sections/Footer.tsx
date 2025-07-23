@@ -1,13 +1,14 @@
 import Image from "next/image";
 import React from "react";
 
-import youtubeIcon from "@/assets/logos/youtube.svg";
-import tiktokIcon from "@/assets/logos/tiktok.svg";
-import instagramIcon from "@/assets/logos/instagram.svg";
-import githubIcon from "@/assets/logos/github.svg";
-import discordIcon from "@/assets/logos/discord.svg";
-import linkedinIcon from "@/assets/logos/linkedin.svg";
-import shibeLogoBlack from "@/assets/logos/shibe-black.svg";
+import youtubeIcon from "@/assets/icons/youtube.svg";
+import tiktokIcon from "@/assets/icons/tiktok.svg";
+import instagramIcon from "@/assets/icons/instagram.svg";
+import githubIcon from "@/assets/icons/github.svg";
+import discordIcon from "@/assets/icons/discord.svg";
+import linkedinIcon from "@/assets/icons/linkedin.svg";
+import shibeLogoBlack from "@/assets/icons/shibe-black.svg";
+import FooterDropdown from "@/components/navbar/FooterDropdown";
 
 const srcList = [
   {
@@ -59,10 +60,38 @@ export default function Footer() {
             className="absolute translate-x-[-20%]"
           />
         </div>
-        <div className="py-2">$ USD</div>
-        <div className="py-2">About</div>
-        <div className="py-2">Shop</div>
-        <div className="py-2">Terms and Policies</div>
+        <FooterDropdown
+          trigger="$ USD"
+          dropdownContent={[
+            { label: "$ SGD" },
+            { label: "RM MYR" },
+            { label: "₹ INR" },
+          ]}
+        />
+        <FooterDropdown
+          trigger="About"
+          dropdownContent={[
+            { label: "Our Story", href: "/about" },
+            { label: "Brand Kit", href: "/brand" },
+            { label: "Contact Us", href: "/contact" },
+            { label: "Join Us", href: "/join" },
+          ]}
+        />
+        <FooterDropdown
+          trigger="Activity"
+          dropdownContent={[
+            { label: "Events", href: "/events" },
+            { label: "Blog", href: "/blog" },
+            { label: "Live Room", href: "/live" },
+          ]}
+        />
+        <FooterDropdown
+          trigger="Terms and Policies"
+          dropdownContent={[
+            { label: "All Terms and Policies", href: "/policies/all" },
+          ]}
+        />
+
         <div className="py-2 flex justify-between">
           {srcList.map(({ src, alt, href }, i) => (
             <a
@@ -87,6 +116,7 @@ export default function Footer() {
       </div>
 
       <div className="hidden sm:flex flex-col text-[16px] gap-3">
+        {/* TODO */}
         Desktop Footer
       </div>
       <div className="flex justify-center py-2 text-[11px] mb-3">

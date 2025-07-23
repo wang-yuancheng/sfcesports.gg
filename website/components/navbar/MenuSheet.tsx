@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -14,8 +13,7 @@ import {
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Footer from "@/sections/Footer";
 import { RemoveScroll } from "react-remove-scroll";
-import menuIcon from "@/assets/icons/menu.svg";
-import crossIcon from "@/assets/icons/cross.svg";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
   { name: "Teams", href: "/teams" },
@@ -47,26 +45,11 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
               className="relative rounded-md p-2 sm:hover:bg-gray-100 sm:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
             >
-              <Image
-                src={menuIcon}
-                alt="Open Menu"
-                width={22}
-                height={22}
-                draggable={false}
-                className={
-                  open ? "hover:cursor-pointer hidden" : "hover:cursor-pointer"
-                }
-              />
-              <Image
-                src={crossIcon}
-                alt="Close Menu"
-                width={22}
-                height={22}
-                draggable={false}
-                className={
-                  open ? "hover:cursor-pointer" : "hover:cursor-pointer hidden"
-                }
-              />
+              {open ? (
+                <X className="w-[24px] h-[24px] hover:cursor-pointer" />
+              ) : (
+                <Menu className="w-[24px] h-[24px] hover:cursor-pointer" />
+              )}
             </button>
           </SheetTrigger>
 

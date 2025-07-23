@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import searchIcon from "@/assets/icons/search.svg";
+import { Search } from "lucide-react";
 
 
 export function LoginButton() {
@@ -23,19 +22,13 @@ export function SignUpButton() {
 
 export function SearchButton() {
   return (
-    <button
+   <button
       className="relative rounded-md p-2 sm:hover:bg-gray-100"
       type="button"
+      aria-label="Search"
       title="Search Button"
     >
-      <Image
-        src={searchIcon}
-        alt="Search"
-        width={22}
-        height={22}
-        draggable={false}
-        className="min-w-[22px]"
-      />
+      <Search className="w-[22px] h-[22px]" />
     </button>
   );
 }
