@@ -14,14 +14,36 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Footer from "@/sections/Footer";
 import { RemoveScroll } from "react-remove-scroll";
 import { Menu, X } from "lucide-react";
+import MenuDropdown from "./MenuDropdown";
+import shibeIcon from "@/assets/icons/shibe-black.svg";
 
 const navItems = [
-  { name: "Teams", href: "/teams" },
   { name: "Events", href: "/events" },
   { name: "Media", href: "/media" },
   { name: "Company", href: "/about" },
   { name: "Shop", href: "/shop" },
   { name: "Join", href: "/join" },
+];
+
+const teams = [
+  {
+    imageSrc: shibeIcon,
+    title: "Team 1",
+    description: "Team 1 Description",
+    href: "/teams/team1",
+  },
+  {
+    imageSrc: shibeIcon,
+    title: "Team 2",
+    description: "Team 2 Description",
+    href: "/teams/team2",
+  },
+  {
+    imageSrc: shibeIcon,
+    title: "Team 3",
+    description: "Team 3 Description",
+    href: "/teams/team3",
+  },
 ];
 
 function isCurrent(pathname: string, href: string) {
@@ -55,7 +77,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
 
           <SheetContent
             side="left"
-            className="w-[min(100vw,640px)] top-[var(--header-height)] h-[calc(100vh-var(--header-height))] overflow-y-auto pt-0"
+            className="w-[min(100vw,640px)] top-[var(--header-height)] h-[calc(100vh-var(--header-height))] overflow-y-auto py-0"
             overlayClassName="top-[var(--header-height)] h-[calc(100vh-var(--header-height))]"
             hideCloseButton={true}
           >
@@ -64,14 +86,20 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
             </SheetHeader>
 
             <div className="flex flex-col">
+              <MenuDropdown
+                heading="Teams"
+                viewAllHref="/teams"
+                items={teams}
+                onItemClick={() => onOpenChange?.(false)}
+              />
+
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={() => onOpenChange?.(false)}
                   className={`border-b border-b-gray-200 w-full flex items-center ${
                     isCurrent(pathname, item.href) ? "text-orange-500" : ""
-                  } h-16 xxs:h-20 xs:h-24 text-[16px]`}
+                  } h-16 text-[16px]`}
                 >
                   {item.name}
                 </Link>

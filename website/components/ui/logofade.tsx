@@ -19,7 +19,7 @@ export default function LogoFade() {
       {/* Black logo (visible on hover) */}
       <Image
         src={shibeLogoBlack}
-        alt="Shibe Logo "
+        alt="Shibe Logo"
         fill
         priority
         draggable={false}

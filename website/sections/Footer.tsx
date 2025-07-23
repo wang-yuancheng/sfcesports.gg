@@ -60,12 +60,14 @@ export default function Footer() {
             className="absolute translate-x-[-20%]"
           />
         </div>
+        
+        {/* TODO: Change global state when currency is modified */}
         <FooterDropdown
           trigger="$ USD"
           dropdownContent={[
             { label: "$ SGD" },
-            { label: "RM MYR" },
             { label: "₹ INR" },
+            { label: "RM MYR" },
           ]}
         />
         <FooterDropdown
@@ -92,7 +94,7 @@ export default function Footer() {
           ]}
         />
 
-        <div className="py-2 flex justify-between">
+        <div className=" flex justify-between items-center">
           {srcList.map(({ src, alt, href }, i) => (
             <a
               key={i}
