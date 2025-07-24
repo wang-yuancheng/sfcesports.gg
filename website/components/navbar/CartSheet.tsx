@@ -12,6 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetDescription,
+  SheetClose,
 } from "@/components/ui/sheet";
 
 import { LucideShoppingBag } from "lucide-react";
@@ -65,9 +66,11 @@ export function CartSheet({
         ) : (
           <div className="mt-6 flex flex-col items-center text-center">
             <div className="w-full mb-4">{emptyMessage}</div>
-            <Button asChild className="w-full">
-              <Link href={ctaHref}>{ctaLabel}</Link>
-            </Button>
+            <SheetClose asChild>
+              <Button asChild className="w-full">
+                <Link href={ctaHref}>{ctaLabel}</Link>
+              </Button>
+            </SheetClose>
           </div>
         )}
       </SheetContent>
