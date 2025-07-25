@@ -28,20 +28,20 @@ const navItems = [
 const teams = [
   {
     imageSrc: shibeIcon,
-    title: "Team 1",
-    description: "Team 1 Description",
+    title: "SFC 女队",
+    description: "Asia Regional Champion",
     href: "/teams/team1",
   },
   {
     imageSrc: shibeIcon,
-    title: "Team 2",
-    description: "Team 2 Description",
+    title: "SFC Taiwan",
+    description: "Regional #7: Taiwan HK Macau",
     href: "/teams/team2",
   },
   {
     imageSrc: shibeIcon,
-    title: "Team 3",
-    description: "Team 3 Description",
+    title: "SFC India",
+    description: "#2 Asia Regional, 5x Finalist",
     href: "/teams/team3",
   },
 ];
