@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { NavbarContentBack, NavbarContentFront } from "./NavbarContent";
 
 export function LongLiveDisplay() {
   const backVariant = {
@@ -25,6 +26,15 @@ export function LongLiveDisplay() {
           }}
           className="relative w-full max-w-[448px] min-w-[200px] h-[58px] my-2"
         >
+          {/* Open live display overlay for mobile */}
+          {!open && (
+            <button
+              onClick={() => setOpen(true)}
+              aria-label="Open live details"
+              className="absolute inset-0 z-30 w-full h-full rounded-md cursor-pointer focus:outline-none"
+            />
+          )}
+
           {/* back card */}
           <motion.div
             variants={backVariant}
@@ -39,12 +49,13 @@ export function LongLiveDisplay() {
             }}
             className="absolute inset-0 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white w-full h-[58px]"
           >
-            <motion.div className="">LIVE DISPLAY BACK</motion.div>
+            <NavbarContentBack showVod={open} />
           </motion.div>
 
           {/* front card */}
+
           <div className="relative z-10 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white w-full h-[58px]">
-            LIVE DISPLAY FRONT
+            <NavbarContentFront showVod={open} />
           </div>
 
           {/* pill button */}
@@ -86,6 +97,8 @@ export function ShortLiveDisplay() {
     hover: { scale: 1, y: 60 },
   };
 
+  const [open, setOpen] = useState(false);
+
   return (
     <motion.div
       className="hidden navbarsm:flex navbarlg:absolute navbarlg:left-1/2 navbarlg:-translate-x-1/2 relative w-fit"
@@ -98,12 +111,12 @@ export function ShortLiveDisplay() {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="absolute top-0 left-0 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]"
       >
-        LIVE DISPLAY BACK
+        <NavbarContentBack showVod={open} />
       </motion.div>
 
       {/* front card */}
       <div className="relative z-10 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]">
-        LIVE DISPLAY FRONT
+        <NavbarContentFront showVod={open} />
       </div>
     </motion.div>
   );
