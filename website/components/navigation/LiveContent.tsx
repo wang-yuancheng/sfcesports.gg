@@ -5,7 +5,7 @@ import pubgmLogo from "@/assets/logos/pubgm.svg";
 import novaLogo from "@/assets/logos/nova.webp";
 import { ChevronRight } from "lucide-react";
 
-export function NavbarContentFront({ showVod }: { showVod: boolean }) {
+export function LiveContentFront({ showVod }: { showVod: boolean }) {
   return (
     <a href="/live" className="block w-full group">
       <div className="w-full flex justify-between items-center pl-2">
@@ -35,7 +35,7 @@ export function NavbarContentFront({ showVod }: { showVod: boolean }) {
   );
 }
 
-export function NavbarContentBack({ showVod }: { showVod: boolean }) {
+export function LiveContentBack({ showVod }: { showVod: boolean }) {
   return (
     <a href="/live" className="block w-full group">
       <div className="w-full flex justify-between items-center px-2">

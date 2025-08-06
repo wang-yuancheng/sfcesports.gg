@@ -4,19 +4,19 @@ import Link from "next/link";
 import LogoFade from "@/components/ui/logofade";
 
 // Custom Components
-import { CartSheetResponsive } from "@/components/navbar/CartSheet";
-import { MenuSheetResponsive } from "@/components/navbar/MenuSheet";
-import NavbarProfile from "@/components/navbar/NavbarProfile";
+import { CartSheetResponsive } from "@/components/navigation/CartSheet";
+import { MenuSheetResponsive } from "@/components/navigation/MenuSheet";
+import NavbarProfile from "@/components/navigation/NavbarProfile";
 import {
   LoginButton,
   SignUpButton,
   SearchButton,
-} from "@/components/navbar/CustomButtons";
+} from "@/components/navigation/CustomButtons";
 import {
   LongLiveDisplay,
   ShortLiveDisplay,
-} from "@/components/navbar/LiveDisplay";
-import { NavbarMain } from "@/components/navbar/NavbarMain";
+} from "@/components/navigation/LiveDisplay";
+import { NavbarMain } from "@/components/navigation/NavbarMain";
 
 export default function Navbar() {
   return (

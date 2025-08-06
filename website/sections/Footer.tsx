@@ -8,7 +8,7 @@ import githubIcon from "@/assets/icons/github.svg";
 import discordIcon from "@/assets/icons/discord.svg";
 import linkedinIcon from "@/assets/icons/linkedin.svg";
 import shibeLogoBlack from "@/assets/icons/shibe-black.svg";
-import FooterDropdown from "@/components/navbar/FooterDropdown";
+import FooterDropdown from "@/components/navigation/FooterDropdown";
 
 const srcList = [
   {
@@ -60,7 +60,7 @@ export default function Footer() {
             className="absolute translate-x-[-20%]"
           />
         </div>
-        
+
         {/* TODO: Change global state when currency is modified */}
         <FooterDropdown
           trigger="$ USD"

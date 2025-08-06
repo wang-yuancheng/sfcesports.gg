@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { NavbarContentBack, NavbarContentFront } from "./NavbarContent";
+import { LiveContentBack, LiveContentFront } from "@/components/navigation/LiveContent";
 
 export function LongLiveDisplay() {
   const backVariant = {
@@ -49,13 +49,13 @@ export function LongLiveDisplay() {
             }}
             className="absolute inset-0 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white w-full h-[58px]"
           >
-            <NavbarContentBack showVod={open} />
+            <LiveContentBack showVod={open} />
           </motion.div>
 
           {/* front card */}
 
           <div className="relative z-10 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white w-full h-[58px]">
-            <NavbarContentFront showVod={open} />
+            <LiveContentFront showVod={open} />
           </div>
 
           {/* pill button */}
@@ -111,12 +111,12 @@ export function ShortLiveDisplay() {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="absolute top-0 left-0 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]"
       >
-        <NavbarContentBack showVod={open} />
+        <LiveContentBack showVod={open} />
       </motion.div>
 
       {/* front card */}
       <div className="relative z-10 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]">
-        <NavbarContentFront showVod={open} />
+        <LiveContentFront showVod={open} />
       </div>
     </motion.div>
   );
