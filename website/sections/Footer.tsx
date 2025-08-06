@@ -45,10 +45,28 @@ const srcList = [
 
 const logoSize = "h-[clamp(24px,6vw,44px)] w-auto";
 
+const about = [
+  { label: "Our Story", href: "/about" },
+  { label: "Brand Kit", href: "/brand" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "Join Us", href: "/join" },
+];
+const activity = [
+  { label: "Events", href: "/events" },
+  { label: "Blog", href: "/blog" },
+  { label: "Live Room", href: "/live" },
+];
+const termsAndPolicies = [
+  { label: "All Terms and Policies", href: "/policies/all" },
+];
+const currency = [{ label: "$ SGD" }, { label: "₹ INR" }, { label: "RM MYR" }];
+const copyright = `© 2021 - ${new Date().getFullYear()}, ShibeFanClub, All rights reserved`;
+
 export default function Footer() {
   // mobile -> desktop breakpoint: sm 640px
   return (
     <>
+      {/* Mobile Footer  */}
       <div className="flex flex-col text-[16px] gap-3 sm:hidden">
         <div className="relative w-full h-[50px]">
           <Image
@@ -62,36 +80,12 @@ export default function Footer() {
         </div>
 
         {/* TODO: Change global state when currency is modified */}
-        <FooterDropdown
-          trigger="$ USD"
-          dropdownContent={[
-            { label: "$ SGD" },
-            { label: "₹ INR" },
-            { label: "RM MYR" },
-          ]}
-        />
-        <FooterDropdown
-          trigger="About"
-          dropdownContent={[
-            { label: "Our Story", href: "/about" },
-            { label: "Brand Kit", href: "/brand" },
-            { label: "Contact Us", href: "/contact" },
-            { label: "Join Us", href: "/join" },
-          ]}
-        />
-        <FooterDropdown
-          trigger="Activity"
-          dropdownContent={[
-            { label: "Events", href: "/events" },
-            { label: "Blog", href: "/blog" },
-            { label: "Live Room", href: "/live" },
-          ]}
-        />
+        <FooterDropdown trigger="$ USD" dropdownContent={currency} />
+        <FooterDropdown trigger="About" dropdownContent={about} />
+        <FooterDropdown trigger="Activity" dropdownContent={activity} />
         <FooterDropdown
           trigger="Terms and Policies"
-          dropdownContent={[
-            { label: "All Terms and Policies", href: "/policies/all" },
-          ]}
+          dropdownContent={termsAndPolicies}
         />
 
         <div className=" flex justify-between items-center">
@@ -116,13 +110,60 @@ export default function Footer() {
           ))}
         </div>
       </div>
+      {/* End of Mobile Footer */}
 
-      <div className="hidden sm:flex flex-col text-[16px] gap-3">
-        {/* TODO */}
-        Desktop Footer
+      {/* Desktop Footer */}
+      <div className="hidden sm:block w-full py-10 px-4 md:pb-16 md:px-10 lg:px-16 relative">
+        {/* LEFT SIDE – link columns ------------------------------------------- */}
+        <div className="flex gap-[clamp(1rem,9vw,10rem)]">
+          {[
+            { title: "About", items: about },
+            { title: "Activity", items: activity },
+            { title: "Terms", items: termsAndPolicies },
+          ].map(({ title, items }) => (
+            <div key={title} className="flex flex-col">
+              <span className="font-semibold mb-2">{title}</span>
+              {items.map(({ label, href }) => (
+                <a key={label} href={href} className="py-1 hover:underline">
+                  {label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* RIGHT SIDE – absolutely positioned, no interaction with left -------- */}
+        <div className="absolute right-4 md:right-10 lg:right-16 bottom-10 md:bottom-16 flex flex-col items-end">
+          {/* social icons row */}
+          <div className="flex gap-2 flex-wrap justify-end">
+            {srcList.map(({ src, alt, href }) => (
+              <a
+                key={alt}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 border rounded-md hover:bg-gray-100 flex items-center justify-center"
+              >
+                <Image
+                  src={src}
+                  alt={alt}
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                  draggable={false}
+                />
+              </a>
+            ))}
+          </div>
+
+          {/* copyright */}
+          <div className="text-[11px] mt-2">{copyright}</div>
+        </div>
       </div>
-      <div className="flex justify-center py-2 text-[11px] mb-3">
-        &copy; 2021 - 2026, ShibeFanClub, All rights reserved
+      {/* End of Desktop Footer */}
+
+      <div className="flex justify-center py-2 text-[11px] mb-3 sm:hidden">
+        {copyright}
       </div>
     </>
   );
