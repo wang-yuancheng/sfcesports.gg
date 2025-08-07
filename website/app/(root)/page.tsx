@@ -6,8 +6,9 @@ export default function Home() {
   return (
     <>
       {/* <Hero/> */}
-      <DummySection/>
+      <DummySection />
       <LogoTicker />
+      <div>Gap</div>
     </>
   );
 }
