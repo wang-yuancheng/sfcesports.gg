@@ -114,22 +114,22 @@ export default function Footer() {
       {/* Desktop Footer */}
       <div
         className="hidden sm:block w-full
-                py-[clamp(2.5rem,5vw,4rem)]
+                py-[clamp(2rem,5vw,4rem)]
                 px-[clamp(1rem,4vw,4rem)]
                 relative border-t border-gray-100"
       >
         {/* Banner  */}
-        <div className="mb-4 gap-4 pb-8 w-full border-b border-gray-100">
+        <div className="mb-8 pb-8 w-full border-b border-gray-100">
           <div className="flex flex-col items-center navbarsm:items-start">
             <Image
               src={shibeFanClubBanner}
               alt="ShibeFanClub Banner"
-              width={500}
+              width={400}
               className="object-contain mb-[clamp(1rem,2vw,2rem)]"
               draggable={false}
             />
 
-            <div className="font-[800] text-[22.25px]">
+            <div className="font-[800] text-[20px]">
               PREMIER ESPORTS & GAMING ORGANIZATION
             </div>
             <div className="font-[500] text-base">
