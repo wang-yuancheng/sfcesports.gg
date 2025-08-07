@@ -98,7 +98,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
                   key={item.href}
                   href={item.href}
                   className={`border-b border-b-gray-200 w-full flex items-center ${
-                    isCurrent(pathname, item.href) ? "text-orange-500" : ""
+                    isCurrent(pathname, item.href) ? "text-pink-bright" : ""
                   } h-16 text-[16px]`}
                 >
                   {item.name}

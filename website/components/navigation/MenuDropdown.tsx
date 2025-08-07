@@ -41,7 +41,7 @@ export default function MenuDropdown({
         onClick={() => setOpen((p) => !p)}
         aria-expanded={open}
         className={`flex w-full items-center justify-between h-16 text-[16px] ${
-          isActive ? "text-orange-500" : ""
+          isActive ? "text-pink-bright" : ""
         }`}
       >
         <span>{heading}</span>

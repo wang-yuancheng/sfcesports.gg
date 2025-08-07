@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import shibeLogo from "@/assets/icons/shibe-color.webp";
+import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import pubgmLogo from "@/assets/logos/pubgm.svg";
 import novaLogo from "@/assets/logos/nova.webp";
 import { ChevronRight } from "lucide-react";

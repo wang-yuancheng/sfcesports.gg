@@ -30,6 +30,23 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        // Color Pallet Themes
+        pink: {
+          // Main Theme
+          DEFAULT: "#FFC0D3",
+          light: "#FDEFF4",
+          bright: "#FF5C8D",
+        },
+        fadedwhite: {
+          DEFAULT: "#FEFEFE", // for background, same as hsl(0, 0%, 99.2%)
+        },
+        fadedblack: {
+          DEFAULT: "#101010", // for logos that are not fully black
+        },
+        plum: {
+          DEFAULT: "#524A4E", // if required
+        },
+
         background: "hsl(0, 0%, 99.2%)",
         foreground: "hsl(var(--foreground))",
         card: {

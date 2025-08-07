@@ -151,7 +151,7 @@ export default function Footer() {
                 <a
                   key={label}
                   href={href}
-                  className="py-1 font-[500] text-gray-500 hover:text-orange-500"
+                  className="py-1 font-[500] text-gray-500 hover:text-pink-bright"
                 >
                   {label}
                 </a>

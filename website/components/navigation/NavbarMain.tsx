@@ -31,7 +31,7 @@ export const NavbarMain = () => {
             variant="ghost"
             size="sm"
             className={`${
-              isCurrent(pathname, item.href) ? "text-orange-500" : ""
+              isCurrent(pathname, item.href) ? "text-pink-bright" : ""
             }`}
           >
             <Link href={item.href}>{item.name}</Link>
