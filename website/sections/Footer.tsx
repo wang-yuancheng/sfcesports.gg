@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
+import shibeFanClubBanner from "@/assets/logos/shibefanclubbanner.png";
 import youtubeIcon from "@/assets/icons/youtube.svg";
 import tiktokIcon from "@/assets/icons/tiktok.svg";
 import instagramIcon from "@/assets/icons/instagram.svg";
@@ -42,8 +43,6 @@ const srcList = [
     href: "https://www.linkedin.com/company/shibefanclub/",
   },
 ];
-
-const logoSize = "h-[clamp(24px,6vw,44px)] w-auto";
 
 const about = [
   { label: "Our Story", href: "/about" },
@@ -88,23 +87,23 @@ export default function Footer() {
           dropdownContent={termsAndPolicies}
         />
 
-        <div className=" flex justify-between items-center">
-          {srcList.map(({ src, alt, href }, i) => (
+        {/* social icons – mobile */}
+        <div className="flex gap-2 flex-nowrap justify-between">
+          {srcList.map(({ src, alt, href }) => (
             <a
-              key={i}
+              key={alt}
               href={href}
-              className="relative rounded-md p-2 hover:bg-gray-100 inline-block cursor-pointer"
               target="_blank"
               rel="noopener noreferrer"
+              className="p-2 border border-gray-100 hover:border-gray-200 rounded-md flex items-center justify-center transition-colors duration-200"
             >
               <Image
-                key={i}
                 src={src}
                 alt={alt}
-                width={22}
-                height={22}
+                width={20}
+                height={20}
+                className="object-contain"
                 draggable={false}
-                className={`${logoSize} flex-shrink-0 object-contain min-w-[22px]`}
               />
             </a>
           ))}
@@ -113,18 +112,47 @@ export default function Footer() {
       {/* End of Mobile Footer */}
 
       {/* Desktop Footer */}
-      <div className="hidden sm:block w-full py-10 px-4 md:pb-16 md:px-10 lg:px-16 relative">
-        {/* LEFT SIDE – link columns ------------------------------------------- */}
+      <div
+        className="hidden sm:block w-full
+                py-[clamp(2.5rem,5vw,4rem)]
+                px-[clamp(1rem,4vw,4rem)]
+                relative border-t border-gray-100"
+      >
+        {/* Banner  */}
+        <div className="mb-4 gap-4 pb-8 w-full border-b border-gray-100">
+          <div className="flex flex-col items-center navbarsm:items-start">
+            <Image
+              src={shibeFanClubBanner}
+              alt="ShibeFanClub Banner"
+              width={500}
+              className="object-contain mb-[clamp(1rem,2vw,2rem)]"
+              draggable={false}
+            />
+
+            <div className="font-[800] text-[22.25px]">
+              PREMIER ESPORTS & GAMING ORGANIZATION
+            </div>
+            <div className="font-[500] text-base">
+              Building communities to win high quality tournament and events
+            </div>
+          </div>
+        </div>
+
+        {/* LEFT SIDE */}
         <div className="flex gap-[clamp(1rem,9vw,10rem)]">
           {[
             { title: "About", items: about },
             { title: "Activity", items: activity },
-            { title: "Terms", items: termsAndPolicies },
+            { title: "Terms and Policies", items: termsAndPolicies },
           ].map(({ title, items }) => (
             <div key={title} className="flex flex-col">
-              <span className="font-semibold mb-2">{title}</span>
+              <span className="font-[600] mb-2">{title}</span>
               {items.map(({ label, href }) => (
-                <a key={label} href={href} className="py-1 hover:underline">
+                <a
+                  key={label}
+                  href={href}
+                  className="py-1 font-[500] text-gray-500 hover:text-orange-500"
+                >
                   {label}
                 </a>
               ))}
@@ -132,8 +160,13 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* RIGHT SIDE – absolutely positioned, no interaction with left -------- */}
-        <div className="absolute right-4 md:right-10 lg:right-16 bottom-10 md:bottom-16 flex flex-col items-end">
+        {/* RIGHT SIDE */}
+        <div
+          className="absolute
+                  right-[clamp(1rem,4vw,4rem)]
+                  bottom-[clamp(2.5rem,5vw,4rem)]
+                  flex flex-col items-end"
+        >
           {/* social icons row */}
           <div className="flex gap-2 flex-wrap justify-end">
             {srcList.map(({ src, alt, href }) => (
@@ -142,7 +175,7 @@ export default function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 border rounded-md hover:bg-gray-100 flex items-center justify-center"
+                className="p-2 border border-gray-100 hover:border-gray-200 rounded-md flex items-center justify-center transition-colors duration-200"
               >
                 <Image
                   src={src}
@@ -155,7 +188,6 @@ export default function Footer() {
               </a>
             ))}
           </div>
-
           {/* copyright */}
           <div className="text-[11px] mt-2">{copyright}</div>
         </div>
