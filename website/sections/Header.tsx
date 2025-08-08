@@ -46,7 +46,7 @@ export default function Navbar() {
         {/* Mobile */}
 
         {/* Desktop / Ipad */}
-        <div className="hidden sm:flex mx-auto w-full sm:px-6 sm:py-2 md:px-0 flex-col">
+        <div className="hidden sm:flex mx-auto w-full sm:px-6 sm:py-2 md:px-0 flex-col ">
           {/* Left side */}
           <div className="relative flex h-16 items-center justify-between">
             <nav className="flex flex-1 lg:flex-initial items-center justify-center sm:items-stretch sm:justify-start md:ml-5">

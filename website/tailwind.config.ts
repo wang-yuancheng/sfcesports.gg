@@ -17,12 +17,20 @@ const config: Config = {
       md: "768px",
       lg: "1024px",
       navbarsm: "1100px",
+      xlg: "1280px",
       navbarlg: "1350px",
-      xlg: "1440px",
+      xxlg: "1440px"
     },
     extend: {
       fontFamily: {
         helveticaNow: ["var(--font-helvetica-now)", ...fontFamily.sans],
+        druk: [
+          "Druk Wide Web",
+          "Helvetica Now Display",
+          "Helvetica",
+          "sans-serif",
+          "Arial",
+        ],
       },
       borderRadius: {
         lg: "var(--radius)",
