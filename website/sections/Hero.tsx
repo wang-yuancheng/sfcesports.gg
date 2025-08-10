@@ -89,7 +89,7 @@ export default function BentoGrid() {
                     <p className="flex max-[330px]:hidden items-center gap-2 text-white font-druk font-bold text-lg leading-[1]">
                       MATCH RECAP
                     </p>
-                    <p className="text-white/75 text-[clamp(0.6875rem,2vw,0.875rem)] leading-tight truncate">
+                    <p className="text-white/75 text-sm leading-tight truncate">
                       Regional Championship Finals
                     </p>
                   </div>
