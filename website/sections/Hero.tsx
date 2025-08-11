@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import atcBanner from "@/assets/pictures/atc.webp";
-import atcgreyBanner from "@/assets/pictures/atc-gray.webp";
+import atcBanner from "@/assets/pictures/atc.avif";
+import atcgreyBanner from "@/assets/pictures/atc-gray.avif";
 import cardHero from "@/assets/pictures/card-hero-gradient.png";
 import { ChevronRight } from "lucide-react";
 
