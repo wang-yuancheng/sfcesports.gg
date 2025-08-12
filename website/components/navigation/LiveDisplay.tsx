@@ -1,7 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { LiveContentBack, LiveContentFront } from "@/components/navigation/LiveContent";
+import {
+  LiveContentBack,
+  LiveContentFront,
+} from "@/components/navigation/LiveContent";
 
 export function LongLiveDisplay() {
   const backVariant = {
@@ -108,7 +111,11 @@ export function ShortLiveDisplay() {
       {/* back card */}
       <motion.div
         variants={backVariant}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        transition={{
+          type: "spring",
+          stiffness: 120,
+          damping: 25,
+        }}
         className="absolute top-0 left-0 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]"
       >
         <LiveContentBack showVod={open} />

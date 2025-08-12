@@ -12,9 +12,7 @@ export default function Layout({
         <LongLiveDisplay />
       </div>
       <main>{children}</main>
-      <div className="mx-4 xs:mx-8">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

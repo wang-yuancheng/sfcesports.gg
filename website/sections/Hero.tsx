@@ -7,11 +7,11 @@ import { ChevronRight } from "lucide-react";
 
 export default function BentoGrid() {
   return (
-    <section className="mx-auto max-w-[1000px] px-4 sm:px-6 navbarsm:my-14">
+    <section className="mx-auto max-w-[1200px] px-[clamp(1rem,4vw,4rem)] navbarsm:my-14">
       {/* Grid: 1 column on small screens */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-6 sm:[grid-template-rows:repeat(2,minmax(0,1fr))]">
-        {/* Top left hero, spans 4 columns, gray to color hover swap */}
-        <div className="group relative isolate overflow-hidden rounded-2xl h-[360px] sm:col-span-4">
+        {/* Top left hero */}
+        <div className="group relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-4">
           {/* Color image on top, fades in on hover */}
           <Image
             src={atcBanner}
@@ -64,7 +64,7 @@ export default function BentoGrid() {
             </div>
           </div>
 
-          {/* Bottom overlay, integrated recap */}
+          {/* Bottom overlay */}
           <div className="absolute inset-x-0 bottom-0 z-10">
             {/* base pink gradient, fades OUT on hover */}
             <div
@@ -99,12 +99,10 @@ export default function BentoGrid() {
               </a>
             </div>
           </div>
-
-          {/*  */}
         </div>
 
-        {/* Top right sidebar card, spans 2 columns */}
-        <div className="relative isolate overflow-hidden rounded-2xl h-[360px] sm:col-span-2">
+        {/* Top right sidebar card */}
+        <div className="relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-2">
           <Image
             src={cardHero}
             alt=""
@@ -125,8 +123,8 @@ export default function BentoGrid() {
           </div>
         </div>
 
-        {/* Bottom left sidebar card, spans 2 columns */}
-        <div className="relative isolate overflow-hidden rounded-2xl h-[360px] sm:col-span-2">
+        {/* Bottom left sidebar card */}
+        <div className="relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-2">
           <Image
             src={cardHero}
             alt=""
@@ -150,8 +148,8 @@ export default function BentoGrid() {
           </div>
         </div>
 
-        {/* Bottom right hero, spans 4 columns */}
-        <div className="relative isolate overflow-hidden rounded-2xl h-[360px] sm:col-span-4">
+        {/* Bottom right hero */}
+        <div className="relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-4">
           <Image
             src={cardHero}
             alt=""

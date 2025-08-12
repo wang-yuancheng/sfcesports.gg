@@ -64,7 +64,7 @@ const copyright = `© 2021 - ${new Date().getFullYear()}, ShibeFanClub, All righ
 export default function Footer() {
   // mobile -> desktop breakpoint: sm 640px
   return (
-    <>
+    <div className="mx-4 xs:mx-8 sm:mx-0">
       {/* Mobile Footer  */}
       <div className="flex flex-col text-[16px] gap-3 sm:hidden">
         <div className="relative w-full h-[50px]">
@@ -113,7 +113,7 @@ export default function Footer() {
 
       {/* Desktop Footer */}
       <div
-        className="hidden sm:block w-full
+        className="hidden sm:block mx-auto max-w-[1200px]
                 py-[clamp(2rem,5vw,4rem)]
                 px-[clamp(1rem,4vw,4rem)]
                 relative border-t border-gray-100"
@@ -197,6 +197,6 @@ export default function Footer() {
       <div className="flex justify-center py-2 text-[11px] mb-3 sm:hidden">
         {copyright}
       </div>
-    </>
+    </div>
   );
 }

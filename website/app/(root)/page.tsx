@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <Hero/>
       <LogoTicker />
-      <div>Gap</div>
+      <div className="bg-pink w-auto h-10"></div>
     </>
   );
 }
