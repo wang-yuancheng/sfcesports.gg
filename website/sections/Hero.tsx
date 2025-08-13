@@ -4,8 +4,23 @@ import atcBanner from "@/assets/pictures/atc.avif";
 import atcgreyBanner from "@/assets/pictures/atc-gray.avif";
 import cardHero from "@/assets/pictures/card-hero-gradient.png";
 import { ChevronRight } from "lucide-react";
+import Logo from "@/assets/icons/shibe-pinkbright.svg";
+import Link from "next/link";
 
 export default function BentoGrid() {
+  const list = [
+    { title: "Placeholder 1", href: "#", logoSrc: Logo },
+    { title: "Placeholder 2", href: "#", logoSrc: Logo },
+    { title: "Placeholder 3", href: "#", logoSrc: Logo },
+    { title: "Placeholder 4", href: "#", logoSrc: Logo },
+    { title: "Placeholder 5", href: "#", logoSrc: Logo },
+    { title: "Placeholder 6", href: "#", logoSrc: Logo },
+    { title: "Placeholder 7", href: "#", logoSrc: Logo },
+    { title: "Placeholder 8", href: "#", logoSrc: Logo },
+    { title: "Placeholder 9", href: "#", logoSrc: Logo },
+  ];
+
+  const brandLogoSrc = Logo;
   return (
     <section className="mx-auto max-w-[1200px] px-[clamp(1rem,4vw,4rem)] navbarsm:my-14">
       {/* Grid: 1 column on small screens */}
@@ -101,6 +116,7 @@ export default function BentoGrid() {
           </div>
         </div>
 
+        {/* --------------------------------------------------------------------------------------------------------------- */}
         {/* Top right sidebar card */}
         <div className="relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-2">
           <Image
@@ -113,15 +129,63 @@ export default function BentoGrid() {
             sizes="(max-width: 768px) 100vw, 34vw"
           />
 
-          <div className="relative h-full w-full">
-            <div className="absolute left-6 top-6">
-              <p className="text-white text-lg font-druk font-bold">
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black from-[70%] to-transparent"></div>
+
+          <Image
+            src={Logo}
+            alt="Shibe Logo"
+            width={35}
+            draggable={false}
+            className="absolute top-5 right-4 object-contain"
+          />
+          <div className="absolute inset-[24px] flex flex-col justify-between">
+            {/* Header */}
+            <div className="relative flex w-full">
+              <p className="text-white text-lg sm:mt-1 [@media(min-width:720px)]:mt-0 sm:text-sm [@media(min-width:720px)]:text-lg font-druk w-full font-bold">
                 Highlights
               </p>
-              <p className="text-white/90 font-druk text-sm">Result 1</p>
+            </div>
+
+            {/* Body */}
+            <div className="">
+              {/* Sub Heading */}
+              <Link
+                href="/matches"
+                className="group inline-flex items-center gap-1 text-white text-xs mb-1 transition-colors hover:text-pink-bright"
+              >
+                <span>Latest Matches</span>
+              </Link>
+
+              {/* List */}
+              <ul className="space-y-1 overflow-y-auto flex-1">
+                {list.map((item, idx) => (
+                  <li key={idx}>
+                    <Link
+                      href={item.href}
+                      className="group flex items-center justify-between gap-3 py-1 text-white transition-colors hover:text-zinc-300"
+                    >
+                      <span className="truncate text-base font-medium">
+                        {item.title}
+                      </span>
+                      <span className="relative h-5 w-5 shrink-0">
+                        <Image
+                          src={item.logoSrc || brandLogoSrc}
+                          alt=""
+                          fill
+                          className="object-contain transition group-hover:grayscale group-hover:opacity-70"
+                          sizes="20px"
+                        />
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
+
+        {/* --------------------------------------------------------------------------------------------------------------- */}
 
         {/* Bottom left sidebar card */}
         <div className="relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-2">
