@@ -113,7 +113,7 @@ export default function Footer() {
 
       {/* Desktop Footer */}
       <div
-        className="hidden sm:block mx-auto max-w-[1200px]
+        className="hidden sm:block mx-auto max-w-[1500px]
                 py-[clamp(2rem,5vw,4rem)]
                 px-[clamp(1rem,4vw,4rem)]
                 relative border-t border-gray-100"

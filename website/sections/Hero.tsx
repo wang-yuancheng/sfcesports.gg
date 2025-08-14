@@ -18,15 +18,16 @@ export default function BentoGrid() {
     { title: "Placeholder 7", href: "#", logoSrc: Logo },
     { title: "Placeholder 8", href: "#", logoSrc: Logo },
     { title: "Placeholder 9", href: "#", logoSrc: Logo },
+    { title: "Placeholder 10", href: "#", logoSrc: Logo },
   ];
 
   const brandLogoSrc = Logo;
   return (
-    <section className="mx-auto max-w-[1200px] px-[clamp(1rem,4vw,4rem)] navbarsm:my-14">
+    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] navbarsm:my-14">
       {/* Grid: 1 column on small screens */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-6 sm:[grid-template-rows:repeat(2,minmax(0,1fr))]">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(2,minmax(0,1fr))]">
         {/* Top left hero */}
-        <div className="group relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-4">
+        <div className="group relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-4">
           {/* Color image on top, fades in on hover */}
           <Image
             src={atcBanner}
@@ -69,11 +70,11 @@ export default function BentoGrid() {
 
           {/* Heading overlay */}
           <div className="relative h-full w-full">
-            <div className="absolute left-6 top-6 mr-6">
-              <p className="text-xs font-druk font-medium text-white/90">
+            <div className="absolute left-8 top-8 mr-8">
+              <p className="text-xs xxs:text-xs xs:text-sm sm:text-sm md:text-lg font-druk font-medium text-white/90">
                 ALL TALENT CHAMPIONSHIP
               </p>
-              <p className="text-3xl font-druk font-bold text-white">
+              <p className="text-2xl xxs:text-3xl xs:text-4xl sm:text-4xl md:text-5xl font-druk font-bold text-white">
                 1ST PLACE
               </p>
             </div>
@@ -118,77 +119,63 @@ export default function BentoGrid() {
 
         {/* --------------------------------------------------------------------------------------------------------------- */}
         {/* Top right sidebar card */}
-        <div className="relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-2">
+        <div className="relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-2">
           <Image
             src={cardHero}
             alt=""
-            fill
             quality={100}
             priority={false}
-            className="absolute top-0 bottom-0 object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 34vw"
+            className="absolute top-0 object-cover object-center"
           />
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black from-[70%] to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 from-[80%] xs:from-[75%] md:from-[80%] lg:from-[75%] xlg:from-[65%] to-transparent"></div>
 
-          <Image
-            src={Logo}
-            alt="Shibe Logo"
-            width={35}
-            draggable={false}
-            className="absolute top-5 right-4 object-contain"
-          />
-          <div className="absolute inset-[24px] flex flex-col justify-between">
-            {/* Header */}
-            <div className="relative flex w-full">
-              <p className="text-white text-lg sm:mt-1 [@media(min-width:720px)]:mt-0 sm:text-sm [@media(min-width:720px)]:text-lg font-druk w-full font-bold">
-                Highlights
-              </p>
+          {/* Header */}
+          <div className="absolute top-8 left-6">
+            <div className="text-white uppercase text-lg xxs:text-2xl md:text-lg lg:text-2xl font-druk font-medium">
+              Highlights
             </div>
+          </div>
+          
 
-            {/* Body */}
-            <div className="">
-              {/* Sub Heading */}
-              <Link
-                href="/matches"
-                className="group inline-flex items-center gap-1 text-white text-xs mb-1 transition-colors hover:text-pink-bright"
-              >
-                <span>Latest Matches</span>
-              </Link>
+          <div className="absolute bottom-[24px] inset-x-6 flex flex-col justify-end">
+            <Link
+              href="/matches"
+              className="inline-flex items-center text-zinc-300 mb-2 transition-colors hover:text-pink-bright"
+            >
+              <span>Latest Matches</span>
+            </Link>
 
-              {/* List */}
-              <ul className="space-y-1 overflow-y-auto flex-1">
-                {list.map((item, idx) => (
-                  <li key={idx}>
-                    <Link
-                      href={item.href}
-                      className="group flex items-center justify-between gap-3 py-1 text-white transition-colors hover:text-zinc-300"
-                    >
-                      <span className="truncate text-base font-medium">
-                        {item.title}
-                      </span>
-                      <span className="relative h-5 w-5 shrink-0">
-                        <Image
-                          src={item.logoSrc || brandLogoSrc}
-                          alt=""
-                          fill
-                          className="object-contain transition group-hover:grayscale group-hover:opacity-70"
-                          sizes="20px"
-                        />
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* List */}
+            <ul className="space-y-1 overflow-y-auto flex-1">
+              {list.map((item, idx) => (
+                <li key={idx}>
+                  <Link
+                    href={item.href}
+                    className="group flex items-center justify-between gap-3 py-1 text-white transition-colors hover:text-zinc-300"
+                  >
+                    <span className="truncate text-lg">{item.title}</span>
+                    <span className="relative h-5 w-5 shrink-0">
+                      <Image
+                        src={item.logoSrc || brandLogoSrc}
+                        alt=""
+                        fill
+                        className="object-contain transition group-hover:grayscale group-hover:opacity-70"
+                        sizes="20px"
+                      />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
         {/* --------------------------------------------------------------------------------------------------------------- */}
 
         {/* Bottom left sidebar card */}
-        <div className="relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-2">
+        <div className="relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-2">
           <Image
             src={cardHero}
             alt=""
@@ -213,7 +200,7 @@ export default function BentoGrid() {
         </div>
 
         {/* Bottom right hero */}
-        <div className="relative isolate overflow-hidden rounded-2xl h-[432px] sm:col-span-4">
+        <div className="relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-4">
           <Image
             src={cardHero}
             alt=""
