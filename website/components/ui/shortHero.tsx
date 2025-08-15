@@ -1,0 +1,77 @@
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+import React from "react";
+
+interface ListItem {
+  title: string;
+  href: string;
+  logoSrc: StaticImageData;
+}
+
+interface heroContent {
+  header: string;
+  subheader: string;
+  list?: ListItem[];
+  background: StaticImageData;
+}
+
+export default function ShortHero({
+  header,
+  subheader,
+  list,
+  background,
+}: heroContent) {
+  return (
+    <div className="relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-2">
+      <Image
+        src={background}
+        alt=""
+        quality={100}
+        priority={false}
+        className="absolute top-0 object-cover object-center"
+      />
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 from-[80%] xs:from-[75%] md:from-[80%] lg:from-[75%] xlg:from-[65%] to-transparent"></div>
+
+      {/* Header */}
+      <div className="absolute top-8 left-6">
+        <div className="text-white uppercase text-lg xxs:text-2xl md:text-lg lg:text-2xl font-druk font-medium">
+          {header}
+        </div>
+      </div>
+
+      <div className="absolute bottom-[24px] inset-x-6 flex flex-col justify-end">
+        <Link
+          href="/matches"
+          className="inline-flex items-center text-zinc-300 mb-2 transition-colors hover:text-pink-bright"
+        >
+          <span>{subheader}</span>
+        </Link>
+
+        {/* List */}
+        <ul className="space-y-1 overflow-y-auto flex-1">
+          {list?.map((item, idx) => (
+            <li key={idx}>
+              <Link
+                href={item.href}
+                className="group flex items-center justify-between gap-3 py-1 text-white transition-colors hover:text-zinc-300"
+              >
+                <span className="truncate text-lg">{item.title}</span>
+                <span className="relative h-5 w-5 shrink-0">
+                  <Image
+                    src={item.logoSrc}
+                    alt=""
+                    fill
+                    className="object-contain transition group-hover:grayscale group-hover:opacity-70"
+                    sizes="20px"
+                  />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}

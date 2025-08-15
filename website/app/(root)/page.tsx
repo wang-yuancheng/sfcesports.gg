@@ -1,12 +1,15 @@
 import Hero from "@/sections/Hero";
 import LogoTicker from "@/sections/LogoTicker";
+import PastEvents from "@/sections/PastEvents";
+import Videos from "@/sections/Videos";
 
 export default function Home() {
   return (
     <>
-      <Hero/>
+      <Hero />
       <LogoTicker />
-      <div className="bg-pink w-auto h-10"></div>
+      <PastEvents />
+      <Videos />
     </>
   );
 }

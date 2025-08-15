@@ -6,7 +6,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdownMenu";
 import profileIcon from "@/assets/icons/profile.svg";
 import { CircleUserRoundIcon } from "lucide-react";
 
