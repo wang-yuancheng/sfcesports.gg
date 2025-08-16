@@ -63,7 +63,7 @@ export default function ShortHero({
                     src={item.logoSrc}
                     alt=""
                     fill
-                    className="object-contain transition group-hover:grayscale group-hover:opacity-70"
+                    className="object-contain transition group-hover:grayscale"
                     sizes="20px"
                   />
                 </span>

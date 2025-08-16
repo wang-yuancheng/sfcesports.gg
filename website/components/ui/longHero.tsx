@@ -32,7 +32,6 @@ export default function LongHero({
         quality={100}
         priority={false}
         className="absolute top-0 bottom-0 object-cover object-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        sizes="(max-width: 768px) 100vw, 66vw"
       />
       {/* Gray image underneath, fades out on hover */}
       <Image
@@ -42,7 +41,6 @@ export default function LongHero({
         quality={100}
         priority={false}
         className="absolute top-0 bottom-0 object-cover object-center opacity-100 group-hover:opacity-0 transition-opacity duration-500"
-        sizes="(max-width: 768px) 100vw, 66vw"
       />
 
       {/* Pink gradient base */}
@@ -88,10 +86,10 @@ export default function LongHero({
       {/* Heading overlay */}
       <div className="relative h-full w-full">
         <div className="absolute left-8 top-8 mr-8">
-          <p className="text-xs xxs:text-xs xs:text-sm sm:text-sm md:text-lg font-druk font-medium text-white/90">
+          <p className="text-xs xxs:text-sm xs:text-md sm:text-lg font-druk font-medium text-white/90">
             {header}
           </p>
-          <p className="text-2xl xxs:text-3xl xs:text-4xl sm:text-4xl md:text-5xl font-druk font-bold text-white">
+          <p className="text-3xl xxs:text-4xl xs:text-4xl sm:text-5xl font-druk font-bold text-white">
             {subheader}
           </p>
         </div>
