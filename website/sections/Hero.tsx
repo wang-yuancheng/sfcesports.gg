@@ -5,19 +5,28 @@ import cardHero from "@/assets/pictures/card-hero-gradient.png";
 import Logo from "@/assets/icons/shibe-pinkbright.svg";
 import ShortHero from "@/components/ui/shortHero";
 import LongHero from "@/components/ui/longHero";
+import royalEsportsLogo from "@/assets/logos/royalesports.png";
+import kohaiCupLogo from "@/assets/logos/kohaicup.png";
+import gamelingLogo from "@/assets/logos/gameling.png";
+import kodLogo from "@/assets/logos/kod.png";
+import nyzLogo from "@/assets/logos/nyz.png";
+import thmLogo from "@/assets/logos/thm.png";
+import dlyLogo from "@/assets/logos/dly.png";
+import xbossLogo from "@/assets/logos/xboss.png";
+import novaLogo from "@/assets/logos/nova.webp";
 
 export default function MainHero() {
   const list = [
-    { title: "Placeholder 1", href: "#", logoSrc: Logo },
-    { title: "Placeholder 2", href: "#", logoSrc: Logo },
-    { title: "Placeholder 3", href: "#", logoSrc: Logo },
-    { title: "Placeholder 4", href: "#", logoSrc: Logo },
-    { title: "Placeholder 5", href: "#", logoSrc: Logo },
-    { title: "Placeholder 6", href: "#", logoSrc: Logo },
-    { title: "Placeholder 7", href: "#", logoSrc: Logo },
-    { title: "Placeholder 8", href: "#", logoSrc: Logo },
-    { title: "Placeholder 9", href: "#", logoSrc: Logo },
-    { title: "Placeholder 10", href: "#", logoSrc: Logo },
+    { title: "Royal Esports Tournament", href: "#", logoSrc: royalEsportsLogo },
+    { title: "NYZ Mini Tournament", href: "#", logoSrc: nyzLogo },
+    { title: "DLY Mini Tournament", href: "#", logoSrc: dlyLogo },
+    { title: "SFCxNova Community Tournament", href: "#", logoSrc: novaLogo },
+    { title: "KOD Showdown 2024", href: "#", logoSrc: kodLogo },
+    { title: "Kohai Cup 2024", href: "#", logoSrc: kohaiCupLogo },
+    { title: "Gameling Gauntlet", href: "#", logoSrc: gamelingLogo },
+    { title: "Shibe's Community Cup", href: "#", logoSrc: Logo },
+    { title: "THM Challenge Cup 2023", href: "#", logoSrc: thmLogo },
+    { title: "Xboss Tournament", href: "#", logoSrc: xbossLogo },
   ];
 
   return (

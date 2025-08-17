@@ -58,13 +58,12 @@ export default function ShortHero({
                 className="group flex items-center justify-between gap-3 py-1 text-white transition-colors hover:text-zinc-300"
               >
                 <span className="truncate text-lg">{item.title}</span>
-                <span className="relative h-5 w-5 shrink-0">
+                <span className="relative h-7 w-7 shrink-0">
                   <Image
                     src={item.logoSrc}
                     alt=""
                     fill
                     className="object-contain transition group-hover:grayscale"
-                    sizes="20px"
                   />
                 </span>
               </Link>

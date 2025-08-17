@@ -24,7 +24,7 @@ export default function LongHero({
 }: heroContent) {
   return (
     <div className="group relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-4">
-      {/* Color image on top, fades in on hover */}
+      {/* Color image, fades in on hover */}
       <Image
         src={colorImage}
         alt="atcBanner"
@@ -33,7 +33,7 @@ export default function LongHero({
         priority={false}
         className="absolute top-0 bottom-0 object-cover object-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
       />
-      {/* Gray image underneath, fades out on hover */}
+      {/* Gray image, fades out on hover */}
       <Image
         src={grayImage}
         alt="atcgrayBanner"
