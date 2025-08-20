@@ -52,7 +52,7 @@ const about = [
 ];
 const activity = [
   { label: "Events", href: "/events" },
-  { label: "Blog", href: "/blog" },
+  { label: "Shop", href: "/Shop" },
   { label: "Live Room", href: "/live" },
 ];
 const termsAndPolicies = [

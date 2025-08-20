@@ -7,7 +7,6 @@ interface HeroContent {
   header: string;
   subheader: string;
   href: string;
-  grayImage: StaticImageData;
   colorImage: StaticImageData;
 }
 
@@ -15,7 +14,6 @@ export default function EventHero({
   header,
   subheader,
   href,
-  grayImage,
   colorImage,
 }: HeroContent) {
   return (
@@ -27,16 +25,7 @@ export default function EventHero({
         fill
         quality={100}
         priority={false}
-        className="absolute top-0 bottom-0 object-cover object-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-      />
-      {/* Gray image, fades out on hover */}
-      <Image
-        src={grayImage}
-        alt="atcgrayBanner"
-        fill
-        quality={100}
-        priority={false}
-        className="absolute top-0 bottom-0 object-cover object-center opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+        className="absolute top-0 bottom-0 object-cover object-center grayscale group-hover:grayscale-0 transition-opacity duration-500"
       />
 
       {/* Pink gradient base */}
