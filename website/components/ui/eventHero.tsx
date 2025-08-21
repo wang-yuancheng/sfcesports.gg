@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 
 interface HeroContent {
-  header: string;
+  header: React.ReactNode;
   subheader: string;
   href: string;
   colorImage: StaticImageData;

@@ -1,6 +1,7 @@
 import React from "react";
 import atcBanner from "@/assets/pictures/atc.avif";
-import atcgrayBanner from "@/assets/pictures/atc-gray.avif";
+import sccs1Banner from "@/assets/pictures/sccs1.png";
+import sccs2Banner from "@/assets/pictures/sccs2.png";
 import EventHero from "@/components/ui/eventHero";
 import tdmTourBanner from "@/assets/pictures/1v1.png";
 
@@ -14,22 +15,37 @@ export default function PastEvents() {
       </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(1,minmax(0,1fr))]">
         <EventHero
-          header="Shibe Community Cup S2"
+          header={
+            <>
+              Shibe&apos;s Community Cup{" "}
+              <span className="whitespace-nowrap">Season 2</span>
+            </>
+          }
           subheader="13 Nov 2023"
           href="#"
-          colorImage={atcBanner}
+          colorImage={sccs2Banner}
         />
         <EventHero
-          header="Shibe 1v1 Tour S5"
+          header={
+            <>
+              Shibe&apos;s 1v1 Tour{" "}
+              <span className="whitespace-nowrap">Season 5</span>
+            </>
+          }
           subheader="1 Jun 2023"
           href="#"
           colorImage={tdmTourBanner}
         />
         <EventHero
-          header="Shibe Community Cup S1"
+          header={
+            <>
+              Shibe&apos;s Community Cup{" "}
+              <span className="whitespace-nowrap">Season 1</span>
+            </>
+          }
           subheader="23 Aug 2021"
           href="#"
-          colorImage={atcBanner}
+          colorImage={sccs1Banner}
         />
       </div>
     </section>
