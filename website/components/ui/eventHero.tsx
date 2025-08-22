@@ -54,10 +54,10 @@ export default function EventHero({
 
       {/* Header, above gradient */}
       <div className="absolute top-8 left-6 z-20 mr-6">
-        <div className="text-white uppercase text-md xxs:text-lg sm:text-xl md:text-sm lg:text-xl font-druk font-medium">
+        <div className="text-white uppercase text-sm xxs:text-md sm:text-lg md:text-sm lg:text-lg font-druk font-medium text-white/90">
           {subheader}
         </div>
-        <div className="text-white uppercase text-md xxs:text-xl sm:text-2xl md:text-lg lg:text-2xl font-druk font-medium">
+        <div className="text-white uppercase text-md xxs:text-xl sm:text-2xl md:text-lg lg:text-2xl font-druk font-bold">
           {header}
         </div>
       </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import atcBanner from "@/assets/pictures/atc.avif";
 import sccs1Banner from "@/assets/pictures/sccs1.png";
 import sccs2Banner from "@/assets/pictures/sccs2.png";
 import EventHero from "@/components/ui/eventHero";
@@ -9,7 +8,7 @@ export default function PastEvents() {
   return (
     <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] navbarsm:my-14">
       <div className="w-full mt-4 sm:mt-0 mb-8 ">
-        <p className="uppercase text-4xl font-druk font-bold text-center">
+        <p className="uppercase text-4xl font-druk font-medium text-center">
           Featured Events
         </p>
       </div>
