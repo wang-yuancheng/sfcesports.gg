@@ -3,8 +3,8 @@ import atcBanner from "@/assets/pictures/atc.avif";
 import atcgrayBanner from "@/assets/pictures/atc-gray.avif";
 import cardHero from "@/assets/pictures/card-hero-gradient.png";
 import Logo from "@/assets/icons/shibe-pinkbright.svg";
-import ShortHero from "@/components/ui/shortHero";
-import LongHero from "@/components/ui/longHero";
+import ShortHero from "@/components/Home/ShortHero";
+import LongHero from "@/components/Home/LongHero";
 import royalEsportsLogo from "@/assets/logos/royalesports.png";
 import kohaiCupLogo from "@/assets/logos/kohaicup.png";
 import gamelingLogo from "@/assets/logos/gameling.png";
@@ -30,7 +30,7 @@ export default function MainHero() {
   ];
 
   return (
-    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] navbarsm:my-14">
+    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] navbarsm:pt-14 navbarsm:pb-7">
       {/* Grid: 1 column on small screens */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(1,minmax(0,1fr))]">
         {/* Top left hero */}

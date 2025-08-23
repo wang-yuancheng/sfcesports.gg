@@ -82,7 +82,7 @@ export default function LogoTicker() {
   /* wrapper uses padding instead of margin so the padding area receives hover */
   return (
     <div
-      className="my-6 py-6 md:py-8 px-[clamp(1.5rem,6vw,12rem)]"
+      className="mt-7 navbarsm:mt-0 py-7 px-[clamp(1.5rem,6vw,12rem)]"
       onMouseEnter={() => controls.stop()}
       onMouseLeave={() => start(distance, duration)}
     >
