@@ -1,42 +1,46 @@
 "use client";
 
-import React, { useState } from "react";
-import atcs16Thumbnail from "@/assets/pictures/atcs16thumbnail.jpg";
+import React, { useMemo, useState } from "react";
+import worldGunslingerThumbnail from "@/assets/pictures/worldgunslinger.jpg";
 import atcs17Thumbnail from "@/assets/pictures/atcs17thumbnail.jpg";
 import gamelingThumbnail from "@/assets/pictures/gamelingthumbnail.jpg";
 import ultimateRoyaleThumbnail from "@/assets/pictures/ultimateroyalerank1thumbnail.jpg";
 import VideoCard, { VideoItem } from "@/components/Home/VideoCard";
 import VideoModal from "@/components/Home/VideoModal";
+import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 
 const videos: VideoItem[] = [
   {
     title: "How it sounds to win All Talent Championship S17 Finals",
     id: "1uxjAOrkPY8",
     thumbnail: atcs17Thumbnail,
-    timeAgo: "About 18 Hours Ago",
+    views: "",
   },
   {
-    title: "We are Champions of All Talent Championship S16",
-    id: "YvjFRACNnrk",
-    thumbnail: atcs16Thumbnail,
-    timeAgo: "2 Days Ago",
+    title: "I finally got World #1 Gunslinger Title",
+    id: "ZBEqe8cXbPE",
+    thumbnail: worldGunslingerThumbnail,
+    views: "",
   },
   {
-    title: "How it sounds to win a Tier 1 Tournament Grand Final",
+    title: "We won a regional Tier 1 Grand Final Tournament in PUBG Mobile",
     id: "dDMKyoMDb-s",
     thumbnail: gamelingThumbnail,
-    timeAgo: "11 Days Ago",
+    views: "",
   },
   {
-    title: "Reaching Rank 1 in Ultimate Royale",
+    title: "Reaching Rank 1 in Ultimate Royale PUBG Mobile",
     id: "wOp_EQdEpx4",
     thumbnail: ultimateRoyaleThumbnail,
-    timeAgo: "14 Days Ago",
+    views: "",
   },
 ];
 
 export default function MediaPage() {
   const [active, setActive] = useState<VideoItem | null>(null);
+
+  const ids = videos.map((v) => v.id)
+  const viewsMap = useYoutubeViews(ids);
 
   return (
     <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] py-6">
@@ -46,10 +50,10 @@ export default function MediaPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-0 md:grid-cols-12">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-1 md:gap-0 md:grid-cols-12">
         {videos.map((v, i) => (
           <div key={i} className="md:col-span-3">
-            <VideoCard item={v} onOpen={setActive} />
+            <VideoCard item={v} onOpen={setActive} viewCount={viewsMap[v.id]} />
           </div>
         ))}
       </div>
