@@ -25,7 +25,7 @@ export default function VideoCard({
       : "";
 
   return (
-    <div className="flex gap-5 items-center md:flex-col mx-3">
+    <div className="flex gap-5 md:gap-2 items-center md:flex-col mx-3">
       <div className="w-[clamp(100px,40vw,300px)] shrink-0 md:w-full">
 
         <button
@@ -49,7 +49,7 @@ export default function VideoCard({
       </div>
       <div className="w-auto md:w-full">
         <button type="button" onClick={() => onOpen(item)}>
-          <div className="flex flex-col gap-2 pt-3">
+          <div className="flex flex-col gap-2 md:gap-1">
             <h3 className="text-sm xs:text-lg md:text-sm lg:text-lg font-medium leading-tight text-left">
               {item.title}
             </h3>

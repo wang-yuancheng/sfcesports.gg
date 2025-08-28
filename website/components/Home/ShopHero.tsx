@@ -1,6 +1,9 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
-import { ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+type Variant = 1 | 2;
 
 interface heroContent {
   header: string;
@@ -8,17 +11,22 @@ interface heroContent {
   matchLabel?: string;
   grayImage: StaticImageData;
   colorImage: StaticImageData;
+  variant: Variant;
 }
 
-export default function LongHero({
+export default function ShopHero({
   header,
   subheader,
-  matchLabel,
   grayImage,
   colorImage,
+  variant,
 }: heroContent) {
   return (
-    <div className="group relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-4">
+    <div
+      className={`group relative isolate overflow-hidden rounded-2xl h-[540px] ${
+        variant === 1 ? "md:col-span-4" : "md:col-span-2"
+      }`}
+    >
       {/* Color image, fades in on hover */}
       <Image
         src={colorImage}
@@ -39,11 +47,11 @@ export default function LongHero({
       />
 
       {/* Pink gradient base */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-pink-bright/70 group-hover:opacity-0 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-t from-black/20 to-pink-bright/70 group-hover:opacity-0 transition-opacity duration-500" />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t from-pink-bright/90 to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
+        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t md:top-0 md:bg-gradient-to-b from-pink-bright/90 to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
       />
 
       {/* Black hover gradient */}
@@ -74,31 +82,16 @@ export default function LongHero({
         </div>
       </div>
 
-      {/* Bottom overlay */}
-
       <div className="absolute inset-x-0 bottom-0 z-10">
-        <div className="relative px-4 pb-4">
-          <a
-            href="#"
-            className="block w-full rounded-xl bg-black/40 ring-1 ring-white/10 backdrop-blur-md hover:bg-black/65 transition-colors"
+        <div className="absolute bottom-[20px] inset-x-6 flex flex-col justify-end z-20">
+          <Button
+            asChild
+            size="lg"
+            variant="secondary"
+            className="w-fit bg-black/40 ring-1 ring-white/10 text-white hover:bg-black/65 transition-colors backdrop-blur-sm"
           >
-            <div className="flex items-center justify-between gap-3 p-4">
-              {/* left, title + subtitle */}
-              <div className="min-w-0">
-                <p className="hidden max-[330px]:flex items-center gap-2 text-white font-druk font-bold text-lg leading-[1]">
-                  RECAP
-                </p>
-                <p className="flex max-[330px]:hidden items-center gap-2 text-white font-druk font-bold text-lg leading-[1]">
-                  MATCH RECAP
-                </p>
-                <p className="text-white/75 text-sm leading-tight truncate">
-                  {matchLabel}
-                </p>
-              </div>
-
-              <ChevronRight className="w-[25px] h-[25px] text-white" />
-            </div>
-          </a>
+            <Link href={""}>Shop Now</Link>
+          </Button>
         </div>
       </div>
     </div>

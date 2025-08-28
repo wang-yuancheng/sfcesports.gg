@@ -14,6 +14,9 @@ import thmLogo from "@/assets/logos/thm.png";
 import dlyLogo from "@/assets/logos/dly.png";
 import xbossLogo from "@/assets/logos/xboss.png";
 import novaLogo from "@/assets/logos/nova.webp";
+import ar15SkinsBanner from "@/assets/pictures/ar15skins.jpg";
+import ar15Skins1Banner from "@/assets/pictures/ar15skins1.jpg";
+import ShopHero from "@/components/Home/ShopHero";
 
 export default function MainHero() {
   const list = [
@@ -30,9 +33,9 @@ export default function MainHero() {
   ];
 
   return (
-    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] navbarsm:pt-14 navbarsm:pb-7">
+    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] navbarsm:pt-14 pb-14">
       {/* Grid: 1 column on small screens */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(1,minmax(0,1fr))]">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(2,minmax(0,1fr))]">
         {/* Top left hero */}
         <LongHero
           header="All Talent Championship"
@@ -40,9 +43,7 @@ export default function MainHero() {
           matchLabel="Regional Championship Final"
           grayImage={atcgrayBanner}
           colorImage={atcBanner}
-          variant={1}
         />
-
         {/* Top right sidebar card */}
         <ShortHero
           header="Highlights"
@@ -50,20 +51,22 @@ export default function MainHero() {
           list={list}
           background={cardHero}
         />
-
-        {/* Hidden: If required, enable md:[grid-template-rows:repeat(2,minmax(0,1fr))] */}
         {/* --------------------------------------------------------------------------- */}
-        <div className="hidden relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-2 bg-pink-bright"></div>
-        <div className="hidden">
-          <LongHero
-            header="Featured Event"
-            subheader="SCC S2"
-            matchLabel="Regional Tier 2 Tournament"
-            grayImage={atcgrayBanner}
-            colorImage={atcBanner}
-            variant={2}
-          />
-        </div>
+        <ShopHero
+          header="Don’t Miss Out"
+          subheader="New items in shop"
+          grayImage={ar15Skins1Banner}
+          colorImage={ar15SkinsBanner}
+          variant={2}
+        />
+
+        <ShopHero
+          header="Don’t Miss Out"
+          subheader="New items in shop"
+          grayImage={ar15Skins1Banner}
+          colorImage={ar15SkinsBanner}
+          variant={1}
+        />
         {/* --------------------------------------------------------------------------- */}
       </div>
     </section>

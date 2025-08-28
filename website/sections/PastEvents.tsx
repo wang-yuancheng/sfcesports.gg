@@ -6,8 +6,8 @@ import tdmTourBanner from "@/assets/pictures/1v1.png";
 
 export default function PastEvents() {
   return (
-    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] py-6">
-      <div className="w-full mt-4 sm:mt-0 mb-8 ">
+    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] pt-14 navbarsm:pb-14">
+      <div className="w-full mt-0 sm:mt-0 mb-8 ">
         <p className="uppercase text-4xl font-druk font-medium text-center">
           Featured Events
         </p>

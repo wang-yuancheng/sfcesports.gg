@@ -43,7 +43,7 @@ export default function MediaPage() {
   const viewsMap = useYoutubeViews(ids);
 
   return (
-    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] py-6">
+    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] pt-14 pb-14 navbarsm:pt-5">
       <div className="mb-8 mt-4 w-full sm:mt-0">
         <p className="font-druk text-center text-4xl font-medium uppercase">
           Featured Videos
