@@ -27,7 +27,6 @@ export default function VideoCard({
   return (
     <div className="flex gap-5 md:gap-2 items-center md:flex-col mx-3">
       <div className="w-[clamp(100px,40vw,300px)] shrink-0 md:w-full">
-
         <button
           type="button"
           onClick={() => onOpen(item)}
@@ -41,7 +40,6 @@ export default function VideoCard({
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               className="object-cover object-center group-hover:scale-110 group-focus:scale-110 ease-in-out duration-500 transition"
-              priority={false}
             />
             <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-pink-bright/20 transition duration-500" />
           </div>

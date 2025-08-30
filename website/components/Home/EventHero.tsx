@@ -24,30 +24,21 @@ export default function EventHero({
         alt="atcBanner"
         fill
         quality={100}
-        priority={false}
-        className="absolute top-0 bottom-0 object-cover object-center grayscale group-hover:grayscale-0 transition-opacity duration-500"
-      />
-
-      {/* Pink gradient base */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-pink-bright/70 group-hover:opacity-0 transition-opacity duration-500" />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t from-pink-bright/90 to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
+        className="absolute top-0 bottom-0 object-cover object-center  group-hover:grayscale-0 transition-opacity duration-500"
       />
 
       {/* Black hover gradient */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-40
-                     bg-gradient-to-b from-black/50 to-transparent
+                     bg-gradient-to-b from-pink-bright/70 to-transparent
                      opacity-0 transition-opacity duration-500
                      group-hover:opacity-100 z-0"
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40
-                     bg-gradient-to-t from-black/50 to-transparent
+                     bg-gradient-to-t from-pink-bright/70 to-transparent
                      opacity-0 transition-opacity duration-500
                      group-hover:opacity-100 z-0"
       />

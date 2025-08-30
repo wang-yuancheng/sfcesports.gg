@@ -27,7 +27,7 @@ export default function ShortHero({
         src={background}
         alt=""
         quality={100}
-        priority={false}
+        priority={true}
         className="absolute top-0 object-cover object-center"
       />
 

@@ -3,8 +3,8 @@ import atcBanner from "@/assets/pictures/atc.avif";
 import atcgrayBanner from "@/assets/pictures/atc-gray.avif";
 import cardHero from "@/assets/pictures/card-hero-gradient.png";
 import Logo from "@/assets/icons/shibe-pinkbright.svg";
-import ShortHero from "@/components/Home/ShortHero";
-import LongHero from "@/components/Home/LongHero";
+import ShortHero from "@/components/home/ShortHero";
+import LongHero from "@/components/home/LongHero";
 import royalEsportsLogo from "@/assets/logos/royalesports.png";
 import kohaiCupLogo from "@/assets/logos/kohaicup.png";
 import gamelingLogo from "@/assets/logos/gameling.png";
@@ -16,7 +16,7 @@ import xbossLogo from "@/assets/logos/xboss.png";
 import novaLogo from "@/assets/logos/nova.webp";
 import ar15SkinsBanner from "@/assets/pictures/ar15skins.jpg";
 import ar15Skins1Banner from "@/assets/pictures/ar15skins1.jpg";
-import ShopHero from "@/components/Home/ShopHero";
+import ShopHero from "@/components/home/ShopHero";
 
 export default function MainHero() {
   const list = [
@@ -33,10 +33,9 @@ export default function MainHero() {
   ];
 
   return (
-    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] navbarsm:pt-14 pb-14">
+    <section className="section-container navbarsm:pt-14 pb-14">
       {/* Grid: 1 column on small screens */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(2,minmax(0,1fr))]">
-        {/* Top left hero */}
         <LongHero
           header="All Talent Championship"
           subheader="1st Place"
@@ -44,14 +43,12 @@ export default function MainHero() {
           grayImage={atcgrayBanner}
           colorImage={atcBanner}
         />
-        {/* Top right sidebar card */}
         <ShortHero
           header="Highlights"
           subheader="Latest Matches"
           list={list}
           background={cardHero}
         />
-        {/* --------------------------------------------------------------------------- */}
         <ShopHero
           header="Don’t Miss Out"
           subheader="New items in shop"
@@ -67,7 +64,6 @@ export default function MainHero() {
           colorImage={ar15SkinsBanner}
           variant={1}
         />
-        {/* --------------------------------------------------------------------------- */}
       </div>
     </section>
   );

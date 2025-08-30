@@ -22,19 +22,18 @@ export default function LongHero({
       {/* Color image, fades in on hover */}
       <Image
         src={colorImage}
-        alt="atcBanner"
+        alt=""
         fill
         quality={100}
-        priority={false}
         className="absolute top-0 bottom-0 object-cover object-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
       />
       {/* Gray image, fades out on hover */}
       <Image
         src={grayImage}
-        alt="atcgrayBanner"
+        alt=""
         fill
         quality={100}
-        priority={false}
+        priority={true}
         className="absolute top-0 bottom-0 object-cover object-center opacity-100 group-hover:opacity-0 transition-opacity duration-500"
       />
 

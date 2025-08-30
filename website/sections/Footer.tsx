@@ -62,7 +62,6 @@ const currency = [{ label: "$ SGD" }, { label: "₹ INR" }, { label: "RM MYR" }]
 const copyright = `© 2021 - ${new Date().getFullYear()}, ShibeFanClub, All rights reserved`;
 
 export default function Footer() {
-  // mobile -> desktop breakpoint: sm 640px
   return (
     <div className="mx-4 xs:mx-8 sm:mx-0">
       {/* Mobile Footer  */}
@@ -114,7 +113,8 @@ export default function Footer() {
       {/* Desktop Footer */}
       <div
         className="hidden sm:block mx-auto max-w-[1500px]
-                py-[clamp(2rem,5vw,4rem)]
+                pt-[48px]
+                pb-[clamp(2rem,5vw,3rem)]
                 px-[clamp(1rem,4vw,4rem)]
                 relative border-t border-gray-100"
       >
@@ -130,7 +130,7 @@ export default function Footer() {
             />
 
             <div className="font-[800] text-[20px]">
-              PREMIER ESPORTS & GAMING ORGANIZATION
+              PRESTIGE ESPORTS & GAMING ORGANIZATION
             </div>
             <div className="font-[500] text-base">
               Building communities to win high quality tournament and events

@@ -174,4 +174,14 @@
     font-weight: 600;
     font-size: 15px;
   }
+
+  ::selection {
+    @apply bg-pink-bright text-white;
+  }
+}
+
+@layer utilities {
+  .section-container {
+    @apply mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)];
+  }
 }

@@ -5,8 +5,8 @@ import worldGunslingerThumbnail from "@/assets/pictures/worldgunslinger.jpg";
 import atcs17Thumbnail from "@/assets/pictures/atcs17thumbnail.jpg";
 import gamelingThumbnail from "@/assets/pictures/gamelingthumbnail.jpg";
 import ultimateRoyaleThumbnail from "@/assets/pictures/ultimateroyalerank1thumbnail.jpg";
-import VideoCard, { VideoItem } from "@/components/Home/VideoCard";
-import VideoModal from "@/components/Home/VideoModal";
+import VideoCard, { VideoItem } from "@/components/home/VideoCard";
+import VideoModal from "@/components/home/VideoModal";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 
 const videos: VideoItem[] = [
@@ -39,11 +39,11 @@ const videos: VideoItem[] = [
 export default function MediaPage() {
   const [active, setActive] = useState<VideoItem | null>(null);
 
-  const ids = videos.map((v) => v.id)
+  const ids = videos.map((v) => v.id);
   const viewsMap = useYoutubeViews(ids);
 
   return (
-    <section className="mx-auto max-w-[1500px] px-[clamp(1rem,4vw,4rem)] pt-14 pb-14 navbarsm:pt-5">
+    <section className="section-container py-14 navbarsm:pt-5">
       <div className="mb-8 mt-4 w-full sm:mt-0">
         <p className="font-druk text-center text-4xl font-medium uppercase">
           Featured Videos
