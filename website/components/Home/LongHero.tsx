@@ -1,40 +1,28 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
-import { ChevronRight } from "lucide-react";
+import ChevronRight from "@/assets/icons/chevron-right-white.svg";
 
 interface heroContent {
   header: string;
   subheader: string;
   matchLabel?: string;
-  grayImage: StaticImageData;
-  colorImage: StaticImageData;
+  img: StaticImageData;
 }
 
 export default function LongHero({
   header,
   subheader,
   matchLabel,
-  grayImage,
-  colorImage,
+  img,
 }: heroContent) {
   return (
     <div className="group relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-4">
-      {/* Color image, fades in on hover */}
       <Image
-        src={colorImage}
+        src={img}
         alt=""
         fill
-        quality={100}
-        className="absolute top-0 bottom-0 object-cover object-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-      />
-      {/* Gray image, fades out on hover */}
-      <Image
-        src={grayImage}
-        alt=""
-        fill
-        quality={100}
         priority={true}
-        className="absolute top-0 bottom-0 object-cover object-center opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+        className="absolute top-0 bottom-0 object-cover object-center opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"
       />
 
       {/* Pink gradient base */}
@@ -94,8 +82,12 @@ export default function LongHero({
                   {matchLabel}
                 </p>
               </div>
-
-              <ChevronRight className="w-[25px] h-[25px] text-white" />
+              <Image
+                src={ChevronRight}
+                alt="Chevron Right"
+                width={30}
+                height={30}
+              />
             </div>
           </a>
         </div>

@@ -23,7 +23,6 @@ export default function EventHero({
         src={colorImage}
         alt="atcBanner"
         fill
-        quality={100}
         className="absolute top-0 bottom-0 object-cover object-center  group-hover:grayscale-0 transition-opacity duration-500"
       />
 
@@ -31,16 +30,16 @@ export default function EventHero({
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-40
-                     bg-gradient-to-b from-pink-bright/70 to-transparent
-                     opacity-0 transition-opacity duration-500
-                     group-hover:opacity-100 z-0"
+                     bg-gradient-to-b from-black/50 to-transparent
+                     opacity-100 transition-opacity duration-500
+                     md:group-hover:opacity-30 z-0"
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40
-                     bg-gradient-to-t from-pink-bright/70 to-transparent
-                     opacity-0 transition-opacity duration-500
-                     group-hover:opacity-100 z-0"
+                     bg-gradient-to-t from-black/50 to-transparent
+                     opacity-100 transition-opacity duration-500
+                     md:group-hover:opacity-30 z-0"
       />
 
       {/* Header, above gradient */}

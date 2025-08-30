@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 const YT_ENDPOINT = "https://www.googleapis.com/youtube/v3/videos";
 const ID_RE = /^[A-Za-z0-9_-]{11}$/;
 
-// Sample Request: GET /api/youtube?ids=1uxjAOrkPY8,YvjFRACNnrk,dDMKyoMDb-s,wOp_EQdEpx4
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -20,14 +19,16 @@ export async function GET(req: Request) {
       );
     }
 
-    // Normalize ids, validate, dedupe, and cap to 50
+    // Normalize ids, validate, dedupe, and cap to 50 (no sorting)
     const rawIds = idsParam
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean);
+
     const validIds = Array.from(
       new Set(rawIds.filter((id) => ID_RE.test(id)))
     ).slice(0, 50);
+
     if (!validIds.length) {
       return NextResponse.json({ error: "No valid ids" }, { status: 400 });
     }
@@ -36,7 +37,6 @@ export async function GET(req: Request) {
     url.searchParams.set("part", "statistics");
     url.searchParams.set("id", validIds.join(","));
     url.searchParams.set("key", key);
-    // Partial response, smaller payload
     url.searchParams.set("fields", "items(id,statistics(viewCount))");
     url.searchParams.set("prettyPrint", "false");
 
@@ -45,7 +45,6 @@ export async function GET(req: Request) {
     const data = await res.json();
 
     if (!res.ok) {
-      // YouTube sometimes provides a structured error
       const message = data?.error?.message || "YouTube API request failed";
       return NextResponse.json({ error: message }, { status: 502 });
     }

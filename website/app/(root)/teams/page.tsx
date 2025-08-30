@@ -45,7 +45,6 @@ export default function Teams() {
         <Image
           src={sfcBanner}
           alt="SFC banner"
-          quality={100}
           priority
           className="w-full h-auto border border-gray-100 rounded-md"
         />
@@ -53,7 +52,7 @@ export default function Teams() {
 
       <div className="font-druk font-medium uppercase text-2xl md:text-4xl">Our Teams</div>
 
-      <div className="mx-auto max-w-6xl space-y-6 py-6">
+      <div className="mx-auto max-w-6xl space-y-6 pt-6">
         <TeamDropdown
           title="All Categories"
           categories={categories}

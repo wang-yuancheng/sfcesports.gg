@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
+import ChevronDown from "@/assets/icons/chevron-down.svg";
+import Image from "next/image";
 
 interface FooterDropdownItem {
   label: string;
@@ -29,13 +30,16 @@ export default function FooterDropdown({
   return (
     <div className="space-y-2">
       <button
-        onClick={() => setOpen(prev => !prev)}
+        onClick={() => setOpen((prev) => !prev)}
         className="flex items-center justify-between w-full text-left font-medium text-black hover:text-gray-600"
         aria-expanded={open}
         aria-controls="footer-dropdown-list"
       >
         <span>{trigger}</span>
-        <ChevronDown
+
+        <Image
+          src={ChevronDown}
+          alt="Chevron Down"
           className={`ml-2 h-4 w-4 transition-transform duration-200 ${
             open ? "rotate-180" : "rotate-0"
           }`}
@@ -50,7 +54,10 @@ export default function FooterDropdown({
       >
         {dropdownContent.map((item, index) => (
           <li key={index}>
-            <a href={item.href} className="flex flex-col justify-center text-sm text-gray-600 hover:text-black">
+            <a
+              href={item.href}
+              className="flex flex-col justify-center text-sm text-gray-600 hover:text-black"
+            >
               {item.label}
             </a>
           </li>

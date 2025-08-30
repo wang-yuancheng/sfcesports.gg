@@ -7,8 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdownMenu";
-import profileIcon from "@/assets/icons/profile.svg";
-import { CircleUserRoundIcon } from "lucide-react";
+import profileIcon from "@/assets/icons/circle-user-round.svg";
 
 export default function NavbarProfile() {
   const [open, setOpen] = useState(false);
@@ -23,8 +22,8 @@ export default function NavbarProfile() {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <div className="relative cursor-pointer rounded-md p-2 sm:hover:bg-gray-100">
-          <CircleUserRoundIcon className="w-[22px] h-[22px]" />
+        <div className="relative items-center flex cursor-pointer rounded-md p-2 sm:hover:bg-gray-100">
+          <Image src={profileIcon} alt="Profile" width={22} height={22} />
         </div>
       </DropdownMenuTrigger>
 

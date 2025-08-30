@@ -1,4 +1,3 @@
-// Fetches YouTube view counts for a list of video IDs
 import { useEffect, useState } from "react";
 
 export function useYoutubeViews(ids: string[]) {

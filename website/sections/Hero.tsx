@@ -1,6 +1,5 @@
 import React from "react";
-import atcBanner from "@/assets/pictures/atc.avif";
-import atcgrayBanner from "@/assets/pictures/atc-gray.avif";
+import atcBanner from "@/assets/pictures/atc.webp";
 import cardHero from "@/assets/pictures/card-hero-gradient.png";
 import Logo from "@/assets/icons/shibe-pinkbright.svg";
 import ShortHero from "@/components/home/ShortHero";
@@ -34,14 +33,12 @@ export default function MainHero() {
 
   return (
     <section className="section-container navbarsm:pt-14 pb-14">
-      {/* Grid: 1 column on small screens */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(2,minmax(0,1fr))]">
         <LongHero
           header="All Talent Championship"
           subheader="1st Place"
           matchLabel="Regional Championship Final"
-          grayImage={atcgrayBanner}
-          colorImage={atcBanner}
+          img={atcBanner}
         />
         <ShortHero
           header="Highlights"

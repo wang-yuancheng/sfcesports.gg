@@ -3,7 +3,6 @@
 import Link from "next/link";
 import LogoFade from "@/components/ui/logofade";
 
-// Custom Components
 import { CartSheetResponsive } from "@/components/navigation/CartSheet";
 import { MenuSheetResponsive } from "@/components/navigation/MenuSheet";
 import NavbarProfile from "@/components/navigation/NavbarProfile";

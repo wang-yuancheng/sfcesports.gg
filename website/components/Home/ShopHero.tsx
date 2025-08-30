@@ -32,7 +32,6 @@ export default function ShopHero({
         src={colorImage}
         alt=""
         fill
-        quality={100}
         className="absolute top-0 bottom-0 object-cover object-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
       />
       {/* Front image, fades out on hover */}
@@ -40,17 +39,16 @@ export default function ShopHero({
         src={grayImage}
         alt=""
         fill
-        quality={100}
         priority={true}
         className="absolute top-0 bottom-0 object-cover object-center opacity-100 group-hover:opacity-0 transition-opacity duration-500"
       />
 
       {/* Pink gradient base */}
-      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-t from-black/20 to-pink-bright/70 group-hover:opacity-0 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-t md:from-black/20 md:to-pink-bright/70 group-hover:opacity-0 transition-opacity duration-500" />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t md:top-0 md:bg-gradient-to-b from-pink-bright/90 to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
+        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t md:top-0 md:bg-gradient-to-b md:from-pink-bright/90 md:to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
       />
 
       {/* Black hover gradient */}
@@ -58,24 +56,22 @@ export default function ShopHero({
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-40
                bg-gradient-to-b from-black/50 to-transparent
-               opacity-0 transition-opacity duration-500
-               group-hover:opacity-100 z-0"
+               opacity-100 transition-opacity duration-500 z-0"
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40
                bg-gradient-to-t from-black/50 to-transparent
-               opacity-0 transition-opacity duration-500
-               group-hover:opacity-100 z-0"
+               opacity-100 transition-opacity duration-500 z-0"
       />
 
       {/* Heading overlay */}
       <div className="relative h-full w-full">
         <div className="absolute left-8 top-8 mr-8">
-          <p className="text-xs xxs:text-sm xs:text-md sm:text-lg uppercase font-druk font-medium text-white/90">
+          <p className="text-xs xxs:text-sm xs:text-lg md:text-base lg:text-lg uppercase font-druk font-medium text-white/90">
             {header}
           </p>
-          <p className="text-3xl xxs:text-4xl xs:text-4xl sm:text-5xl uppercase font-druk font-bold text-white">
+          <p className="text-2xl xxs:text-2xl xs:text-3xl md:text-2xl lg:text-4xl uppercase font-druk font-bold text-white">
             {subheader}
           </p>
         </div>

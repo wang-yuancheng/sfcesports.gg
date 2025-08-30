@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
-
+import DollarSign from "@/assets/icons/dollar-sign.svg";
+import Image from "next/image";
 
 export function LoginButton() {
   return (
@@ -22,13 +22,13 @@ export function SignUpButton() {
 
 export function SearchButton() {
   return (
-   <button
+    <button
       className="relative rounded-md p-2 sm:hover:bg-gray-100"
       type="button"
       aria-label="Search"
       title="Search Button"
     >
-      <Search className="w-[22px] h-[22px]" />
+      <Image src={DollarSign} alt="Chevron Right" width={22} height={22} />
     </button>
   );
 }

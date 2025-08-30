@@ -15,7 +15,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 
-import { LucideShoppingBag } from "lucide-react";
+import LucideShoppingBag from "@/assets/icons/shopping-bag.svg";
 
 type SheetSide = "bottom" | "right";
 
@@ -50,7 +50,12 @@ export function CartSheet({
             aria-label="Open cart"
             className="relative rounded-md p-2 sm:hover:bg-gray-100"
           >
-            <LucideShoppingBag className="w-[22px] h-[22px]" />
+            <Image
+                src={LucideShoppingBag}
+                alt="Shopping Bag"
+                width={22}
+                height={22}
+              />
           </button>
         )}
       </SheetTrigger>

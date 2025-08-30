@@ -3,9 +3,10 @@
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
-import { X } from "lucide-react";
+import X from "@/assets/icons/x.svg"
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const Sheet = SheetPrimitive.Root;
 
@@ -74,7 +75,7 @@ const SheetContent = React.forwardRef<
       >
         {!hideCloseButton && (
           <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity focus:outline-none disabled:pointer-events-none data-[state=open]:bg-secondary">
-            <X className="h-4 w-4" />
+            <Image src={X} alt="" className="h-4 w-4" />
             <span className="sr-only">Close</span>
           </SheetPrimitive.Close>
         )}

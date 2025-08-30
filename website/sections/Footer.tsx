@@ -113,7 +113,8 @@ export default function Footer() {
       {/* Desktop Footer */}
       <div
         className="hidden sm:block mx-auto max-w-[1500px]
-                pt-[48px]
+                pt-[32px]
+                navbarsm:pt-[clamp(2px,5vw,3rem)]
                 pb-[clamp(2rem,5vw,3rem)]
                 px-[clamp(1rem,4vw,4rem)]
                 relative border-t border-gray-100"

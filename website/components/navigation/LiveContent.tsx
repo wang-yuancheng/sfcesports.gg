@@ -3,7 +3,7 @@ import Image from "next/image";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import pubgmLogo from "@/assets/logos/pubgm.svg";
 import novaLogo from "@/assets/logos/nova.webp";
-import { ChevronRight } from "lucide-react";
+import ChevronRight from "@/assets/icons/chevron-right.svg";
 
 export function LiveContentFront({ showVod }: { showVod: boolean }) {
   return (
@@ -28,7 +28,11 @@ export function LiveContentFront({ showVod }: { showVod: boolean }) {
 
         {/* Right side */}
         <div className="flex items-center">
-          <ChevronRight className="w-[25px] h-[25px] text-gray-600 hover:text-gray-400 transition-colors" />
+          <Image
+            src={ChevronRight}
+            alt="Chevron Right"
+            className="w-[25px] h-[25px] text-gray-600 hover:text-gray-400 transition-colors"
+          />
         </div>
       </div>
     </a>
@@ -83,9 +87,11 @@ function StatusLine({ showVod }: { showVod: boolean }) {
         className={`
           font-[400] text-xs text-gray-700
           transition-opacity duration-300      
-          ${showVod
-            ? "opacity-0 pointer-events-none"       
-            : "opacity-100 group-hover:opacity-0 group-hover:duration-0"}
+          ${
+            showVod
+              ? "opacity-0 pointer-events-none"
+              : "opacity-100 group-hover:opacity-0 group-hover:duration-0"
+          }
         `}
       >
         Tournament has ended
@@ -96,9 +102,11 @@ function StatusLine({ showVod }: { showVod: boolean }) {
         className={`
           absolute inset-0 font-[400] text-xs text-gray-700
           transition-opacity duration-300
-          ${showVod
-            ? "opacity-100"                        
-            : "opacity-0 group-hover:opacity-100 group-hover:duration-0"} 
+          ${
+            showVod
+              ? "opacity-100"
+              : "opacity-0 group-hover:opacity-100 group-hover:duration-0"
+          } 
         `}
       >
         Click to view VODs
@@ -106,4 +114,3 @@ function StatusLine({ showVod }: { showVod: boolean }) {
     </div>
   );
 }
-

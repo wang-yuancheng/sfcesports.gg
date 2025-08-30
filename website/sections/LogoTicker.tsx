@@ -30,39 +30,43 @@ const logoPad = "pr-[clamp(15px,10vw,100px)]";
 const SPEED = 40; // px per second
 
 export default function LogoTicker() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);   // the capped container
+  const trackRef = useRef<HTMLDivElement>(null);       // the moving track
   const controls = useAnimationControls();
 
   function start(px: number, sec: number) {
-    controls.start({
-      x: -px,
-      transition: { ease: "linear", duration: sec, repeat: Infinity },
-    });
+    controls.start({ x: -px, transition: { ease: "linear", duration: sec, repeat: Infinity } });
   }
 
   const [sets, setSets] = useState(1);
   const [distance, setDistance] = useState(0);
   const [duration, setDuration] = useState(60);
 
-  /* how many copies to fill viewport */
+  // how many copies to fill the visible container, not the whole window
   useEffect(() => {
     const recalc = () => {
       const minW = 36;
-      const vw = window.innerWidth;
+      const vw = viewportRef.current?.clientWidth ?? window.innerWidth;
       const copies = Math.ceil(Math.ceil(vw / minW) / srcList.length);
       setSets(copies);
     };
     recalc();
+
+    const ro = new ResizeObserver(recalc);
+    if (viewportRef.current) ro.observe(viewportRef.current);
     window.addEventListener("resize", recalc);
-    return () => window.removeEventListener("resize", recalc);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", recalc);
+    };
   }, []);
 
-  /* measure width, derive speed */
+  // measure one loop width and set speed
   useLayoutEffect(() => {
-    if (!containerRef.current) return;
-    const node = containerRef.current;
+    if (!trackRef.current) return;
+    const node = trackRef.current;
     const compute = () => {
-      const half = node.offsetWidth / 2;
+      const half = node.offsetWidth / 2; // width of one logo set
       setDistance(half);
       const sec = half / SPEED;
       setDuration(sec);
@@ -74,32 +78,29 @@ export default function LogoTicker() {
     return () => ro.disconnect();
   }, [sets]);
 
-  const logos = useMemo(
-    () => Array.from({ length: sets * 2 }, () => srcList).flat(),
-    [sets]
-  );
+  const logos = useMemo(() => Array.from({ length: sets * 2 }, () => srcList).flat(), [sets]);
 
   return (
-    <div
-      className="navbarsm:py-5 px-[clamp(1.5rem,6vw,12rem)]"
-      onMouseEnter={() => controls.stop()}
-      onMouseLeave={() => start(distance, duration)}
-    >
-      <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black,transparent)]">
+    <div className="section-container navbarsm:py-5" ref={viewportRef}>
+      <div
+        className="flex overflow-hidden"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0, black 20%, black 80%, transparent 100%)",
+          maskImage:
+            "linear-gradient(to right, transparent 0, black 20%, black 80%, transparent 100%)",
+        }}
+        onMouseEnter={() => controls.stop()}
+        onMouseLeave={() => start(distance, duration)}
+      >
         <motion.div
-          ref={containerRef}
+          ref={trackRef}
           className={`flex flex-none ${logoGap} ${logoPad} whitespace-nowrap`}
           initial={{ x: 0 }}
           animate={controls}
         >
           {logos.map(({ src, alt }, i) => (
-            <Image
-              key={i}
-              src={src}
-              alt={alt}
-              className={`${logoSize} flex-shrink-0 object-contain`}
-              draggable={false}
-            />
+            <Image key={i} src={src} alt={alt} className={`${logoSize} flex-shrink-0 object-contain`} draggable={false} />
           ))}
         </motion.div>
       </div>

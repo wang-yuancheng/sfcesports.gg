@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MoreVertical } from "lucide-react";
+import EllipsisVertical from "@/assets/icons/ellipsis-vertical.svg";
 import Image from "next/image";
 
 export type TeamDropdown = { label: string; value: string; imageSrc: string };
@@ -44,7 +44,7 @@ export default function TeamDropdown({
         role="button"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="flex h-12 w-full items-center justify-between rounded-[14px] border border-gray-200 px-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] hover:shadow-sm"
+        className="relative flex h-12 w-full items-center justify-between rounded-[14px] border border-gray-200 px-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] hover:shadow-sm"
       >
         <div className="text-gray-900">{shownLabel}</div>
         <button
@@ -54,9 +54,13 @@ export default function TeamDropdown({
             e.stopPropagation();
             setOpen((o) => !o);
           }}
-          className="rounded-full p-2"
+          className="absolute right-2 rounded-full p-2"
         >
-          <MoreVertical className="h-5 w-5 text-gray-700" />
+          <Image
+            src={EllipsisVertical}
+            alt=""
+            className="h-5 w-5 text-gray-700"
+          />
         </button>
       </div>
 
@@ -70,7 +74,7 @@ export default function TeamDropdown({
             transition={{ duration: 0.16, ease: "easeOut" }}
             className="absolute left-0 right-0 z-20 mt-2"
           >
-            <div className="w-full overflow-hidden rounded-[14px] border border-gray-200 bg-white shadow-lg">
+            <div className="w-full overflow-hidden rounded-[14px] border border-gray-200 bg-white">
               <ul className="divide-y divide-gray-100">
                 {menuItems.map((i, idx) => (
                   <li key={idx}>

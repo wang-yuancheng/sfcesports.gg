@@ -13,9 +13,11 @@ import {
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Footer from "@/sections/Footer";
 import { RemoveScroll } from "react-remove-scroll";
-import { Menu, X } from "lucide-react";
+import Menu from "@/assets/icons/menu.svg";
+import X from "@/assets/icons/x.svg";
 import MenuDropdown from "./MenuDropdown";
 import shibeIcon from "@/assets/icons/shibe-black.svg";
+import Image from "next/image";
 
 const navItems = [
   { name: "Events", href: "/events" },
@@ -68,9 +70,21 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
               aria-label={open ? "Close menu" : "Open menu"}
             >
               {open ? (
-                <X className="w-[24px] h-[24px] hover:cursor-pointer" />
+                <Image
+                  src={X}
+                  alt="Close"
+                  width={24}
+                  height={24}
+                  className="hover:cursor-pointer"
+                />
               ) : (
-                <Menu className="w-[24px] h-[24px] hover:cursor-pointer" />
+                <Image
+                  src={Menu}
+                  alt="Menu"
+                  width={24}
+                  height={24}
+                  className="hover:cursor-pointer"
+                />
               )}
             </button>
           </SheetTrigger>

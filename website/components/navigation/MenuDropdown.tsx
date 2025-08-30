@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
+import ChevronDown from "@/assets/icons/chevron-down.svg";
 
 export interface MenuDropdownItem {
   imageSrc: string | StaticImageData;
@@ -18,7 +18,7 @@ interface MenuDropdownProps {
   heading: string;
   items: MenuDropdownItem[];
   viewAllHref?: string;
-  onItemClick?: () => void;   // closes the sheet (parent)
+  onItemClick?: () => void; // closes the sheet (parent)
 }
 
 export default function MenuDropdown({
@@ -28,7 +28,7 @@ export default function MenuDropdown({
   onItemClick,
 }: MenuDropdownProps) {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();                // 🔑 current route
+  const pathname = usePathname(); // 🔑 current route
 
   /* Highlight header when the current route matches anything inside */
   const isActive =
@@ -45,7 +45,9 @@ export default function MenuDropdown({
         }`}
       >
         <span>{heading}</span>
-        <ChevronDown
+        <Image
+          src={ChevronDown}
+          alt="Chevron Down"
           className={`h-4 w-4 transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
@@ -65,7 +67,7 @@ export default function MenuDropdown({
             <li key={href}>
               <Link
                 href={href}
-                onClick={onItemClick}          // only collapses sheet
+                onClick={onItemClick} // only collapses sheet
                 className="flex items-start rounded-lg p-2 pl-0 hover:bg-gray-50"
               >
                 <div className="flex items-center gap-4">

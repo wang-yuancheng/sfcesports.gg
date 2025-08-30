@@ -39,7 +39,8 @@ const videos: VideoItem[] = [
 export default function MediaPage() {
   const [active, setActive] = useState<VideoItem | null>(null);
 
-  const ids = videos.map((v) => v.id);
+  // Memoize ids so it’s not a new array each render
+  const ids = useMemo(() => videos.map((v) => v.id), []);
   const viewsMap = useYoutubeViews(ids);
 
   return (
@@ -50,9 +51,9 @@ export default function MediaPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-1 md:gap-0 md:grid-cols-12">
-        {videos.map((v, i) => (
-          <div key={i} className="md:col-span-3">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-12 md:gap-0">
+        {videos.map((v) => (
+          <div key={v.id} className="md:col-span-3">
             <VideoCard item={v} onOpen={setActive} viewCount={viewsMap[v.id]} />
           </div>
         ))}
