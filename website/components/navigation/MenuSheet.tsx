@@ -24,7 +24,6 @@ const navItems = [
   { name: "Media", href: "/media" },
   { name: "Company", href: "/about" },
   { name: "Shop", href: "/shop" },
-  { name: "Join", href: "/join" },
 ];
 
 const teams = [

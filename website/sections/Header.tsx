@@ -43,42 +43,44 @@ export default function Navbar() {
 
       <header>
         {/* Mobile */}
-
         {/* Desktop / Ipad */}
-        <div className="hidden sm:flex mx-auto w-full sm:px-6 sm:py-2 md:px-0 flex-col ">
-          {/* Left side */}
-          <div className="relative flex h-16 items-center justify-between">
-            <nav className="flex flex-1 lg:flex-initial items-center justify-center sm:items-stretch sm:justify-start md:ml-5">
-              <Link
-                href="/"
-                aria-label="Home"
-                className="flex shrink-0 items-center"
-              >
-                <LogoFade />
-              </Link>
-              <NavbarMain />
-            </nav>
+        <div className="mx-auto max-w-[1500px] px-6 md:px-[clamp(1rem,4vw,4rem)]">
+          <div className="hidden sm:flex w-full sm:py-2 flex-col">
+            {/* Left side */}
+            <div className="relative flex h-16 items-center justify-between">
+              <nav className="flex flex-1 lg:flex-initial items-center justify-center sm:items-stretch sm:justify-start md:ml-0">
+                <Link
+                  href="/"
+                  aria-label="Home"
+                  className="flex shrink-0 items-center"
+                >
+                  <LogoFade />
+                </Link>
+                <NavbarMain />
+              </nav>
 
-            <ShortLiveDisplay />
+              <ShortLiveDisplay />
 
-            {/* Right Side */}
-            <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto md:mr-5">
-              <SearchButton />
-              <CartSheetResponsive />
+              {/* Right Side */}
+              <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto md:mr-0">
+                <div className="md:mr-2">
+                  <SearchButton />
+                  <CartSheetResponsive />
+                </div>
+                {/* auth */}
+                <div className="hidden md:flex gap-2 mx-0">
+                  <LoginButton />
+                  <SignUpButton />
+                </div>
 
-              {/* auth */}
-              <div className="hidden md:flex gap-2 mx-2">
-                <LoginButton />
-                <SignUpButton />
-              </div>
-
-              <div className="md:hidden">
-                <NavbarProfile />
+                <div className="md:hidden">
+                  <NavbarProfile />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="navbarsm:hidden">
-            <LongLiveDisplay />
+            <div className="navbarsm:hidden">
+              <LongLiveDisplay />
+            </div>
           </div>
         </div>
       </header>

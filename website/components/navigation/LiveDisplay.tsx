@@ -111,18 +111,14 @@ export function ShortLiveDisplay() {
       {/* back card */}
       <motion.div
         variants={backVariant}
-        transition={{
-          type: "spring",
-          stiffness: 120,
-          damping: 25,
-        }}
-        className="absolute top-0 left-0 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]"
+        transition={{ type: "spring", stiffness: 120, damping: 25 }}
+        className="absolute top-0 left-0 flex items-center rounded-md shadow-gray-10 px-3 bg-white min-w-[288px] h-[52px] transform-gpu will-change-transform"
       >
         <LiveContentBack showVod={open} />
       </motion.div>
 
       {/* front card */}
-      <div className="relative z-10 flex items-center justify-center rounded-md shadow-gray-10 px-3 py-3 md:py-2 bg-white min-w-[288px] min-h-[52px]">
+      <div className="relative z-10 flex items-center rounded-md shadow-gray-10 px-3 bg-white min-w-[288px] h-[52px]">
         <LiveContentFront showVod={open} />
       </div>
     </motion.div>
