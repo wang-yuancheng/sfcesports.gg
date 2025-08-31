@@ -1,8 +1,8 @@
 import React from "react";
-import sccs1Banner from "@/assets/pictures/sccs1.png";
-import sccs2Banner from "@/assets/pictures/sccs2.png";
+import sccs1Banner from "@/assets/pictures/sccs1.webp";
+import sccs2Banner from "@/assets/pictures/sccs2.webp";
 import EventHero from "@/components/home/EventHero";
-import tdmTourBanner from "@/assets/pictures/1v1.png";
+import tdmTourBanner from "@/assets/pictures/1v1s4.webp";
 
 export default function PastEvents() {
   return (
@@ -28,10 +28,10 @@ export default function PastEvents() {
           header={
             <>
               Shibe&apos;s 1v1 Tour{" "}
-              <span className="whitespace-nowrap">Season 5</span>
+              <span className="whitespace-nowrap">Season 4</span>
             </>
           }
-          subheader="1 Jun 2023"
+          subheader="1 Jun 2022"
           href="#"
           colorImage={tdmTourBanner}
         />

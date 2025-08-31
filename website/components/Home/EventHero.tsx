@@ -18,12 +18,11 @@ export default function EventHero({
 }: HeroContent) {
   return (
     <div className="group relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-2">
-      {/* Color image, fades in on hover */}
       <Image
         src={colorImage}
         alt="atcBanner"
         fill
-        className="absolute top-0 bottom-0 object-cover object-center  group-hover:grayscale-0 transition-opacity duration-500"
+        className="absolute top-0 bottom-0 object-cover object-center brightness-90 group-hover:grayscale-0 group-hover:brightness-100 duration-500"
       />
 
       {/* Black hover gradient */}

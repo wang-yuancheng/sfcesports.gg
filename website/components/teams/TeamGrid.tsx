@@ -1,4 +1,4 @@
-import type { Team } from "@/components/teams/TeamDropdown";
+import type { Team, TeamLabels } from "@/components/teams/TeamDropdown";
 
 export default function TeamGrid({
   teams,

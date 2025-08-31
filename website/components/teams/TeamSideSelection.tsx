@@ -5,16 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import EllipsisVertical from "@/assets/icons/ellipsis-vertical.svg";
 import Image from "next/image";
 
-export type TeamLabels = { label: string; value: string; imageSrc: string };
-export type Team = {
-  id: number;
-  name: string;
-  game: string;
-  logo?: string;
-  legacy: Boolean;
-};
+import type { Team, TeamLabels } from "@/components/teams/TeamDropdown";
 
-export default function TeamDropdown({
+export default function TeamSideSelection({
   title,
   categories,
   onSelect,
@@ -45,7 +38,7 @@ export default function TeamDropdown({
   }, []);
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative bg-red-500">
       <div
         role="button"
         aria-expanded={open}
