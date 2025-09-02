@@ -51,11 +51,11 @@ export function CartSheet({
             className="relative rounded-md p-2 sm:hover:bg-gray-100"
           >
             <Image
-                src={LucideShoppingBag}
-                alt="Shopping Bag"
-                width={22}
-                height={22}
-              />
+              src={LucideShoppingBag}
+              alt="Shopping Bag"
+              width={22}
+              height={22}
+            />
           </button>
         )}
       </SheetTrigger>

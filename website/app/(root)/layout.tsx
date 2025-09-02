@@ -8,11 +8,13 @@ export default function Layout({
   return (
     <div>
       <Header />
-      <div className="sm:hidden">
+      <div className="md:hidden">
         <LongLiveDisplay />
       </div>
       <main>{children}</main>
-      <Footer />
+      <div className="mx-6 md:mx-0">
+        <Footer />
+      </div>
     </div>
   );
 }

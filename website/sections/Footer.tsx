@@ -11,7 +11,7 @@ import linkedinIcon from "@/assets/icons/linkedin.svg";
 import shibeLogoBlack from "@/assets/icons/shibe-black.svg";
 import FooterDropdown from "@/components/navigation/FooterDropdown";
 
-const srcList = [
+export const srcList = [
   {
     src: youtubeIcon,
     alt: "YouTube Icon",
@@ -63,9 +63,9 @@ const copyright = `© 2021 - ${new Date().getFullYear()}, ShibeFanClub, All righ
 
 export default function Footer() {
   return (
-    <div className="mx-4 xs:mx-8 sm:mx-0">
+    <>
       {/* Mobile Footer  */}
-      <div className="flex flex-col text-[16px] gap-3 sm:hidden">
+      <div className="flex flex-col text-[16px] gap-3 mt-3 md:hidden">
         <div className="relative w-full h-[50px]">
           <Image
             src={shibeLogoBlack}
@@ -112,7 +112,7 @@ export default function Footer() {
 
       {/* Desktop Footer */}
       <div
-        className="hidden sm:block mx-auto max-w-[1500px]
+        className="hidden md:block mx-auto max-w-[1500px]
                 pt-[32px]
                 navbarsm:pt-[clamp(2px,5vw,3rem)]
                 pb-[clamp(2rem,5vw,3rem)]
@@ -165,7 +165,7 @@ export default function Footer() {
         <div
           className="absolute
                   right-[clamp(1rem,4vw,4rem)]
-                  bottom-[clamp(2.5rem,5vw,4rem)]
+                  bottom-[clamp(2.8rem,5vw,4rem)]
                   flex flex-col items-end"
         >
           {/* social icons row */}
@@ -195,9 +195,9 @@ export default function Footer() {
       </div>
       {/* End of Desktop Footer */}
 
-      <div className="flex justify-center py-2 text-[11px] mb-3 sm:hidden">
+      <div className="flex justify-center py-2 text-[11px] mb-3 mt-2 sm:hidden">
         {copyright}
       </div>
-    </div>
+    </>
   );
 }

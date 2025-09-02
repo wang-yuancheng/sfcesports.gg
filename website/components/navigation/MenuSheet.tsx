@@ -65,7 +65,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
         <Sheet open={open} onOpenChange={onOpenChange} modal={false}>
           <SheetTrigger asChild>
             <button
-              className="relative rounded-md p-2 sm:hover:bg-gray-100 sm:hidden"
+              className="relative rounded-md p-2 md:hover:bg-gray-100 md:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
             >
               {open ? (
@@ -90,7 +90,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
 
           <SheetContent
             side="left"
-            className="w-[min(100vw,640px)] top-[var(--header-height)] h-[calc(100vh-var(--header-height))] overflow-y-auto py-0"
+            className="w-[min(100vw,768px)] top-[var(--header-height)] h-[calc(100vh-var(--header-height))] overflow-y-auto py-0"
             overlayClassName="top-[var(--header-height)] h-[calc(100vh-var(--header-height))]"
             hideCloseButton={true}
           >
@@ -118,7 +118,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
                 </Link>
               ))}
             </div>
-            <div className="mt-5">
+            <div className="">
               <Footer />
             </div>
           </SheetContent>
@@ -132,7 +132,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
 export function MenuSheetResponsive(
   props: Omit<MenuSheetProps, "open" | "onOpenChange">
 ) {
-  const isMobile = useMediaQuery({ max: 640 });
+  const isMobile = useMediaQuery({ max: 768 });
   const [open, setOpen] = useState(false);
 
   useEffect(() => {

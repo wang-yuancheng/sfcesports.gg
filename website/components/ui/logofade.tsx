@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import shibeLogoColor from "@/assets/icons/shibe-pinkbright.svg"
-import shibeLogoBlack from "@/assets/icons/shibe-black.svg"
+import shibeLogoColor from "@/assets/icons/shibe-pinkbright.svg";
+import shibeLogoBlack from "@/assets/icons/shibe-black.svg";
 
 export default function LogoFade() {
   return (

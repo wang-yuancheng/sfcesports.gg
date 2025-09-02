@@ -11,7 +11,7 @@ export type Team = {
   name: string;
   game: string;
   logo?: string;
-  legacy: Boolean;
+  legacy: boolean;
 };
 
 export default function TeamDropdown({

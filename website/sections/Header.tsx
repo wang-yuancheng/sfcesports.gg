@@ -20,8 +20,9 @@ import { NavbarMain } from "@/components/navigation/NavbarMain";
 export default function Navbar() {
   return (
     <>
+      {/* Mobile */}
       <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-md border-b border-white/10 transition-all duration-300">
-        <div className="flex flex-col h-fit min-h-[58px] flex-shrink-0 sm:hidden">
+        <div className="flex flex-col h-fit min-h-[58px] flex-shrink-0 md:hidden">
           <div className="w-full h-14 flex justify-between items-center px-4 flex-shrink-0">
             {/* Left */}
             <div className="flex items-center">
@@ -42,13 +43,12 @@ export default function Navbar() {
       </header>
 
       <header>
-        {/* Mobile */}
         {/* Desktop / Ipad */}
-        <div className="mx-auto max-w-[1500px] px-6 md:px-[clamp(1rem,4vw,4rem)]">
-          <div className="hidden sm:flex w-full sm:py-2 flex-col">
+        <div className="section-container">
+          <div className="hidden md:flex w-full md:py-2 flex-col">
             {/* Left side */}
             <div className="relative flex h-16 items-center justify-between">
-              <nav className="flex flex-1 lg:flex-initial items-center justify-center sm:items-stretch sm:justify-start md:ml-0">
+              <nav className="flex flex-1 lg:flex-initial items-center justify-center md:items-stretch md:justify-start md:ml-0">
                 <Link
                   href="/"
                   aria-label="Home"
@@ -62,7 +62,7 @@ export default function Navbar() {
               <ShortLiveDisplay />
 
               {/* Right Side */}
-              <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto md:mr-0">
+              <div className="absolute inset-y-0 right-0 flex items-center md:static md:inset-auto md:mr-0">
                 <div className="md:mr-2">
                   <SearchButton />
                   <CartSheetResponsive />
