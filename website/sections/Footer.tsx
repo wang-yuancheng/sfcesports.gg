@@ -48,12 +48,10 @@ const about = [
   { label: "Our Story", href: "/about" },
   { label: "Brand Kit", href: "/brand" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Join Us", href: "/join" },
 ];
 const activity = [
   { label: "Events", href: "/events" },
   { label: "Shop", href: "/Shop" },
-  { label: "Live Room", href: "/live" },
 ];
 const termsAndPolicies = [
   { label: "All Terms and Policies", href: "/policies/all" },
@@ -165,7 +163,7 @@ export default function Footer() {
         <div
           className="absolute
                   right-[clamp(1rem,4vw,4rem)]
-                  bottom-[clamp(2.8rem,5vw,4rem)]
+                  bottom-[clamp(2rem,5vw,3rem)]
                   flex flex-col items-end"
         >
           {/* social icons row */}
@@ -195,7 +193,7 @@ export default function Footer() {
       </div>
       {/* End of Desktop Footer */}
 
-      <div className="flex justify-center py-2 text-[11px] mb-3 mt-2 sm:hidden">
+      <div className="flex justify-center py-2 text-[11px] mb-3 mt-2 md:hidden">
         {copyright}
       </div>
     </>
