@@ -128,12 +128,12 @@ export default function Footer() {
               draggable={false}
             />
 
-            <div className="font-[800] text-[20px]">
+            <p className="font-[800] text-[20px]">
               PRESTIGE ESPORTS & GAMING ORGANIZATION
-            </div>
-            <div className="font-[500] text-base">
+            </p>
+            <p className="font-[500] text-base">
               Building communities to win high quality tournament and events
-            </div>
+            </p>
           </div>
         </div>
 
@@ -188,7 +188,7 @@ export default function Footer() {
             ))}
           </div>
           {/* copyright */}
-          <div className="text-[11px] mt-2">{copyright}</div>
+          <p className="text-[11px] mt-2">{copyright}</p>
         </div>
       </div>
       {/* End of Desktop Footer */}

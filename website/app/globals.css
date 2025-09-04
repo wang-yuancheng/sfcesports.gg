@@ -150,6 +150,33 @@
 @layer base {
   * {
     @apply border-border;
+    @apply select-none;
+  }
+
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  a,
+  button,
+  input,
+  textarea,
+  label,
+  li,
+  code,
+  pre,
+  strong,
+  em,
+  b,
+  i,
+  blockquote,
+  th,
+  td {
+    @apply select-text;
   }
 
   *:focus {

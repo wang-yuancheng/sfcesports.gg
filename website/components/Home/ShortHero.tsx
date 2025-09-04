@@ -35,9 +35,9 @@ export default function ShortHero({
 
       {/* Header */}
       <div className="absolute top-8 left-6">
-        <div className="text-white uppercase text-lg xxs:text-2xl md:text-lg lg:text-2xl font-druk font-medium">
+        <p className="text-white uppercase text-lg xxs:text-2xl md:text-lg lg:text-2xl font-druk font-medium">
           {header}
-        </div>
+        </p>
       </div>
 
       <div className="absolute bottom-[24px] inset-x-6 flex flex-col justify-end">

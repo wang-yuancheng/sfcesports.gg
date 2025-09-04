@@ -15,10 +15,10 @@ export default function PastEvents() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(1,minmax(0,1fr))]">
         <EventHero
           header={
-            <>
+            <p>
               Shibe&apos;s Community Cup{" "}
               <span className="whitespace-nowrap">Season 2</span>
-            </>
+            </p>
           }
           subheader="13 Nov 2023"
           href="#"
@@ -26,10 +26,10 @@ export default function PastEvents() {
         />
         <EventHero
           header={
-            <>
+            <p>
               Shibe&apos;s 1v1 Tour{" "}
               <span className="whitespace-nowrap">Season 4</span>
-            </>
+            </p>
           }
           subheader="1 Jun 2022"
           href="#"
@@ -37,10 +37,10 @@ export default function PastEvents() {
         />
         <EventHero
           header={
-            <>
+            <p>
               Shibe&apos;s Community Cup{" "}
               <span className="whitespace-nowrap">Season 1</span>
-            </>
+            </p>
           }
           subheader="23 Aug 2021"
           href="#"
