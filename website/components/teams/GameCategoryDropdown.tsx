@@ -3,9 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import EllipsisVertical from "@/assets/icons/ellipsis-vertical.svg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
-export type TeamLabels = { label: string; value: string; imageSrc: string };
+export type GameCategories = {
+  label: string;
+  value: string;
+  iconSrc: string;
+  backgroundSrc: StaticImageData;
+};
 export type Team = {
   id: number;
   name: string;
@@ -14,13 +19,13 @@ export type Team = {
   legacy: boolean;
 };
 
-export default function TeamDropdown({
+export default function GameCategoryDropdown({
   title,
   categories,
   onSelect,
 }: {
   title: string;
-  categories: TeamLabels[];
+  categories: GameCategories[];
   onSelect?: (value: string) => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -95,7 +100,7 @@ export default function TeamDropdown({
                     >
                       <div>
                         <Image
-                          src={i.imageSrc}
+                          src={i.iconSrc}
                           alt={i.label}
                           width={32}
                           height={32}

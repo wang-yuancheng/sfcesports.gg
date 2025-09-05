@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import type { TeamDropdown, Team } from "@/components/teams/TeamDropdown";
+import type {
+  GameCategories,
+  Team,
+} from "@/components/teams/GameCategoryDropdown";
 
 export default function TeamCard({ team }: { team: Team }) {
   return (
