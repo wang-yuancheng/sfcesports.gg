@@ -8,8 +8,9 @@ import Image, { StaticImageData } from "next/image";
 export type GameCategories = {
   label: string;
   value: string;
-  iconSrc: string;
+  iconSrc: StaticImageData;
   backgroundSrc: StaticImageData;
+  bannerSrc?: StaticImageData;
 };
 export type Team = {
   id: number;
@@ -57,7 +58,7 @@ export default function GameCategoryDropdown({
         onClick={() => setOpen((o) => !o)}
         className="relative flex h-12 w-full items-center justify-between rounded-[14px] border border-gray-200 px-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] hover:shadow-sm"
       >
-        <div className="text-gray-900">{shownLabel}</div>
+        <div className="text-black">{shownLabel}</div>
         <button
           type="button"
           aria-label="More"
@@ -104,6 +105,7 @@ export default function GameCategoryDropdown({
                           alt={i.label}
                           width={32}
                           height={32}
+                          className="filter grayscale brightness-0 invert-[50%]"
                         />
                       </div>
                       <div className="text-[16px] font-[500] text-gray-600">

@@ -104,7 +104,7 @@ export function ShortLiveDisplay() {
 
   return (
     <motion.div
-      className="hidden navbarsm:flex navbarlg:absolute navbarlg:left-1/2 navbarlg:-translate-x-1/2 relative w-fit"
+      className="hidden navbarsm:flex navbarlg:absolute navbarlg:left-1/2 navbarlg:-translate-x-1/2 relative w-fit z-50"
       initial="initial"
       whileHover="hover"
     >
