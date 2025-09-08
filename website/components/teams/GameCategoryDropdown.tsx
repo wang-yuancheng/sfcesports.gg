@@ -18,6 +18,10 @@ export type Team = {
   game: string;
   logo?: string;
   legacy: boolean;
+  gamesPlayed: number;
+  first: number;
+  second: number;
+  third: number;
 };
 
 export default function GameCategoryDropdown({

@@ -6,6 +6,7 @@ import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import { usePathname } from "next/navigation";
 import ChevronDown from "@/assets/icons/chevron-down.svg";
+import ChevronDownPink from "@/assets/icons/chevron-down-pink.svg";
 
 export interface MenuDropdownItem {
   imageSrc: string | StaticImageData;
@@ -46,7 +47,7 @@ export default function MenuDropdown({
       >
         <span>{heading}</span>
         <Image
-          src={ChevronDown}
+          src={isActive ? ChevronDownPink : ChevronDown}
           alt="Chevron Down"
           className={`h-4 w-4 transition-transform duration-200 ${
             open ? "rotate-180" : ""
@@ -71,7 +72,7 @@ export default function MenuDropdown({
                 className="flex items-start rounded-lg p-2 pl-0 hover:bg-gray-50"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-md bg-gray-100 p-[4px] overflow-hidden">
+                  <div className="w-12 h-12 rounded-md bg-gray-100 p-[4px] overflow-hidden flex items-center">
                     <Image
                       src={imageSrc}
                       alt={title}

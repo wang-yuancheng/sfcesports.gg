@@ -55,117 +55,42 @@ const gameCategories: GameCategories[] = [
 ];
 
 const teams: Team[] = [
-  {
-    id: 1,
-    name: "SFC 女队",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: false,
-  },
-  {
-    id: 2,
-    name: "SFC 男队",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: false,
-  },
-  {
-    id: 3,
-    name: "SFC Taiwan",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: false,
-  },
-  {
-    id: 4,
-    name: "SFC India",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: false,
-  },
-  {
-    id: 5,
-    name: "SFC Tron",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: false,
-  },
-  {
-    id: 6,
-    name: "SFC Heirs",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: true,
-  },
-  {
-    id: 7,
-    name: "SFC OCE",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: true,
-  },
-  {
-    id: 8,
-    name: "SFC Maldives",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: true,
-  },
-  {
-    id: 9,
-    name: "SFC Rex",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: true,
-  },
-  { id: 10, name: "SFC V", game: "pubg-mobile", logo: shibeLogo, legacy: true },
-  {
-    id: 11,
-    name: "SFC Valence",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: true,
-  },
-  {
-    id: 12,
-    name: "SFC Nemesis",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: true,
-  },
-  {
-    id: 13,
-    name: "SFC Academy",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: true,
-  },
-  {
-    id: 14,
-    name: "SFC PH",
-    game: "mobile-legends",
-    logo: shibeLogo,
-    legacy: false,
-  },
-  {
-    id: 15,
-    name: "SFC SG",
-    game: "valorant-mobile",
-    logo: shibeLogo,
-    legacy: false,
-  },
-  {
-    id: 16,
-    name: "SFC X",
-    game: "pubg-mobile",
-    logo: shibeLogo,
-    legacy: false,
-  },
+  { id: 1,  name: "SFC 女队",     game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 22, first: 3, second: 4, third: 5 },
+  { id: 2,  name: "SFC 男队",     game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 18, first: 2, second: 3, third: 2 },
+  { id: 3,  name: "SFC Taiwan",   game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 15, first: 1, second: 2, third: 3 },
+  { id: 4,  name: "SFC India",    game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 20, first: 2, second: 2, third: 3 },
+  { id: 5,  name: "SFC Tron",     game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 14, first: 1, second: 1, third: 1 },
+  { id: 6,  name: "SFC Heirs",    game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 9,  first: 0, second: 1, third: 1 },
+  { id: 7,  name: "SFC OCE",      game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 12, first: 1, second: 1, third: 1 },
+  { id: 8,  name: "SFC Maldives", game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 8,  first: 0, second: 1, third: 1 },
+  { id: 9,  name: "SFC Rex",      game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 10, first: 1, second: 0, third: 1 },
+  { id: 10, name: "SFC V",        game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 7,  first: 0, second: 1, third: 0 },
+  { id: 11, name: "SFC Valence",  game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 11, first: 1, second: 1, third: 1 },
+  { id: 12, name: "SFC Nemesis",  game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 10, first: 1, second: 2, third: 0 },
+  { id: 13, name: "SFC Academy",  game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 6,  first: 0, second: 1, third: 0 },
+  { id: 14, name: "SFC PH",       game: "mobile-legends", logo: shibeLogo, legacy: false, gamesPlayed: 16, first: 3, second: 2, third: 1 },
+  { id: 15, name: "SFC SG",       game: "valorant-mobile",logo: shibeLogo, legacy: false, gamesPlayed: 12, first: 2, second: 1, third: 1 },
+  { id: 16, name: "SFC X",        game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 13, first: 2, second: 2, third: 1 },
 ];
+
+type Totals = { total: number; first: number; second: number; third: number };
 
 export default function Teams() {
   const [selectedGame, setSelectedGame] = useState<string>("all");
   const [showLegacy, setShowLegacy] = useState(false);
+
+  // aggregate per game, totals include all teams under the game
+  const gameStats: Record<string, Totals> = useMemo(() => {
+    const agg: Record<string, Totals> = {};
+    for (const t of teams) {
+      if (!agg[t.game]) agg[t.game] = { total: 0, first: 0, second: 0, third: 0 };
+      agg[t.game].total += t.gamesPlayed;
+      agg[t.game].first += t.first;
+      agg[t.game].second += t.second;
+      agg[t.game].third += t.third;
+    }
+    return agg;
+  }, []);
 
   const activeTeamsOnly = useMemo(() => teams.filter((t) => !t.legacy), []);
   const legacyTeamsOnly = useMemo(() => teams.filter((t) => t.legacy), []);
@@ -197,7 +122,6 @@ export default function Teams() {
         selectedCategory?.backgroundSrc ??
         sfcBanner;
 
-  // cross fade banner to avoid blink while new image loads (desktop)
   const [activeBannerSrc, setActiveBannerSrc] = useState(computedBannerSrc);
   const [prevBannerSrc, setPrevBannerSrc] = useState(computedBannerSrc);
   const [bannerLoaded, setBannerLoaded] = useState(true);
@@ -220,17 +144,31 @@ export default function Teams() {
   return (
     <section className="section-container pb-10 navbarsm:my-8">
       <div className="max-w mx-auto mb-8">
-        {/* mobile now also uses the active selected banner */}
-        <Image
-          src={activeBannerSrc}
-          alt="SFC banner"
-          priority
-          className="block lg:hidden w-full h-auto border border-gray-100 rounded-md"
-        />
+        {/* mobile banner with cross fade */}
+        <div className="block lg:hidden relative w-full aspect-[2000/300] overflow-hidden rounded-md border border-gray-100">
+          <Image
+            key={`m-prev-${(prevBannerSrc as any)?.src ?? "fallback"}`}
+            src={prevBannerSrc}
+            alt="SFC banner previous"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <Image
+            key={`m-active-${(activeBannerSrc as any)?.src ?? "fallback"}`}
+            src={activeBannerSrc}
+            alt="SFC banner"
+            fill
+            className={`object-cover object-center transition-opacity duration-300 ${
+              bannerLoaded ? "opacity-100" : "opacity-0"
+            }`}
+            onLoadingComplete={() => setBannerLoaded(true)}
+            priority
+          />
+        </div>
 
-        {/* desktop banner with cross fade, same aspect slot */}
+        {/* desktop banner with cross fade */}
         <div className="hidden lg:block relative w-full aspect-[2000/300] overflow-hidden rounded-md border border-gray-100">
-          {/* previous stays visible while next loads */}
           <Image
             key={`prev-${(prevBannerSrc as any)?.src ?? "fallback"}`}
             src={prevBannerSrc}
@@ -257,7 +195,7 @@ export default function Teams() {
         Our Teams
       </p>
 
-      {/* mobile filter, title mirrors selection so state is consistent across breakpoints */}
+      {/* mobile filter, title mirrors selection */}
       <div className="block lg:hidden mt-4 mb-6">
         <GameCategoryDropdown
           title={mobileDropdownTitle}
@@ -270,7 +208,6 @@ export default function Teams() {
       <div className="md:flex md:items-start md:gap-6 mt-2">
         {/* main column */}
         <div className="flex-1 min-w-0">
-          {/* Active */}
           <p className="font-druk font-medium uppercase text-base lg:text-lg mt-6">
             Active Teams
           </p>
@@ -281,11 +218,11 @@ export default function Teams() {
             />
           </div>
 
-          {/* Legacy toggle appears only if there is at least one legacy team in view */}
+          {/* legacy toggle appears only if there is at least one legacy team in view */}
           {visibleLegacyTeams.length > 0 && (
             <>
               <div className="mt-8 flex items-center justify-end">
-                {/* desktop toggle, full width as requested previously */}
+                {/* desktop toggle full width */}
                 <button
                   type="button"
                   onClick={() => setShowLegacy((v) => !v)}
@@ -307,7 +244,7 @@ export default function Teams() {
                     <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" />
                   </svg>
                 </button>
-                {/* mobile friendly toggle, full width */}
+                {/* mobile toggle full width */}
                 <button
                   type="button"
                   onClick={() => setShowLegacy((v) => !v)}
@@ -331,7 +268,6 @@ export default function Teams() {
                 </button>
               </div>
 
-              {/* Legacy content with clean collapse animation */}
               <div
                 id={legacyPanelId}
                 aria-hidden={!showLegacy}
@@ -351,16 +287,16 @@ export default function Teams() {
           )}
         </div>
 
-        {/* desktop sidebar, visible on lg only, real games only, controlled selection syncs across breakpoints */}
+        {/* desktop sidebar with per game stats */}
         <aside className="hidden lg:flex w-64 shrink-0 flex-col gap-4">
           <p className="font-druk font-medium uppercase text-base lg:text-lg mt-6">
             Filter Games
           </p>
-
           <GameCategorySidebar
             value={selectedGame === "all" ? null : selectedGame}
             categories={gameCategories.filter((c) => c.value !== "all")}
             onSelect={(value) => setSelectedGame(value)}
+            gameStats={gameStats}
           />
         </aside>
       </div>
