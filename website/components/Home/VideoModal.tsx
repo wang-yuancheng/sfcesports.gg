@@ -1,13 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
-type VideoModalProps = {
-  open: boolean;
-  title: string;
-  videoId: string;
-  onClose: () => void;
-};
+import { VideoModalProps } from "@/lib/types";
 
 export default function VideoModal({
   open,

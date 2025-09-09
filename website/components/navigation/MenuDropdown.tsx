@@ -2,26 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { usePathname } from "next/navigation";
 import ChevronDown from "@/assets/icons/chevron-down.svg";
 import ChevronDownPink from "@/assets/icons/chevron-down-pink.svg";
-
-export interface MenuDropdownItem {
-  imageSrc: string | StaticImageData;
-  title: string;
-  description: string;
-  href: string;
-}
-
-interface MenuDropdownProps {
-  heading: string;
-  items: MenuDropdownItem[];
-  viewAllHref?: string;
-  onItemClick?: () => void; // closes the sheet (parent)
-}
-
+import { MenuDropdownProps } from "@/lib/types";
 export default function MenuDropdown({
   heading,
   items,
@@ -29,7 +14,7 @@ export default function MenuDropdown({
   onItemClick,
 }: MenuDropdownProps) {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname(); // 🔑 current route
+  const pathname = usePathname(); // current route
 
   /* Highlight header when the current route matches anything inside */
   const isActive =

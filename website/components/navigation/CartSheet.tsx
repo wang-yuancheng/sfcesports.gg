@@ -14,21 +14,8 @@ import {
   SheetDescription,
   SheetClose,
 } from "@/components/ui/sheet";
-
 import LucideShoppingBag from "@/assets/icons/shopping-bag.svg";
-
-type SheetSide = "bottom" | "right";
-
-interface CartSheetProps {
-  side?: SheetSide;
-  description?: React.ReactNode;
-  emptyMessage?: React.ReactNode;
-  ctaHref?: string;
-  ctaLabel?: React.ReactNode;
-  trigger?: React.ReactNode;
-  children?: React.ReactNode;
-  contentClassName?: string;
-}
+import { CartSheetProps } from "@/lib/types";
 
 export function CartSheet({
   side = "right",

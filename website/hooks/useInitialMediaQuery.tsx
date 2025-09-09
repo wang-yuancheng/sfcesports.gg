@@ -1,16 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
-
-const BREAKPOINTS = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-  "2xl": 1536,
-} as const
-
-type BreakpointName = keyof typeof BREAKPOINTS
-type MediaInput = string | { min?: number; max?: number } | BreakpointName
+import { BREAKPOINTS } from "@/lib/constants"
+import { BreakpointName, MediaInput } from "@/lib/types"
 
 function buildQuery(input: MediaInput): string {
   if (typeof input === "string") {

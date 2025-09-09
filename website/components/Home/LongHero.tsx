@@ -1,20 +1,15 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 import ChevronRight from "@/assets/icons/chevron-right-white.svg";
+import { LongHeroContent } from "@/lib/types";
 
-interface heroContent {
-  header: string;
-  subheader: string;
-  matchLabel?: string;
-  img: StaticImageData;
-}
 
 export default function LongHero({
   header,
   subheader,
   matchLabel,
   img,
-}: heroContent) {
+}: LongHeroContent) {
   return (
     <div className="group relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-4">
       <Image

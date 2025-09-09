@@ -1,87 +1,22 @@
 "use client";
 
+import { GameCategories, GameStatsTotals, Team } from "@/lib/types";
 import Image, { StaticImageData } from "next/image";
 import sfcBanner from "@/assets/pictures/sfcbanner.png";
 import { useEffect, useMemo, useState } from "react";
 import GameCategoryDropdown from "@/components/teams/GameCategoryDropdown";
 import TeamCard from "@/components/teams/TeamCard";
 import TeamGrid from "@/components/teams/TeamGrid";
-import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
-import gamecontrollericon from "@/assets/icons/gamecontroller.png";
-import type {
-  Team,
-  GameCategories,
-} from "@/components/teams/GameCategoryDropdown";
 import GameCategorySidebar from "@/components/teams/GameCategorySidebar";
-import gameBackground from "@/assets/pictures/sfcbanner.png";
-import valorantIcon from "@/assets/icons/valoranticon.png";
-import valorantBackground from "@/assets/pictures/valorantbackground.webp";
-import valorantBanner from "@/assets/pictures/valorantbanner.webp";
-import pubgmobileIcon from "@/assets/icons/pubgmobileicon.png";
-import pubgmobileBackground from "@/assets/pictures/pubgmobilebackground.jpg";
-import pubgmobileBanner from "@/assets/pictures/pubgmobilebanner.webp";
-import mlbbIcon from "@/assets/icons/mlbbicon.png";
-import mlbbBackground from "@/assets/pictures/mlbbbackground.webp";
-import mlbbBanner from "@/assets/pictures/mlbbbanner.webp";
-
-const gameCategories: GameCategories[] = [
-  {
-    label: "All Games",
-    value: "all",
-    iconSrc: gamecontrollericon,
-    backgroundSrc: gameBackground,
-  },
-  {
-    label: "PUBG Mobile",
-    value: "pubg-mobile",
-    iconSrc: pubgmobileIcon,
-    backgroundSrc: pubgmobileBackground,
-    bannerSrc: pubgmobileBanner,
-  },
-  {
-    label: "Mobile Legends",
-    value: "mobile-legends",
-    iconSrc: mlbbIcon,
-    backgroundSrc: mlbbBackground,
-    bannerSrc: mlbbBanner,
-  },
-  {
-    label: "Valorant Mobile",
-    value: "valorant-mobile",
-    iconSrc: valorantIcon,
-    backgroundSrc: valorantBackground,
-    bannerSrc: valorantBanner,
-  },
-];
-
-const teams: Team[] = [
-  { id: 1,  name: "SFC 女队",     game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 22, first: 3, second: 4, third: 5 },
-  { id: 2,  name: "SFC 男队",     game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 18, first: 2, second: 3, third: 2 },
-  { id: 3,  name: "SFC Taiwan",   game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 15, first: 1, second: 2, third: 3 },
-  { id: 4,  name: "SFC India",    game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 20, first: 2, second: 2, third: 3 },
-  { id: 5,  name: "SFC Tron",     game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 14, first: 1, second: 1, third: 1 },
-  { id: 6,  name: "SFC Heirs",    game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 9,  first: 0, second: 1, third: 1 },
-  { id: 7,  name: "SFC OCE",      game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 12, first: 1, second: 1, third: 1 },
-  { id: 8,  name: "SFC Maldives", game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 8,  first: 0, second: 1, third: 1 },
-  { id: 9,  name: "SFC Rex",      game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 10, first: 1, second: 0, third: 1 },
-  { id: 10, name: "SFC V",        game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 7,  first: 0, second: 1, third: 0 },
-  { id: 11, name: "SFC Valence",  game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 11, first: 1, second: 1, third: 1 },
-  { id: 12, name: "SFC Nemesis",  game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 10, first: 1, second: 2, third: 0 },
-  { id: 13, name: "SFC Academy",  game: "pubg-mobile",    logo: shibeLogo, legacy: true,  gamesPlayed: 6,  first: 0, second: 1, third: 0 },
-  { id: 14, name: "SFC PH",       game: "mobile-legends", logo: shibeLogo, legacy: false, gamesPlayed: 16, first: 3, second: 2, third: 1 },
-  { id: 15, name: "SFC SG",       game: "valorant-mobile",logo: shibeLogo, legacy: false, gamesPlayed: 12, first: 2, second: 1, third: 1 },
-  { id: 16, name: "SFC X",        game: "pubg-mobile",    logo: shibeLogo, legacy: false, gamesPlayed: 13, first: 2, second: 2, third: 1 },
-];
-
-type Totals = { total: number; first: number; second: number; third: number };
+import { teams, gameCategories } from "@/lib/constants";
 
 export default function Teams() {
   const [selectedGame, setSelectedGame] = useState<string>("all");
   const [showLegacy, setShowLegacy] = useState(false);
 
   // aggregate per game, totals include all teams under the game
-  const gameStats: Record<string, Totals> = useMemo(() => {
-    const agg: Record<string, Totals> = {};
+  const gameStats: Record<string, GameStatsTotals> = useMemo(() => {
+    const agg: Record<string, GameStatsTotals> = {};
     for (const t of teams) {
       if (!agg[t.game]) agg[t.game] = { total: 0, first: 0, second: 0, third: 0 };
       agg[t.game].total += t.gamesPlayed;

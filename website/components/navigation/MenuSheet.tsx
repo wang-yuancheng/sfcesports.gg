@@ -16,44 +16,13 @@ import { RemoveScroll } from "react-remove-scroll";
 import Menu from "@/assets/icons/menu.svg";
 import X from "@/assets/icons/x.svg";
 import MenuDropdown from "./MenuDropdown";
-import shibeIcon from "@/assets/icons/shibe-black.svg";
 import Image from "next/image";
+import { MenuSheetProps } from "@/lib/types";
+import { navItems, navTeams } from "@/lib/constants";
 
-const navItems = [
-  { name: "Events", href: "/events" },
-  { name: "Media", href: "/media" },
-  { name: "Company", href: "/about" },
-  { name: "Shop", href: "/shop" },
-];
-
-const teams = [
-  {
-    imageSrc: shibeIcon,
-    title: "SFC 女队",
-    description: "Asia Regional Champion",
-    href: "/teams/team1",
-  },
-  {
-    imageSrc: shibeIcon,
-    title: "SFC Taiwan",
-    description: "Regional #7: Taiwan HK Macau",
-    href: "/teams/team2",
-  },
-  {
-    imageSrc: shibeIcon,
-    title: "SFC India",
-    description: "#2 Asia Regional, 5x Finalist",
-    href: "/teams/team3",
-  },
-];
 
 function isCurrent(pathname: string, href: string) {
   return pathname === href;
-}
-
-export interface MenuSheetProps {
-  open?: boolean;
-  onOpenChange?: (o: boolean) => void;
 }
 
 export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
@@ -102,7 +71,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
               <MenuDropdown
                 heading="Teams"
                 viewAllHref="/teams"
-                items={teams}
+                items={navTeams}
                 onItemClick={() => onOpenChange?.(false)}
               />
 

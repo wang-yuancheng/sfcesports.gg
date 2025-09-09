@@ -4,25 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import EllipsisVertical from "@/assets/icons/ellipsis-vertical.svg";
 import Image, { StaticImageData } from "next/image";
-
-export type GameCategories = {
-  label: string;
-  value: string;
-  iconSrc: StaticImageData;
-  backgroundSrc: StaticImageData;
-  bannerSrc?: StaticImageData;
-};
-export type Team = {
-  id: number;
-  name: string;
-  game: string;
-  logo?: string;
-  legacy: boolean;
-  gamesPlayed: number;
-  first: number;
-  second: number;
-  third: number;
-};
+import { GameCategories } from "@/lib/types";
 
 export default function GameCategoryDropdown({
   title,

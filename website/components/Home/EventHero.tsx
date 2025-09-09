@@ -2,20 +2,14 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "@/components/ui/button";
-
-interface HeroContent {
-  header: React.ReactNode;
-  subheader: string;
-  href: string;
-  colorImage: StaticImageData;
-}
+import { EventHeroContent } from "@/lib/types";
 
 export default function EventHero({
   header,
   subheader,
   href,
   colorImage,
-}: HeroContent) {
+}: EventHeroContent) {
   return (
     <div className="group relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-2">
       <Image

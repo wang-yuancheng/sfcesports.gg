@@ -2,17 +2,7 @@ import Image, { StaticImageData } from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-type Variant = 1 | 2;
-
-interface heroContent {
-  header: string;
-  subheader: string;
-  matchLabel?: string;
-  grayImage: StaticImageData;
-  colorImage: StaticImageData;
-  variant: Variant;
-}
+import { ShopHeroContent } from "@/lib/types";
 
 export default function ShopHero({
   header,
@@ -20,11 +10,11 @@ export default function ShopHero({
   grayImage,
   colorImage,
   variant,
-}: heroContent) {
+}: ShopHeroContent) {
   return (
     <div
       className={`group relative isolate overflow-hidden rounded-2xl h-[540px] ${
-        variant === 1 ? "md:col-span-4" : "md:col-span-2"
+        variant === "big" ? "md:col-span-4" : "md:col-span-2"
       }`}
     >
       {/* Back image, fades in on hover */}

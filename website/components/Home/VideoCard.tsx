@@ -2,13 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import React from "react";
-
-export type VideoItem = {
-  title: string;
-  id: string;
-  thumbnail: StaticImageData;
-  views: string;
-};
+import { VideoItem } from "@/lib/types";
 
 export default function VideoCard({
   item,

@@ -25,21 +25,8 @@
 
 "use client";
 import { useState, useEffect } from "react";
-
-const BREAKPOINTS = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-  navbarsm: 1100,
-  navbarlg: 1350,
-  "2xl": 1536,
-} as const;
-
-type BreakpointName = keyof typeof BREAKPOINTS;
-
-// MediaInput can be one or several different types (Union Type)
-type MediaInput = string | { min?: number; max?: number } | BreakpointName;
+import { BREAKPOINTS } from "@/lib/constants";
+import { BreakpointName, MediaInput } from "@/lib/types"
 
 function buildQuery(input: MediaInput): string {
   // If input is a full media query string

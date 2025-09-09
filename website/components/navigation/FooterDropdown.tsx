@@ -3,16 +3,7 @@
 import React, { useState, useEffect } from "react";
 import ChevronDown from "@/assets/icons/chevron-down.svg";
 import Image from "next/image";
-
-interface FooterDropdownItem {
-  label: string;
-  href?: string;
-}
-
-interface FooterDropdownProps {
-  trigger: string;
-  dropdownContent: FooterDropdownItem[];
-}
+import { FooterDropdownProps } from "@/lib/types";
 
 export default function FooterDropdown({
   trigger,

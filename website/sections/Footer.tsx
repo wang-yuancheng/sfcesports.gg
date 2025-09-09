@@ -2,62 +2,9 @@ import Image from "next/image";
 import React from "react";
 
 import shibeFanClubBanner from "@/assets/logos/shibefanclubbanner.png";
-import youtubeIcon from "@/assets/icons/youtube.svg";
-import tiktokIcon from "@/assets/icons/tiktok.svg";
-import instagramIcon from "@/assets/icons/instagram.svg";
-import githubIcon from "@/assets/icons/github.svg";
-import discordIcon from "@/assets/icons/discord.svg";
-import linkedinIcon from "@/assets/icons/linkedin.svg";
 import shibeLogoBlack from "@/assets/icons/shibe-black.svg";
 import FooterDropdown from "@/components/navigation/FooterDropdown";
-
-export const srcList = [
-  {
-    src: youtubeIcon,
-    alt: "YouTube Icon",
-    href: "https://www.youtube.com/@shibepubg",
-  },
-  {
-    src: tiktokIcon,
-    alt: "TikTok Icon",
-    href: "https://www.tiktok.com/@shibepubg",
-  },
-  {
-    src: instagramIcon,
-    alt: "Instagram Icon",
-    href: "https://www.instagram.com/shibepubg/",
-  },
-  {
-    src: githubIcon,
-    alt: "Github Icon",
-    href: "https://github.com/wang-yuancheng",
-  },
-  {
-    src: discordIcon,
-    alt: "Discord Icon",
-    href: "https://discord.com/invite/2Sby35W",
-  },
-  {
-    src: linkedinIcon,
-    alt: "LinkedIn Icon",
-    href: "https://www.linkedin.com/company/shibefanclub/",
-  },
-];
-
-const about = [
-  { label: "Our Story", href: "/about" },
-  { label: "Brand Kit", href: "/brand" },
-  { label: "Contact Us", href: "/contact" },
-];
-const activity = [
-  { label: "Events", href: "/events" },
-  { label: "Shop", href: "/Shop" },
-];
-const termsAndPolicies = [
-  { label: "All Terms and Policies", href: "/policies/all" },
-];
-const currency = [{ label: "$ SGD" }, { label: "₹ INR" }, { label: "RM MYR" }];
-const copyright = `© 2021 - ${new Date().getFullYear()}, ShibeFanClub, All rights reserved`;
+import { footerSocialsList, footerAbout, footerActivity, termsAndPolicies, currency, copyright } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -77,8 +24,8 @@ export default function Footer() {
 
         {/* TODO: Change global state when currency is modified */}
         <FooterDropdown trigger="$ USD" dropdownContent={currency} />
-        <FooterDropdown trigger="About" dropdownContent={about} />
-        <FooterDropdown trigger="Activity" dropdownContent={activity} />
+        <FooterDropdown trigger="About" dropdownContent={footerAbout} />
+        <FooterDropdown trigger="Activity" dropdownContent={footerActivity} />
         <FooterDropdown
           trigger="Terms and Policies"
           dropdownContent={termsAndPolicies}
@@ -86,7 +33,7 @@ export default function Footer() {
 
         {/* social icons – mobile */}
         <div className="flex gap-2 flex-nowrap justify-between">
-          {srcList.map(({ src, alt, href }) => (
+          {footerSocialsList.map(({ src, alt, href }) => (
             <a
               key={alt}
               href={href}
@@ -140,8 +87,8 @@ export default function Footer() {
         {/* LEFT SIDE */}
         <div className="flex gap-[clamp(1rem,9vw,10rem)]">
           {[
-            { title: "About", items: about },
-            { title: "Activity", items: activity },
+            { title: "About", items: footerAbout },
+            { title: "Activity", items: footerActivity },
             { title: "Terms and Policies", items: termsAndPolicies },
           ].map(({ title, items }) => (
             <div key={title} className="flex flex-col">
@@ -168,7 +115,7 @@ export default function Footer() {
         >
           {/* social icons row */}
           <div className="flex gap-2 flex-wrap justify-end">
-            {srcList.map(({ src, alt, href }) => (
+            {footerSocialsList.map(({ src, alt, href }) => (
               <a
                 key={alt}
                 href={href}

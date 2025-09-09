@@ -1,26 +1,14 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React from "react";
-
-interface ListItem {
-  title: string;
-  href: string;
-  logoSrc: StaticImageData;
-}
-
-interface heroContent {
-  header: string;
-  subheader: string;
-  list?: ListItem[];
-  background: StaticImageData;
-}
+import { ShortHeroContent } from "@/lib/types";
 
 export default function ShortHero({
   header,
   subheader,
   list,
   background,
-}: heroContent) {
+}: ShortHeroContent) {
   return (
     <div className="relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-2">
       <Image

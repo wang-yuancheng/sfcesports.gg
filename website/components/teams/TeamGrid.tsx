@@ -1,7 +1,4 @@
-import type {
-  Team,
-  GameCategories,
-} from "@/components/teams/GameCategoryDropdown";
+import { Team } from "@/lib/types";
 
 export default function TeamGrid({
   teams,

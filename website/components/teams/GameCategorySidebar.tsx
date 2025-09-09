@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import type { GameCategories } from "@/components/teams/GameCategoryDropdown";
-
-type StatsTotals = { total: number; first: number; second: number; third: number };
+import { GameCategories, GameStatsTotals } from "@/lib/types";
 
 export default function GameCategorySidebar({
   categories,
@@ -15,7 +13,7 @@ export default function GameCategorySidebar({
   categories: GameCategories[];
   onSelect?: (value: string) => void;
   value?: string | null;
-  gameStats?: Record<string, StatsTotals>;
+  gameStats?: Record<string, GameStatsTotals>;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
 
