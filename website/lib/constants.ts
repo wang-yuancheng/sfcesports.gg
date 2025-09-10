@@ -10,7 +10,6 @@ import pubgmobileBanner from "@/assets/pictures/pubgmobilebanner.webp";
 import mlbbIcon from "@/assets/icons/mlbbicon.png";
 import mlbbBackground from "@/assets/pictures/mlbbbackground.webp";
 import mlbbBanner from "@/assets/pictures/mlbbbanner.webp";
-import { GameCategories, Team, VideoItem } from "@/lib/types";
 import shibeIcon from "@/assets/icons/shibe-black.svg";
 import youtubeIcon from "@/assets/icons/youtube.svg";
 import tiktokIcon from "@/assets/icons/tiktok.svg";
@@ -32,6 +31,7 @@ import thmLogo from "@/assets/logos/thm.png";
 import dlyLogo from "@/assets/logos/dly.png";
 import xbossLogo from "@/assets/logos/xboss.png";
 import novaLogo from "@/assets/logos/nova.webp";
+import { GameCategories, Team, VideoItem } from "@/lib/types";
 
 /* ---------------------------- Styling ---------------------------- */
 

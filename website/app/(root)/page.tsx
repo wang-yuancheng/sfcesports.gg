@@ -1,7 +1,7 @@
-import Hero from "@/sections/Hero";
-import LogoTicker from "@/sections/LogoTicker";
-import PastEvents from "@/sections/PastEvents";
-import Videos from "@/sections/Videos";
+import Hero from "@/sections/Home/Hero";
+import LogoTicker from "@/sections/Home/LogoTicker";
+import PastEvents from "@/sections/Home/PastEvents";
+import Videos from "@/sections/Home/Videos";
 
 export default function Home() {
   return (
