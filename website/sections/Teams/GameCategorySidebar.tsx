@@ -27,7 +27,8 @@ export default function GameCategorySidebar({
         {categories.map((i, idx) => {
           const isActive = selected === i.value;
           const panelId = `stats-${idx}`;
-          const stats = gameStats?.[i.value] ?? { total: 0, first: 0, second: 0, third: 0 };
+          const stats =
+            gameStats?.[i.value] ?? { total: 0, first: 0, second: 0, third: 0 };
 
           return (
             <li key={idx}>
@@ -69,9 +70,17 @@ export default function GameCategorySidebar({
                   {/* foreground */}
                   <span className="relative z-10 flex items-center gap-3 text-white">
                     <span className="flex h-8 w-8 items-center justify-center">
-                      <Image src={i.iconSrc} alt={i.label} width={30} height={30} className="drop-shadow-sm" />
+                      <Image
+                        src={i.iconSrc}
+                        alt={i.label}
+                        width={30}
+                        height={30}
+                        className="drop-shadow-sm"
+                      />
                     </span>
-                    <span className="font-semibold text-lg drop-shadow-sm">{i.label}</span>
+                    <span className="font-semibold text-lg drop-shadow-sm">
+                      {i.label}
+                    </span>
                   </span>
                 </button>
 
@@ -94,23 +103,35 @@ export default function GameCategorySidebar({
                     <ul className="mt-4 space-y-2">
                       <li className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium text-gray-900">1st</span>
+                          <span className="text-sm font-medium text-gray-900">
+                            1st
+                          </span>
                         </div>
-                        <span className="text-sm font-semibold text-gray-800">{stats.first}</span>
+                        <span className="text-sm font-semibold text-gray-800">
+                          {stats.first}
+                        </span>
                       </li>
 
                       <li className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium text-gray-900">2nd</span>
+                          <span className="text-sm font-medium text-gray-900">
+                            2nd
+                          </span>
                         </div>
-                        <span className="text-sm font-semibold text-gray-800">{stats.second}</span>
+                        <span className="text-sm font-semibold text-gray-800">
+                          {stats.second}
+                        </span>
                       </li>
 
                       <li className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-medium text-gray-900">3rd</span>
+                          <span className="text-sm font-medium text-gray-900">
+                            3rd
+                          </span>
                         </div>
-                        <span className="text-sm font-semibold text-gray-800">{stats.third}</span>
+                        <span className="text-sm font-semibold text-gray-800">
+                          {stats.third}
+                        </span>
                       </li>
                     </ul>
                   </div>

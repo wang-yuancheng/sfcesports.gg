@@ -12,20 +12,19 @@ export default function TeamGrid({
       className="
         grid grid-cols-2 gap-3
         sm:grid-cols-3
-        md:grid-cols-2
-        lg:grid-cols-1 xl:grid-cols-1 2xl:grid-cols-1
+        md:grid-cols-4
+        lg:grid-cols-3
+        navbarsm:grid-cols-3
+        xlg:grid-cols-4
+        navbarlg:grid-cols-4
+        xxlg:grid-cols-5
       "
     >
       {teams.map((t) => (
-        <div key={t.id} className="w-full">
+        <div key={t.id} className="w-full h-72">
           {renderTeam(t)}
         </div>
       ))}
-      {teams.length === 0 && (
-        <div className="col-span-full rounded-xl border border-gray-200 p-6 text-center text-gray-600">
-          Nothing to show here
-        </div>
-      )}
     </div>
   );
 }

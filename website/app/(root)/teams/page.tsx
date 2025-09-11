@@ -15,7 +15,6 @@ export default function TeamsPage() {
   const [selectedGame, setSelectedGame] = useState<string>("all");
   const [showLegacy, setShowLegacy] = useState(false);
 
-  // per game totals
   const gameStats: Record<string, GameStatsTotals> = useMemo(() => {
     const agg: Record<string, GameStatsTotals> = {};
     for (const t of teams as Team[]) {
@@ -74,6 +73,7 @@ export default function TeamsPage() {
       <div className="block lg:hidden mt-4 mb-6">
         <GameCategoryDropdown
           title={mobileDropdownTitle}
+          value={selectedGame === "all" ? null : selectedGame}
           categories={gameCategories}
           onSelect={(value) => setSelectedGame(value)}
         />

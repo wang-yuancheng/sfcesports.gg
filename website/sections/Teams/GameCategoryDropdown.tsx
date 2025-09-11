@@ -3,21 +3,27 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import EllipsisVertical from "@/assets/icons/ellipsis-vertical.svg";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { GameCategories } from "@/lib/types";
 
 export default function GameCategoryDropdown({
   title,
   categories,
   onSelect,
+  value,
 }: {
   title: string;
   categories: GameCategories[];
   onSelect?: (value: string) => void;
+  value?: string | null;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
+
+  useEffect(() => {
+    setSelected(value ?? null);
+  }, [value]);
 
   const shownLabel = selected
     ? categories.find((c) => c.value === selected)?.label ?? title
