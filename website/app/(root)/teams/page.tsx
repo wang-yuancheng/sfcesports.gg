@@ -14,12 +14,12 @@ import { teams, gameCategories } from "@/lib/constants";
 export default function TeamsPage() {
   const [selectedGame, setSelectedGame] = useState<string>("all");
   const [showLegacy, setShowLegacy] = useState(false);
+  const [showAllRosters, setShowAllRosters] = useState(false);
 
   const gameStats: Record<string, GameStatsTotals> = useMemo(() => {
     const agg: Record<string, GameStatsTotals> = {};
     for (const t of teams as Team[]) {
-      if (!agg[t.game])
-        agg[t.game] = { total: 0, first: 0, second: 0, third: 0 };
+      if (!agg[t.game]) agg[t.game] = { total: 0, first: 0, second: 0, third: 0 };
       agg[t.game].total += t.gamesPlayed;
       agg[t.game].first += t.first;
       agg[t.game].second += t.second;
@@ -41,7 +41,6 @@ export default function TeamsPage() {
     return legacyTeamsOnly.filter((t) => t.game === selectedGame);
   }, [selectedGame, legacyTeamsOnly]);
 
-  // mobile dropdown title follows selection
   const selectedCategory = useMemo(
     () =>
       gameCategories.find((g) => g.value === selectedGame) as
@@ -51,7 +50,6 @@ export default function TeamsPage() {
   );
   const mobileDropdownTitle = selectedCategory?.label ?? "All Games";
 
-  // close legacy when nothing to show
   useEffect(() => {
     if (visibleLegacy.length === 0 && showLegacy) setShowLegacy(false);
   }, [visibleLegacy.length, showLegacy]);
@@ -59,15 +57,26 @@ export default function TeamsPage() {
   return (
     <section className="section-container pb-10 navbarsm:my-8">
       <div className="max-w mx-auto mb-8">
-        <TeamBanner
-          selectedGame={selectedGame}
-          gameCategories={gameCategories}
-        />
+        <TeamBanner selectedGame={selectedGame} gameCategories={gameCategories} />
       </div>
 
-      <p className="font-druk font-medium uppercase text-2xl lg:text-3xl">
-        Our Teams
-      </p>
+      {/* Title row with roster toggle at far right */}
+      <div className="mt-1 mb-1 flex items-center gap-3">
+        <p className="font-druk font-medium uppercase text-2xl lg:text-3xl">
+          Our Teams
+        </p>
+        <div className="ml-auto">
+          <button
+            type="button"
+            aria-pressed={showAllRosters}
+            onClick={() => setShowAllRosters((v) => !v)}
+            className="inline-flex items-center rounded-md border border-gray-200 bg-white px-3 py-2 text-sm hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+            title="Toggle all rosters"
+          >
+            {showAllRosters ? "Hide rosters" : "Show rosters"}
+          </button>
+        </div>
+      </div>
 
       {/* mobile filter */}
       <div className="block lg:hidden mt-4 mb-6">
@@ -89,7 +98,9 @@ export default function TeamsPage() {
           <div className="mt-4">
             <TeamGrid
               teams={visibleActive}
-              renderTeam={(team) => <TeamCard team={team} />}
+              renderTeam={(team) => (
+                <TeamCard team={team} forceRoster={showAllRosters} />
+              )}
             />
           </div>
 
@@ -106,14 +117,14 @@ export default function TeamsPage() {
                 aria-hidden={!showLegacy}
                 className={[
                   "mt-4 overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out",
-                  showLegacy
-                    ? "max-h-[4000px] opacity-100"
-                    : "max-h-0 opacity-0",
+                  showLegacy ? "max-h-[4000px] opacity-100" : "max-h-0 opacity-0",
                 ].join(" ")}
               >
                 <TeamGrid
                   teams={visibleLegacy}
-                  renderTeam={(team) => <TeamCard team={team} />}
+                  renderTeam={(team) => (
+                    <TeamCard team={team} forceRoster={showAllRosters} />
+                  )}
                 />
               </div>
             </>

@@ -118,6 +118,23 @@ export const gameCategories: GameCategories[] = [
   },
 ];
 
+export interface Player {
+  name: string; // includes emoji + name
+}
+
+export interface Team {
+  id: number;
+  name: string;
+  game: string;
+  logo?: string;
+  legacy: boolean;
+  gamesPlayed: number;
+  first: number;
+  second: number;
+  third: number;
+  players: Player[];
+}
+
 export const teams: Team[] = [
   {
     id: 1,
@@ -129,6 +146,12 @@ export const teams: Team[] = [
     first: 3,
     second: 4,
     third: 5,
+    players: [
+      { name: "🇯🇵 Aya" },
+      { name: "🇨🇳 Mei" },
+      { name: "🇰🇷 Hana" },
+      { name: "🇯🇵 Sakura" },
+    ],
   },
   {
     id: 2,
@@ -140,6 +163,12 @@ export const teams: Team[] = [
     first: 2,
     second: 3,
     third: 2,
+    players: [
+      { name: "🇯🇵 Ryo" },
+      { name: "🇸🇬 Kai" },
+      { name: "🇨🇳 Chen" },
+      { name: "🇯🇵 Takeshi" },
+    ],
   },
   {
     id: 3,
@@ -151,6 +180,12 @@ export const teams: Team[] = [
     first: 1,
     second: 2,
     third: 3,
+    players: [
+      { name: "🇹🇼 Wei" },
+      { name: "🇹🇼 Shen" },
+      { name: "🇹🇼 Hao" },
+      { name: "🇹🇼 Jun" },
+    ],
   },
   {
     id: 4,
@@ -162,6 +197,12 @@ export const teams: Team[] = [
     first: 2,
     second: 2,
     third: 3,
+    players: [
+      { name: "🇮🇳 Arjun" },
+      { name: "🇮🇳 Ravi" },
+      { name: "🇮🇳 Vikram" },
+      { name: "🇮🇳 Sahil" },
+    ],
   },
   {
     id: 5,
@@ -173,6 +214,12 @@ export const teams: Team[] = [
     first: 1,
     second: 1,
     third: 1,
+    players: [
+      { name: "🇺🇸 Neo" },
+      { name: "🇸🇬 Ghost" },
+      { name: "🇲🇾 Zero" },
+      { name: "🇵🇭 Blaze" },
+    ],
   },
   {
     id: 6,
@@ -184,18 +231,13 @@ export const teams: Team[] = [
     first: 0,
     second: 1,
     third: 1,
+    players: [
+      { name: "🇸🇬 Leo" },
+      { name: "🇲🇾 Marcus" },
+      { name: "🇸🇬 Aaron" },
+      { name: "🇵🇭 Daryl" },
+    ],
   },
-  // {
-  //   id: 7,
-  //   name: "SFC OCE",
-  //   game: "pubg-mobile",
-  //   logo: shibeLogo,
-  //   legacy: true,
-  //   gamesPlayed: 12,
-  //   first: 1,
-  //   second: 1,
-  //   third: 1,
-  // },
   {
     id: 8,
     name: "SFC Maldives",
@@ -206,6 +248,12 @@ export const teams: Team[] = [
     first: 0,
     second: 1,
     third: 1,
+    players: [
+      { name: "🇲🇻 Ibrahim" },
+      { name: "🇲🇻 Faisal" },
+      { name: "🇲🇻 Zaid" },
+      { name: "🇲🇻 Rashid" },
+    ],
   },
   {
     id: 9,
@@ -217,6 +265,12 @@ export const teams: Team[] = [
     first: 1,
     second: 0,
     third: 1,
+    players: [
+      { name: "🇺🇸 Hunter" },
+      { name: "🇨🇦 Wolf" },
+      { name: "🇬🇧 Rex" },
+      { name: "🇩🇪 Fang" },
+    ],
   },
   {
     id: 10,
@@ -228,6 +282,12 @@ export const teams: Team[] = [
     first: 0,
     second: 1,
     third: 0,
+    players: [
+      { name: "🇫🇷 Victor" },
+      { name: "🇪🇸 Alex" },
+      { name: "🇮🇹 Nico" },
+      { name: "🇫🇷 Louis" },
+    ],
   },
   {
     id: 11,
@@ -239,29 +299,13 @@ export const teams: Team[] = [
     first: 1,
     second: 1,
     third: 1,
+    players: [
+      { name: "🇫🇷 Maxime" },
+      { name: "🇧🇪 Julien" },
+      { name: "🇨🇭 Adrien" },
+      { name: "🇫🇷 Theo" },
+    ],
   },
-  // {
-  //   id: 12,
-  //   name: "SFC Nemesis",
-  //   game: "pubg-mobile",
-  //   logo: shibeLogo,
-  //   legacy: true,
-  //   gamesPlayed: 10,
-  //   first: 1,
-  //   second: 2,
-  //   third: 0,
-  // },
-  // {
-  //   id: 13,
-  //   name: "SFC Academy",
-  //   game: "pubg-mobile",
-  //   logo: shibeLogo,
-  //   legacy: true,
-  //   gamesPlayed: 6,
-  //   first: 0,
-  //   second: 1,
-  //   third: 0,
-  // },
   {
     id: 14,
     name: "SFC PH",
@@ -272,6 +316,13 @@ export const teams: Team[] = [
     first: 3,
     second: 2,
     third: 1,
+    players: [
+      { name: "🇵🇭 Juan" },
+      { name: "🇵🇭 Marco" },
+      { name: "🇵🇭 Andres" },
+      { name: "🇵🇭 Carlos" },
+      { name: "🇵🇭 Paolo" },
+    ],
   },
   {
     id: 15,
@@ -283,18 +334,14 @@ export const teams: Team[] = [
     first: 2,
     second: 1,
     third: 1,
+    players: [
+      { name: "🇸🇬 Ethan" },
+      { name: "🇸🇬 Darren" },
+      { name: "🇸🇬 Bryan" },
+      { name: "🇸🇬 Joel" },
+      { name: "🇸🇬 Kelvin" },
+    ],
   },
-//   {
-//     id: 16,
-//     name: "SFC X",
-//     game: "pubg-mobile",
-//     logo: shibeLogo,
-//     legacy: false,
-//     gamesPlayed: 13,
-//     first: 2,
-//     second: 2,
-//     third: 1,
-//   },
 ];
 
 /* ---------------------------- Navigation Menu ---------------------------- */

@@ -27,7 +27,7 @@ export interface SidebarContextProps {
   setOpenMobile: (open: boolean) => void;
   isMobile: boolean;
   toggleSidebar: () => void;
-};
+}
 
 /* ---------------------------- Navigation UI ---------------------------- */
 
@@ -155,4 +155,8 @@ export interface Team {
   first: number;
   second: number;
   third: number;
+  players: Player[];
+}
+interface Player {
+  name: string; 
 }
