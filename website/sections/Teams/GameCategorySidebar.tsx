@@ -27,14 +27,18 @@ export default function GameCategorySidebar({
         {categories.map((i, idx) => {
           const isActive = selected === i.value;
           const panelId = `stats-${idx}`;
-          const stats =
-            gameStats?.[i.value] ?? { total: 0, first: 0, second: 0, third: 0 };
+          const stats = gameStats?.[i.value] ?? {
+            total: 0,
+            first: 0,
+            second: 0,
+            third: 0,
+          };
 
           return (
             <li key={idx}>
               <div
                 className={[
-                  "rounded-2xl border border-gray-200 shadow-sm overflow-hidden bg-white",
+                  "rounded-xl border border-gray-200 shadow-sm overflow-hidden bg-white",
                   isActive ? "ring-2 ring-black/20" : "",
                 ].join(" ")}
               >
@@ -89,7 +93,9 @@ export default function GameCategorySidebar({
                   id={panelId}
                   className={[
                     "hidden lg:block overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out",
-                    isActive ? "max-h-[240px] opacity-100" : "max-h-0 opacity-0",
+                    isActive
+                      ? "max-h-[240px] opacity-100"
+                      : "max-h-0 opacity-0",
                   ].join(" ")}
                 >
                   <div className="bg-white px-5 pb-5 pt-4">
@@ -139,6 +145,7 @@ export default function GameCategorySidebar({
               </div>
             </li>
           );
+          
         })}
       </ul>
     </div>

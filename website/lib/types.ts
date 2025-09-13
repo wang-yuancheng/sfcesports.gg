@@ -156,7 +156,9 @@ export interface Team {
   second: number;
   third: number;
   players: Player[];
+  label?: string;
 }
 interface Player {
   name: string; 
+  country: string;
 }

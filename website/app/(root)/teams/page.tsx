@@ -19,7 +19,8 @@ export default function TeamsPage() {
   const gameStats: Record<string, GameStatsTotals> = useMemo(() => {
     const agg: Record<string, GameStatsTotals> = {};
     for (const t of teams as Team[]) {
-      if (!agg[t.game]) agg[t.game] = { total: 0, first: 0, second: 0, third: 0 };
+      if (!agg[t.game])
+        agg[t.game] = { total: 0, first: 0, second: 0, third: 0 };
       agg[t.game].total += t.gamesPlayed;
       agg[t.game].first += t.first;
       agg[t.game].second += t.second;
@@ -57,25 +58,17 @@ export default function TeamsPage() {
   return (
     <section className="section-container pb-10 navbarsm:my-8">
       <div className="max-w mx-auto mb-8">
-        <TeamBanner selectedGame={selectedGame} gameCategories={gameCategories} />
+        <TeamBanner
+          selectedGame={selectedGame}
+          gameCategories={gameCategories}
+        />
       </div>
 
       {/* Title row with roster toggle at far right */}
-      <div className="mt-1 mb-1 flex items-center gap-3">
-        <p className="font-druk font-medium uppercase text-2xl lg:text-3xl">
+      <div className="md:hidden mt-1 mb-1 flex items-center gap-3">
+        <p className="font-druk font-medium uppercase text-3xl lg:text-4xl">
           Our Teams
         </p>
-        <div className="ml-auto">
-          <button
-            type="button"
-            aria-pressed={showAllRosters}
-            onClick={() => setShowAllRosters((v) => !v)}
-            className="inline-flex items-center rounded-md border border-gray-200 bg-white px-3 py-2 text-sm hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
-            title="Toggle all rosters"
-          >
-            {showAllRosters ? "Hide rosters" : "Show rosters"}
-          </button>
-        </div>
       </div>
 
       {/* mobile filter */}
@@ -92,14 +85,27 @@ export default function TeamsPage() {
       <div className="md:flex md:items-start md:gap-6 mt-2">
         {/* main */}
         <div className="flex-1 min-w-0">
-          <p className="font-druk font-medium uppercase text-base lg:text-lg mt-6">
-            Active Teams
-          </p>
-          <div className="mt-4">
+          <div className="flex items-center">
+            <p className="hidden md:block font-druk font-medium uppercase text-base lg:text-lg pt-1">
+              Active Teams
+            </p>
+            <div className="ml-auto hidden md:block">
+              <button
+                type="button"
+                aria-pressed={showAllRosters}
+                onClick={() => setShowAllRosters((v) => !v)}
+                className="inline-flex items-center rounded-md border border-gray-200 bg-white px-3 py-[7px] text-sm hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                title="Toggle all rosters"
+              >
+                {showAllRosters ? "Hide rosters" : "Show rosters"}
+              </button>
+            </div>
+          </div>
+          <div className="md:mt-4">
             <TeamGrid
               teams={visibleActive}
               renderTeam={(team) => (
-                <TeamCard team={team} forceRoster={showAllRosters} />
+                <TeamCard team={team} forceRoster={showAllRosters} showLabel={false}/>
               )}
             />
           </div>
@@ -117,13 +123,15 @@ export default function TeamsPage() {
                 aria-hidden={!showLegacy}
                 className={[
                   "mt-4 overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out",
-                  showLegacy ? "max-h-[4000px] opacity-100" : "max-h-0 opacity-0",
+                  showLegacy
+                    ? "max-h-[4000px] opacity-100"
+                    : "max-h-0 opacity-0",
                 ].join(" ")}
               >
                 <TeamGrid
                   teams={visibleLegacy}
                   renderTeam={(team) => (
-                    <TeamCard team={team} forceRoster={showAllRosters} />
+                    <TeamCard team={team} forceRoster={showAllRosters} showLabel={false}/>
                   )}
                 />
               </div>
@@ -133,7 +141,7 @@ export default function TeamsPage() {
 
         {/* sidebar */}
         <aside className="hidden lg:flex w-64 shrink-0 flex-col gap-4">
-          <p className="font-druk font-medium uppercase text-base lg:text-lg mt-6">
+          <p className="font-druk font-medium uppercase text-base lg:text-lg my-1">
             Filter Games
           </p>
           <GameCategorySidebar

@@ -48,7 +48,7 @@ export default function GameCategoryDropdown({
         role="button"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className="relative flex h-12 w-full items-center justify-between rounded-[14px] border border-gray-200 px-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] hover:shadow-sm"
+        className="relative flex h-12 w-full items-center justify-between rounded-xl border border-gray-200 px-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] hover:shadow-sm"
       >
         <div className="text-black">{shownLabel}</div>
         <button

@@ -4,22 +4,41 @@ import Image from "next/image";
 import Link from "next/link";
 import { Team } from "@/lib/types";
 
-/**
- * Team card
- * - Name is fixed at the top, always visible and clickable since the whole card is a link
- * - Middle shows logo by default, roster on hover, roster is also forced by prop for mobile
- * - Roster rows use equal heights for 4 or 5 players
- * - Optional bottom label is controlled by prop for reuse on events pages
- */
+function FlagIcon({
+  code,
+  width = 22,
+  className = "border border-gray-200",
+}: {
+  code?: string;
+  width?: number;
+  className?: string;
+}) {
+  if (!code) return null;
+  const c = code.toLowerCase();
+
+  return (
+    <img
+      src={`https://flagcdn.com/${c}.svg`}
+      alt={code}
+      width={width}
+      style={{ height: "auto" }}
+      className={className}
+      loading="lazy"
+      decoding="async"
+    />
+  );
+}
+
+// To create label add props: showLabel={true} labelText={team.label}
 export default function TeamCard({
   team,
   forceRoster = false,
-  showLabel = false,
-  labelText = "Circuit Points (#4)",
+  showLabel,
+  labelText = "No label given",
 }: {
   team: Team;
-  forceRoster?: boolean; // used by the page level "toggle rosters" button
-  showLabel?: boolean;   // developer prop, not shown as a button
+  forceRoster?: boolean;
+  showLabel?: boolean;
   labelText?: string;
 }) {
   const players = team.players ?? [];
@@ -29,21 +48,65 @@ export default function TeamCard({
   return (
     <Link
       href="#"
-      className="group relative block h-full overflow-hidden rounded-xl border border-gray-200 bg-white"
+      className="group relative block h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_2px_3px_rgba(0,0,0,0.05)]"
       aria-label={`Open ${team.name} team page`}
     >
-      {/* Layout is a column, header, middle, optional bottom label */}
       <div className="flex h-full flex-col">
-        {/* Header, fixed, keeps logo from overlapping */}
-        <div className="shrink-0 px-4 pt-3 pb-2 text-center">
-          <span className="font-druk text-lg md:text-xl font-semibold text-gray-900">
+        {/* Header */}
+        <div className="shrink-0 py-3 border-b border-gray-200 text-center">
+          <span className="uppercase text-sm font-bold text-gray-700">
             {team.name}
           </span>
         </div>
 
-        {/* Middle region, holds logo or roster, never overlaps header or label */}
-        <div className="relative flex-1 px-3 pb-3">
-          {/* Logo, fades out on hover or when forced roster is on */}
+        {/* Mobile and small, logo left, names right, always visible */}
+        <div className="md:hidden">
+          <div className="flex items-stretch">
+            {/* logo column, defines row height */}
+            <div className="flex h-28 w-28 xs:h-40 xs:w-40 sm:h-52 sm:w-52 shrink-0 items-center justify-center">
+              {team.logo ? (
+                <Image
+                  src={team.logo}
+                  alt={`${team.name} logo`}
+                  className="h-full w-full object-contain"
+                />
+              ) : (
+                <div className="h-full w-full border border-gray-200" />
+              )}
+            </div>
+
+            {/* roster column, stretches to match logo height */}
+            <div className="flex-1">
+              <div className="h-full border-l border-gray-200">
+                <ul
+                  className="grid h-full w-full overflow-hidden"
+                  style={{
+                    gridTemplateRows: `repeat(${rowCount}, minmax(0, 1fr))`,
+                  }}
+                >
+                  {roster.map((p, i) => (
+                    <li
+                      key={`${p.name}-${p.country ?? "XX"}-${i}`}
+                      className={[
+                        "flex items-stretch text-gray-700",
+                        i < rowCount - 1 ? "border-b border-gray-200" : "",
+                      ].join(" ")}
+                    >
+                      <span className="flex-1 flex items-center gap-2 px-4 whitespace-nowrap">
+                        <FlagIcon code={p.country} />
+                        {p.name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* md and up, center logo with hover roster */}
+        <div className="relative hidden md:block flex-1 px-3 pb-3">
+          {/* Logo */}
           <div
             className={[
               "absolute inset-0 flex items-center justify-center",
@@ -64,7 +127,7 @@ export default function TeamCard({
             )}
           </div>
 
-          {/* Roster overlay, occupies only the middle region */}
+          {/* Roster overlay */}
           <div
             className={[
               "absolute inset-0 transition-opacity duration-200",
@@ -73,17 +136,20 @@ export default function TeamCard({
             ].join(" ")}
           >
             <ul
-              className="grid h-full w-full overflow-hidden rounded-lg border border-gray-200 bg-white/95"
-              style={{ gridTemplateRows: `repeat(${rowCount}, minmax(0, 1fr))` }}
+              className="grid h-full w-full overflow-hidden"
+              style={{
+                gridTemplateRows: `repeat(${rowCount}, minmax(0, 1fr))`,
+              }}
             >
               {roster.map((p, i) => (
                 <li
-                  key={`${p.name}-${i}`}
+                  key={`${p.name}-${p.country ?? "XX"}-md-${i}`}
                   className={[
-                    "flex items-center gap-3 px-4 text-base font-semibold text-gray-800",
+                    "flex items-center gap-3 px-4 text-gray-700",
                     i < rowCount - 1 ? "border-b border-gray-200" : "",
                   ].join(" ")}
                 >
+                  <FlagIcon code={p.country} />
                   <span className="whitespace-nowrap">{p.name}</span>
                 </li>
               ))}
@@ -91,9 +157,9 @@ export default function TeamCard({
           </div>
         </div>
 
-        {/* Optional bottom label for reuse on events page */}
+        {/* Bottom label, optional */}
         {showLabel && (
-          <div className="shrink-0 border-t bg-gray-50 px-4 py-3 text-center text-sm font-medium text-gray-700">
+          <div className="shrink-0 border-t py-3 text-center text-sm font-medium text-gray-700">
             {labelText}
           </div>
         )}

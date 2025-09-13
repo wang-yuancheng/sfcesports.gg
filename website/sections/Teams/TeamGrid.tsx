@@ -10,8 +10,8 @@ export default function TeamGrid({
   return (
     <div
       className="
-        grid grid-cols-2 gap-3
-        sm:grid-cols-3
+        grid grid-cols-1 gap-3
+        sm:grid-cols-1
         md:grid-cols-4
         lg:grid-cols-3
         navbarsm:grid-cols-3
@@ -21,7 +21,7 @@ export default function TeamGrid({
       "
     >
       {teams.map((t) => (
-        <div key={t.id} className="w-full h-72">
+        <div key={t.id} className="w-full h-auto md:h-72">
           {renderTeam(t)}
         </div>
       ))}
