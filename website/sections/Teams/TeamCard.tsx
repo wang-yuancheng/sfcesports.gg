@@ -59,10 +59,9 @@ export default function TeamCard({
           </span>
         </div>
 
-        {/* Mobile and small, logo left, names right, always visible */}
+        {/* Mobile */}
         <div className="md:hidden">
           <div className="flex items-stretch">
-            {/* logo column, defines row height */}
             <div className="flex h-28 w-28 xs:h-40 xs:w-40 sm:h-52 sm:w-52 shrink-0 items-center justify-center">
               {team.logo ? (
                 <Image
@@ -75,7 +74,7 @@ export default function TeamCard({
               )}
             </div>
 
-            {/* roster column, stretches to match logo height */}
+            {/* roster column */}
             <div className="flex-1">
               <div className="h-full border-l border-gray-200">
                 <ul
@@ -104,9 +103,8 @@ export default function TeamCard({
           </div>
         </div>
 
-        {/* md and up, center logo with hover roster */}
+        {/* md and up */}
         <div className="relative hidden md:block flex-1 px-3 pb-3">
-          {/* Logo */}
           <div
             className={[
               "absolute inset-0 flex items-center justify-center",
@@ -127,7 +125,7 @@ export default function TeamCard({
             )}
           </div>
 
-          {/* Roster overlay */}
+          {/* Roster */}
           <div
             className={[
               "absolute inset-0 transition-opacity duration-200",

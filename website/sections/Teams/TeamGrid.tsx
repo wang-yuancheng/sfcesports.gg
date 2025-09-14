@@ -12,12 +12,12 @@ export default function TeamGrid({
       className="
         grid grid-cols-1 gap-3
         sm:grid-cols-1
-        md:grid-cols-4
+        md:grid-cols-3
         lg:grid-cols-3
         navbarsm:grid-cols-3
         xlg:grid-cols-4
         navbarlg:grid-cols-4
-        xxlg:grid-cols-5
+        xxlg:grid-cols-4
       "
     >
       {teams.map((t) => (

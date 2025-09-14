@@ -56,7 +56,7 @@ export default function TeamsPage() {
   }, [visibleLegacy.length, showLegacy]);
 
   return (
-    <section className="section-container pb-10 navbarsm:my-8">
+    <section className="section-container pb-4 navbarsm:my-8">
       <div className="max-w mx-auto mb-8">
         <TeamBanner
           selectedGame={selectedGame}
@@ -64,7 +64,7 @@ export default function TeamsPage() {
         />
       </div>
 
-      {/* Title row with roster toggle at far right */}
+      {/* Title */}
       <div className="md:hidden mt-1 mb-1 flex items-center gap-3">
         <p className="font-druk font-medium uppercase text-3xl lg:text-4xl">
           Our Teams
@@ -81,9 +81,8 @@ export default function TeamsPage() {
         />
       </div>
 
-      {/* main content and sidebar */}
+      {/* main content */}
       <div className="md:flex md:items-start md:gap-6 mt-2">
-        {/* main */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center">
             <p className="hidden md:block font-druk font-medium uppercase text-base lg:text-lg pt-1">
