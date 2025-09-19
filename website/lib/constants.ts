@@ -1,4 +1,45 @@
-import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
+// Shibe Logos
+import shibeLogoColor from "@/assets/icons/shibe-color.webp";
+import shibeLogoPink from "@/assets/icons/shibe-pinkbright.svg";
+import shibeLogoBlack from "@/assets/icons/shibe-black.svg";
+
+// Footer
+import youtubeIcon from "@/assets/icons/youtube.svg";
+import tiktokIcon from "@/assets/icons/tiktok.svg";
+import instagramIcon from "@/assets/icons/instagram.svg";
+import githubIcon from "@/assets/icons/github.svg";
+import discordIcon from "@/assets/icons/discord.svg";
+import linkedinIcon from "@/assets/icons/linkedin.svg";
+
+// Videos
+import worldGunslingerThumbnail from "@/assets/pictures/worldgunslinger.jpg";
+import atcs17Thumbnail from "@/assets/pictures/atcs17thumbnail.jpg";
+import gamelingThumbnail from "@/assets/pictures/gamelingthumbnail.jpg";
+import ultimateRoyaleThumbnail from "@/assets/pictures/ultimateroyalerank1thumbnail.jpg";
+
+// Highlights
+import royalEsportsLogo from "@/assets/logos/royalesports.png";
+import kohaiCupLogo from "@/assets/logos/kohaicup.png";
+import gamelingLogo from "@/assets/logos/gameling.png";
+import kodLogo from "@/assets/logos/kod.png";
+import nyzLogo from "@/assets/logos/nyz.png";
+import thmLogo from "@/assets/logos/thm.png";
+import dlyLogo from "@/assets/logos/dly.png";
+import xbossLogo from "@/assets/logos/xboss.png";
+import novaLogo from "@/assets/logos/nova.webp";
+
+// Team Logos
+import shibeBoysTeamLogo from "@/assets/logos/shibe-boys.png";
+import shibeGirlsTeamLogo  from "@/assets/logos/shibe-girls.png";
+import shibeHKTeamLogo  from "@/assets/logos/shibe-hk.png";
+import shibeINTeamLogo  from "@/assets/logos/shibe-in.png";
+import shibeTronfireTeamLogo  from "@/assets/logos/shibe-tronfire.png";
+import shibeTWTeamLogo  from "@/assets/logos/shibe-tw.png";
+import shibeFallenAngelsTeamLogo  from "@/assets/logos/shibe-fa.png";
+import shibeMLTeamLogo  from "@/assets/logos/shibe-ml.png";
+import shibeVMTeamLogo  from "@/assets/logos/shibe-vm.png";
+
+// Others
 import gamecontrollericon from "@/assets/icons/gamecontroller.png";
 import gameBackground from "@/assets/pictures/sfcbanner.png";
 import valorantIcon from "@/assets/icons/valoranticon.png";
@@ -10,27 +51,8 @@ import pubgmobileBanner from "@/assets/pictures/pubgmobilebanner.webp";
 import mlbbIcon from "@/assets/icons/mlbbicon.png";
 import mlbbBackground from "@/assets/pictures/mlbbbackground.webp";
 import mlbbBanner from "@/assets/pictures/mlbbbanner.webp";
-import shibeIcon from "@/assets/icons/shibe-black.svg";
-import youtubeIcon from "@/assets/icons/youtube.svg";
-import tiktokIcon from "@/assets/icons/tiktok.svg";
-import instagramIcon from "@/assets/icons/instagram.svg";
-import githubIcon from "@/assets/icons/github.svg";
-import discordIcon from "@/assets/icons/discord.svg";
-import linkedinIcon from "@/assets/icons/linkedin.svg";
-import worldGunslingerThumbnail from "@/assets/pictures/worldgunslinger.jpg";
-import atcs17Thumbnail from "@/assets/pictures/atcs17thumbnail.jpg";
-import gamelingThumbnail from "@/assets/pictures/gamelingthumbnail.jpg";
-import ultimateRoyaleThumbnail from "@/assets/pictures/ultimateroyalerank1thumbnail.jpg";
-import Logo from "@/assets/icons/shibe-pinkbright.svg";
-import royalEsportsLogo from "@/assets/logos/royalesports.png";
-import kohaiCupLogo from "@/assets/logos/kohaicup.png";
-import gamelingLogo from "@/assets/logos/gameling.png";
-import kodLogo from "@/assets/logos/kod.png";
-import nyzLogo from "@/assets/logos/nyz.png";
-import thmLogo from "@/assets/logos/thm.png";
-import dlyLogo from "@/assets/logos/dly.png";
-import xbossLogo from "@/assets/logos/xboss.png";
-import novaLogo from "@/assets/logos/nova.webp";
+
+// Types
 import { GameCategories, Team, VideoItem } from "@/lib/types";
 
 /* ---------------------------- Styling ---------------------------- */
@@ -82,7 +104,7 @@ export const highlightsList = [
   { title: "KOD Showdown 2024", href: "#", logoSrc: kodLogo },
   { title: "Kohai Cup 2024", href: "#", logoSrc: kohaiCupLogo },
   { title: "Gameling Gauntlet", href: "#", logoSrc: gamelingLogo },
-  { title: "Shibe's Community Cup", href: "#", logoSrc: Logo },
+  { title: "Shibe's Community Cup", href: "#", logoSrc: shibeLogoPink },
   { title: "THM Challenge Cup 2023", href: "#", logoSrc: thmLogo },
   { title: "Xboss Tournament", href: "#", logoSrc: xbossLogo },
 ];
@@ -118,29 +140,12 @@ export const gameCategories: GameCategories[] = [
   },
 ];
 
-export interface Player {
-  name: string; // includes emoji + name
-}
-
-export interface Team {
-  id: number;
-  name: string;
-  game: string;
-  logo?: string;
-  legacy: boolean;
-  gamesPlayed: number;
-  first: number;
-  second: number;
-  third: number;
-  players: Player[];
-}
-
 export const teams: Team[] = [
   {
     id: 1,
     name: "SFC",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeLogoColor,
     legacy: false,
     gamesPlayed: 214,
     first: 14,
@@ -157,7 +162,7 @@ export const teams: Team[] = [
     id: 2,
     name: "SFC 女队",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeGirlsTeamLogo,
     legacy: false,
     gamesPlayed: 68,
     first: 3,
@@ -174,7 +179,7 @@ export const teams: Team[] = [
     id: 3,
     name: "SFC 男队",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeBoysTeamLogo,
     legacy: false,
     gamesPlayed: 40,
     first: 2,
@@ -191,7 +196,7 @@ export const teams: Team[] = [
     id: 4,
     name: "SFC Fallen Angels",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeFallenAngelsTeamLogo,
     legacy: false,
     gamesPlayed: 38,
     first: 2,
@@ -208,7 +213,7 @@ export const teams: Team[] = [
     id: 5,
     name: "SFC 17K",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeTWTeamLogo,
     legacy: false,
     gamesPlayed: 59,
     first: 5,
@@ -225,7 +230,7 @@ export const teams: Team[] = [
     id: 6,
     name: "SFC HK",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeHKTeamLogo,
     legacy: false,
     gamesPlayed: 23,
     first: 1,
@@ -242,7 +247,7 @@ export const teams: Team[] = [
     id: 7,
     name: "SFC India",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeINTeamLogo,
     legacy: false,
     gamesPlayed: 39,
     first: 3,
@@ -259,7 +264,7 @@ export const teams: Team[] = [
     id: 8,
     name: "SFC Tronfire",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeTronfireTeamLogo,
     legacy: false,
     gamesPlayed: 35,
     first: 3,
@@ -276,7 +281,7 @@ export const teams: Team[] = [
     id: 9,
     name: "SFC Heirs",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeLogoPink,
     legacy: true,
     gamesPlayed: 40,
     first: 4,
@@ -293,7 +298,7 @@ export const teams: Team[] = [
     id: 10,
     name: "SFC Maldives",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeLogoPink,
     legacy: true,
     gamesPlayed: 14,
     first: 2,
@@ -310,7 +315,7 @@ export const teams: Team[] = [
     id: 11,
     name: "SFC Rex",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeLogoPink,
     legacy: true,
     gamesPlayed: 15,
     first: 1,
@@ -327,7 +332,7 @@ export const teams: Team[] = [
     id: 12,
     name: "SFC V",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeLogoPink,
     legacy: true,
     gamesPlayed: 20,
     first: 2,
@@ -344,7 +349,7 @@ export const teams: Team[] = [
     id: 13,
     name: "SFC Valence",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeLogoPink,
     legacy: true,
     gamesPlayed: 23,
     first: 1,
@@ -361,7 +366,7 @@ export const teams: Team[] = [
     id: 14,
     name: "SFC Academy",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeLogoPink,
     legacy: true,
     gamesPlayed: 15,
     first: 2,
@@ -378,7 +383,7 @@ export const teams: Team[] = [
     id: 15,
     name: "SFC Nemesis",
     game: "pubg-mobile",
-    logo: shibeLogo,
+    logo: shibeLogoPink,
     legacy: true,
     gamesPlayed: 15,
     first: 1,
@@ -395,7 +400,7 @@ export const teams: Team[] = [
     id: 16,
     name: "SFC ML",
     game: "mobile-legends",
-    logo: shibeLogo,
+    logo: shibeMLTeamLogo,
     legacy: false,
     gamesPlayed: 34,
     first: 2,
@@ -413,7 +418,7 @@ export const teams: Team[] = [
     id: 17,
     name: "SFC VM",
     game: "valorant-mobile",
-    logo: shibeLogo,
+    logo: shibeVMTeamLogo,
     legacy: false,
     gamesPlayed: 4,
     first: 0,
@@ -440,19 +445,19 @@ export const navItems = [
 
 export const navTeams = [
   {
-    imageSrc: shibeIcon,
+    imageSrc: shibeLogoBlack,
     title: "SFC 女队",
     description: "Asia Regional Champion",
     href: "/teams/team1",
   },
   {
-    imageSrc: shibeIcon,
+    imageSrc: shibeLogoBlack,
     title: "SFC Taiwan",
     description: "Regional #7: Taiwan HK Macau",
     href: "/teams/team2",
   },
   {
-    imageSrc: shibeIcon,
+    imageSrc: shibeLogoBlack,
     title: "SFC India",
     description: "#2 Asia Regional, 5x Finalist",
     href: "/teams/team3",
