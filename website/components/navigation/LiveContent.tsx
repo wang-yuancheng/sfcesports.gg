@@ -27,11 +27,11 @@ export function LiveContentFront({ showVod }: { showVod: boolean }) {
         </div>
 
         {/* Right side */}
-        <div className="flex items-center shrink-0">
+        <div className="flex items-center shrink-0 opacity-10 group-hover:opacity-100 transition-opacity duration-300">
           <Image
             src={ChevronRight}
             alt="Chevron Right"
-            className="w-[25px] h-[25px] text-gray-600 transition-colors"
+            className="w-[25px] h-[25px]"
           />
         </div>
       </div>

@@ -12,7 +12,7 @@ import discordIcon from "@/assets/icons/discord.svg";
 import linkedinIcon from "@/assets/icons/linkedin.svg";
 
 // Videos
-import worldGunslingerThumbnail from "@/assets/pictures/worldgunslinger.jpg";
+import worldgunslingerThumbnail from "@/assets/pictures/worldgunslinger.jpg";
 import atcs17Thumbnail from "@/assets/pictures/atcs17thumbnail.jpg";
 import gamelingThumbnail from "@/assets/pictures/gamelingthumbnail.jpg";
 import ultimateRoyaleThumbnail from "@/assets/pictures/ultimateroyalerank1thumbnail.jpg";
@@ -30,14 +30,14 @@ import novaLogo from "@/assets/logos/nova.webp";
 
 // Team Logos
 import shibeBoysTeamLogo from "@/assets/logos/shibe-boys.png";
-import shibeGirlsTeamLogo  from "@/assets/logos/shibe-girls.png";
-import shibeHKTeamLogo  from "@/assets/logos/shibe-hk.png";
-import shibeINTeamLogo  from "@/assets/logos/shibe-in.png";
-import shibeTronfireTeamLogo  from "@/assets/logos/shibe-tronfire.png";
-import shibeTWTeamLogo  from "@/assets/logos/shibe-tw.png";
-import shibeFallenAngelsTeamLogo  from "@/assets/logos/shibe-fa.png";
-import shibeMLTeamLogo  from "@/assets/logos/shibe-ml.png";
-import shibeVMTeamLogo  from "@/assets/logos/shibe-vm.png";
+import shibeGirlsTeamLogo from "@/assets/logos/shibe-girls.png";
+import shibeHKTeamLogo from "@/assets/logos/shibe-hk.png";
+import shibeINTeamLogo from "@/assets/logos/shibe-in.png";
+import shibeTronfireTeamLogo from "@/assets/logos/shibe-tronfire.png";
+import shibeTWTeamLogo from "@/assets/logos/shibe-tw.png";
+import shibeFallenAngelsTeamLogo from "@/assets/logos/shibe-fa.png";
+import shibeMLTeamLogo from "@/assets/logos/shibe-ml.png";
+import shibeVMTeamLogo from "@/assets/logos/shibe-vm.png";
 
 // Others
 import gamecontrollericon from "@/assets/icons/gamecontroller.png";
@@ -54,6 +54,9 @@ import mlbbBanner from "@/assets/pictures/mlbbbanner.webp";
 
 // Types
 import { GameCategories, Team, VideoItem } from "@/lib/types";
+
+// Test
+import test from "@/assets/pictures/abstract.jpg";
 
 /* ---------------------------- Styling ---------------------------- */
 
@@ -79,7 +82,7 @@ export const videos: VideoItem[] = [
   {
     title: "I finally got World #1 Gunslinger Title",
     id: "ZBEqe8cXbPE",
-    thumbnail: worldGunslingerThumbnail,
+    thumbnail: worldgunslingerThumbnail,
     views: "",
   },
   {
@@ -143,9 +146,11 @@ export const gameCategories: GameCategories[] = [
 export const teams: Team[] = [
   {
     id: 1,
+    slug: "sfc",
     name: "SFC",
     game: "pubg-mobile",
     logo: shibeLogoColor,
+    banner: test,
     legacy: false,
     gamesPlayed: 214,
     first: 14,
@@ -160,9 +165,11 @@ export const teams: Team[] = [
   },
   {
     id: 2,
+    slug: "sfc-girls",
     name: "SFC 女队",
     game: "pubg-mobile",
     logo: shibeGirlsTeamLogo,
+    banner: test,
     legacy: false,
     gamesPlayed: 68,
     first: 3,
@@ -177,9 +184,11 @@ export const teams: Team[] = [
   },
   {
     id: 3,
+    slug: "sfc-boys",
     name: "SFC 男队",
     game: "pubg-mobile",
     logo: shibeBoysTeamLogo,
+    banner: test,
     legacy: false,
     gamesPlayed: 40,
     first: 2,
@@ -194,9 +203,11 @@ export const teams: Team[] = [
   },
   {
     id: 4,
+    slug: "sfc-fallen-angels",
     name: "SFC Fallen Angels",
     game: "pubg-mobile",
     logo: shibeFallenAngelsTeamLogo,
+    banner: test,
     legacy: false,
     gamesPlayed: 38,
     first: 2,
@@ -211,9 +222,11 @@ export const teams: Team[] = [
   },
   {
     id: 5,
+    slug: "sfc-17k",
     name: "SFC 17K",
     game: "pubg-mobile",
     logo: shibeTWTeamLogo,
+    banner: test,
     legacy: false,
     gamesPlayed: 59,
     first: 5,
@@ -228,9 +241,11 @@ export const teams: Team[] = [
   },
   {
     id: 6,
+    slug: "sfc-hk",
     name: "SFC HK",
     game: "pubg-mobile",
     logo: shibeHKTeamLogo,
+    banner: test,
     legacy: false,
     gamesPlayed: 23,
     first: 1,
@@ -245,9 +260,11 @@ export const teams: Team[] = [
   },
   {
     id: 7,
+    slug: "sfc-in",
     name: "SFC India",
     game: "pubg-mobile",
     logo: shibeINTeamLogo,
+    banner: test,
     legacy: false,
     gamesPlayed: 39,
     first: 3,
@@ -262,9 +279,11 @@ export const teams: Team[] = [
   },
   {
     id: 8,
+    slug: "sfc-tronfire",
     name: "SFC Tronfire",
     game: "pubg-mobile",
     logo: shibeTronfireTeamLogo,
+    banner: test,
     legacy: false,
     gamesPlayed: 35,
     first: 3,
@@ -279,9 +298,11 @@ export const teams: Team[] = [
   },
   {
     id: 9,
+    slug: "sfc-heirs",
     name: "SFC Heirs",
     game: "pubg-mobile",
     logo: shibeLogoPink,
+    banner: test,
     legacy: true,
     gamesPlayed: 40,
     first: 4,
@@ -296,9 +317,11 @@ export const teams: Team[] = [
   },
   {
     id: 10,
+    slug: "sfc-mv",
     name: "SFC Maldives",
     game: "pubg-mobile",
     logo: shibeLogoPink,
+    banner: test,
     legacy: true,
     gamesPlayed: 14,
     first: 2,
@@ -313,9 +336,11 @@ export const teams: Team[] = [
   },
   {
     id: 11,
+    slug: "sfc-rex",
     name: "SFC Rex",
     game: "pubg-mobile",
     logo: shibeLogoPink,
+    banner: test,
     legacy: true,
     gamesPlayed: 15,
     first: 1,
@@ -330,9 +355,11 @@ export const teams: Team[] = [
   },
   {
     id: 12,
+    slug: "sfc-v",
     name: "SFC V",
     game: "pubg-mobile",
     logo: shibeLogoPink,
+    banner: test,
     legacy: true,
     gamesPlayed: 20,
     first: 2,
@@ -347,9 +374,11 @@ export const teams: Team[] = [
   },
   {
     id: 13,
+    slug: "sfc-valance",
     name: "SFC Valence",
     game: "pubg-mobile",
     logo: shibeLogoPink,
+    banner: test,
     legacy: true,
     gamesPlayed: 23,
     first: 1,
@@ -364,9 +393,11 @@ export const teams: Team[] = [
   },
   {
     id: 14,
+    slug: "sfc-academy",
     name: "SFC Academy",
     game: "pubg-mobile",
     logo: shibeLogoPink,
+    banner: test,
     legacy: true,
     gamesPlayed: 15,
     first: 2,
@@ -381,9 +412,11 @@ export const teams: Team[] = [
   },
   {
     id: 15,
+    slug: "sfc-nemesis",
     name: "SFC Nemesis",
     game: "pubg-mobile",
     logo: shibeLogoPink,
+    banner: test,
     legacy: true,
     gamesPlayed: 15,
     first: 1,
@@ -398,9 +431,11 @@ export const teams: Team[] = [
   },
   {
     id: 16,
+    slug: "sfc-ml",
     name: "SFC ML",
     game: "mobile-legends",
     logo: shibeMLTeamLogo,
+    banner: test,
     legacy: false,
     gamesPlayed: 34,
     first: 2,
@@ -416,9 +451,11 @@ export const teams: Team[] = [
   },
   {
     id: 17,
+    slug: "sfc-vm",
     name: "SFC VM",
     game: "valorant-mobile",
     logo: shibeVMTeamLogo,
+    banner: test,
     legacy: false,
     gamesPlayed: 4,
     first: 0,
@@ -448,19 +485,19 @@ export const navTeams = [
     imageSrc: shibeLogoBlack,
     title: "SFC 女队",
     description: "Asia Regional Champion",
-    href: "/teams/team1",
+    href: "/teams/sfc-girls",
   },
   {
     imageSrc: shibeLogoBlack,
-    title: "SFC Taiwan",
+    title: "SFC 17k",
     description: "Regional #7: Taiwan HK Macau",
-    href: "/teams/team2",
+    href: "/teams/sfc-17k",
   },
   {
     imageSrc: shibeLogoBlack,
     title: "SFC India",
     description: "#2 Asia Regional, 5x Finalist",
-    href: "/teams/team3",
+    href: "/teams/sfc-in",
   },
 ];
 

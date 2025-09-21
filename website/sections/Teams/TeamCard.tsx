@@ -44,14 +44,12 @@ export default function TeamCard({
   const players = team.players ?? [];
   const rowCount = Math.min(5, Math.max(4, players.length || 4));
   const roster = players.slice(0, rowCount);
+  const teamHref = `/teams/${team.slug}`;
 
   return (
-    <Link
-      href="#"
-      className="group relative block h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_2px_3px_rgba(0,0,0,0.05)]"
-      aria-label={`Open ${team.name} team page`}
-    >
-      <div className="flex h-full flex-col">
+    <div className="group relative block h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_2px_3px_rgba(0,0,0,0.05)]">
+      {/* everything except the bottom label is clickable */}
+      <Link href={teamHref} aria-label={`Open ${team.name} team page`} className="flex h-full flex-col">
         {/* Header */}
         <div className="shrink-0 py-3 border-b border-gray-200 text-center">
           <span className="uppercase text-sm font-bold text-gray-700">
@@ -154,14 +152,14 @@ export default function TeamCard({
             </ul>
           </div>
         </div>
+      </Link>
 
-        {/* Bottom label, optional */}
-        {showLabel && (
-          <div className="shrink-0 border-t py-3 text-center text-sm font-medium text-gray-700">
-            {labelText}
-          </div>
-        )}
-      </div>
-    </Link>
+      {/* Bottom label, not clickable */}
+      {showLabel && (
+        <div className="shrink-0 border-t py-3 text-center text-sm font-medium text-gray-700">
+          {labelText}
+        </div>
+      )}
+    </div>
   );
 }

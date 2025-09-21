@@ -147,9 +147,11 @@ export interface GameStatsTotals {
 // Team component
 export interface Team {
   id: number;
+  slug: string;
   name: string;
   game: string;
-  logo?: string;
+  logo: string | StaticImageData;
+  banner: string | StaticImageData;
   legacy: boolean;
   gamesPlayed: number;
   first: number;
@@ -159,6 +161,6 @@ export interface Team {
   label?: string;
 }
 interface Player {
-  name: string; 
+  name: string;
   country: string;
 }
