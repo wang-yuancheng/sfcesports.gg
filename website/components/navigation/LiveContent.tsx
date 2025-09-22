@@ -93,7 +93,7 @@ function StatusLine({ showVod }: { showVod: boolean }) {
             : "opacity-100 group-hover:opacity-0 group-hover:duration-0"
         }`}
       >
-        Match has ended
+        Event has ended
       </div>
 
       {/* VOD prompt overlays the same spot */}

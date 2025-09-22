@@ -56,7 +56,7 @@ export default function TeamsPage() {
   }, [visibleLegacy.length, showLegacy]);
 
   return (
-    <section className="section-container pb-4 navbarsm:my-8">
+    <section className="section-container pb-4 navbarsm:my-6">
       <div className="max-w mx-auto mb-8">
         <TeamBanner
           selectedGame={selectedGame}

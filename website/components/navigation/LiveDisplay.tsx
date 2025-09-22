@@ -101,7 +101,10 @@ export function ShortLiveDisplay() {
     hover: { scale: 1, y: 60 },
   };
 
-  const [open, setOpen] = useState(false);
+  const hoverHitboxVariant = {
+    initial: { height: 52 },   
+    hover: { height: 112 },     
+  };
 
   return (
     <motion.div
@@ -109,18 +112,26 @@ export function ShortLiveDisplay() {
       initial="initial"
       whileHover="hover"
     >
+      {/* Invisible hover bridge, grows only when the back card is out */}
+      <motion.div
+        variants={hoverHitboxVariant}
+        transition={{ type: "spring", stiffness: 120, damping: 25 }}
+        className="absolute top-0 left-0 right-0 bg-transparent z-0"
+        aria-hidden="true"
+      />
+
       {/* back card */}
       <motion.div
         variants={backVariant}
         transition={{ type: "spring", stiffness: 120, damping: 25 }}
         className="absolute top-0 left-0 flex items-center rounded-md shadow-gray-10 px-3 bg-white min-w-[288px] h-[52px] transform-gpu will-change-transform"
       >
-        <LiveContentBack showVod={open} />
+        <LiveContentBack showVod={false} />
       </motion.div>
 
       {/* front card */}
       <div className="relative z-10 flex items-center rounded-md shadow-gray-10 px-3 bg-white min-w-[288px] h-[52px]">
-        <LiveContentFront showVod={open} />
+        <LiveContentFront showVod={false} />
       </div>
     </motion.div>
   );

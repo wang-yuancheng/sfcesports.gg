@@ -6,13 +6,12 @@ export async function generateStaticParams() {
   return teams.map((t) => ({ team: t.slug }));
 }
 
-// Note params is a Promise, and the component is async
 export default async function TeamPage({
   params,
 }: {
   params: Promise<{ team: string }>;
 }) {
-  const { team: teamSlug } = await params; // await before use
+  const { team: teamSlug } = await params; 
   const team = teams.find((t) => t.slug === teamSlug);
   if (!team) return notFound();
 

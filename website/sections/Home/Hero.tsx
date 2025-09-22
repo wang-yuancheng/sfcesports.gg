@@ -11,7 +11,7 @@ import { highlightsList } from "@/lib/constants";
 export default function MainHero() {
 
   return (
-    <section className="section-container navbarsm:pt-14 pb-14">
+    <section className="section-container navbarsm:pt-6 pb-14">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(2,minmax(0,1fr))]">
         <LongHero
           header="All Talent Championship"
