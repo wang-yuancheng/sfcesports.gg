@@ -157,14 +157,16 @@ export interface Team {
   first: number;
   second: number;
   third: number;
+  earnings?: number;
   players: Player[];
   description?: string;
 }
 export interface Player {
   name: string;
   country: string;
-  role?: string;
-  active?: string;
-  earnings?: number;
-  device?: string;
+  profile: string | StaticImageData;
+  role: string;
+  active: string;
+  earnings: number;
+  device: string;
 }

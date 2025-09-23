@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Player } from "@/lib/types";
 import Image from "next/image";
 import ChevronDown from "@/assets/icons/chevron-down.svg";
-import testprofile from "@/assets/profiles/testprofile.jpg";
 import FlagIcon from "@/components/ui/flagicon";
 
 export default function PlayerCard({ player }: { player: Player }) {
@@ -28,7 +27,7 @@ export default function PlayerCard({ player }: { player: Player }) {
         <div className="relative flex items-center gap-3 py-3">
           <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0">
             <Image
-              src={testprofile}
+              src={player.profile}
               alt="Profile picture"
               fill
               className="object-cover"
