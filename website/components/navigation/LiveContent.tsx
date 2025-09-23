@@ -87,7 +87,7 @@ function StatusLine({ showVod }: { showVod: boolean }) {
     <div className="relative block leading-tight min-w-100">
       {/* default line */}
       <div
-        className={`font-[400] text-xs text-gray-700 whitespace-nowrap overflow-hidden text-ellipsis transition-opacity duration-300 ${
+        className={`font-[400] text-xs text-gray-600 whitespace-nowrap overflow-hidden text-ellipsis transition-opacity duration-300 ${
           showVod
             ? "opacity-0 pointer-events-none"
             : "opacity-100 group-hover:opacity-0 group-hover:duration-0"
@@ -98,7 +98,7 @@ function StatusLine({ showVod }: { showVod: boolean }) {
 
       {/* VOD prompt overlays the same spot */}
       <div
-        className={`absolute inset-0 font-[400] text-xs text-gray-700 whitespace-nowrap overflow-hidden text-ellipsis transition-opacity duration-300 ${
+        className={`absolute inset-0 font-[400] text-xs text-gray-600 whitespace-nowrap overflow-hidden text-ellipsis transition-opacity duration-300 ${
           showVod
             ? "opacity-100"
             : "opacity-0 group-hover:opacity-100 group-hover:duration-0"

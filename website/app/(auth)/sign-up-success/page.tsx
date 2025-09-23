@@ -7,8 +7,8 @@ export default function Page() {
           <p className="text-gray-600 text-sm">Check your email to confirm</p>
         </div>
         <p className="text-sm text-gray-500">
-          You&apos;ve successfully signed up. Please check your email to
-          confirm your account before signing in.
+          You&apos;ve successfully signed up. Please check your email to confirm
+          your account before signing in.
         </p>
       </div>
     </div>

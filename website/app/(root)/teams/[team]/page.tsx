@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { teams } from "@/lib/constants";
 import Image from "next/image";
+import PlayerCard from "@/components/teams/PlayerCard";
 
 export async function generateStaticParams() {
   return teams.map((t) => ({ team: t.slug }));
@@ -11,12 +12,12 @@ export default async function TeamPage({
 }: {
   params: Promise<{ team: string }>;
 }) {
-  const { team: teamSlug } = await params; 
+  const { team: teamSlug } = await params;
   const team = teams.find((t) => t.slug === teamSlug);
   if (!team) return notFound();
 
   return (
-    <div className="mb-8">
+    <div className="mb-16">
       {/* Mobile banner */}
       <div className="block md:hidden w-full overflow-hidden border border-gray-100 aspect-[780/780]">
         <div className="relative w-full h-full">
@@ -32,7 +33,7 @@ export default async function TeamPage({
 
       {/* Desktop banner */}
       <div className="hidden md:block section-container navbarsm:mt-6">
-        <div className="relative w-full overflow-hidden rounded-lg border border-gray-100 aspect-[1920/780]">
+        <div className="relative w-full overflow-hidden rounded-lg border border-gray-100 aspect-[1920/800]">
           <Image
             src={team.banner}
             alt="banner"
@@ -57,25 +58,22 @@ export default async function TeamPage({
           </div>
 
           {/* Team content */}
-          <div className="flex flex-col gap-3 -mt-8">
-            <h1 className="text-2xl md:text-3xl font-druk">{team.name}</h1>
-            <h2 className="text-gray-600 font-[400] text-base">
-              Creators are Fnatic's top tier talent. They are our storytellers,
-              our heavy hitting talent who are brands in themselves and the
-              aspiring faces of the gaming industry.
-            </h2>
-          </div>
-          <div>
-            <h2 className="mt-20 text-xl">Players</h2>
-            {/* ----------------------------------- */}
-            <ul className="list-disc ml-6 mt-2">
-              {team.players.map((p) => (
-                <li key={p.name}>
-                  {p.name} ({p.country})
-                </li>
-              ))}
-            </ul>
-            {/* ----------------------------------- */}
+          <div className="px-1">
+            <div className="flex flex-col gap-3 -mt-8">
+              <h1 className="text-2xl md:text-3xl font-druk">{team.name}</h1>
+              <h2 className="text-gray-600 font-[400] text-base">
+                {team.description}
+              </h2>
+            </div>
+            <div>
+              <h2 className="mt-8 mb-4 text-xl">Players</h2>
+              {/* Player Components */}
+              <div className="flex flex-col divide-y divide-gray-100">
+                {team.players.map((p) => (
+                  <PlayerCard key={p.name} player={p} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

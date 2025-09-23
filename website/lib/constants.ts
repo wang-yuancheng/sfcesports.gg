@@ -157,11 +157,13 @@ export const teams: Team[] = [
     second: 20,
     third: 21,
     players: [
-      { name: "Shibe", country: "SG" },
-      { name: "Sai", country: "CN" },
-      { name: "Piggie", country: "IN" },
-      { name: "Grunge", country: "BD" },
+      { name: "Shibe", country: "SG", role: "IGL / Scout", active:"2020 - Present", earnings:1, device:"iPad" },
+      { name: "Sai", country: "CN", role: "Entry", active:"2020 - Present", earnings:1, device:"iPad" },
+      { name: "Piggie", country: "IN", role: "Entry", active:"2020 - Present", earnings:1, device:"iPad" },
+      { name: "Grunge", country: "BD", role: "Support", active:"2020 - Present", earnings:1, device:"iPad"},
     ],
+    description:
+      "Creators are Fnatic's top tier talent. They are our storytellers, our heavy hitting talent who are brands in themselves and the aspiring faces of the gaming industry.",
   },
   {
     id: 2,

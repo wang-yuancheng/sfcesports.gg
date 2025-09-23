@@ -3,31 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Team } from "@/lib/types";
-
-function FlagIcon({
-  code,
-  width = 22,
-  className = "border border-gray-200",
-}: {
-  code?: string;
-  width?: number;
-  className?: string;
-}) {
-  if (!code) return null;
-  const c = code.toLowerCase();
-
-  return (
-    <img
-      src={`https://flagcdn.com/${c}.svg`}
-      alt={code}
-      width={width}
-      style={{ height: "auto" }}
-      className={className}
-      loading="lazy"
-      decoding="async"
-    />
-  );
-}
+import FlagIcon from "@/components/ui/flagicon";
 
 // To create label add props: showLabel={true} labelText={team.label}
 export default function TeamCard({
@@ -49,10 +25,14 @@ export default function TeamCard({
   return (
     <div className="group relative block h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_2px_3px_rgba(0,0,0,0.05)]">
       {/* everything except the bottom label is clickable */}
-      <Link href={teamHref} aria-label={`Open ${team.name} team page`} className="flex h-full flex-col">
+      <Link
+        href={teamHref}
+        aria-label={`Open ${team.name} team page`}
+        className="flex h-full flex-col"
+      >
         {/* Header */}
         <div className="shrink-0 py-3 border-b border-gray-200 text-center">
-          <span className="uppercase text-sm font-bold text-gray-700">
+          <span className="uppercase text-sm font-bold text-gray-600">
             {team.name}
           </span>
         </div>
@@ -85,7 +65,7 @@ export default function TeamCard({
                     <li
                       key={`${p.name}-${p.country ?? "XX"}-${i}`}
                       className={[
-                        "flex items-stretch text-gray-700",
+                        "flex items-stretch text-gray-600",
                         i < rowCount - 1 ? "border-b border-gray-200" : "",
                       ].join(" ")}
                     >
@@ -141,7 +121,7 @@ export default function TeamCard({
                 <li
                   key={`${p.name}-${p.country ?? "XX"}-md-${i}`}
                   className={[
-                    "flex items-center gap-3 px-4 text-gray-700",
+                    "flex items-center gap-3 px-4 text-gray-600",
                     i < rowCount - 1 ? "border-b border-gray-200" : "",
                   ].join(" ")}
                 >
@@ -156,7 +136,7 @@ export default function TeamCard({
 
       {/* Bottom label, not clickable */}
       {showLabel && (
-        <div className="shrink-0 border-t py-3 text-center text-sm font-medium text-gray-700">
+        <div className="shrink-0 border-t py-3 text-center text-sm font-medium text-gray-600">
           {labelText}
         </div>
       )}

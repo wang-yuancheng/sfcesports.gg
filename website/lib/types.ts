@@ -158,9 +158,13 @@ export interface Team {
   second: number;
   third: number;
   players: Player[];
-  label?: string;
+  description?: string;
 }
-interface Player {
+export interface Player {
   name: string;
   country: string;
+  role?: string;
+  active?: string;
+  earnings?: number;
+  device?: string;
 }
