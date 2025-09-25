@@ -59,14 +59,14 @@ export default async function TeamPage({
 
           {/* Team content */}
           <div className="px-1">
-            <div className="flex flex-col gap-3 -mt-8">
+            <div className="flex flex-col gap-1 -mt-10">
               <h1 className="text-2xl md:text-3xl font-druk">{team.name}</h1>
               <h2 className="text-gray-600 font-[400] text-base">
                 {team.description}
               </h2>
             </div>
             <div>
-              <h2 className="mt-8 mb-4 text-xl">Players</h2>
+              <h2 className="mt-8 mb-1 text-xl">Players</h2>
               {/* Player Components */}
               <div className="flex flex-col divide-y divide-gray-100">
                 {team.players.map((p) => (

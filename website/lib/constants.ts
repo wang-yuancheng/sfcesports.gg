@@ -104,7 +104,7 @@ export const highlightsList = [
   { title: "Royal Esports Tournament", href: "#", logoSrc: royalEsportsLogo },
   { title: "NYZ Mini Tournament", href: "#", logoSrc: nyzLogo },
   { title: "DLY Mini Tournament", href: "#", logoSrc: dlyLogo },
-  { title: "SFCxNova Community Tournament", href: "#", logoSrc: novaLogo },
+  { title: "SFC x Nova Community Tournament", href: "#", logoSrc: novaLogo },
   { title: "KOD Showdown 2024", href: "#", logoSrc: kodLogo },
   { title: "Kohai Cup 2024", href: "#", logoSrc: kohaiCupLogo },
   { title: "Gameling Gauntlet", href: "#", logoSrc: gamelingLogo },
@@ -523,19 +523,19 @@ export const navItems = [
 
 export const navTeams = [
   {
-    imageSrc: shibeLogoBlack,
-    title: "SFC 女队",
+    imageSrc: shibeLogoColor,
+    title: "SFC",
     description: "Asia Regional Champion",
-    href: "/teams/sfc-girls",
+    href: "/teams/sfc",
   },
   {
-    imageSrc: shibeLogoBlack,
+    imageSrc: shibeTWTeamLogo,
     title: "SFC 17k",
     description: "Regional #7: Taiwan HK Macau",
     href: "/teams/sfc-17k",
   },
   {
-    imageSrc: shibeLogoBlack,
+    imageSrc: shibeINTeamLogo,
     title: "SFC India",
     description: "#2 Asia Regional, 5x Finalist",
     href: "/teams/sfc-in",
