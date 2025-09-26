@@ -34,7 +34,7 @@ import shibeGirlsTeamLogo from "@/assets/logos/shibe-girls.png";
 import shibeHKTeamLogo from "@/assets/logos/shibe-hk.png";
 import shibeINTeamLogo from "@/assets/logos/shibe-in.png";
 import shibeTronfireTeamLogo from "@/assets/logos/shibe-tronfire.png";
-import shibeTWTeamLogo from "@/assets/logos/shibe-tw.png";
+import shibe17kTeamLogo from "@/assets/logos/shibe-17k.png";
 import shibeFallenAngelsTeamLogo from "@/assets/logos/shibe-fa.png";
 import shibeMLTeamLogo from "@/assets/logos/shibe-ml.png";
 import shibeVMTeamLogo from "@/assets/logos/shibe-vm.png";
@@ -56,7 +56,18 @@ import mlbbBanner from "@/assets/pictures/mlbbbanner.webp";
 import { GameCategories, Team, VideoItem } from "@/lib/types";
 
 // Test
-import test from "@/assets/pictures/abstract.jpg";
+import sfcTeamBanner from "@/assets/pictures/sfcteambanner.png";
+import sfcGirlsTeamBanner from "@/assets/pictures/sfcgirlsteambanner.png";
+import sfcBoysTeamBanner from "@/assets/pictures/sfcboysteambanner.png";
+import sfcFallenAngelsTeamBanner from "@/assets/pictures/sfcfallenangelsteambanner.png";
+import sfc17kTeamBanner from "@/assets/pictures/sfc17kteambanner.png";
+import sfcHKTeamBanner from "@/assets/pictures/sfchkteambanner.png";
+import sfcINTeamBanner from "@/assets/pictures/sfcinteambanner.png";
+import sfcTronFireTeamBanner from "@/assets/pictures/sfctronfireteambanner.png";
+import sfcMLTeamBanner from "@/assets/pictures/sfcmlteambanner.png";
+import sfcVMTeamBanner from "@/assets/pictures/sfcvmteambanner.png";
+import sfcLegacyTeamBanner from "@/assets/pictures/sfclegacyteambanner.png";
+
 import testprofile from "@/assets/profiles/testprofile.jpg";
 
 /* ---------------------------- Styling ---------------------------- */
@@ -151,7 +162,7 @@ export const teams: Team[] = [
     name: "SFC",
     game: "pubg-mobile",
     logo: shibeLogoColor,
-    banner: test,
+    banner: sfcTeamBanner,
     legacy: false,
     gamesPlayed: 214,
     first: 14,
@@ -173,7 +184,7 @@ export const teams: Team[] = [
     name: "SFC 女队",
     game: "pubg-mobile",
     logo: shibeGirlsTeamLogo,
-    banner: test,
+    banner: sfcGirlsTeamBanner,
     legacy: false,
     gamesPlayed: 68,
     first: 3,
@@ -193,7 +204,7 @@ export const teams: Team[] = [
     name: "SFC 男队",
     game: "pubg-mobile",
     logo: shibeBoysTeamLogo,
-    banner: test,
+    banner: sfcBoysTeamBanner,
     legacy: false,
     gamesPlayed: 40,
     first: 2,
@@ -213,7 +224,7 @@ export const teams: Team[] = [
     name: "SFC Fallen Angels",
     game: "pubg-mobile",
     logo: shibeFallenAngelsTeamLogo,
-    banner: test,
+    banner: sfcFallenAngelsTeamBanner,
     legacy: false,
     gamesPlayed: 38,
     first: 2,
@@ -232,8 +243,8 @@ export const teams: Team[] = [
     slug: "sfc-17k",
     name: "SFC 17K",
     game: "pubg-mobile",
-    logo: shibeTWTeamLogo,
-    banner: test,
+    logo: shibe17kTeamLogo,
+    banner: sfc17kTeamBanner,
     legacy: false,
     gamesPlayed: 59,
     first: 5,
@@ -253,7 +264,7 @@ export const teams: Team[] = [
     name: "SFC HK",
     game: "pubg-mobile",
     logo: shibeHKTeamLogo,
-    banner: test,
+    banner: sfcHKTeamBanner,
     legacy: false,
     gamesPlayed: 23,
     first: 1,
@@ -273,7 +284,7 @@ export const teams: Team[] = [
     name: "SFC India",
     game: "pubg-mobile",
     logo: shibeINTeamLogo,
-    banner: test,
+    banner: sfcINTeamBanner,
     legacy: false,
     gamesPlayed: 39,
     first: 3,
@@ -293,7 +304,7 @@ export const teams: Team[] = [
     name: "SFC Tronfire",
     game: "pubg-mobile",
     logo: shibeTronfireTeamLogo,
-    banner: test,
+    banner: sfcTronFireTeamBanner,
     legacy: false,
     gamesPlayed: 35,
     first: 3,
@@ -313,7 +324,7 @@ export const teams: Team[] = [
     name: "SFC Heirs",
     game: "pubg-mobile",
     logo: shibeLogoPink,
-    banner: test,
+    banner: sfcLegacyTeamBanner,
     legacy: true,
     gamesPlayed: 40,
     first: 4,
@@ -333,7 +344,7 @@ export const teams: Team[] = [
     name: "SFC Maldives",
     game: "pubg-mobile",
     logo: shibeLogoPink,
-    banner: test,
+    banner: sfcLegacyTeamBanner,
     legacy: true,
     gamesPlayed: 14,
     first: 2,
@@ -353,7 +364,7 @@ export const teams: Team[] = [
     name: "SFC Rex",
     game: "pubg-mobile",
     logo: shibeLogoPink,
-    banner: test,
+    banner: sfcLegacyTeamBanner,
     legacy: true,
     gamesPlayed: 15,
     first: 1,
@@ -373,7 +384,7 @@ export const teams: Team[] = [
     name: "SFC V",
     game: "pubg-mobile",
     logo: shibeLogoPink,
-    banner: test,
+    banner: sfcLegacyTeamBanner,
     legacy: true,
     gamesPlayed: 20,
     first: 2,
@@ -393,7 +404,7 @@ export const teams: Team[] = [
     name: "SFC Valence",
     game: "pubg-mobile",
     logo: shibeLogoPink,
-    banner: test,
+    banner: sfcLegacyTeamBanner,
     legacy: true,
     gamesPlayed: 23,
     first: 1,
@@ -413,7 +424,7 @@ export const teams: Team[] = [
     name: "SFC Academy",
     game: "pubg-mobile",
     logo: shibeLogoPink,
-    banner: test,
+    banner: sfcLegacyTeamBanner,
     legacy: true,
     gamesPlayed: 15,
     first: 2,
@@ -433,7 +444,7 @@ export const teams: Team[] = [
     name: "SFC Nemesis",
     game: "pubg-mobile",
     logo: shibeLogoPink,
-    banner: test,
+    banner: sfcLegacyTeamBanner,
     legacy: true,
     gamesPlayed: 15,
     first: 1,
@@ -453,7 +464,7 @@ export const teams: Team[] = [
     name: "SFC Esports",
     game: "pubg-mobile",
     logo: shibeLogoPink,
-    banner: test,
+    banner: sfcLegacyTeamBanner,
     legacy: true,
     gamesPlayed: 34,
     first: 3,
@@ -473,7 +484,7 @@ export const teams: Team[] = [
     name: "SFC ML",
     game: "mobile-legends",
     logo: shibeMLTeamLogo,
-    banner: test,
+    banner: sfcMLTeamBanner,
     legacy: false,
     gamesPlayed: 34,
     first: 2,
@@ -494,7 +505,7 @@ export const teams: Team[] = [
     name: "SFC VM",
     game: "valorant-mobile",
     logo: shibeVMTeamLogo,
-    banner: test,
+    banner: sfcVMTeamBanner,
     legacy: false,
     gamesPlayed: 4,
     first: 0,
@@ -529,7 +540,7 @@ export const navTeams = [
     href: "/teams/sfc",
   },
   {
-    imageSrc: shibeTWTeamLogo,
+    imageSrc: shibe17kTeamLogo,
     title: "SFC 17k",
     description: "Regional #7: Taiwan HK Macau",
     href: "/teams/sfc-17k",

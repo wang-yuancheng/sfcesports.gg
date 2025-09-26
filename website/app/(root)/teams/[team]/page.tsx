@@ -27,6 +27,7 @@ export default async function TeamPage({
             fill
             className="object-cover object-center"
             priority
+            unoptimized
           />
         </div>
       </div>
@@ -40,6 +41,7 @@ export default async function TeamPage({
             fill
             className="object-cover object-center"
             priority
+            unoptimized
           />
         </div>
       </div>
