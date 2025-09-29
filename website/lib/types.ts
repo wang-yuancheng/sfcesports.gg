@@ -28,6 +28,14 @@ export interface SidebarContextProps {
   isMobile: boolean;
   toggleSidebar: () => void;
 }
+/* ---------------------------- Global Components ---------------------------- */
+
+// Header Images
+export type PageHeaderImageProps = {
+  mobileSrc?: StaticImageData;
+  desktopSrc: StaticImageData;
+  aspectRatio?: string; // Usage: "aspect-[780/780]"
+};
 
 /* ---------------------------- Navigation UI ---------------------------- */
 
@@ -150,8 +158,8 @@ export interface Team {
   slug: string;
   name: string;
   game: string;
-  logo: string | StaticImageData;
-  banner: string | StaticImageData;
+  logo: StaticImageData;
+  banner: StaticImageData;
   legacy: boolean;
   gamesPlayed: number;
   first: number;
@@ -164,9 +172,24 @@ export interface Team {
 export interface Player {
   name: string;
   country: string;
-  profile: string | StaticImageData;
+  profile: StaticImageData;
   role: string;
   active: string;
   earnings: number;
   device: string;
+}
+
+/* ---------------------------- Events Page ---------------------------- */
+
+// To list all events in Events page
+export interface Events {
+  name: string;
+  year: number;
+  duration: string;
+  slug: string;
+  details: Event[];
+}
+export interface Event {
+  detail1: string;
+  detail2: string;
 }

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { teams } from "@/lib/constants";
 import Image from "next/image";
 import PlayerCard from "@/components/teams/PlayerCard";
+import PageHeaderImage from "@/components/global/PageHeaderImage";
 
 export async function generateStaticParams() {
   return teams.map((t) => ({ team: t.slug }));
@@ -18,34 +19,7 @@ export default async function TeamPage({
 
   return (
     <div className="mb-16">
-      {/* Mobile banner */}
-      <div className="block md:hidden w-full overflow-hidden border border-gray-100 aspect-[780/780]">
-        <div className="relative w-full h-full">
-          <Image
-            src={team.banner}
-            alt="banner"
-            fill
-            className="object-cover object-center"
-            priority
-            unoptimized
-          />
-        </div>
-      </div>
-
-      {/* Desktop banner */}
-      <div className="hidden md:block section-container navbarsm:mt-6">
-        <div className="relative w-full overflow-hidden rounded-lg border border-gray-100 aspect-[1920/800]">
-          <Image
-            src={team.banner}
-            alt="banner"
-            fill
-            className="object-cover object-center"
-            priority
-            unoptimized
-          />
-        </div>
-      </div>
-
+      <PageHeaderImage desktopSrc={team.banner} />
       <div className="mx-auto max-w-[1000px] px-[clamp(1rem,4vw,4rem)]">
         <div className="md:mx-[clamp(1rem,6vw,20rem)]">
           {/* Logo */}
