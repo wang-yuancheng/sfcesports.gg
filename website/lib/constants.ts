@@ -1199,6 +1199,43 @@ export const events: Events[] = [
       },
     ],
   },
+  {
+    name: "Shibe's Solo 1v1 Tournament: Season 4",
+    year: 2024,
+    duration: "March - May 2024",
+    slug: "summer-invitational1",
+    details: [
+      {
+        detail1: "Location: Bangkok, Thailand",
+        detail2: "Invited champions from each region",
+      },
+    ],
+  },
+  {
+    name: "Shibe's Solo 1v1 Tournament: Season 4",
+    year: 2024,
+    duration: "March - May 2024",
+    slug: "summer-invitational2",
+    details: [
+      {
+        detail1: "Location: Bangkok, Thailand",
+        detail2: "Invited champions from each region",
+      },
+    ],
+  },
+  {
+    name: "Shibe's Solo 1v1 Tournament: Season 4",
+    year: 2024,
+    duration: "March - May 2024",
+    slug: "summer-invitational3",
+    details: [
+      {
+        detail1: "Location: Bangkok, Thailand",
+        detail2: "Invited champions from each region",
+      },
+    ],
+  },
+
 ];
 
 /* ---------------------------- Navigation Menu ---------------------------- */
