@@ -182,14 +182,20 @@ export interface Player {
 /* ---------------------------- Events Page ---------------------------- */
 
 // To list all events in Events page
+export interface Standing {
+  place: number;
+  name: string;
+}
+export interface Event {
+  description?: string;
+  participants?: number;
+  standings?: Standing[];
+  prizepool?: string;
+}
 export interface Events {
   name: string;
-  year: number;
   duration: string;
   slug: string;
   details: Event[];
 }
-export interface Event {
-  detail1: string;
-  detail2: string;
-}
+export type EventsByYear = Record<number, Events[]>;
