@@ -20,7 +20,6 @@ import Image from "next/image";
 import { MenuSheetProps } from "@/lib/types";
 import { navItems, navTeams } from "@/lib/constants";
 
-
 function isCurrent(pathname: string, href: string) {
   return pathname === href;
 }
@@ -82,12 +81,13 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
                   className={`border-b border-b-gray-200 w-full flex items-center ${
                     isCurrent(pathname, item.href) ? "text-pink-bright" : ""
                   } h-16 text-[16px]`}
+                  onClick={() => onOpenChange?.(false)}
                 >
                   {item.name}
                 </Link>
               ))}
             </div>
-            <div className="">
+            <div>
               <Footer />
             </div>
           </SheetContent>

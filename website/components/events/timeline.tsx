@@ -7,7 +7,7 @@ export default function EventTimeline({ events }: { events: Events[] }) {
       {/* Timeline */}
       <div className="relative mx-auto mt-6 max-w-3xl px-2 sm:px-4 md:px-6">
         {/* vertical rail */}
-        <div className="pointer-events-none absolute top-6 bottom-6 w-[3px] bg-pink-bright ml-[23px] [@media(min-width:2930px)]:ml-[26px]" />
+        <div className="pointer-events-none absolute top-6 bottom-8 w-[3px] bg-pink-bright ml-[23px] [@media(min-width:2930px)]:ml-[26px]" />
 
         <ul className="space-y-10">
           {events.map((event, idx) => (

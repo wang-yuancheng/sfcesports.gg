@@ -21,11 +21,11 @@ export default function LongHero({
       />
 
       {/* Pink gradient base */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-pink-bright/70 group-hover:opacity-0 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-pink-bright/90 brightness-110 group-hover:opacity-0 transition-opacity duration-500" />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t from-pink-bright/90 to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
+        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t from-pink-bright/90  brightness-125 to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
       />
 
       {/* Black hover gradient */}
@@ -57,7 +57,6 @@ export default function LongHero({
       </div>
 
       {/* Bottom overlay */}
-
       <div className="absolute inset-x-0 bottom-0 z-10">
         <div className="relative px-4 pb-4">
           <a

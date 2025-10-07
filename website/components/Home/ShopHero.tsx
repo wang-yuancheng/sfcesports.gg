@@ -34,11 +34,11 @@ export default function ShopHero({
       />
 
       {/* Pink gradient base */}
-      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-t md:from-black/20 md:to-pink-bright/70 group-hover:opacity-0 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-t md:from-black/20 md:to-pink-bright/80 brightness-110 group-hover:opacity-0 transition-opacity duration-500" />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t md:top-0 md:bg-gradient-to-b md:from-pink-bright/90 md:to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
+        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t md:top-0 md:bg-gradient-to-b md:from-pink-bright/90 brightness-125 md:to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
       />
 
       {/* Black hover gradient */}

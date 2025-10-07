@@ -29,12 +29,9 @@ export default function ShortHero({
       </div>
 
       <div className="absolute bottom-[24px] inset-x-6 flex flex-col justify-end">
-        <Link
-          href="/matches"
-          className="inline-flex items-center text-zinc-300 mb-2 transition-colors hover:text-pink-bright"
-        >
-          <span>{subheader}</span>
-        </Link>
+        <span className="inline-flex items-center text-zinc-300 mb-2">
+          {subheader}
+        </span>
 
         {/* List */}
         <ul className="space-y-1 overflow-y-auto flex-1">

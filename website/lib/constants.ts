@@ -359,7 +359,7 @@ export const teams: Team[] = [
       },
     ],
     description:
-      "We are SFC 男队, we are solely here to complement SFC 女队. Yes, that's about it.",
+      "We are SFC 男队, we love SFC 女队. That's about it.",
   },
   {
     id: 4,

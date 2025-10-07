@@ -23,7 +23,7 @@ export default function TeamCard({
   const teamHref = `/teams/${team.slug}`;
 
   return (
-    <div className="group relative block h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_2px_3px_rgba(0,0,0,0.05)]">
+    <div className="group relative block h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_2px_3px_rgba(0,0,0,0.05)] md:hover:border-pink/50 md:hover:shadow-pink-light duration-300">
       {/* everything except the bottom label is clickable */}
       <Link
         href={teamHref}
