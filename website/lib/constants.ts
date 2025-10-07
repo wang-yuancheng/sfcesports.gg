@@ -1180,7 +1180,7 @@ export const events: EventsByYear = {
   2024: [
     {
       name: "SFC X NOVA Community Tournament",
-      duration: "15 - 16 March",
+      duration: "15 – 16 March",
       slug: "nova",
       details: [
         {
@@ -1197,12 +1197,12 @@ export const events: EventsByYear = {
     },
     {
       name: "Shibe's WOW Solo Tournament",
-      duration: "12 - 17 February",
+      duration: "12 – 17 February",
       slug: "wow",
       details: [
         {
           description: "Sample Description",
-          participants: 800,
+          participants: 200,
           standings: [
             { place: 1, name: "SFCzy" },
             { place: 2, name: "SFC小虾米" },
@@ -1217,7 +1217,7 @@ export const events: EventsByYear = {
   2023: [
     {
       name: "Shibe's Community Cup: Season 2",
-      duration: "13 November - 2 December",
+      duration: "13 November – 2 December",
       slug: "sccs2",
       details: [
         {
@@ -1234,7 +1234,7 @@ export const events: EventsByYear = {
     },
     {
       name: "Shibe's 1v1 Tournament: Season 5",
-      duration: "1 - 18 June",
+      duration: "1 – 18 June",
       slug: "1v1s5",
       details: [
         {
@@ -1271,7 +1271,7 @@ export const events: EventsByYear = {
     },
     {
       name: "Shibe's 1v1 Tournament: Season 4",
-      duration: "5 - 25 June",
+      duration: "5 – 25 June",
       slug: "1v1s4",
       details: [
         {
@@ -1307,7 +1307,7 @@ export const events: EventsByYear = {
   2021: [
     {
       name: "Shibe's 1v1 Tournament: Season 3",
-      duration: "24 November - 14 December",
+      duration: "24 November – 14 December",
       slug: "1v1s3",
       details: [
         {
@@ -1324,7 +1324,7 @@ export const events: EventsByYear = {
     },
     {
       name: "Lucky Gemstones",
-      duration: "21 September - 31 December",
+      duration: "21 September – 31 December",
       slug: "gem",
       details: [
         {
@@ -1341,7 +1341,7 @@ export const events: EventsByYear = {
     },
     {
       name: "Shibe's Community Cup: Season 1",
-      duration: "23 August - 12 September",
+      duration: "23 August – 12 September",
       slug: "sccs1",
       details: [
         {
@@ -1358,7 +1358,7 @@ export const events: EventsByYear = {
     },
     {
       name: "Shibe's Star Week",
-      duration: "7 - 13 June",
+      duration: "7 – 13 June",
       slug: "star",
       details: [
         {
@@ -1374,7 +1374,7 @@ export const events: EventsByYear = {
     },
     {
       name: "Shibe's 1v1 Tournament: Season 2",
-      duration: "1 - 10 June",
+      duration: "1 – 10 June",
       slug: "1v1s2",
       details: [
         {
@@ -1403,7 +1403,7 @@ export const events: EventsByYear = {
     },
     {
       name: "Shibe's 250,000 Subscribers RNG Tournament",
-      duration: "13 - 14 February",
+      duration: "13 – 14 February",
       slug: "rng",
       details: [
         {
@@ -1439,7 +1439,7 @@ export const events: EventsByYear = {
     },
     {
       name: "Shibe's 1v1 Tournament: Season 1",
-      duration: "13 - 14 November",
+      duration: "13 – 14 November",
       slug: "1v1s1",
       details: [
         {

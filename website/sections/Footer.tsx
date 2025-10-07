@@ -135,12 +135,12 @@ export default function Footer() {
             ))}
           </div>
           {/* copyright */}
-          <p className="text-[11px] mt-2">{copyright}</p>
+          <p className="text-[11px] mt-2 text-gray-600">{copyright}</p>
         </div>
       </div>
       {/* End of Desktop Footer */}
 
-      <div className="flex justify-center py-2 text-[11px] mb-3 mt-2 md:hidden">
+      <div className="flex justify-center py-2 text-[11px] text-gray-600 mb-3 mt-2 md:hidden">
         {copyright}
       </div>
     </>
