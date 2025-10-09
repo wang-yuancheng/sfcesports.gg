@@ -38,7 +38,7 @@ export default function ShortHero({
           {list?.map((item, idx) => (
             <li key={idx}>
               <Link
-                href={item.href}
+                href={`/${item.slug}`}
                 className="group flex items-center justify-between gap-3 py-1 text-white transition-colors hover:text-zinc-300"
               >
                 <span className="truncate text-lg">{item.title}</span>

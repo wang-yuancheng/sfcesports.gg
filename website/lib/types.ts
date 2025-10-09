@@ -87,7 +87,7 @@ export interface ShortHeroContent {
 }
 interface ShortHeroContentListItem {
   title: string;
-  href: string;
+  slug: string;
   logoSrc: StaticImageData;
 }
 

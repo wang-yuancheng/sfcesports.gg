@@ -6,7 +6,7 @@ import LongHero from "@/components/home/LongHero";
 import ar15SkinsBanner from "@/assets/pictures/ar15skins.jpg";
 import ar15Skins1Banner from "@/assets/pictures/ar15skins1.jpg";
 import ShopHero from "@/components/home/ShopHero";
-import { highlightsList } from "@/lib/constants";
+import { tournamentHighlights } from "@/lib/constants";
 
 export default function MainHero() {
 
@@ -22,7 +22,7 @@ export default function MainHero() {
         <ShortHero
           header="Highlights"
           subheader="Latest Matches"
-          list={highlightsList}
+          list={tournamentHighlights}
           background={cardHero}
         />
         <ShopHero

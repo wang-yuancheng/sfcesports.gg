@@ -1,5 +1,6 @@
 import React from "react";
 import { Events } from "@/lib/types";
+import Link from "next/link";
 
 export default function EventTimeline({ events }: { events: Events[] }) {
   return (
@@ -19,19 +20,21 @@ export default function EventTimeline({ events }: { events: Events[] }) {
 
               {/* text block */}
               <div className="group pl-20">
-                <p className="font-druk text-heading-md md:text-heading-md uppercase text-lg md:text-xl leading-tight group-hover:text-pink-bright transition-colors duration-300">
-                  {event.name}
-                </p>
-                <p className="text-sm text-gray-600 group-hover:text-gray-400 transition-colors duration-300">
-                  {event.duration}
-                </p>
-                {event.details.map((detail, index) => (
-                  <div key={index}>
-                    <p className="text-sm text-gray-600 group-hover:text-gray-400 transition-colors duration-300">
-                      {detail.participants} Participants
-                    </p>
-                  </div>
-                ))}
+                <Link href={`/events/${event.slug}`}>
+                  <p className="font-druk text-heading-md md:text-heading-md uppercase text-lg md:text-xl leading-tight group-hover:text-pink-bright transition-colors duration-300">
+                    {event.name}
+                  </p>
+                  <p className="text-sm text-gray-600 group-hover:text-gray-400 transition-colors duration-300">
+                    {event.duration}
+                  </p>
+                  {event.details.map((detail, index) => (
+                    <div key={index}>
+                      <p className="text-sm text-gray-600 group-hover:text-gray-400 transition-colors duration-300">
+                        {detail.participants} Participants
+                      </p>
+                    </div>
+                  ))}
+                </Link>
               </div>
             </li>
           ))}

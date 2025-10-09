@@ -154,17 +154,31 @@ export const videos: VideoItem[] = [
   },
 ];
 
-export const highlightsList = [
-  { title: "Royal Esports Tournament", href: "#", logoSrc: royalEsportsLogo },
-  { title: "NYZ Mini Tournament", href: "#", logoSrc: nyzLogo },
-  { title: "DLY Mini Tournament", href: "#", logoSrc: dlyLogo },
-  { title: "SFC x Nova Community Tournament", href: "#", logoSrc: novaLogo },
-  { title: "KOD Showdown 2024", href: "#", logoSrc: kodLogo },
-  { title: "Kohai Cup 2024", href: "#", logoSrc: kohaiCupLogo },
-  { title: "Gameling Gauntlet", href: "#", logoSrc: gamelingLogo },
-  { title: "Shibe's Community Cup", href: "#", logoSrc: shibeLogoPink },
-  { title: "THM Challenge Cup 2023", href: "#", logoSrc: thmLogo },
-  { title: "Xboss Tournament", href: "#", logoSrc: xbossLogo },
+export const tournamentHighlights = [
+  {
+    title: "Royal Esports Tournament",
+    slug: "royal",
+    logoSrc: royalEsportsLogo,
+    details: {
+      description: "Sample Description",
+      participants: 100,
+      standings: [
+        { place: 1, name: "1" },
+        { place: 2, name: "2" },
+        { place: 3, name: "3" },
+      ],
+      prizepool: "50 USD",
+    },
+  },
+  { title: "NYZ Mini Tournament", slug: "nyz", logoSrc: nyzLogo },
+  { title: "DLY Mini Tournament", slug: "dly", logoSrc: dlyLogo },
+  { title: "SFC x Nova Community Tournament", slug: "sfcxnova", logoSrc: novaLogo },
+  { title: "KOD Showdown 2024", slug: "kod", logoSrc: kodLogo },
+  { title: "Kohai Cup 2024", slug: "kohai", logoSrc: kohaiCupLogo },
+  { title: "Gameling Gauntlet", slug: "gameling", logoSrc: gamelingLogo },
+  { title: "Shibe's Community Cup", slug: "scc", logoSrc: shibeLogoPink },
+  { title: "THM Challenge Cup 2023", slug: "thm", logoSrc: thmLogo },
+  { title: "Xboss Tournament", slug: "xboss", logoSrc: xbossLogo },
 ];
 /* ---------------------------- Teams Page ---------------------------- */
 
@@ -358,8 +372,7 @@ export const teams: Team[] = [
         device: 'iPad Pro 11" M2',
       },
     ],
-    description:
-      "We are SFC 男队, we love SFC 女队. That's about it.",
+    description: "We are SFC 男队, we love SFC 女队. That's about it.",
   },
   {
     id: 4,
