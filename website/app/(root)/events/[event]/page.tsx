@@ -15,10 +15,10 @@ export default async function TournamentPage({
   params: Promise<{ event: string }>;
 }) {
   const { event: eventSlug } = await params;
-  const team = Object.values(events)
+  const event = Object.values(events)
     .flat()
     .find((e) => e.slug === eventSlug);
-  if (!team) return notFound();
+  if (!event) return notFound();
 
   return (
     <div className="mb-16">
