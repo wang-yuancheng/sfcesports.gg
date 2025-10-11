@@ -133,6 +133,27 @@ export interface VideoModalProps {
   onClose: () => void;
 }
 
+export interface TournamentHighlight {
+  title: string;
+  slug: string;
+  logoSrc: StaticImageData;
+  details?: TournamentDetails;
+}
+interface TournamentDetails {
+  description: string;
+  participants: number;
+  leaderboard: Leaderboard[];
+  prizepool: string;
+}
+interface Leaderboard {
+  place: number;
+  name: string;
+  logo?: StaticImageData;
+  kp: number;
+  pp: number;
+  tp: number;
+  prize: number | string;
+}
 /* ---------------------------- Teams Page ---------------------------- */
 
 // To list all game categories

@@ -2,6 +2,9 @@ import { notFound } from "next/navigation";
 import { tournamentHighlights } from "@/lib/constants";
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import samplepic from "@/assets/pictures/events.png";
+import Image from "next/image";
+import samplelogo from "@/assets/icons/shibe-color.webp";
+import Leaderboard from "@/components/leaderboards/leaderboard";
 
 export async function generateStaticParams() {
   return tournamentHighlights.map((h) => ({ highlight: h.slug }));
@@ -18,6 +21,8 @@ export default async function TournamentPage({
   );
   if (!tournament) return notFound();
 
+  const rows = tournament.details?.leaderboard ?? [];
+
   return (
     <div className="mb-16">
       <PageHeaderImage desktopSrc={samplepic} />
@@ -28,26 +33,11 @@ export default async function TournamentPage({
             {tournament.details?.description}
           </p>
         </div>
-        <div className="flex flex-col gap-2">
-          <h2 className="text-2xl md:text-3xl font-druk">Standings</h2>
+        <div className="flex flex-col gap-3">
+          <h2 className="text-xl md:text-2xl font-druk">Leaderboard</h2>
 
           {/* Leaderboard Component */}
-          <div className="w-full">
-            <table className="w-full shadow-md">
-              <thead className="bg-black">
-                <tr>
-                  <th className="px-2.5 md:px-6 py-2 whitespace-nowrap uppercase text-white text-start text-[10px] md:text-xs w-[50px] md:w-[84px] ps-2.5 md:ps-6 rounded-ss-lg">Rank</th>
-                  <th className="px-2.5 md:px-6 py-2 whitespace-nowrap uppercase text-white text-start text-[10px] md:text-xs w-auto ps-[42px] md:ps-[54px]">Team</th>
-                  <th className="px-2.5 md:px-6 py-2 whitespace-nowrap uppercase text-white text-end text-[10px] md:text-xs w-[50px] md:w-[84px] ps-[42px] md:ps-[54px]">WWCD</th>
-                  <th className="px-2.5 md:px-6 py-2 whitespace-nowrap uppercase text-white text-end text-[10px] md:text-xs w-[50px] md:w-[84px] ps-[42px] md:ps-[54px]">KP</th>
-                  <th className="px-2.5 md:px-6 py-2 whitespace-nowrap uppercase text-white text-end text-[10px] md:text-xs w-[50px] md:w-[84px] ps-[42px] md:ps-[54px]">PP</th>
-                  <th className="px-2.5 md:px-6 py-2 whitespace-nowrap uppercase text-white text-end text-[10px] md:text-xs w-[50px] md:w-[84px]  ps-[42px] md:ps-[54px]">Total</th>
-                  <th className="px-2.5 md:px-6 py-2 whitespace-nowrap uppercase text-white text-end text-[10px] md:text-xs w-[100px] md:w-[140px]  ps-[42px] md:ps-[54px] rounded-se-lg">Prize Pool</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+          <Leaderboard rows={rows} />
         </div>
       </div>
     </div>

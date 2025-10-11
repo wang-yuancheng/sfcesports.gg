@@ -58,6 +58,7 @@ import {
   EventsByYear,
   GameCategories,
   Team,
+  TournamentHighlight,
   VideoItem,
 } from "@/lib/types";
 
@@ -154,25 +155,71 @@ export const videos: VideoItem[] = [
   },
 ];
 
-export const tournamentHighlights = [
+export const tournamentHighlights: TournamentHighlight[] = [
   {
     title: "Royal Esports Tournament",
     slug: "royal",
     logoSrc: royalEsportsLogo,
     details: {
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       participants: 100,
-      standings: [
-        { place: 1, name: "1" },
-        { place: 2, name: "2" },
-        { place: 3, name: "3" },
+      leaderboard: [
+        { place: 1, name: "1", kp: 3, pp: 4, tp: 7, prize: 1000 },
+        { place: 2, name: "2", kp: 3, pp: 4, tp: 7, prize: 300 },
+        { place: 3, name: "3", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 4, name: "4", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 5, name: "5", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 6, name: "6", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 7, name: "7", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 8, name: "8", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 9, name: "9", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 10, name: "10", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 11, name: "11", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 12, name: "12", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 13, name: "13", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 14, name: "14", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 15, name: "15", kp: 3, pp: 4, tp: 7, prize: "-" },
+        { place: 16, name: "16", kp: 3, pp: 4, tp: 7, prize: "-" },
       ],
       prizepool: "50 USD",
     },
   },
-  { title: "NYZ Mini Tournament", slug: "nyz", logoSrc: nyzLogo },
+  {
+    title: "NYZ Mini Tournament",
+    slug: "nyz",
+    logoSrc: nyzLogo,
+    details: {
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      participants: 100,
+      leaderboard: [
+        { place: 1, name: "1", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 1000 },
+        { place: 2, name: "2", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 300 },
+        { place: 3, name: "3", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 4, name: "4", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 5, name: "5", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 6, name: "6", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 7, name: "7", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 8, name: "8", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 9, name: "9", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 10, name: "10", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 11, name: "11", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 12, name: "12", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 13, name: "13", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 14, name: "14", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 15, name: "15", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+        { place: 16, name: "16", logo: nyzLogo, kp: 3, pp: 4, tp: 7, prize: 0 },
+      ],
+      prizepool: " USD",
+    },
+  },
   { title: "DLY Mini Tournament", slug: "dly", logoSrc: dlyLogo },
-  { title: "SFC x Nova Community Tournament", slug: "sfcxnova", logoSrc: novaLogo },
+  {
+    title: "SFC x Nova Community Tournament",
+    slug: "sfcxnova",
+    logoSrc: novaLogo,
+  },
   { title: "KOD Showdown 2024", slug: "kod", logoSrc: kodLogo },
   { title: "Kohai Cup 2024", slug: "kohai", logoSrc: kohaiCupLogo },
   { title: "Gameling Gauntlet", slug: "gameling", logoSrc: gamelingLogo },
