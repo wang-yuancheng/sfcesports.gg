@@ -47,7 +47,7 @@ export default function ShortHero({
                     src={item.logoSrc}
                     alt=""
                     fill
-                    className="object-contain transition group-hover:grayscale"
+                    className="object-contain transition grayscale group-hover:grayscale-0"
                   />
                 </span>
               </Link>

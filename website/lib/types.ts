@@ -139,21 +139,24 @@ export interface TournamentHighlight {
   logoSrc: StaticImageData;
   details?: TournamentDetails;
 }
-interface TournamentDetails {
-  description: string;
-  participants: number;
+export interface TournamentDetails {
+  description?: string;
+  date?: string;
+  teams?: number;
+  leaderboardRound: string;
   leaderboard: Leaderboard[];
-  prizepool: string;
+  prizepool?: string;
 }
-interface Leaderboard {
+export type Leaderboard = {
   place: number;
   name: string;
   logo?: StaticImageData;
+  wwcd: number;
   kp: number;
   pp: number;
   tp: number;
   prize: number | string;
-}
+};
 /* ---------------------------- Teams Page ---------------------------- */
 
 // To list all game categories
