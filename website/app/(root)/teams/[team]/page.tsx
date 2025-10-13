@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { teams } from "@/lib/constants";
+import { teams } from "@/data/teams/teams";
 import Image from "next/image";
 import PlayerCard from "@/components/teams/PlayerCard";
 import PageHeaderImage from "@/components/global/PageHeaderImage";

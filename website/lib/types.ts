@@ -1,10 +1,11 @@
-import { StaticImageData } from "next/image";
-import { BREAKPOINTS } from "@/lib/constants";
+// lib/types.ts
+import type { StaticImageData } from "next/image";
+import type { BreakpointMap } from "@/lib/constants";
 
 /* ---------------------------- Styling ---------------------------- */
 
 // Tailwind CSS Custom Breakpoints
-export type BreakpointName = keyof typeof BREAKPOINTS;
+export type BreakpointName = keyof BreakpointMap;
 
 // For current viewport size
 export type MediaInput =
@@ -28,12 +29,13 @@ export interface SidebarContextProps {
   isMobile: boolean;
   toggleSidebar: () => void;
 }
+
 /* ---------------------------- Global Components ---------------------------- */
 
 // Header Images
 export type PageHeaderImageProps = {
-  mobileSrc?: StaticImageData;
-  desktopSrc: StaticImageData;
+  mobileSrc?: string | StaticImageData;
+  desktopSrc: string | StaticImageData;
   aspectRatio?: string; // Usage: "aspect-[780/780]"
 };
 
@@ -83,12 +85,12 @@ export interface ShortHeroContent {
   header: string;
   subheader: string;
   list?: ShortHeroContentListItem[];
-  background: StaticImageData;
+  background: string | StaticImageData;
 }
 interface ShortHeroContentListItem {
   title: string;
   slug: string;
-  logoSrc: StaticImageData;
+  logoSrc: string | StaticImageData;
 }
 
 // Long Hero Content
@@ -96,7 +98,7 @@ export interface LongHeroContent {
   header: string;
   subheader: string;
   matchLabel?: string;
-  img: StaticImageData;
+  img: string | StaticImageData;
 }
 
 // Shop Hero Content
@@ -104,8 +106,8 @@ export interface ShopHeroContent {
   header: string;
   subheader: string;
   matchLabel?: string;
-  grayImage: StaticImageData;
-  colorImage: StaticImageData;
+  grayImage: string | StaticImageData;
+  colorImage: string | StaticImageData;
   variant: "big" | "small";
 }
 
@@ -114,14 +116,14 @@ export interface EventHeroContent {
   header: React.ReactNode;
   subheader: string;
   href: string;
-  colorImage: StaticImageData;
+  colorImage: string | StaticImageData;
 }
 
 // Youtube video component
 export interface VideoItem {
   title: string;
   id: string;
-  thumbnail: StaticImageData;
+  thumbnail: string | StaticImageData;
   views: string;
 }
 
@@ -133,10 +135,12 @@ export interface VideoModalProps {
   onClose: () => void;
 }
 
+/* ---------------------------- Tournaments ---------------------------- */
+
 export interface TournamentHighlight {
   title: string;
   slug: string;
-  logoSrc: StaticImageData;
+  logoSrc: string | StaticImageData;
   details?: TournamentDetails;
 }
 export interface TournamentDetails {
@@ -150,22 +154,23 @@ export interface TournamentDetails {
 export type Leaderboard = {
   place: number;
   name: string;
-  logo?: StaticImageData;
+  logo?: string | StaticImageData;
   wwcd: number;
   kp: number;
   pp: number;
   tp: number;
   prize: number | string;
 };
+
 /* ---------------------------- Teams Page ---------------------------- */
 
 // To list all game categories
 export interface GameCategories {
   label: string;
   value: string;
-  iconSrc: StaticImageData;
-  backgroundSrc: StaticImageData;
-  bannerSrc?: StaticImageData;
+  iconSrc: string | StaticImageData;
+  backgroundSrc: string | StaticImageData;
+  bannerSrc?: string | StaticImageData;
 }
 
 // To calculate stats for each team
@@ -182,8 +187,8 @@ export interface Team {
   slug: string;
   name: string;
   game: string;
-  logo: StaticImageData;
-  banner: StaticImageData;
+  logo: string | StaticImageData;
+  banner: string | StaticImageData;
   legacy: boolean;
   gamesPlayed: number;
   first: number;
@@ -196,7 +201,7 @@ export interface Team {
 export interface Player {
   name: string;
   country: string;
-  profile: StaticImageData;
+  profile: string | StaticImageData;
   role: string;
   active: string;
   earnings: number;

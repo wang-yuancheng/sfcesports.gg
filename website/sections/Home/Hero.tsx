@@ -6,10 +6,9 @@ import LongHero from "@/components/home/LongHero";
 import ar15SkinsBanner from "@/assets/pictures/ar15skins.jpg";
 import ar15Skins1Banner from "@/assets/pictures/ar15skins1.jpg";
 import ShopHero from "@/components/home/ShopHero";
-import { tournamentHighlights } from "@/lib/constants";
+import { tournamentHighlights } from "@/data/home/highlights";
 
 export default function MainHero() {
-
   return (
     <section className="section-container navbarsm:pt-6 pb-14">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:[grid-template-rows:repeat(2,minmax(0,1fr))]">

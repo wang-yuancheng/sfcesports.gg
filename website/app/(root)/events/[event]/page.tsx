@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { events } from "@/lib/constants";
+import { events } from "@/data/events/events";
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import samplepic from "@/assets/pictures/events.png";
 

@@ -9,7 +9,8 @@ import TeamCard from "@/components/teams/TeamCard";
 import TeamGrid from "@/sections/Teams/TeamGrid";
 import GameCategorySidebar from "@/sections/Teams/GameCategorySidebar";
 import LegacyTeamToggle from "@/sections/Teams/LegacyTeamToggle";
-import { teams, gameCategories } from "@/lib/constants";
+import { gameCategories } from "@/data/teams/categories";
+import { teams } from "@/data/teams/teams";
 
 export default function TeamsPage() {
   const [selectedGame, setSelectedGame] = useState<string>("all");

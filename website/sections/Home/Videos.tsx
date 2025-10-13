@@ -5,7 +5,7 @@ import VideoCard from "@/components/home/VideoCard";
 import { VideoItem } from "@/lib/types";
 import VideoModal from "@/components/home/VideoModal";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
-import { videos } from "@/lib/constants";
+import { videos } from "@/data/home/videos";
 
 
 export default function MediaPage() {

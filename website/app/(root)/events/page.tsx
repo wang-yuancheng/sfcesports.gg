@@ -1,7 +1,7 @@
 import banner from "@/assets/pictures/events.png";
 import EventTimeline from "@/components/events/timeline";
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import { events } from "@/lib/constants";
+import { events } from "@/data/events/events";
 
 export default function EventsPage() {
   return (

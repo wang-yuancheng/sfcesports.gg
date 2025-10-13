@@ -18,7 +18,7 @@ import X from "@/assets/icons/x.svg";
 import MenuDropdown from "./MenuDropdown";
 import Image from "next/image";
 import { MenuSheetProps } from "@/lib/types";
-import { navItems, navTeams } from "@/lib/constants";
+import { navItems, navTeams } from "@/data/navigation/menu";
 
 function isCurrent(pathname: string, href: string) {
   return pathname === href;

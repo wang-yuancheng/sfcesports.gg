@@ -4,7 +4,14 @@ import React from "react";
 import shibeFanClubBanner from "@/assets/logos/shibefanclubbanner.png";
 import shibeLogoBlack from "@/assets/icons/shibe-black.svg";
 import FooterDropdown from "@/components/navigation/FooterDropdown";
-import { footerSocialsList, footerAbout, footerActivity, termsAndPolicies, currency, copyright } from "@/lib/constants";
+import {
+  footerSocialsList,
+  footerAbout,
+  footerActivity,
+  termsAndPolicies,
+  currency,
+  copyright,
+} from "@/data/navigation/footer";
 
 export default function Footer() {
   return (
