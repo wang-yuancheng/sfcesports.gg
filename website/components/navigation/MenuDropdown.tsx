@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import ChevronDown from "@/assets/icons/chevron-down.svg";
 import ChevronDownPink from "@/assets/icons/chevron-down-pink.svg";

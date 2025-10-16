@@ -15,9 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <InitialFontWrapper>
-        <body>{children}</body>
-      </InitialFontWrapper>
+      <body>
+        <InitialFontWrapper>{children}</InitialFontWrapper>
+      </body>
     </html>
   );
 }

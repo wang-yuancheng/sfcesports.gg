@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdownMenu";
 import profileIcon from "@/assets/icons/circle-user-round.svg";
+import Link from "next/link";
 
 export default function NavbarProfile() {
   const [open, setOpen] = useState(false);
@@ -28,12 +29,12 @@ export default function NavbarProfile() {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end">
-        <a href="/login">
+        <Link href="/login">
           <DropdownMenuItem>Sign In</DropdownMenuItem>
-        </a>
-        <a href="/sign-up">
+        </Link>
+        <Link href="/sign-up">
           <DropdownMenuItem>Create an account</DropdownMenuItem>
-        </a>
+        </Link>
       </DropdownMenuContent>
     </DropdownMenu>
   );

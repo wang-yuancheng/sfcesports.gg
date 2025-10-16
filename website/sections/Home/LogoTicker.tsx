@@ -24,7 +24,7 @@ const srcList = [
   { src: streamelementsLogo, alt: "Streamelements Logo" },
 ];
 
-const logoSize = "h-[clamp(24px,6vw,44px)] w-auto";
+const logoSize = "h-[clamp(24px,6vw,40px)] w-auto";
 const logoGap = "gap-[clamp(15px,10vw,100px)]";
 const logoPad = "pr-[clamp(15px,10vw,100px)]";
 const SPEED = 40; // px per second
@@ -81,7 +81,7 @@ export default function LogoTicker() {
   const logos = useMemo(() => Array.from({ length: sets * 2 }, () => srcList).flat(), [sets]);
 
   return (
-    <div className="section-container navbarsm:py-5" ref={viewportRef}>
+    <div className="section-container navbarsm:py-5 mb-5" ref={viewportRef}>
       <div
         className="flex overflow-hidden"
         style={{

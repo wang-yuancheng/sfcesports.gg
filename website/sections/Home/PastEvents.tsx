@@ -6,7 +6,7 @@ import tdmTourBanner from "@/assets/pictures/1v1s4.webp";
 
 export default function PastEvents() {
   return (
-    <section className="section-container pt-14 navbarsm:pb-14">
+    <section className="section-container pt-14 navbarsm:pb-14 mb-5">
       <div className="w-full mt-0 sm:mt-0 mb-8 ">
         <p className="uppercase text-4xl font-druk font-medium text-center">
           Featured Events

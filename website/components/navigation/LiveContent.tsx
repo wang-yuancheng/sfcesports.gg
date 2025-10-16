@@ -4,10 +4,11 @@ import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import pubgmLogo from "@/assets/logos/pubgm.svg";
 import novaLogo from "@/assets/logos/nova.webp";
 import ChevronRight from "@/assets/icons/chevron-right.svg";
+import Link from "next/link";
 
 export function LiveContentFront({ showVod }: { showVod: boolean }) {
   return (
-    <a href="/live" className="block w-full group">
+    <Link href="/live" className="block w-full group">
       <div className="w-full min-w-0 h-[52px] flex justify-between items-center pl-2">
         {/* Left side */}
         <div className="flex items-center gap-3 min-w-0">
@@ -35,13 +36,13 @@ export function LiveContentFront({ showVod }: { showVod: boolean }) {
           />
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
 export function LiveContentBack({ showVod }: { showVod: boolean }) {
   return (
-    <a href="/live" className="block w-full group">
+    <Link href="/live" className="block w-full group">
       <div className="w-full min-w-0 h-[52px] flex justify-between items-center px-2">
         {/* Left side */}
         <div className="flex items-center gap-3 min-w-0">
@@ -78,7 +79,7 @@ export function LiveContentBack({ showVod }: { showVod: boolean }) {
           />
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 

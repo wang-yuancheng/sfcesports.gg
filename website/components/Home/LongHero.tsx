@@ -1,7 +1,8 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import React from "react";
 import ChevronRight from "@/assets/icons/chevron-right-white.svg";
 import { LongHeroContent } from "@/lib/types";
+import Link from "next/link";
 
 
 export default function LongHero({
@@ -59,8 +60,8 @@ export default function LongHero({
       {/* Bottom overlay */}
       <div className="absolute inset-x-0 bottom-0 z-10">
         <div className="relative px-4 pb-4">
-          <a
-            href="#"
+          <Link
+            href="/atc"
             className="block w-full rounded-xl bg-black/40 ring-1 ring-white/10 backdrop-blur-md hover:bg-black/65 transition-colors"
           >
             <div className="flex items-center justify-between gap-3 p-4">
@@ -83,7 +84,7 @@ export default function LongHero({
                 height={30}
               />
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
