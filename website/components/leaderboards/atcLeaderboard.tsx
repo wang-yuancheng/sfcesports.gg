@@ -2,7 +2,7 @@ import type { Leaderboard } from "@/lib/types";
 import { ordinal } from "@/lib/utils";
 import Image from "next/image";
 
-export default function Leaderboard({ rows }: { rows: Leaderboard[] }) {
+export default function ATCLeaderboard({ rows }: { rows: Leaderboard[] }) {
   const hasLogos = rows.some((r) => r.logo);
 
   return (
@@ -30,11 +30,9 @@ export default function Leaderboard({ rows }: { rows: Leaderboard[] }) {
               <th className="hidden xs:table-cell px-1.5 md:px-3 py-2 whitespace-nowrap uppercase text-white text-end text-[10px] md:text-xs w-[50px] md:w-[84px] font-druk font-[400]">
                 PP
               </th>
-              <th className="px-1.5 md:px-3 py-2 whitespace-nowrap uppercase text-white text-end text-[10px] md:text-xs w-[50px] md:w-[84px] font-druk font-[400]">
-                TP
-              </th>
+
               <th className="px-3 md:px-5 py-2 whitespace-nowrap uppercase text-white text-end text-[10px] md:text-xs w-[50px] md:w-[84px] ps-[19px] md:ps-[48px] font-druk font-[400]">
-                Prize
+                TP
               </th>
             </tr>
           </thead>
@@ -74,12 +72,10 @@ export default function Leaderboard({ rows }: { rows: Leaderboard[] }) {
                 <td className="hidden xs:table-cell px-2 md:px-3 py-1.5 md:py-4">
                   <div className="text-end text-xs md:text-[19px]">{r.pp}</div>
                 </td>
-                <td className="px-2 md:px-3 py-1.5 md:py-4">
-                  <div className="text-end text-xs md:text-[19px]">{r.tp}</div>
-                </td>
+
                 <td className="px-3 md:px-5 py-1.5 md:py-4 md:pe-6">
                   <div className="text-end text-xs md:text-[19px] text-pink-bright contrast-150">
-                    {r.prize}
+                    {r.tp}
                   </div>
                 </td>
               </tr>
