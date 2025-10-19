@@ -19,7 +19,7 @@ export default function VideoCard({
       : "";
 
   return (
-    <div className="flex gap-5 md:gap-2 items-center md:flex-col mx-3">
+    <div className="flex gap-5 md:gap-2 items-center md:flex-col mx-0">
       <div className="w-[clamp(100px,40vw,300px)] shrink-0 md:w-full">
         <button
           type="button"

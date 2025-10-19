@@ -23,7 +23,7 @@ export default function MediaPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-12 md:gap-0">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-12">
         {videos.map((v) => (
           <div key={v.id} className="md:col-span-3">
             <VideoCard item={v} onOpen={setActive} viewCount={viewsMap[v.id]} />
