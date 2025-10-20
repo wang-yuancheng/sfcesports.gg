@@ -15,11 +15,12 @@ const config: Config = {
       xs: "480px",
       sm: "640px",
       md: "768px",
+      xmd: "900px",
       lg: "1024px",
       navbarsm: "1100px",
       xlg: "1280px",
       navbarlg: "1350px",
-      xxlg: "1440px"
+      xxlg: "1440px",
     },
     extend: {
       fontFamily: {
@@ -112,7 +113,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
 };
 
 export default config;

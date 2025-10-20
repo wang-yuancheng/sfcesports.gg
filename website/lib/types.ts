@@ -154,12 +154,18 @@ export interface TournamentDetails {
 export type Leaderboard = {
   place: number;
   name: string;
-  logo?: string | StaticImageData;
+  logo: string | StaticImageData;
   wwcd: number;
   kp: number;
   pp: number;
   tp: number;
   prize: number | string;
+};
+
+export type ATCLeaderboard = {
+  name: string;
+  logo: string | StaticImageData;
+  advanced: string;
 };
 
 /* ---------------------------- Teams Page ---------------------------- */
