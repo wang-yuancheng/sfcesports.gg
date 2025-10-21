@@ -11,6 +11,8 @@ import { videos } from "@/data/home/atc/vods";
 import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
 import LeaderboardTeams from "@/components/leaderboards/leaderboardTeams";
+import ImageAndTextBlock from "@/components/global/ImageAndTextBlock";
+import samplebanner from "@/assets/pictures/atcs17thumbnail.jpg";
 
 export default function ATCPage() {
   const [active, setActive] = useState<VideoItem | null>(null);
@@ -21,9 +23,9 @@ export default function ATCPage() {
       <PageHeaderImage desktopSrc={atcBanner} />
       <div className="max-w-[1600px] mx-auto px-[clamp(1rem,4vw,4rem)]">
         <div className="md:mx-[clamp(1rem,6vw,20rem)]">
-          <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-20">
             <section className="flex flex-col gap-4">
-              <h1 className="mt-10 text-3xl md:text-4xl font-druk uppercase text-center text-pink-bright leading-tight">
+              <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center text-pink-bright leading-tight">
                 All talent championship
               </h1>
               <p className="text-gray-600 font-[400] text-base text-justify">
@@ -90,49 +92,80 @@ export default function ATCPage() {
                 </div>
               </div>
             </section>
-            <div className="flex flex-col gap-3 -mt-6 md:-mt-8 lg:-mt-12">
-              <h2 className="text-xl md:text-2xl font-druk uppercase">
-                Grand Finals
-              </h2>
-              <ATCLeaderboard rows={atcLeaderboard} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h2 className="text-xl md:text-2xl font-druk uppercase">
-                Finals Qualified Teams
-              </h2>
-              <div
-                className="overflow-auto scrollbar-hide grid w-full auto-rows-fr gap-2 overflow-x-auto py-4 
+
+            <section className="-mt-6 md:-mt-8 lg:-mt-12 space-y-7">
+              <ImageAndTextBlock
+                picture={samplebanner}
+                title="Qualifiers"
+                text="We achieved #2 for week 1 qualifiers, right behind NGX,
+                        which is a team that has achieved top 3 in the PUBG
+                        Mobile Global Championship Finals. Under SFC, we had 1
+                        team that placed #5 for semifinals, and #2 for playoffs
+                        and another team that entered the final round directly
+                        through semifinals."
+              />
+               <ImageAndTextBlock
+                imageSide="right"
+                picture={samplebanner}
+                title="Semi-Finals"
+                text="We achieved #2 for week 1 qualifiers, right behind NGX,
+                        which is a team that has achieved top 3 in the PUBG
+                        Mobile Global Championship Finals. Under SFC, we had 1
+                        team that placed #5 for semifinals, and #2 for playoffs
+                        and another team that entered the final round directly
+                        through semifinals."
+              />
+            </section>
+
+            <section>
+              <div className="flex flex-col gap-3">
+                <h2 className="text-xl md:text-2xl font-druk uppercase">
+                  Grand Finals
+                </h2>
+                <ATCLeaderboard rows={atcLeaderboard} />
+              </div>
+            </section>
+            <section>
+              <div className="flex flex-col gap-3">
+                <h2 className="text-xl md:text-2xl font-druk uppercase">
+                  Finals Qualified Teams
+                </h2>
+                <div
+                  className="overflow-auto scrollbar-hide grid w-full auto-rows-fr gap-2 overflow-x-auto py-4 
                   max-md:grid-flow-col max-md:grid-rows-2 max-md:px-4 max-md:pt-10 
                   md:grid-cols-3 xmd:grid-cols-4 md:gap-5 md:overflow-visible lg:grid-cols-4 xlg:grid-cols-5"
-              >
-                {atcTeams.map((t) => (
-                  <LeaderboardTeams key={t.name} team={t} />
-                ))}
+                >
+                  {atcTeams.map((t) => (
+                    <LeaderboardTeams key={t.name} team={t} />
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-3">
-              <h2 className="text-xl md:text-2xl font-druk uppercase">
-                ATC S16 Vods
-              </h2>
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-9">
-                {videos.map((v) => (
-                  <div key={v.id} className="md:col-span-3 ">
-                    <VideoCard
-                      item={v}
-                      onOpen={setActive}
-                      viewCount={viewsMap[v.id]}
-                    />
-                  </div>
-                ))}
-              </div>
+            </section>
+            <section>
+              <div className="flex flex-col gap-3">
+                <h2 className="text-xl md:text-2xl font-druk uppercase">
+                  ATC S16 Vods
+                </h2>
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-9">
+                  {videos.map((v) => (
+                    <div key={v.id} className="md:col-span-3 ">
+                      <VideoCard
+                        item={v}
+                        onOpen={setActive}
+                        viewCount={viewsMap[v.id]}
+                      />
+                    </div>
+                  ))}
+                </div>
 
-              <VideoModal
-                open={Boolean(active)}
-                title={active?.title ?? ""}
-                videoId={active?.id ?? ""}
-                onClose={() => setActive(null)}
-              />
-            </div>
+                <VideoModal
+                  open={Boolean(active)}
+                  title={active?.title ?? ""}
+                  videoId={active?.id ?? ""}
+                  onClose={() => setActive(null)}
+                />
+              </div>
+            </section>
           </div>
         </div>
       </div>

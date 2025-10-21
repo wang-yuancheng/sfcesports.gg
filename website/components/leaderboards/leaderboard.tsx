@@ -50,11 +50,6 @@ export default function Leaderboard({ rows }: { rows: Leaderboard[] }) {
 
                 <td className="px-3 md:px-6 py-1.5 md:py-4">
                   <div className="flex items-center gap-1 md:gap-3">
-                    <Image
-                      src={r.logo}
-                      alt=""
-                      className="hidden xs:flex size-6 md:size-8"
-                    />
                     <p className="text-start text-xs md:text-[19px] uppercase">
                       {r.name}
                     </p>
