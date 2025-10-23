@@ -52,7 +52,7 @@ export default function ATCLeaderboard({ rows }: { rows: Leaderboard[] }) {
                       <Image
                         src={r.logo}
                         alt=""
-                        className="hidden xs:flex size-6 md:size-8"
+                        className="hidden xs:flex size-6 md:size-8 brightness-110"
                       />
                     ) : null}
                     <p className="text-start text-xs md:text-[19px] uppercase">

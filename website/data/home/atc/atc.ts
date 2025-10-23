@@ -1,11 +1,24 @@
-import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
+import crewEagle from "@/assets/logos/crew-eagle.png";
+import crewBear from "@/assets/logos/crew-bear.png";
+import crewTiger from "@/assets/logos/crew-tiger.png";
+import crewPanda from "@/assets/logos/crew-panda.png";
+import crewBird from "@/assets/logos/crew-bird.png";
+import crewRooster from "@/assets/logos/crew-rooster.png";
+import crewFish from "@/assets/logos/crew-fish.png";
+import crewFootball from "@/assets/logos/crew-football.png";
+import crewElephant from "@/assets/logos/crew-elephant.png";
+import crewBalloon from "@/assets/logos/crew-balloon.png";
+import crewMouse from "@/assets/logos/crew-mouse.png";
+import crewDino from "@/assets/logos/crew-dino.png";
+import crewCrocodile from "@/assets/logos/crew-crocodile.png";
+
 import { ATCLeaderboard, Leaderboard } from "@/lib/types";
 
 export const atcLeaderboard: Leaderboard[] = [
   {
     place: 1,
     name: "SFC 女队",
-    logo: shibeLogo,
+    logo: crewFish,
     wwcd: 1,
     kp: 28,
     pp: 41,
@@ -15,7 +28,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 2,
     name: "SFC India",
-    logo: shibeLogo,
+    logo: crewEagle,
     wwcd: 1,
     kp: 25,
     pp: 37,
@@ -25,7 +38,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 3,
     name: "小迪同学",
-    logo: shibeLogo,
+    logo: crewPanda,
     wwcd: 1,
     kp: 29,
     pp: 27,
@@ -35,7 +48,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 4,
     name: "海賊嘘は良くないネキ",
-    logo: shibeLogo,
+    logo: crewBird,
     wwcd: 1,
     kp: 18,
     pp: 28,
@@ -45,7 +58,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 5,
     name: "लौDING II CLAN",
-    logo: shibeLogo,
+    logo: crewCrocodile,
     wwcd: 0,
     kp: 25,
     pp: 20,
@@ -55,7 +68,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 6,
     name: "辛福家园",
-    logo: shibeLogo,
+    logo: crewPanda,
     wwcd: 0,
     kp: 19,
     pp: 23,
@@ -65,7 +78,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 7,
     name: "とらえもん",
-    logo: shibeLogo,
+    logo: crewBalloon,
     wwcd: 0,
     kp: 16,
     pp: 15,
@@ -74,8 +87,8 @@ export const atcLeaderboard: Leaderboard[] = [
   },
   {
     place: 8,
-    name: "VALOR Gaming",
-    logo: shibeLogo,
+    name: "VALOR | Gaming",
+    logo: crewTiger,
     wwcd: 0,
     kp: 11,
     pp: 14,
@@ -85,7 +98,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 9,
     name: "上ミノ",
-    logo: shibeLogo,
+    logo: crewPanda,
     wwcd: 0,
     kp: 17,
     pp: 6,
@@ -95,7 +108,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 10,
     name: "STE",
-    logo: shibeLogo,
+    logo: crewRooster,
     wwcd: 0,
     kp: 15,
     pp: 5,
@@ -105,7 +118,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 11,
     name: "猛攻",
-    logo: shibeLogo,
+    logo: crewTiger,
     wwcd: 0,
     kp: 13,
     pp: 7,
@@ -115,7 +128,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 12,
     name: "天上俱乐部",
-    logo: shibeLogo,
+    logo: crewEagle,
     wwcd: 0,
     kp: 14,
     pp: 3,
@@ -125,7 +138,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 13,
     name: "KHALISTANIS",
-    logo: shibeLogo,
+    logo: crewFootball,
     wwcd: 0,
     kp: 8,
     pp: 8,
@@ -135,7 +148,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 14,
     name: "eieiEsports",
-    logo: shibeLogo,
+    logo: crewElephant,
     wwcd: 0,
     kp: 14,
     pp: 0,
@@ -145,7 +158,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 15,
     name: "アドゴニーズ",
-    logo: shibeLogo,
+    logo: crewMouse,
     wwcd: 0,
     kp: 4,
     pp: 6,
@@ -155,7 +168,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 16,
     name: "SFC 男队",
-    logo: shibeLogo,
+    logo: crewEagle,
     wwcd: 0,
     kp: 9,
     pp: 1,
@@ -165,7 +178,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 17,
     name: "The Evil Army",
-    logo: shibeLogo,
+    logo: crewBird,
     wwcd: 0,
     kp: 5,
     pp: 3,
@@ -175,7 +188,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 18,
     name: "สุราขวง จำกัด",
-    logo: shibeLogo,
+    logo: crewDino,
     wwcd: 0,
     kp: 5,
     pp: 2,
@@ -185,7 +198,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 19,
     name: "123",
-    logo: shibeLogo,
+    logo: crewBear,
     wwcd: 0,
     kp: 2,
     pp: 2,
@@ -195,7 +208,7 @@ export const atcLeaderboard: Leaderboard[] = [
   {
     place: 20,
     name: "ZEN",
-    logo: shibeLogo,
+    logo: crewEagle,
     wwcd: 0,
     kp: 3,
     pp: 0,
@@ -208,106 +221,106 @@ export const atcTeams: ATCLeaderboard[] = [
   // --- Semi-Finals Week 1 ---
   {
     name: "猛攻",
-    logo: shibeLogo,
+    logo: crewTiger,
     advanced: "Semi-Finals Week 1 #1",
   },
   {
     name: "小迪同学",
-    logo: shibeLogo,
+    logo: crewPanda,
     advanced: "Semi-Finals Week 1 #2",
   },
   {
     name: "辛福家园",
-    logo: shibeLogo,
+    logo: crewPanda,
     advanced: "Semi-Finals Week 1 #3",
   },
   {
     name: "KHALISTANIS",
-    logo: shibeLogo,
+    logo: crewFootball,
     advanced: "Semi-Finals Week 1 #4",
   },
   {
     name: "eieiEsports",
-    logo: shibeLogo,
+    logo: crewElephant,
     advanced: "Semi-Finals Week 1 #5",
   },
   {
     name: "SFC 男队",
-    logo: shibeLogo,
+    logo: crewEagle,
     advanced: "Semi-Finals Week 1 #6",
   },
   {
     name: "The Evil Army",
-    logo: shibeLogo,
+    logo: crewBird,
     advanced: "Semi-Finals Week 1 #7",
   },
   {
     name: "ZEN",
-    logo: shibeLogo,
+    logo: crewEagle,
     advanced: "Semi-Finals Week 1 #8",
   },
 
   // --- Semi-Finals Week 2 ---
   {
     name: "海賊嘘は良くないネキ",
-    logo: shibeLogo,
+    logo: crewBird,
     advanced: "Semi-Finals Week 2 #1",
   },
   {
     name: "上ミノ",
-    logo: shibeLogo,
+    logo: crewPanda,
     advanced: "Semi-Finals Week 2 #2",
   },
   {
-    name: "VALOR Gaming",
-    logo: shibeLogo,
+    name: "VALOR | Gaming",
+    logo: crewTiger,
     advanced: "Semi-Finals Week 2 #3",
   },
   {
     name: "天上俱乐部",
-    logo: shibeLogo,
+    logo: crewEagle,
     advanced: "Semi-Finals Week 2 #4",
   },
   {
     name: "STE",
-    logo: shibeLogo,
+    logo: crewRooster,
     advanced: "Semi-Finals Week 2 #5",
   },
   {
     name: "アドゴニーズ",
-    logo: shibeLogo,
+    logo: crewMouse,
     advanced: "Semi-Finals Week 2 #6",
   },
   {
     name: "लौDING II CLAN",
-    logo: shibeLogo,
+    logo: crewCrocodile,
     advanced: "Semi-Finals Week 2 #7",
   },
   {
     name: "สุราขวง จำกัด",
-    logo: shibeLogo,
+    logo: crewDino,
     advanced: "Semi-Finals Week 2 #8",
   },
 
   // --- Playoffs ---
   {
     name: "とらえもん",
-    logo: shibeLogo,
+    logo: crewBalloon,
     advanced: "Playoffs Group 1 #1",
   },
   {
     name: "123",
-    logo: shibeLogo,
+    logo: crewBear,
     advanced: "Playoffs Group 2 #1",
   },
   {
     name: "SFC India",
-    logo: shibeLogo,
+    logo: crewEagle,
     advanced: "Playoffs Group 1 #2",
   },
   {
     name: "SFC 女队",
-    logo: shibeLogo,
+    logo: crewFish,
     advanced: "Playoffs Group 2 #2",
   },
 ];
