@@ -1,5 +1,11 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
+// If this import errors, use the require() variant shown below
+import scrollbarHide from "tailwind-scrollbar-hide";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore – uncomment these two lines if the import above complains
+// const scrollbarHide = require("tailwind-scrollbar-hide");
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   darkMode: ["class"],
@@ -39,53 +45,20 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        // Color Pallet Themes
-        pink: {
-          // Main Theme
-          DEFAULT: "#FFC0D3",
-          light: "#FDEFF4",
-          bright: "#FF5C8D",
-        },
-        fadedwhite: {
-          DEFAULT: "#FEFEFE", // for background, same as hsl(0, 0%, 99.2%)
-        },
-        fadedblack: {
-          DEFAULT: "#101010", // for logos that are not fully black
-        },
-        plum: {
-          DEFAULT: "#524A4E", // if required
-        },
+        pink: { DEFAULT: "#FFC0D3", light: "#FDEFF4", bright: "#FF5C8D" },
+        fadedwhite: { DEFAULT: "#FEFEFE" },
+        fadedblack: { DEFAULT: "#101010" },
+        plum: { DEFAULT: "#524A4E" },
 
         background: "hsl(0, 0%, 99.2%)",
         foreground: "hsl(var(--foreground))",
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
+        card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
+        popover: { DEFAULT: "hsl(var(--popover))", foreground: "hsl(var(--popover-foreground))" },
+        primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
+        secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
+        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+        accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
+        destructive: { DEFAULT: "hsl(var(--destructive))", foreground: "hsl(var(--destructive-foreground))" },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -108,12 +81,23 @@ const config: Config = {
         },
       },
       boxShadow: {
-        "gray-10":
-          "0 1.5px 3px rgba(0, 0, 0, 0.06), 0 1px 1.5px rgba(0, 0, 0, 0.04)",
+        "gray-10": "0 1.5px 3px rgba(0,0,0,0.06), 0 1px 1.5px rgba(0,0,0,0.04)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
+
+  plugins: [
+    scrollbarHide,
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        ".no-scrollbar::-webkit-scrollbar": { display: "none" },
+        ".no-scrollbar": {
+          "scrollbar-width": "none",     /* Firefox */
+          "-ms-overflow-style": "none",  /* IE/Edge legacy */
+        },
+      });
+    }),
+  ],
 };
 
 export default config;

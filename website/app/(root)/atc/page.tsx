@@ -2,9 +2,14 @@
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import atcBanner from "@/assets/pictures/atc.webp";
+import atcQualifiers from "@/assets/pictures/atcqualifiers.png";
+import atcFinals from "@/assets/pictures/atcfinals.png";
+import atcWinnerPose from "@/assets/pictures/atcwinnerpose.png";
+import atcWinnerTitle from "@/assets/pictures/atcwinnertitle.png";
+import atcCrew from "@/assets/pictures/atcchampioncrew.png";
 import ATCLeaderboard from "@/components/leaderboards/atcLeaderboard";
 import { atcLeaderboard, atcTeams } from "@/data/home/atc/atc";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";
 import { videos } from "@/data/home/atc/vods";
@@ -13,14 +18,159 @@ import VideoModal from "@/components/home/VideoModal";
 import LeaderboardTeams from "@/components/leaderboards/leaderboardTeams";
 import ImageAndTextBlock from "@/components/global/ImageAndTextBlock";
 import samplebanner from "@/assets/pictures/atcs17thumbnail.jpg";
+import atctest from "@/assets/pictures/atctest.jpg";
+import ImageModal from "@/components/home/ImageModal";
+import ImageCard from "@/components/home/ImageCard";
+import type { StaticImageData } from "next/image";
+
+import atcMedia1 from "@/assets/pictures/atcmedia1.png";
+import atcMedia2 from "@/assets/pictures/atcmedia2.png";
+import atcMedia3 from "@/assets/pictures/atcmedia3.png";
+import atcMedia4 from "@/assets/pictures/atcmedia4.png";
+import atcMedia5 from "@/assets/pictures/atcmedia5.png";
+import atcMedia6 from "@/assets/pictures/atcmedia6.png";
+import atcMedia7 from "@/assets/pictures/atcmedia7.png";
+
+
+const media: StaticImageData[] = [
+  atcMedia1,
+  atcMedia2,
+  atcMedia3,
+  atcMedia4,
+  atcMedia5,
+  atcMedia6,
+  atcMedia7
+];
 
 export default function ATCPage() {
   const [active, setActive] = useState<VideoItem | null>(null);
   const ids = useMemo(() => videos.map((v) => v.id), []);
   const viewsMap = useYoutubeViews(ids);
+
+  function MediaGallery() {
+  const [activeImage, setActiveImage] = useState<number | null>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const hasDragged = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+  const velocity = useRef(0);
+  const lastX = useRef(0);
+  const lastTime = useRef(0);
+  const raf = useRef<number | null>(null);
+  const isMobile =
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 768px)").matches;
+
+  // Bounce-back + momentum
+  const animateMomentum = () => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollLeft -= velocity.current;
+    velocity.current *= 0.95;
+
+    // Bounce at edges
+    const max = el.scrollWidth - el.clientWidth;
+    if (el.scrollLeft < 0) {
+      velocity.current *= -0.5;
+      el.scrollLeft = el.scrollLeft * 0.5;
+    } else if (el.scrollLeft > max) {
+      velocity.current *= -0.5;
+      const excess = el.scrollLeft - max;
+      el.scrollLeft = max + excess * 0.5;
+    }
+
+    if (Math.abs(velocity.current) > 0.3) {
+      raf.current = requestAnimationFrame(animateMomentum);
+    } else {
+      // Final smooth settle
+      if (el.scrollLeft < 0) el.scrollTo({ left: 0, behavior: "smooth" });
+      if (el.scrollLeft > max)
+        el.scrollTo({ left: max, behavior: "smooth" });
+    }
+  };
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    if (isMobile) return;
+    isDragging.current = true;
+    hasDragged.current = false;
+    startX.current = e.pageX - (scrollerRef.current?.offsetLeft ?? 0);
+    scrollLeft.current = scrollerRef.current?.scrollLeft ?? 0;
+    lastX.current = e.pageX;
+    lastTime.current = Date.now();
+    if (raf.current) cancelAnimationFrame(raf.current);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !scrollerRef.current || isMobile) return;
+    e.preventDefault();
+    const el = scrollerRef.current;
+    const x = e.pageX - (el.offsetLeft ?? 0);
+    const walk = x - startX.current;
+    if (Math.abs(walk) > 5) hasDragged.current = true;
+
+    const now = Date.now();
+    velocity.current = (x - lastX.current) / (now - lastTime.current);
+    lastX.current = x;
+    lastTime.current = now;
+
+    el.scrollLeft = scrollLeft.current - walk;
+
+    // allow small overscroll visually
+    const max = el.scrollWidth - el.clientWidth;
+    if (el.scrollLeft < -80) el.scrollLeft = -80;
+    if (el.scrollLeft > max + 80) el.scrollLeft = max + 80;
+  };
+
+  const onMouseUp = () => {
+    if (isMobile) return;
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    if (raf.current) cancelAnimationFrame(raf.current);
+    raf.current = requestAnimationFrame(animateMomentum);
+  };
+
+  const onClick = (index: number) => {
+    if (hasDragged.current) return;
+    setActiveImage(index);
+  };
+
+  return (
+    <section>
+      <div className="flex flex-col gap-3">
+        <h2 className="text-xl md:text-2xl font-druk uppercase">Media</h2>
+        <div
+          ref={scrollerRef}
+          className="overflow-x-auto scrollbar-hide -mx-4 px-4 py-4 snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none"
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onMouseLeave={onMouseUp}
+        >
+          <div className="flex gap-4">
+            {media.map((m, i) => (
+              <div key={i} onClick={() => onClick(i)}>
+                <ImageCard image={m} onOpen={() => {}} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <ImageModal
+          open={activeImage !== null}
+          images={media}
+          index={activeImage ?? 0}
+          onClose={() => setActiveImage(null)}
+        />
+      </div>
+    </section>
+  );
+}
+
+
   return (
     <div className="mb-16">
-      <PageHeaderImage desktopSrc={atcBanner} />
+      <PageHeaderImage desktopSrc={atcCrew} />
       <div className="max-w-[1600px] mx-auto px-[clamp(1rem,4vw,4rem)]">
         <div className="md:mx-[clamp(1rem,6vw,20rem)]">
           <div className="flex flex-col gap-20">
@@ -95,25 +245,26 @@ export default function ATCPage() {
 
             <section className="-mt-6 md:-mt-8 lg:-mt-12 space-y-7">
               <ImageAndTextBlock
-                picture={samplebanner}
-                title="Qualifiers"
+                imageSide="left"
+                picture={atcQualifiers}
+                title="Qualification"
                 text="We achieved #2 for week 1 qualifiers, right behind NGX,
-                        which is a team that has achieved top 3 in the PUBG
-                        Mobile Global Championship Finals. Under SFC, we had 1
-                        team that placed #5 for semifinals, and #2 for playoffs
-                        and another team that entered the final round directly
-                        through semifinals."
+                      a team that had achieved top 3 in the prestigious PUBG 
+                      Mobile Global Championship Finals. To our utmost surprise,
+                      we managed to squeeze 3 teams into the Asia Grand Finals,
+                      where SFC 男队 qualified through Semi-Finals Week 1 #6, followed
+                      by SFC India and SFC 女队 who qualified by placing #2 in Playoffs
+                      under Group 1 and Group 2 respectively."
               />
-               <ImageAndTextBlock
+              <ImageAndTextBlock
                 imageSide="right"
-                picture={samplebanner}
-                title="Semi-Finals"
-                text="We achieved #2 for week 1 qualifiers, right behind NGX,
-                        which is a team that has achieved top 3 in the PUBG
-                        Mobile Global Championship Finals. Under SFC, we had 1
-                        team that placed #5 for semifinals, and #2 for playoffs
-                        and another team that entered the final round directly
-                        through semifinals."
+                picture={atcWinnerTitle}
+                title="Final Round"
+                text="After 4 intense matches, 3 years of constant improvement and 
+                      focus, SFC 女队 managed to clinch 1st Place! We applaud the excellent
+                      performance by SFC India too for securing 2nd Place. Having 2 teams 
+                      rank at the top of the Asia region proves that we are not only the best,
+                      but also a symbol of perseverance, teamwork, and the unstoppable spirit!"
               />
             </section>
 
@@ -144,7 +295,7 @@ export default function ATCPage() {
             <section>
               <div className="flex flex-col gap-3">
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
-                  ATC S16 Vods
+                  Vods
                 </h2>
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-9">
                   {videos.map((v) => (
@@ -165,6 +316,9 @@ export default function ATCPage() {
                   onClose={() => setActive(null)}
                 />
               </div>
+            </section>
+            <section className="scrollbar-hide">
+              <MediaGallery />
             </section>
           </div>
         </div>
