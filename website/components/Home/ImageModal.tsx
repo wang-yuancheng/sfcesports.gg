@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 
 export default function ImageModal({
@@ -19,28 +19,30 @@ export default function ImageModal({
   const [current, setCurrent] = useState(index);
   const [box, setBox] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
 
-  // drag-to-switch (mouse + touch), without triggering close
-  const startXRef = useRef<number | null>(null);
-  const movedRef = useRef(false);
-
   useEffect(() => {
     if (open) setCurrent(index);
   }, [open, index]);
 
+  // handle mount / fade transitions
   useEffect(() => {
     if (open) {
       setMounted(true);
-      let a = 0, b = 0;
+      let a = 0,
+        b = 0;
       a = requestAnimationFrame(() => {
         b = requestAnimationFrame(() => setVisible(true));
       });
-      return () => { cancelAnimationFrame(a); cancelAnimationFrame(b); };
+      return () => {
+        cancelAnimationFrame(a);
+        cancelAnimationFrame(b);
+      };
     }
     setVisible(false);
     const t = setTimeout(() => setMounted(false), 300);
     return () => clearTimeout(t);
   }, [open]);
 
+  // handle keyboard controls
   useEffect(() => {
     if (!mounted) return;
     const onKey = (e: KeyboardEvent) => {
@@ -55,9 +57,9 @@ export default function ImageModal({
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
     };
-  }, [mounted]); // eslint-disable-line
+  }, [mounted]);
 
-  // size box to image ratio (no bars)
+  // maintain correct image ratio
   useEffect(() => {
     if (!mounted) return;
     const compute = () => {
@@ -74,7 +76,10 @@ export default function ImageModal({
       const ratio = iw / ih;
       let w = maxW;
       let h = w / ratio;
-      if (h > maxH) { h = maxH; w = h * ratio; }
+      if (h > maxH) {
+        h = maxH;
+        w = h * ratio;
+      }
       setBox({ w: Math.round(w), h: Math.round(h) });
     };
     compute();
@@ -90,40 +95,15 @@ export default function ImageModal({
   const active = images[current];
   const alt =
     typeof active === "object" && "src" in active
-      ? String((active as StaticImageData).src).split("/").pop()?.split(".")[0] || "Media image"
+      ? String((active as StaticImageData).src)
+          .split("/")
+          .pop()
+          ?.split(".")[0] || "Media image"
       : "Media image";
 
-  // Backdrop click should close only if not dragged
   const onBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target !== e.currentTarget) return;
-    if (movedRef.current) return; // ignore if we just dragged
     onClose();
-  };
-
-  // Pointer-based swipe to prev/next
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    startXRef.current = e.clientX;
-    movedRef.current = false;
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-  };
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (startXRef.current == null) return;
-    const dx = e.clientX - startXRef.current;
-    if (!movedRef.current && Math.abs(dx) > 6) movedRef.current = true;
-  };
-
-  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (startXRef.current == null) return;
-    const dx = e.clientX - startXRef.current;
-    try { (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId); } catch {}
-    startXRef.current = null;
-
-    if (Math.abs(dx) >= 40) {
-      if (dx > 0) prev(); else next();
-    }
-    // keep moved=true through click phase, then reset
-    if (movedRef.current) setTimeout(() => (movedRef.current = false), 0);
   };
 
   return (
@@ -136,11 +116,7 @@ export default function ImageModal({
       aria-modal="true"
       aria-label={alt}
       onClick={onBackdropClick}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerUp}
-      style={{ willChange: "opacity", touchAction: "none" }}
+      style={{ willChange: "opacity" }}
     >
       <div
         className={[
@@ -150,7 +126,7 @@ export default function ImageModal({
           visible ? "opacity-100" : "opacity-0",
         ].join(" ")}
         role="document"
-        onClick={(e) => e.stopPropagation()} // clicks inside shouldn't bubble to backdrop
+        onClick={(e) => e.stopPropagation()}
         style={{
           width: box.w || "auto",
           height: box.h || "auto",
