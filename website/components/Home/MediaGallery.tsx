@@ -1,28 +1,48 @@
-import { useState } from "react";
+"use client";
+
+import * as React from "react";
 import ImageCard from "./ImageCard";
 import ImageModal from "./ImageModal";
 import { StaticImageData } from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function MediaGallery({ media }: { media: StaticImageData[] }) {
-  const [activeImage, setActiveImage] = useState<number | null>(null);
+  const [activeImage, setActiveImage] = React.useState<number | null>(null);
 
   return (
     <section>
       <div className="flex flex-col gap-3">
         <h2 className="text-xl md:text-2xl font-druk uppercase">Media</h2>
-        <div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory select-none">
-          <div className="flex gap-4">
+
+        <Carousel
+          className="w-full"
+          opts={{
+            dragFree: true,
+            align: "start",
+            loop: false,
+          }}
+        >
+          <CarouselContent>
             {media.map((m, i) => (
-              <div
-                key={i}
-                onClick={() => setActiveImage(i)}
-                className="snap-start shrink-0"
-              >
-                <ImageCard image={m} onOpen={() => {}} />
-              </div>
+              <CarouselItem key={i} className="pl-4 basis-auto">
+                <ImageCard image={m} onOpen={() => setActiveImage(i)} />
+              </CarouselItem>
             ))}
+          </CarouselContent>
+
+          <div className="hidden md:block">
+            <CarouselPrevious />
           </div>
-        </div>
+          <div className="hidden md:block">
+            <CarouselNext />
+          </div>
+        </Carousel>
 
         <ImageModal
           open={activeImage !== null}
