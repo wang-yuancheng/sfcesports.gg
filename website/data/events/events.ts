@@ -5,13 +5,13 @@ export const events: EventsByYear = {
     {
       name: "SFC X NOVA Community Tournament",
       duration: "15 – 16 March",
-      description: "Sample Description",
+      description: "",
       participants: 80,
       prizepool: "200 USD",
       standings: [
-        { place: 1, name: "SFC SG" },
-        { place: 2, name: "SFC JOLLIBEE" },
-        { place: 3, name: "SFC LOBERT" },
+        { place: 1, team: "SFC SG", prize: "100USD" },
+        { place: 2, team: "SFC JOLLIBEE" },
+        { place: 3, team: "SFC LOBERT" },
       ],
     },
     {
@@ -36,9 +36,9 @@ export const events: EventsByYear = {
       participants: 800,
       prizepool: "250 USD",
       standings: [
-        { place: 1, name: "SFC" },
-        { place: 2, name: "PEA X SME Baruz" },
-        { place: 3, name: "GN Allstar" },
+        { place: 1, team: "SFC" },
+        { place: 2, team: "PEA X SME Baruz" },
+        { place: 3, team: "GN Allstar" },
       ],
     },
     {
@@ -62,11 +62,7 @@ export const events: EventsByYear = {
       description: "Sample Description",
       participants: 400,
       prizepool: "250 USD",
-      standings: [
-        { place: 1, name: "Record Lost" },
-        { place: 2, name: "Record Lost" },
-        { place: 3, name: "Record Lost" },
-      ],
+      standings: [],
     },
     {
       name: "Shibe's 1v1 Tournament: Season 4",
@@ -85,11 +81,7 @@ export const events: EventsByYear = {
       duration: "22 February",
       description: "Sample Description",
       participants: 76,
-      standings: [
-        { place: 1, name: "Record Lost" },
-        { place: 2, name: "Record Lost" },
-        { place: 3, name: "Record Lost" },
-      ],
+      standings: [],
     },
   ],
 
@@ -112,11 +104,7 @@ export const events: EventsByYear = {
       description: "Sample Description",
       participants: 1000,
       prizepool: "10 USD",
-      standings: [
-        { place: 1, name: "Enzhu" },
-        { place: 2, name: "" },
-        { place: 3, name: "" },
-      ],
+      standings: [{ place: 1, name: "Enzhu" }],
     },
     {
       name: "Shibe's Community Cup: Season 1",
@@ -125,9 +113,9 @@ export const events: EventsByYear = {
       participants: 400,
       prizepool: "100 USD",
       standings: [
-        { place: 1, name: "Dazzy" },
-        { place: 2, name: "Cosa Perak" },
-        { place: 3, name: "SFC Heirs" },
+        { place: 1, team: "Dazzy" },
+        { place: 2, team: "Cosa Perak" },
+        { place: 3, team: "SFC Heirs" },
       ],
     },
     {
@@ -221,4 +209,3 @@ export const events: EventsByYear = {
     },
   ],
 };
-

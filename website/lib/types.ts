@@ -219,7 +219,9 @@ export interface Player {
 // To list all events in Events page
 export interface Standing {
   place: number;
-  name: string;
+  name?: string;
+  team?: string;
+  prize?: string;
 }
 export interface Events {
   name: string;
