@@ -221,16 +221,12 @@ export interface Standing {
   place: number;
   name: string;
 }
-export interface Event {
+export interface Events {
+  name: string;
+  duration: string;
   description?: string;
   participants?: number;
   standings?: Standing[];
   prizepool?: string;
-}
-export interface Events {
-  name: string;
-  duration: string;
-  slug: string;
-  details: Event[];
 }
 export type EventsByYear = Record<number, Events[]>;

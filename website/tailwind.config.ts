@@ -88,6 +88,7 @@ const config: Config = {
 
   plugins: [
     scrollbarHide,
+    require("tailwindcss-animate"),
     plugin(({ addUtilities }) => {
       addUtilities({
         ".no-scrollbar::-webkit-scrollbar": { display: "none" },
