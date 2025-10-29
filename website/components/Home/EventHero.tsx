@@ -23,16 +23,16 @@ export default function EventHero({
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-40
-                     bg-gradient-to-b from-black/50 to-transparent
-                     opacity-100 transition-opacity duration-500
-                     md:group-hover:opacity-30 z-0"
+                   bg-gradient-to-b from-black/50 to-transparent
+                   opacity-100 transition-opacity duration-500
+                   md:group-hover:opacity-30 z-0"
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40
-                     bg-gradient-to-t from-black/50 to-transparent
-                     opacity-100 transition-opacity duration-500
-                     md:group-hover:opacity-30 z-0"
+                   bg-gradient-to-t from-black/50 to-transparent
+                   opacity-100 transition-opacity duration-500
+                   md:group-hover:opacity-30 z-0"
       />
 
       {/* Header, above gradient */}
@@ -45,13 +45,21 @@ export default function EventHero({
         </span>
       </div>
 
-      {/* Button */}
-      <div className="absolute bottom-[20px] inset-x-6 flex flex-col justify-end z-20">
+      {/* Button: visible on mobile, reveal on hover from md+ by sliding up */}
+      <div
+        className="
+          absolute bottom-[20px] inset-x-6 flex flex-col justify-end z-20
+          transition-all duration-500 ease-out will-change-transform
+          pointer-events-auto
+          md:opacity-0 md:translate-y-6 md:pointer-events-none
+          md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-hover:pointer-events-auto
+        "
+      >
         <Button
           asChild
           size="lg"
           variant="secondary"
-          className="w-fit bg-black/40 ring-1 ring-white/10 text-white hover:bg-black/65 transition-colors backdrop-blur-sm"
+          className="w-fit bg-black/40 ring-1 ring-white/10 text-white hover:bg-black/65 transition-colors"
         >
           <Link href={href}>Learn More</Link>
         </Button>
