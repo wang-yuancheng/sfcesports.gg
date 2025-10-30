@@ -154,7 +154,7 @@ export interface TournamentDetails {
 export type Leaderboard = {
   place: number;
   name: string;
-  logo: string | StaticImageData;
+  logo?: string | StaticImageData;
   wwcd: number;
   kp: number;
   pp: number;

@@ -6,10 +6,12 @@ import Videos from "@/sections/Home/Videos";
 export default function Home() {
   return (
     <>
-      <Hero />
-      <LogoTicker />
-      <PastEvents />
-      <Videos />
+      <div className="mx-5">
+        <Hero />
+        <LogoTicker />
+        <PastEvents />
+        <Videos />
+      </div>
     </>
   );
 }
