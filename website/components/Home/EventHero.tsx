@@ -11,7 +11,7 @@ export default function EventHero({
   colorImage,
 }: EventHeroContent) {
   return (
-    <div className="group relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-2">
+    <div className="group relative isolate overflow-hidden rounded-2xl h-[520px] md:col-span-2">
       <Image
         src={colorImage}
         alt="atcBanner"

@@ -34,7 +34,7 @@ export default function ShortHero({
         </span>
 
         {/* List */}
-        <ul className="space-y-1 overflow-y-auto flex-1">
+        <ul className="space-y-1 overflow-y-auto flex-1 [@media(min-width:2930px)]:space-y-0">
           {list?.map((item, idx) => (
             <li key={idx}>
               <Link

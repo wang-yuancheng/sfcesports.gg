@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import ImageCard from "./ImageCard";
-import ImageModal from "./ImageModal";
 import { StaticImageData } from "next/image";
 import {
   Carousel,
@@ -11,6 +9,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import ImageModal from "@/components/home/ImageModal";
+import ImageCard from "@/components/home/ImageCard";
 
 export default function MediaGallery({ media }: { media: StaticImageData[] }) {
   const [activeImage, setActiveImage] = React.useState<number | null>(null);

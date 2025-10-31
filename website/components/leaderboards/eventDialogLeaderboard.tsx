@@ -42,7 +42,7 @@ export default function EventDialogLeaderboard({ rows }: { rows: Standing[] }) {
                     {ordinal(r.place)}
                   </span>
                 </td>
-                <td className="font-bold px-4 py-2 uppercase">
+                <td className="font-bold px-4 py-2">
                   {r.team ?? r.name ?? "TBA"}
                 </td>
                 {r.prize && (

@@ -17,7 +17,7 @@ export default function MediaPage() {
 
   return (
     <section className="section-container py-14 navbarsm:pt-5 select-none mb-5">
-      <div className="mb-8 mt-4 w-full sm:mt-0 select-none">
+      <div className="mb-8 mt-0 w-full select-none">
         <p className="font-druk text-center text-4xl font-medium uppercase">
           Featured Videos
         </p>
