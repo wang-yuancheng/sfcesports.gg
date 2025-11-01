@@ -3,6 +3,8 @@ import sccs1Banner from "@/assets/pictures/sccs1.webp";
 import sccs2Banner from "@/assets/pictures/sccs2.webp";
 import tdmTourBanner from "@/assets/pictures/1v1s4.webp";
 import EventHero from "@/components/home/EventHero";
+import ChevronRight from "@/assets/icons/chevron-right-white.svg";
+import { ChevronLeft } from "lucide-react";
 
 import {
   Carousel,
@@ -11,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
 const events = [
   {
@@ -121,10 +124,32 @@ export default function PastEvents() {
             ))}
           </CarouselContent>
 
-          <div className="hidden md:block">
-            <CarouselPrevious />
+          <div className="xxxlg:hidden">
+            <CarouselPrevious
+              variant="ghost"
+              className="!absolute left-2 top-1/2 -translate-y-1/2 p-0 h-12 w-12 text-white bg-transparent hover:bg-transparent active:bg-transparent"
+            >
+              <Image
+                src={ChevronRight}
+                alt="Chevron Right"
+                className="w-[35px] h-[35px] rotate-180"
+              />
+            </CarouselPrevious>
+
+            <CarouselNext
+              variant="ghost"
+              className="!absolute right-2 top-1/2 -translate-y-1/2 p-0 h-12 w-12 bg-transparent hover:bg-transparent active:bg-transparent"
+            >
+              <Image
+                src={ChevronRight}
+                alt="Chevron Right"
+                className="w-[35px] h-[35px]"
+              />
+            </CarouselNext>
           </div>
-          <div className="hidden md:block">
+
+          <div className="hidden xxxlg:block">
+            <CarouselPrevious />
             <CarouselNext />
           </div>
         </Carousel>
