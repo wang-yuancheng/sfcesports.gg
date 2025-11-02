@@ -114,9 +114,9 @@ export interface ShopHeroContent {
 // Event Hero Content
 export interface EventHeroContent {
   header: React.ReactNode;
-  subheader: string;
+  date: string;
   href: string;
-  colorImage: string | StaticImageData;
+  image: string | StaticImageData;
 }
 
 // Youtube video component

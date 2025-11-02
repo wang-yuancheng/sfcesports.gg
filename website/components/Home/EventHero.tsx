@@ -6,14 +6,14 @@ import { EventHeroContent } from "@/lib/types";
 
 export default function EventHero({
   header,
-  subheader,
+  date,
   href,
-  colorImage,
+  image,
 }: EventHeroContent) {
   return (
     <div className="group relative isolate overflow-hidden rounded-2xl h-[520px] md:col-span-2">
       <Image
-        src={colorImage}
+        src={image}
         alt="atcBanner"
         fill
         className="absolute top-0 bottom-0 object-cover object-center brightness-90 group-hover:grayscale-0 group-hover:brightness-100 duration-500"
@@ -38,7 +38,7 @@ export default function EventHero({
       {/* Header, above gradient */}
       <div className="absolute top-8 left-6 z-20 mr-6">
         <span className="text-white uppercase text-sm xxs:text-md sm:text-lg md:text-sm lg:text-lg font-druk font-medium text-white/90">
-          {subheader}
+          {date}
         </span>
         <span className="text-white uppercase text-md xxs:text-xl sm:text-2xl md:text-lg lg:text-2xl font-druk font-bold">
           {header}
@@ -61,7 +61,7 @@ export default function EventHero({
           variant="secondary"
           className="w-fit bg-black/40 ring-1 ring-white/10 text-white hover:bg-black/65 transition-colors"
         >
-          <Link href={href}>Learn More</Link>
+          <Link href={`/events/${href}`}>Learn More</Link>
         </Button>
       </div>
     </div>
