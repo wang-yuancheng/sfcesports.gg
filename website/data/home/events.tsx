@@ -70,26 +70,4 @@ export const events: EventHeroContent[] = [
     image: sccs1Banner,
     href: "sccs1",
   },
-  {
-    header: (
-      <p>
-        Shibe&apos;s 1v1 Tour{" "}
-        <span className="whitespace-nowrap">Season 2</span>
-      </p>
-    ),
-    date: "1 Juns 2021",
-    image: tdmTourBanner,
-    href: "1v1s2",
-  },
-  {
-    header: (
-      <p>
-        Shibe&apos;s 1v1 Tour{" "}
-        <span className="whitespace-nowrap">Season 1</span>
-      </p>
-    ),
-    date: "13 Nov 2020",
-    image: tdmTourBanner,
-    href: "1v1s1",
-  },
 ];
