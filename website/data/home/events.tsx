@@ -1,7 +1,9 @@
 import React from "react";
 import sccs1Banner from "@/assets/pictures/sccs1.webp";
 import sccs2Banner from "@/assets/pictures/sccs2.webp";
-import tdmTourBanner from "@/assets/pictures/1v1s4.webp";
+import tdmTourS4Banner from "@/assets/pictures/1v1s4.webp";
+import tdmTourS5Banner from "@/assets/pictures/1v1s5.webp";
+import sfcxnovaBanner from "@/assets/pictures/sfcxnova.webp";
 import { EventHeroContent } from "@/lib/types";
 
 export const events: EventHeroContent[] = [
@@ -12,7 +14,7 @@ export const events: EventHeroContent[] = [
       </p>
     ),
     date: "15 Mar 2024",
-    image: sccs2Banner,
+    image: sfcxnovaBanner,
     href: "sfcxnova",
   },
   {
@@ -34,7 +36,7 @@ export const events: EventHeroContent[] = [
       </p>
     ),
     date: "1 Jun 2023",
-    image: sccs2Banner,
+    image: tdmTourS5Banner,
     href: "1v1s5",
   },
   {
@@ -45,19 +47,8 @@ export const events: EventHeroContent[] = [
       </p>
     ),
     date: "1 Jun 2022",
-    image: tdmTourBanner,
+    image: tdmTourS4Banner,
     href: "1v1s4",
-  },
-  {
-    header: (
-      <p>
-        Shibe&apos;s 1v1 Tour{" "}
-        <span className="whitespace-nowrap">Season 3</span>
-      </p>
-    ),
-    date: "24 Nov 2021",
-    image: tdmTourBanner,
-    href: "1v1s3",
   },
   {
     header: (

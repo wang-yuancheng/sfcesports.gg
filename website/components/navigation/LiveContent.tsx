@@ -6,7 +6,7 @@ import novaLogo from "@/assets/logos/nova.webp";
 import ChevronRight from "@/assets/icons/chevron-right.svg";
 import Link from "next/link";
 
-export function LiveContentFront({ showVod }: { showVod: boolean }) {
+export function LiveContentBack({ showVod }: { showVod: boolean }) {
   return (
     <Link href="/live" className="block w-full group">
       <div className="w-full min-w-0 h-[52px] flex justify-between items-center pl-2">
@@ -40,7 +40,7 @@ export function LiveContentFront({ showVod }: { showVod: boolean }) {
   );
 }
 
-export function LiveContentBack({ showVod }: { showVod: boolean }) {
+export function LiveContentFront({ showVod }: { showVod: boolean }) {
   return (
     <Link href="/live" className="block w-full group">
       <div className="w-full min-w-0 h-[52px] flex justify-between items-center px-2">
