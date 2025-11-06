@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export function LiveContentBack({ showVod }: { showVod: boolean }) {
   return (
-    <Link href="/live" className="block w-full group">
+    <Link href="/events/sccs2" className="block w-full group">
       <div className="w-full min-w-0 h-[52px] flex justify-between items-center pl-2">
         {/* Left side */}
         <div className="flex items-center gap-3 min-w-0">
@@ -42,7 +42,7 @@ export function LiveContentBack({ showVod }: { showVod: boolean }) {
 
 export function LiveContentFront({ showVod }: { showVod: boolean }) {
   return (
-    <Link href="/live" className="block w-full group">
+    <Link href="/events/sfcxnova" className="block w-full group">
       <div className="w-full min-w-0 h-[52px] flex justify-between items-center px-2">
         {/* Left side */}
         <div className="flex items-center gap-3 min-w-0">
