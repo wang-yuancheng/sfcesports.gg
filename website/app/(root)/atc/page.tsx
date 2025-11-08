@@ -12,13 +12,9 @@ import { VideoItem } from "@/lib/types";
 import { videos } from "@/data/home/atc/vods";
 import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
-import LeaderboardTeams from "@/components/leaderboards/leaderboardTeams";
+import ParticipatingTeams from "@/components/leaderboards/participatingTeams";
 import ImageAndTextBlock from "@/components/global/ImageAndTextBlock";
 import type { StaticImageData } from "next/image";
-
-import atcBanner from "@/assets/pictures/atc.webp";
-import atcFinals from "@/assets/pictures/atcfinals.png";
-import atcWinnerPose from "@/assets/pictures/atcwinnerpose.png";
 
 import atcMedia1 from "@/assets/pictures/atcmedia1.png";
 import atcMedia2 from "@/assets/pictures/atcmedia2.png";
@@ -163,7 +159,7 @@ export default function ATCPage() {
                   md:grid-cols-3 xmd:grid-cols-4 md:gap-5 md:overflow-visible lg:grid-cols-4 xlg:grid-cols-5"
                 >
                   {atcTeams.map((t) => (
-                    <LeaderboardTeams key={t.name} team={t} />
+                    <ParticipatingTeams key={t.name} team={t} />
                   ))}
                 </div>
               </div>

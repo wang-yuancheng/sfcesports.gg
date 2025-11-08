@@ -15,7 +15,7 @@ export default function Leaderboard({ rows }: { rows: Leaderboard[] }) {
                 Rank
               </th>
               <th
-                className={`px-3 md:px-6 py-2 whitespace-nowrap uppercase text-white text-start text-[10px] md:text-xs w-auto font-druk font-[400] ${
+                className={`px-3 md:px-16 py-2 whitespace-nowrap uppercase text-white text-start text-[10px] md:text-xs w-auto font-druk font-[400] ${
                   hasLogos ? "px-9 md:px-16" : ""
                 }`}
               >
@@ -50,6 +50,13 @@ export default function Leaderboard({ rows }: { rows: Leaderboard[] }) {
 
                 <td className="px-3 md:px-6 py-1.5 md:py-4">
                   <div className="flex items-center gap-1 md:gap-3">
+                    {r.logo ? (
+                      <Image
+                        src={r.logo}
+                        alt=""
+                        className="hidden xs:flex size-6 md:size-8"
+                      />
+                    ) : null}
                     <p className="text-start text-xs md:text-[19px] uppercase">
                       {r.name}
                     </p>

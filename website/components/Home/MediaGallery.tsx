@@ -12,7 +12,13 @@ import {
 import ImageModal from "@/components/home/ImageModal";
 import ImageCard from "@/components/home/ImageCard";
 
-export default function MediaGallery({ media }: { media: StaticImageData[] }) {
+export default function MediaGallery({
+  media,
+  hideArrows = false,
+}: {
+  media: StaticImageData[];
+  hideArrows?: boolean;
+}) {
   const [activeImage, setActiveImage] = React.useState<number | null>(null);
 
   return (
@@ -36,12 +42,16 @@ export default function MediaGallery({ media }: { media: StaticImageData[] }) {
             ))}
           </CarouselContent>
 
-          <div className="hidden md:block">
-            <CarouselPrevious />
-          </div>
-          <div className="hidden md:block">
-            <CarouselNext />
-          </div>
+          {!hideArrows && (
+            <>
+              <div className="hidden md:block">
+                <CarouselPrevious />
+              </div>
+              <div className="hidden md:block">
+                <CarouselNext />
+              </div>
+            </>
+          )}
         </Carousel>
 
         <ImageModal

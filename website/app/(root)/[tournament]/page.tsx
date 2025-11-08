@@ -33,7 +33,7 @@ export default async function TournamentPage({
           </p>
           <div>
             <p className="text-gray-600 font-[400] text-base">
-              <span className="font-bold text-black">Registered Teams: </span>{" "}
+              <span className="font-bold text-black">Registered Teams: </span>
               {tournament.details?.teams}
             </p>
             <p className="text-gray-600 font-[400] text-base">

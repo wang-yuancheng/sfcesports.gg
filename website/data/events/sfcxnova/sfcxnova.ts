@@ -1,0 +1,34 @@
+import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
+import novaLogo from "@/assets/logos/nova.webp";
+import sfcxnovaBanner from "@/assets/pictures/sfcxnovabanner.png";
+import { VideoItem } from "@/lib/types";
+import { Leaderboard } from "@/lib/types";
+
+export const sfcxnovaday1: Leaderboard[] = [
+  { place: 1, name: "SFC SG", logo: sfcLogo, wwcd: 2, kp: 45, pp: 35, tp: 80, prize: "$50" },
+  { place: 2, name: "SFC JOLLIBEE", logo: sfcLogo, wwcd: 1, kp: 40, pp: 13, tp: 53, prize: "$30" },
+  { place: 3, name: "SFC LOBERT", logo: sfcLogo, wwcd: 1, kp: 28, pp: 23, tp: 51, prize: "$20" },
+  { place: 4, name: "NOVA BABY YAGA ESPORTS", logo: novaLogo, wwcd: 1, kp: 24, pp: 10, tp: 34, prize: "-" },
+  { place: 5, name: "NOVA GPBR SVARGA", logo: novaLogo, wwcd: 0, kp: 16, pp: 15, tp: 31, prize: "-" },
+  { place: 6, name: "NOVA ESPORTS EU", logo: novaLogo, wwcd: 0, kp: 15, pp: 15, tp: 30, prize: "-" },
+  { place: 7, name: "SFC XENXEN", logo: sfcLogo, wwcd: 0, kp: 13, pp: 12, tp: 25, prize: "-" },
+  { place: 8, name: "SFC KITCHEN", logo: sfcLogo, wwcd: 0, kp: 16, pp: 7, tp: 23, prize: "-" },
+  { place: 9, name: "SFC 17K", logo: sfcLogo, wwcd: 0, kp: 13, pp: 7, tp: 20, prize: "-" },
+  { place: 10, name: "SFC XMM", logo: sfcLogo, wwcd: 0, kp: 8, pp: 1, tp: 9, prize: "-" },
+  { place: 11, name: "SFC INDIA", logo: sfcLogo, wwcd: 0, kp: 4, pp: 4, tp: 8, prize: "-" },
+  { place: 12, name: "NOVA BATMAN", logo: novaLogo, wwcd: 0, kp: 0, pp: 8, tp: 8, prize: "-" },
+  { place: 13, name: "NOVA MSG ESPORTS", logo: novaLogo, wwcd: 0, kp: 2, pp: 4, tp: 6, prize: "-" },
+  { place: 14, name: "NOVA ASIA", logo: novaLogo, wwcd: 0, kp: 4, pp: 0, tp: 4, prize: "-" },
+  { place: 15, name: "NOVA OVERPOWER", logo: novaLogo, wwcd: 0, kp: 3, pp: 1, tp: 4, prize: "-" },
+  { place: 16, name: "NOVA VAMOS PURE", logo: novaLogo, wwcd: 0, kp: 0, pp: 0, tp: 0, prize: "-" },
+];
+
+export const videos: VideoItem[] = [
+  {
+    title:
+      "SFC vs NOVA Community Tournament",
+    id: "wTAx3_uxhhg",
+    thumbnail: sfcxnovaBanner,
+    views: "",
+  },
+];
