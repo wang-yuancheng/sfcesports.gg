@@ -2,7 +2,6 @@
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import sfcxnovaBanner from "@/assets/pictures/sfcxnovabanner.png";
-import Leaderboard from "@/components/leaderboards/leaderboard";
 import { sfcxnovaday1 } from "@/data/events/sfcxnova/sfcxnova";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
@@ -15,6 +14,8 @@ import type { StaticImageData } from "next/image";
 import sfcxnovaMedia1 from "@/assets/pictures/sfcxnovaday1result.png";
 import sfcxnovaMedia2 from "@/assets/pictures/sfcxnovaday2result.png";
 import MediaGallery from "@/components/home/MediaGallery";
+import DefaultLeaderboard from "@/components/leaderboards/leaderboards/DefaultLeaderboard";
+import SingleEliminationBracket from "@/components/leaderboards/brackets/SingleEliminationBracket";
 
 export default function sfcxnova() {
   const [active, setActive] = useState<VideoItem | null>(null);
@@ -49,26 +50,13 @@ export default function sfcxnova() {
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Day 1
                 </h2>
-                <Leaderboard rows={sfcxnovaday1} />
+                <DefaultLeaderboard rows={sfcxnovaday1} />
               </div>
             </section>
 
-            {/* <section>
-              <div className="flex flex-col gap-3">
-                <h2 className="text-xl md:text-2xl font-druk uppercase">
-                  Participating Teams
-                </h2>
-                <div
-                  className="overflow-auto scrollbar-hide grid w-full auto-rows-fr gap-2 overflow-x-auto py-4 
-                  max-md:grid-flow-col max-md:grid-rows-2 max-md:px-4 max-md:pt-10 
-                  md:grid-cols-3 xmd:grid-cols-4 md:gap-5 md:overflow-visible lg:grid-cols-4 xlg:grid-cols-5"
-                >
-                  {atcTeams.map((t) => (
-                    <ParticipatingTeams key={t.name} team={t} />
-                  ))}
-                </div>
-              </div>
-            </section> */}
+            <section>
+              <SingleEliminationBracket />
+            </section>
 
             <section>
               <div className="flex flex-col gap-3">

@@ -14,7 +14,7 @@ import Image from "next/image";
 import trophyIcon from "@/assets/icons/trophy.svg";
 import calendarClockIcon from "@/assets/icons/calendar-clock.svg";
 import usersIcon from "@/assets/icons/users.svg";
-import EventDialogLeaderboard from "../leaderboards/eventDialogLeaderboard";
+import EventDialogLeaderboard from "../leaderboards/leaderboards/EventDialogLeaderboard";
 
 export default function EventTimeline({ events }: { events: Events[] }) {
   return (

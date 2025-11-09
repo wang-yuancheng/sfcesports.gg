@@ -4,7 +4,7 @@ import PageHeaderImage from "@/components/global/PageHeaderImage";
 import atcQualifiers from "@/assets/pictures/atcqualifiers.png";
 import atcWinnerTitle from "@/assets/pictures/atcwinnertitle.png";
 import atcCrew from "@/assets/pictures/atcchampioncrew.png";
-import ATCLeaderboard from "@/components/leaderboards/atcLeaderboard";
+import ATCLeaderboard from "@/components/leaderboards/leaderboards/AtcLeaderboard";
 import { atcLeaderboard, atcTeams } from "@/data/home/atc/atc";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
@@ -12,7 +12,7 @@ import { VideoItem } from "@/lib/types";
 import { videos } from "@/data/home/atc/vods";
 import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
-import ParticipatingTeams from "@/components/leaderboards/participatingTeams";
+import ParticipatingTeams from "@/components/leaderboards/ParticipatingTeams";
 import ImageAndTextBlock from "@/components/global/ImageAndTextBlock";
 import type { StaticImageData } from "next/image";
 

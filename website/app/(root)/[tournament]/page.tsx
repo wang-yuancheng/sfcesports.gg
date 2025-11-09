@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { tournamentHighlights } from "@/data/home/highlights";
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import matchBanner from "@/assets/pictures/match.webp";
-import Leaderboard from "@/components/leaderboards/leaderboard";
+import DefaultLeaderboard from "@/components/leaderboards/leaderboards/DefaultLeaderboard";
 
 export async function generateStaticParams() {
   return tournamentHighlights.map((h) => ({ tournament: h.slug }));
@@ -27,7 +27,9 @@ export default async function TournamentPage({
       <PageHeaderImage desktopSrc={matchBanner} />
       <div className="section-container mt-8 flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <h1 className="text-2xl md:text-3xl font-druk uppercase">{tournament.title}</h1>
+          <h1 className="text-2xl md:text-3xl font-druk uppercase">
+            {tournament.title}
+          </h1>
           <p className="text-gray-600 font-[400] text-base">
             {tournament.details?.description}
           </p>
@@ -47,8 +49,10 @@ export default async function TournamentPage({
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="text-xl md:text-2xl font-druk uppercase">{leaderboardRound}</h2>
-          <Leaderboard rows={rows} />
+          <h2 className="text-xl md:text-2xl font-druk uppercase">
+            {leaderboardRound}
+          </h2>
+          <DefaultLeaderboard rows={rows} />
         </div>
       </div>
     </div>

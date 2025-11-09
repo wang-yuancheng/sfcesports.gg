@@ -2,7 +2,7 @@ import type { Leaderboard } from "@/lib/types";
 import { ordinal } from "@/lib/utils";
 import Image from "next/image";
 
-export default function Leaderboard({ rows }: { rows: Leaderboard[] }) {
+export default function DefaultLeaderboard({ rows }: { rows: Leaderboard[] }) {
   const hasLogos = rows.some((r) => r.logo);
 
   return (

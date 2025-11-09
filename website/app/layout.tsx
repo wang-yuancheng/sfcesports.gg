@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "@/styles/fonts.css";
-import { InitialFontWrapper } from "@/components/other/initialFontWrapper";
+import { InitialFontWrapper } from "@/components/other/InitialFontWrapper";
 
 export const metadata: Metadata = {
   title: "ShibeFanClub - SFC Esports",
