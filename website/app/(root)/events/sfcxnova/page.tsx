@@ -16,6 +16,11 @@ import sfcxnovaMedia2 from "@/assets/pictures/sfcxnovaday2result.png";
 import MediaGallery from "@/components/home/MediaGallery";
 import DefaultLeaderboard from "@/components/leaderboards/leaderboards/DefaultLeaderboard";
 import SingleEliminationBracket from "@/components/leaderboards/brackets/SingleEliminationBracket";
+import {
+  sfcxnovaday2quarterfinal,
+  sfcxnovaday2semifinal,
+  sfcxnovaday2grandfinal,
+} from "@/data/events/sfcxnova/sfcxnova";
 
 export default function sfcxnova() {
   const [active, setActive] = useState<VideoItem | null>(null);
@@ -31,7 +36,7 @@ export default function sfcxnova() {
         <div className="md:mx-[clamp(1rem,6vw,20rem)]">
           <div className="flex flex-col gap-10">
             <section className="flex flex-col gap-4">
-              <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center text-pink-bright leading-tight">
+              <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center  leading-tight">
                 SFC VS NOVA COMMUNITY TOURNAMENT
               </h1>
               <p className="text-gray-600 font-[400] text-base text-justify">
@@ -55,7 +60,16 @@ export default function sfcxnova() {
             </section>
 
             <section>
-              <SingleEliminationBracket />
+              <div className="flex flex-col gap-3">
+                <h2 className="text-xl md:text-2xl font-druk uppercase">
+                  Day 2
+                </h2>
+                <SingleEliminationBracket
+                  quarterfinal={sfcxnovaday2quarterfinal}
+                  semifinal={sfcxnovaday2semifinal}
+                  grandfinal={sfcxnovaday2grandfinal}
+                />
+              </div>
             </section>
 
             <section>

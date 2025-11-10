@@ -2,20 +2,29 @@ import React from "react";
 import Image from "next/image";
 import Match from "@/components/leaderboards/brackets/Match";
 import templogo from "@/assets/icons/shibe-pinkbright.svg";
+import type { MatchType } from "@/lib/types";
 
-export default function SingleEliminationBracket() {
+export default function SingleEliminationBracket({
+  quarterfinal,
+  semifinal,
+  grandfinal,
+}: {
+  quarterfinal: MatchType[];
+  semifinal: MatchType[];
+  grandfinal: MatchType[];
+}) {
   return (
     <div className="flex flex-col gap-0.5">
-      <div className="rounded-b-lg bg-white md:rounded-b-2xl">
+      <div className="bg-white shadow-[0_1px_5px_-1px_rgba(0,0,0,0.1)] rounded-lg md:rounded-2xl">
         <div className="py-4 md:py-8">
           <div className="overflow-x-auto">
             <div className="flex flex-col gap-9 md:gap[50px]">
               <div className="flex flex-col gap-4">
-                <div className="flex flex-col ps-4 md:ps-8">
+                {/* <div className="flex flex-col ps-4 md:ps-8">
                   <p className="text-sm leading-none font-bold uppercase md:text-lg">
                     Bracket
                   </p>
-                </div>
+                </div> */}
                 <div className="flex">
                   <div className="flex flex-col gap-4 first:ps-4 last:pe-4 md:first:ps-8 md:last:pe-8">
                     <div className="bg-gray-200 flex h-[17px] items-center justify-center rounded-sm">
@@ -24,18 +33,25 @@ export default function SingleEliminationBracket() {
                       </p>
                     </div>
                     <div className="flex flex-1 flex-col gap-4">
-                      <div className="flex flex-col justify-center">
-                        <Match />
-                      </div>
-                      <div className="flex flex-col justify-center">
-                        <Match />
-                      </div>
-                      <div className="flex flex-col justify-center">
-                        <Match />
-                      </div>
-                      <div className="flex flex-col justify-center">
-                        <Match />
-                      </div>
+                      {quarterfinal.map((m) => (
+                        <div
+                          key={m.slot1}
+                          className="flex flex-col justify-center"
+                        >
+                          <Match
+                            slot1={m.slot1}
+                            slot1Score={m.slot1Score}
+                            slot2={m.slot2}
+                            slot2Score={m.slot2Score}
+                            slot1logo={m.slot1logo}
+                            slot2logo={m.slot2logo}
+                            date={m.date}
+                            round={m.round}
+                            status={m.status}
+                            details={m.details}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
                   <div className="flex flex-col gap-4">
@@ -73,12 +89,25 @@ export default function SingleEliminationBracket() {
                     </div>
 
                     <div className="flex flex-1 flex-col gap-4">
-                      <div className="flex flex-col justify-center h-[calc(108px*2+16px)] md:h-[calc(176px*2+16px)]">
-                        <Match />
-                      </div>
-                      <div className="flex flex-col justify-center h-[calc(108px*2+16px)] md:h-[calc(176px*2+16px)]">
-                        <Match />
-                      </div>
+                      {semifinal.map((m) => (
+                        <div
+                          key={m.slot1}
+                          className="flex flex-col justify-center h-[calc(108px*2+16px)] md:h-[calc(176px*2+16px)]"
+                        >
+                          <Match
+                            slot1={m.slot1}
+                            slot1Score={m.slot1Score}
+                            slot2={m.slot2}
+                            slot2Score={m.slot2Score}
+                            slot1logo={m.slot1logo}
+                            slot2logo={m.slot2logo}
+                            date={m.date}
+                            round={m.round}
+                            status={m.status}
+                            details={m.details}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
                   <div className="flex flex-col gap-4">
@@ -103,9 +132,25 @@ export default function SingleEliminationBracket() {
                       </p>
                     </div>
                     <div className="flex flex-1 flex-col gap-4">
-                      <div className="flex flex-col justify-center h-[calc(108px*4+16px*3)] md:h-[calc(176px*4+16px*3)]">
-                        <Match />
-                      </div>
+                      {grandfinal.map((m) => (
+                        <div
+                          key={m.slot1}
+                          className="flex flex-col justify-center h-[calc(108px*4+16px*3)] md:h-[calc(176px*4+16px*3)]"
+                        >
+                          <Match
+                            slot1={m.slot1}
+                            slot1Score={m.slot1Score}
+                            slot2={m.slot2}
+                            slot2Score={m.slot2Score}
+                            slot1logo={m.slot1logo}
+                            slot2logo={m.slot2logo}
+                            date={m.date}
+                            round={m.round}
+                            status={m.status}
+                            details={m.details}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
                   <div className="flex flex-col gap-4">
@@ -115,7 +160,7 @@ export default function SingleEliminationBracket() {
                     </div>
                   </div>
                   <div className="flex flex-col gap-4 first:ps-4 last:pe-4 md:first:ps-8 md:last:pe-8">
-                    <div className="bg-gray-100 flex h-[17px] items-center justify-center rounded-sm">
+                    <div className="bg-gray-200 flex h-[17px] items-center justify-center rounded-sm">
                       <p className="text-[10px] leading-[1.1] font-bold uppercase">
                         Winner
                       </p>
@@ -135,7 +180,7 @@ export default function SingleEliminationBracket() {
                                 className="size-5 md:size-10"
                               />
                               <p className="max-w-full truncate text-[10px] leading-none font-bold uppercase md:text-xs">
-                                Team Number 1
+                                SFC SG
                               </p>
                             </div>
                           </div>

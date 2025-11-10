@@ -168,6 +168,19 @@ export type ATCLeaderboard = {
   advanced: string;
 };
 
+export type MatchType = {
+  slot1: string;
+  slot1Score: number;
+  slot2: string;
+  slot2Score: number;
+  slot1logo: StaticImageData;
+  slot2logo: StaticImageData;
+  date: string;
+  round: string;
+  status: string;
+  details: boolean;
+};
+
 /* ---------------------------- Teams Page ---------------------------- */
 
 // To list all game categories

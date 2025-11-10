@@ -7,7 +7,6 @@ import VideoModal from "@/components/home/VideoModal";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { videos } from "@/data/home/videos";
 
-
 export default function MediaPage() {
   const [active, setActive] = useState<VideoItem | null>(null);
 

@@ -7,7 +7,7 @@ export default function ATCLeaderboard({ rows }: { rows: Leaderboard[] }) {
 
   return (
     <div className="w-full">
-      <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-[0_3px_5px_-1px_rgba(0,0,0,0.1)] bg-white">
+      <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-[0_1px_5px_-1px_rgba(0,0,0,0.1)] bg-white">
         <table className="w-full">
           <thead className="bg-black">
             <tr>
