@@ -162,7 +162,7 @@ export type Leaderboard = {
   prize: number | string;
 };
 
-export type ATCLeaderboard = {
+export type ParticipatingTeamList = {
   name: string;
   logo: string | StaticImageData;
   advanced: string;

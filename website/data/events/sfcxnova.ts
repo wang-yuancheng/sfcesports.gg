@@ -1,10 +1,12 @@
 import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
 import novaLogo from "@/assets/logos/nova.webp";
 import sfcxnovaBanner from "@/assets/pictures/sfcxnovabanner.png";
-import { MatchType, VideoItem } from "@/lib/types";
-import { Leaderboard } from "@/lib/types";
+import sfcxnovaMedia1 from "@/assets/pictures/sfcxnovaday1result.png";
+import sfcxnovaMedia2 from "@/assets/pictures/sfcxnovaday2result.png";
+import { MatchType, VideoItem, Leaderboard } from "@/lib/types";
+import type { StaticImageData } from "next/image";
 
-export const sfcxnovaday1: Leaderboard[] = [
+export const sfcxnovaDay1: Leaderboard[] = [
   {
     place: 1,
     name: "SFC SG",
@@ -167,7 +169,7 @@ export const sfcxnovaday1: Leaderboard[] = [
   },
 ];
 
-export const sfcxnovaday2quarterfinal: MatchType[] = [
+export const sfcxnovaDay2Quarterfinal: MatchType[] = [
   {
     slot1: "SFC SG",
     slot1Score: 2,
@@ -218,7 +220,7 @@ export const sfcxnovaday2quarterfinal: MatchType[] = [
   },
 ];
 
-export const sfcxnovaday2semifinal: MatchType[] = [
+export const sfcxnovaDay2Semifinal: MatchType[] = [
   {
     slot1: "SFC SG",
     slot1Score: 2,
@@ -244,7 +246,7 @@ export const sfcxnovaday2semifinal: MatchType[] = [
     details: false,
   },
 ];
-export const sfcxnovaday2grandfinal: MatchType[] = [
+export const sfcxnovaDay2GrandFinal: MatchType[] = [
   {
     slot1: "SFC SG",
     slot1Score: 3,
@@ -266,4 +268,9 @@ export const videos: VideoItem[] = [
     thumbnail: sfcxnovaBanner,
     views: "",
   },
+];
+
+export const sfcxnovaMedia: StaticImageData[] = [
+  sfcxnovaMedia1,
+  sfcxnovaMedia2,
 ];

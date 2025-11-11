@@ -12,7 +12,7 @@ import crewMouse from "@/assets/logos/crew-mouse.png";
 import crewDino from "@/assets/logos/crew-dino.png";
 import crewCrocodile from "@/assets/logos/crew-crocodile.png";
 
-import { ATCLeaderboard, Leaderboard } from "@/lib/types";
+import { ParticipatingTeamList, Leaderboard } from "@/lib/types";
 
 export const atcLeaderboard: Leaderboard[] = [
   {
@@ -217,7 +217,7 @@ export const atcLeaderboard: Leaderboard[] = [
   },
 ];
 
-export const atcTeams: ATCLeaderboard[] = [
+export const atcTeams: ParticipatingTeamList[] = [
   // --- Semi-Finals Week 1 ---
   {
     name: "猛攻",

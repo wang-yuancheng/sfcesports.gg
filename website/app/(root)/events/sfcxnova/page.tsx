@@ -2,32 +2,21 @@
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import sfcxnovaBanner from "@/assets/pictures/sfcxnovabanner.png";
-import { sfcxnovaday1 } from "@/data/events/sfcxnova/sfcxnova";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";
-import { videos } from "@/data/events/sfcxnova/sfcxnova";
+import { sfcxnovaMedia, videos } from "@/data/events/sfcxnova";
 import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
-import type { StaticImageData } from "next/image";
-
-import sfcxnovaMedia1 from "@/assets/pictures/sfcxnovaday1result.png";
-import sfcxnovaMedia2 from "@/assets/pictures/sfcxnovaday2result.png";
 import MediaGallery from "@/components/home/MediaGallery";
 import DefaultLeaderboard from "@/components/leaderboards/leaderboards/DefaultLeaderboard";
 import SingleEliminationBracket from "@/components/leaderboards/brackets/SingleEliminationBracket";
-import {
-  sfcxnovaday2quarterfinal,
-  sfcxnovaday2semifinal,
-  sfcxnovaday2grandfinal,
-} from "@/data/events/sfcxnova/sfcxnova";
+import { sfcxnovaDay1, sfcxnovaDay2GrandFinal, sfcxnovaDay2Quarterfinal, sfcxnovaDay2Semifinal } from "@/data/events/sfcxnova";
 
 export default function sfcxnova() {
   const [active, setActive] = useState<VideoItem | null>(null);
   const ids = useMemo(() => videos.map((v) => v.id), []);
   const viewsMap = useYoutubeViews(ids);
-
-  const media: StaticImageData[] = [sfcxnovaMedia1, sfcxnovaMedia2];
 
   return (
     <div className="mb-16">
@@ -55,7 +44,7 @@ export default function sfcxnova() {
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Day 1
                 </h2>
-                <DefaultLeaderboard rows={sfcxnovaday1} />
+                <DefaultLeaderboard rows={sfcxnovaDay1} />
               </div>
             </section>
 
@@ -65,9 +54,9 @@ export default function sfcxnova() {
                   Day 2
                 </h2>
                 <SingleEliminationBracket
-                  quarterfinal={sfcxnovaday2quarterfinal}
-                  semifinal={sfcxnovaday2semifinal}
-                  grandfinal={sfcxnovaday2grandfinal}
+                  quarterfinal={sfcxnovaDay2Quarterfinal}
+                  semifinal={sfcxnovaDay2Semifinal}
+                  grandfinal={sfcxnovaDay2GrandFinal}
                 />
               </div>
             </section>
@@ -98,7 +87,7 @@ export default function sfcxnova() {
               </div>
             </section>
             <section>
-              <MediaGallery media={media} hideArrows />
+              <MediaGallery media={sfcxnovaMedia} hideArrows />
             </section>
           </div>
         </div>

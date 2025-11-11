@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { ATCLeaderboard } from "@/lib/types";
+import { ParticipatingTeamList } from "@/lib/types";
 
-export default function ParticipatingTeams({ team }: { team: ATCLeaderboard }) {
+export default function ParticipatingTeams({ team }: { team: ParticipatingTeamList }) {
   return (
     <div className="relative flex min-h-[200px] w-full min-w-[170px] flex-col gap-3 rounded-2xl px-4 pt-4 pb-6 text-center shadow-md border-t justify-between bg-white">
       <div className="relative z-10 flex flex-col items-center gap-1">

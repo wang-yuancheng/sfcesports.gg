@@ -1,7 +1,7 @@
 import banner from "@/assets/pictures/events.webp";
 import EventTimeline from "@/components/events/Timeline";
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import { events } from "@/data/events/events";
+import { events } from "@/data/events/allEvents";
 
 export default function EventsPage() {
   return (
