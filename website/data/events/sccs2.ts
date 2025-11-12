@@ -1,7 +1,6 @@
 import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
-import novaLogo from "@/assets/logos/nova.webp";
 import undercoverBanner from "@/assets/pictures/undercover.jpg";
-import sccs2Banner from "@/assets/pictures/sccs2poster.png";
+import sccs2Banner from "@/assets/pictures/sccs2thumbnail.png";
 import { ParticipatingTeamList, VideoItem } from "@/lib/types";
 import { Leaderboard } from "@/lib/types";
 
@@ -20,28 +19,207 @@ import wbbRebornLogo from "@/assets/logos/pubgm.svg";
 import hastalavistaEsportLogo from "@/assets/logos/pubgm.svg";
 import { StaticImageData } from "next/image";
 
+import groupAQualifier from "@/assets/pictures/sccs2/GROUP_A_QUALIFIER.png";
+import groupBQualifier from "@/assets/pictures/sccs2/GROUP_B_QUALIFIER.png";
+import groupCQualifier from "@/assets/pictures/sccs2/GROUP_C_QUALIFIER.png";
+import groupDQualifier from "@/assets/pictures/sccs2/GROUP_D_QUALIFIER.png";
+import groupEQualifier from "@/assets/pictures/sccs2/GROUP_E_QUALIFIER.png";
+import groupFQualifier from "@/assets/pictures/sccs2/GROUP_F_QUALIFIER.png";
+import groupGQualifier from "@/assets/pictures/sccs2/GROUP_G_QUALIFIER.png";
+import groupHQualifier from "@/assets/pictures/sccs2/GROUP_H_QUALIFIER.png";
+import groupASemiFinals from "@/assets/pictures/sccs2/GROUP_A_SEMI_FINALS.png";
+import groupBSemiFinals from "@/assets/pictures/sccs2/GROUP_B_SEMI_FINALS.png";
+import groupCSemiFinals from "@/assets/pictures/sccs2/GROUP_C_SEMI_FINALS.png";
+import groupDSemiFinals from "@/assets/pictures/sccs2/GROUP_D_SEMI_FINALS.png";
+import groupStage from "@/assets/pictures/sccs2/GROUP_STAGE.png";
+import lastChanceQualifier from "@/assets/pictures/sccs2/LAST_CHANCE_QUALIFIER.png";
+import playoffs from "@/assets/pictures/sccs2/PLAYOFFS.png";
+import grandFinals from "@/assets/pictures/sccs2/GRAND_FINALS.png";
+import finalsTop3 from "@/assets/pictures/sccs2/FINALS_TOP_3.png";
+
 export const sccs2GrandFinal: Leaderboard[] = [
-  { place: 1,  name: "SFC",              logo: sfcLogo,              wwcd: 3, kp: 84, pp: 51, tp: 135, prize: "RM500" },
-  { place: 2,  name: "PEA x SME Baruz",  logo: PEAxSMEBaruzLogo,     wwcd: 1, kp: 57, pp: 44, tp: 101, prize: "RM300" },
-  { place: 3,  name: "GN ALLSTAR",       logo: GNAllstarLogo,        wwcd: 1, kp: 52, pp: 36, tp: 88,  prize: "RM200" },
-  { place: 4,  name: "Hastalavista Esport", logo: hastalavistaEsportLogo, wwcd: 0, kp: 47, pp: 28, tp: 75, prize: "-" },
-  { place: 5,  name: "Manis Xtreme",     logo: manisXtremeLogo,      wwcd: 2, kp: 37, pp: 26, tp: 63,  prize: "-" },
-  { place: 6,  name: "C4 Tikus",         logo: c4TikusLogo,          wwcd: 1, kp: 45, pp: 15, tp: 60,  prize: "-" },
-  { place: 7,  name: "Vermillion Esports", logo: vermillionesportsLogo, wwcd: 0, kp: 36, pp: 23, tp: 59, prize: "-" },
-  { place: 8,  name: "FTW Xtreme",       logo: FTWXtremeLogo,        wwcd: 0, kp: 31, pp: 26, tp: 57,  prize: "-" },
-  { place: 9,  name: "WBB MELX",         logo: wbbMelxLogo,          wwcd: 1, kp: 34, pp: 14, tp: 48,  prize: "-" },
+  {
+    place: 1,
+    name: "SFC",
+    logo: sfcLogo,
+    wwcd: 3,
+    kp: 84,
+    pp: 51,
+    tp: 135,
+    prize: "RM500",
+  },
+  {
+    place: 2,
+    name: "PEA x SME Baruz",
+    logo: PEAxSMEBaruzLogo,
+    wwcd: 1,
+    kp: 57,
+    pp: 44,
+    tp: 101,
+    prize: "RM300",
+  },
+  {
+    place: 3,
+    name: "GN ALLSTAR",
+    logo: GNAllstarLogo,
+    wwcd: 1,
+    kp: 52,
+    pp: 36,
+    tp: 88,
+    prize: "RM200",
+  },
+  {
+    place: 4,
+    name: "Hastalavista Esport",
+    logo: hastalavistaEsportLogo,
+    wwcd: 0,
+    kp: 47,
+    pp: 28,
+    tp: 75,
+    prize: "-",
+  },
+  {
+    place: 5,
+    name: "Manis Xtreme",
+    logo: manisXtremeLogo,
+    wwcd: 2,
+    kp: 37,
+    pp: 26,
+    tp: 63,
+    prize: "-",
+  },
+  {
+    place: 6,
+    name: "C4 Tikus",
+    logo: c4TikusLogo,
+    wwcd: 1,
+    kp: 45,
+    pp: 15,
+    tp: 60,
+    prize: "-",
+  },
+  {
+    place: 7,
+    name: "Vermillion Esports",
+    logo: vermillionesportsLogo,
+    wwcd: 0,
+    kp: 36,
+    pp: 23,
+    tp: 59,
+    prize: "-",
+  },
+  {
+    place: 8,
+    name: "FTW Xtreme",
+    logo: FTWXtremeLogo,
+    wwcd: 0,
+    kp: 31,
+    pp: 26,
+    tp: 57,
+    prize: "-",
+  },
+  {
+    place: 9,
+    name: "WBB MELX",
+    logo: wbbMelxLogo,
+    wwcd: 1,
+    kp: 34,
+    pp: 14,
+    tp: 48,
+    prize: "-",
+  },
 
-  { place: 10, name: "VIP Squad Core",   logo: wbbLogo,              wwcd: 1, kp: 39, pp: 5,  tp: 44,  prize: "-" },
-  { place: 11, name: "WBB Reborn",       logo: wbbRebornLogo,        wwcd: 0, kp: 28, pp: 13, tp: 41,  prize: "-" },
-  { place: 12, name: "SFC 17K",          logo: sfcLogo,              wwcd: 0, kp: 26, pp: 11, tp: 37,  prize: "-" },
-  { place: 13, name: "Cosa Perak C4",    logo: cosaPerakLogo,        wwcd: 0, kp: 27, pp: 10, tp: 37,  prize: "-" },
-  { place: 14, name: "Shawn",            logo: shawnLogo,            wwcd: 0, kp: 26, pp: 4,  tp: 30,  prize: "-" },
-  { place: 15, name: "SFC Rex",          logo: sfcLogo,              wwcd: 0, kp: 27, pp: 3,  tp: 30,  prize: "-" },
-  { place: 16, name: "SFC V",            logo: sfcLogo,              wwcd: 0, kp: 15, pp: 5,  tp: 20,  prize: "-" },
-  { place: 17, name: "WBB",              logo: wbbLogo,              wwcd: 0, kp: 14, pp: 5,  tp: 19,  prize: "-" },
-  { place: 18, name: "XMM JAYZ",         logo: xmmJayzLogo,          wwcd: 0, kp: 12, pp: 1,  tp: 13,  prize: "-" },
+  {
+    place: 10,
+    name: "VIP Squad Core",
+    logo: wbbLogo,
+    wwcd: 1,
+    kp: 39,
+    pp: 5,
+    tp: 44,
+    prize: "-",
+  },
+  {
+    place: 11,
+    name: "WBB Reborn",
+    logo: wbbRebornLogo,
+    wwcd: 0,
+    kp: 28,
+    pp: 13,
+    tp: 41,
+    prize: "-",
+  },
+  {
+    place: 12,
+    name: "SFC 17K",
+    logo: sfcLogo,
+    wwcd: 0,
+    kp: 26,
+    pp: 11,
+    tp: 37,
+    prize: "-",
+  },
+  {
+    place: 13,
+    name: "Cosa Perak C4",
+    logo: cosaPerakLogo,
+    wwcd: 0,
+    kp: 27,
+    pp: 10,
+    tp: 37,
+    prize: "-",
+  },
+  {
+    place: 14,
+    name: "Shawn",
+    logo: shawnLogo,
+    wwcd: 0,
+    kp: 26,
+    pp: 4,
+    tp: 30,
+    prize: "-",
+  },
+  {
+    place: 15,
+    name: "SFC Rex",
+    logo: sfcLogo,
+    wwcd: 0,
+    kp: 27,
+    pp: 3,
+    tp: 30,
+    prize: "-",
+  },
+  {
+    place: 16,
+    name: "SFC V",
+    logo: sfcLogo,
+    wwcd: 0,
+    kp: 15,
+    pp: 5,
+    tp: 20,
+    prize: "-",
+  },
+  {
+    place: 17,
+    name: "WBB",
+    logo: wbbLogo,
+    wwcd: 0,
+    kp: 14,
+    pp: 5,
+    tp: 19,
+    prize: "-",
+  },
+  {
+    place: 18,
+    name: "XMM JAYZ",
+    logo: xmmJayzLogo,
+    wwcd: 0,
+    kp: 12,
+    pp: 1,
+    tp: 13,
+    prize: "-",
+  },
 ];
-
 
 export const videos: VideoItem[] = [
   {
@@ -153,4 +331,22 @@ export const sccs2Teams: ParticipatingTeamList[] = [
   },
 ];
 
-export const sccs2Media: StaticImageData[] = [sccs2Banner];
+export const sccs2Media: StaticImageData[] = [
+  finalsTop3,
+  grandFinals,
+  playoffs,
+  lastChanceQualifier,
+  groupStage,
+  groupASemiFinals,
+  groupBSemiFinals,
+  groupCSemiFinals,
+  groupDSemiFinals,
+  groupAQualifier,
+  groupBQualifier,
+  groupCQualifier,
+  groupDQualifier,
+  groupEQualifier,
+  groupFQualifier,
+  groupGQualifier,
+  groupHQualifier,
+];

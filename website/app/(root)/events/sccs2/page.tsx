@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import sfcxnovaBanner from "@/assets/pictures/sfcxnovabanner.png";
+import sfcxnovaBanner from "@/assets/pictures/sccs2thumbnail.png";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";
@@ -47,13 +47,13 @@ export default function sccs2() {
             <section>
               <div className="flex flex-col gap-3">
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
-                  Day 1
+                  Grand Finals
                 </h2>
                 <DefaultLeaderboard rows={sccs2GrandFinal} />
               </div>
             </section>
-            <section>
-              <div className="flex flex-col gap-5">
+            <section className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Invited Teams
                 </h2>
@@ -66,6 +66,8 @@ export default function sccs2() {
                     <ParticipatingTeams key={t.name} team={t} />
                   ))}
                 </div>
+              </div>
+              <div className="flex flex-col gap-2">
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Finals Qualified Teams
                 </h2>

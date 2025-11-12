@@ -149,7 +149,7 @@ export default function ATCPage() {
               </div>
             </section>
             <section>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2">
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Finals Qualified Teams
                 </h2>
