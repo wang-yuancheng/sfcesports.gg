@@ -1,8 +1,9 @@
 import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
-import undercoverBanner from "@/assets/pictures/undercover.jpg";
+import undercoverThumbnail from "@/assets/pictures/undercover.jpg";
 import sccs2Banner from "@/assets/pictures/sccs2thumbnail.png";
 import { ParticipatingTeamList, VideoItem } from "@/lib/types";
 import { Leaderboard } from "@/lib/types";
+import { StaticImageData } from "next/image";
 
 import cosaPerakLogo from "@/assets/logos/pubgm.svg";
 import c4TikusLogo from "@/assets/logos/pubgm.svg";
@@ -17,7 +18,6 @@ import vermillionesportsLogo from "@/assets/logos/pubgm.svg";
 import FTWXtremeLogo from "@/assets/logos/pubgm.svg";
 import wbbRebornLogo from "@/assets/logos/pubgm.svg";
 import hastalavistaEsportLogo from "@/assets/logos/pubgm.svg";
-import { StaticImageData } from "next/image";
 
 import groupAQualifier from "@/assets/pictures/sccs2/GROUP_A_QUALIFIER.png";
 import groupBQualifier from "@/assets/pictures/sccs2/GROUP_B_QUALIFIER.png";
@@ -237,7 +237,7 @@ export const videos: VideoItem[] = [
   {
     title: "I went UNDERCOVER in my own PUBG Mobile Tournament",
     id: "ymCGpJZaOxU",
-    thumbnail: undercoverBanner,
+    thumbnail: undercoverThumbnail,
     views: "",
   },
 ];

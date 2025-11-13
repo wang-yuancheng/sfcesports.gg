@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import sfcxnovaBanner from "@/assets/pictures/sccs2thumbnail.png";
+import sccs2banner from "@/assets/pictures/sccs2thumbnail.png";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";
@@ -25,7 +25,7 @@ export default function sccs2() {
 
   return (
     <div className="mb-16">
-      <PageHeaderImage desktopSrc={sfcxnovaBanner} />
+      <PageHeaderImage desktopSrc={sccs2banner} />
       <div className="max-w-[1600px] mx-auto px-[clamp(1rem,4vw,4rem)]">
         <div className="md:mx-[clamp(1rem,6vw,20rem)]">
           <div className="flex flex-col gap-10">
