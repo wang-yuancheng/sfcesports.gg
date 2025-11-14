@@ -226,19 +226,16 @@ export const videos: VideoItem[] = [
     title: "Shibe's Community Cup S2 Grand Finals Day 1",
     id: "nlPx8n10nZ4",
     thumbnail: sccs2Banner,
-    views: "",
   },
   {
     title: "Shibe's Community Cup S2 Grand Finals Day 2",
     id: "mgUS5U1_CVY",
     thumbnail: sccs2Banner,
-    views: "",
   },
   {
     title: "I went UNDERCOVER in my own PUBG Mobile Tournament",
     id: "ymCGpJZaOxU",
     thumbnail: undercoverThumbnail,
-    views: "",
   },
 ];
 export const sccs2InvitedTeams: ParticipatingTeamList[] = [

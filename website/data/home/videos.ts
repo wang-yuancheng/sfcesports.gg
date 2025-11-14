@@ -10,24 +10,20 @@ export const videos: VideoItem[] = [
     title: "How it sounds to win All Talent Championship S17 Finals",
     id: "1uxjAOrkPY8",
     thumbnail: atcs17Thumbnail,
-    views: "",
   },
   {
     title: "I finally got World #1 Gunslinger Title",
     id: "ZBEqe8cXbPE",
     thumbnail: worldgunslingerThumbnail,
-    views: "",
   },
   {
     title: "Reaching Rank 1 in Ultimate Royale PUBG Mobile",
     id: "wOp_EQdEpx4",
     thumbnail: ultimateRoyaleThumbnail,
-    views: "",
   },
   {
     title: "We won a regional Tier 1 Grand Final Tournament in PUBG Mobile",
     id: "dDMKyoMDb-s",
     thumbnail: gamelingThumbnail,
-    views: "",
   },
 ];

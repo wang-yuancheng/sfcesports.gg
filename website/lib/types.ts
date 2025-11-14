@@ -124,7 +124,6 @@ export interface VideoItem {
   title: string;
   id: string;
   thumbnail: string | StaticImageData;
-  views: string;
 }
 
 // Type for clicked video popup on homepage display
@@ -160,6 +159,36 @@ export type Leaderboard = {
   pp: number;
   tp: number;
   prize: number | string;
+};
+export type TdmLeaderboard = {
+  place: number;
+  name: string;
+  logo?: string | StaticImageData;
+  win: number;
+  loss: number;
+  draw: number;
+  score: number;
+  delta: string;
+  prize?: number | string;
+};
+
+export type TdmMatchData = {
+  id: number;
+  name: string;
+  r1: MatchRound;
+  r2: MatchRound;
+  r3: MatchRound;
+  r4: MatchRound;
+  r5: MatchRound;
+  r6: MatchRound;
+  r7: MatchRound;
+};
+
+export type MatchRound = {
+  opp: string;
+  ps: number | "-";
+  os: number | "-";
+  res: string; // "W" | "L" | "T" | ""
 };
 
 export type ParticipatingTeamList = {

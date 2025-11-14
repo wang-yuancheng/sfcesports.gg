@@ -3,8 +3,8 @@ import { ordinal } from "@/lib/utils";
 import Image from "next/image";
 
 export default function ATCLeaderboard({ rows }: { rows: Leaderboard[] }) {
-  const hasLogos = rows.some((r) => r.logo);
-
+  const hasLogos = rows.some((r) => r.logo !== undefined && r.logo !== null);
+  
   return (
     <div className="w-full">
       <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-[0_1px_5px_-1px_rgba(0,0,0,0.1)] bg-white">

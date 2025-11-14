@@ -266,7 +266,6 @@ export const videos: VideoItem[] = [
     title: "SFC vs NOVA Community Tournament",
     id: "wTAx3_uxhhg",
     thumbnail: sfcxnovaBanner,
-    views: "",
   },
 ];
 

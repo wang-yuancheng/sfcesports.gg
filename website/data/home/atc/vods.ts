@@ -5,17 +5,13 @@ import { VideoItem } from "@/lib/types";
 
 export const videos: VideoItem[] = [
   {
-    title:
-      "All Talent Championship Grand Finals",
+    title: "All Talent Championship Grand Finals",
     id: "YvjFRACNnrk",
     thumbnail: atcs16Final,
-    views: "",
   },
   {
-    title:
-      "All Talent Championship Semifinals",
+    title: "All Talent Championship Semifinals",
     id: "cnNUx84tn6I",
     thumbnail: atcs16Semi,
-    views: "",
   },
 ];

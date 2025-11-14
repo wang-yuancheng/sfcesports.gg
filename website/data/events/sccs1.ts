@@ -237,19 +237,16 @@ export const sccs1GrandFinal: Leaderboard[] = [
   },
 ];
 
-
 export const videos: VideoItem[] = [
   {
     title: "Shibe's Community Cup S1 Grand Finals Day 1",
     id: "mSrpgWz7KgQ",
     thumbnail: sccs1Banner,
-    views: "",
   },
   {
     title: "Shibe's Community Cup S1 Grand Finals Day 2",
     id: "nwumYiFQv4k",
     thumbnail: sccs1Banner,
-    views: "",
   },
 ];
 
@@ -307,7 +304,7 @@ export const sccs1Teams: ParticipatingTeamList[] = [
     logo: i4uAresLogo,
     advanced: "Semi-Finals Grp B #5",
   },
-   {
+  {
     name: "SFC HEIRS",
     logo: sfcLogo,
     advanced: "Semi-Finals Grp B #6",
@@ -334,7 +331,6 @@ export const sccs1Teams: ParticipatingTeamList[] = [
     logo: sfcLogo,
     advanced: "Semi-Finals Grp C #4",
   },
-
 
   // GROUP D -----------------------------
   {
@@ -363,7 +359,6 @@ export const sccs1Teams: ParticipatingTeamList[] = [
     advanced: "Semi-Finals Grp D #5",
   },
 ];
-
 
 export const sccs1Media: StaticImageData[] = [
   finalsTop3,

@@ -3,7 +3,7 @@ import { ordinal } from "@/lib/utils";
 import Image from "next/image";
 
 export default function DefaultLeaderboard({ rows }: { rows: Leaderboard[] }) {
-  const hasLogos = rows.some((r) => r.logo);
+  const hasLogos = rows.some((r) => r.logo !== undefined && r.logo !== null);
 
   return (
     <div className="w-full">
@@ -16,7 +16,7 @@ export default function DefaultLeaderboard({ rows }: { rows: Leaderboard[] }) {
               </th>
               <th
                 className={`px-3 md:px-16 py-2 whitespace-nowrap uppercase text-white text-start text-[10px] md:text-xs w-auto font-druk font-[400] ${
-                  hasLogos ? "px-9 md:px-16" : ""
+                  hasLogos ? "px-9 md:px-16" : "px-3 md:px-6"
                 }`}
               >
                 Team
