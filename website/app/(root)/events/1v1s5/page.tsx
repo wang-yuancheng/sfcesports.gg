@@ -10,12 +10,16 @@ import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
 import MediaGallery from "@/components/home/MediaGallery";
 import TdmLeaderboard from "@/components/leaderboards/leaderboards/TdmLeaderboard";
-import SingleEliminationBracket from "@/components/leaderboards/brackets/SingleEliminationBracket";
+import DoubleEliminationBracket from "@/components/leaderboards/brackets/DoubleEliminationBracket";
 import {
-  sfcxnovaDay2GrandFinal,
-  sfcxnovaDay2Quarterfinal,
-  sfcxnovaDay2Semifinal,
-} from "@/data/events/sfcxnova";
+  sccs2UBSemifinal,
+  sccs2GrandFinal,
+  sccs2LBFinal,
+  sccs2LBQuarterfinal,
+  sccs2LBSemifinal,
+  sccs2UBFinal,
+  sccs2UBQuarterfinal,
+} from "@/data/events/1v1s5";
 
 export default function tdms5() {
   const [active, setActive] = useState<VideoItem | null>(null);
@@ -48,10 +52,14 @@ export default function tdms5() {
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Brackets
                 </h2>
-                <SingleEliminationBracket
-                  quarterfinal={sfcxnovaDay2Quarterfinal}
-                  semifinal={sfcxnovaDay2Semifinal}
-                  grandfinal={sfcxnovaDay2GrandFinal}
+                <DoubleEliminationBracket
+                  ubQuarterfinal={sccs2UBQuarterfinal}
+                  lbQuarterfinal={sccs2LBQuarterfinal}
+                  ubSemifinal={sccs2UBSemifinal}
+                  lbSemifinal={sccs2LBSemifinal}
+                  ubFinal={sccs2UBFinal}
+                  lbFinal={sccs2LBFinal}
+                  grandfinal={sccs2GrandFinal}
                 />
               </div>
             </section>

@@ -20,11 +20,6 @@ export default function SingleEliminationBracket({
           <div className="overflow-x-auto">
             <div className="flex flex-col gap-9 md:gap[50px]">
               <div className="flex flex-col gap-4">
-                {/* <div className="flex flex-col ps-4 md:ps-8">
-                  <p className="text-sm leading-none font-bold uppercase md:text-lg">
-                    Bracket
-                  </p>
-                </div> */}
                 <div className="flex">
                   <div className="flex flex-col gap-4 first:ps-4 last:pe-4 md:first:ps-8 md:last:pe-8">
                     <div className="bg-gray-200 flex h-[17px] items-center justify-center rounded-sm">

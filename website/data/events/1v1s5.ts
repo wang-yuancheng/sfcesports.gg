@@ -1,7 +1,11 @@
 import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
-import novaLogo from "@/assets/logos/nova.webp";
 import tdms5Banner from "@/assets/pictures/1v1s5thumbnail.png";
-import { MatchType, VideoItem, TdmLeaderboard, TdmMatchData } from "@/lib/types";
+import {
+  MatchType,
+  VideoItem,
+  TdmLeaderboard,
+  TdmMatchData,
+} from "@/lib/types";
 import type { StaticImageData } from "next/image";
 
 export const tdms5SemiFinals: TdmLeaderboard[] = [
@@ -241,95 +245,144 @@ export const tdms5SemiFinals: TdmLeaderboard[] = [
   },
 ];
 
-export const sfcxnovaDay2Quarterfinal: MatchType[] = [
+export const sccs2UBQuarterfinal: MatchType[] = [
   {
-    slot1: "SFC SG",
+    slot1: "SFCTOXIC",
     slot1Score: 2,
-    slot2: "NOVA ESPORTS EU",
-    slot2Score: 0,
-    slot1logo: sfcLogo,
-    slot2logo: novaLogo,
-    date: "Sat, Mar 16 - 1:00 PM",
-    round: "quarterfinal",
-    status: "completed",
-    details: false,
-  },
-  {
-    slot1: "SFC IN",
-    slot1Score: 1,
-    slot2: "NOVA BABY YAGA ESPORTS",
-    slot2Score: 2,
-    slot1logo: sfcLogo,
-    slot2logo: novaLogo,
-    date: "Sat, Mar 16 - 2:00 PM",
-    round: "quarterfinal",
-    status: "completed",
-    details: false,
-  },
-  {
-    slot1: "SFC XENXEN",
-    slot1Score: 2,
-    slot2: "NOVA ASIA",
+    slot2: "FRGMEL",
     slot2Score: 1,
     slot1logo: sfcLogo,
-    slot2logo: novaLogo,
-    date: "Sat, Mar 16 - 3:00 PM",
-    round: "quarterfinal",
+    slot2logo: sfcLogo,
+    date: "Sat, Mar 16 - 1:00 PM",
+    round: "upper quarterfinal",
     status: "completed",
-    details: false,
+    details: true,
   },
   {
-    slot1: "SFC XMM",
-    slot1Score: 2,
-    slot2: "NOVA MSG ESPORTS",
-    slot2Score: 0,
+    slot1: "WASIKUTTANOP",
+    slot1Score: 1,
+    slot2: "SFCBITE",
+    slot2Score: 2,
     slot1logo: sfcLogo,
-    slot2logo: novaLogo,
-    date: "Sat, Mar 16 - 4:00 PM",
-    round: "quarterfinal",
+    slot2logo: sfcLogo,
+    date: "Sat, Mar 16 - 2:00 PM",
+    round: "upper quarterfinal",
     status: "completed",
-    details: false,
+    details: true,
   },
 ];
 
-export const sfcxnovaDay2Semifinal: MatchType[] = [
+export const sccs2LBQuarterfinal: MatchType[] = [
   {
-    slot1: "SFC SG",
+    slot1: "SFCBITE",
     slot1Score: 2,
-    slot2: "NOVA BABY YAGA ESPORTS",
+    slot2: "FRGMEL",
     slot2Score: 1,
     slot1logo: sfcLogo,
-    slot2logo: novaLogo,
-    date: "Sat, Mar 16 - 5:00 PM",
-    round: "semifinal",
+    slot2logo: sfcLogo,
+    date: "Sat, Mar 16 - 1:00 PM",
+    round: "lower quarterfinal",
     status: "completed",
-    details: false,
+    details: true,
   },
   {
-    slot1: "SFC XENXEN",
+    slot1: "VX黑夜",
     slot1Score: 2,
-    slot2: "SFC XMM",
+    slot2: "WASIKUTTANOP",
+    slot2Score: 0,
+    slot1logo: sfcLogo,
+    slot2logo: sfcLogo,
+    date: "Sat, Mar 16 - 2:00 PM",
+    round: "lower quarterfinal",
+    status: "completed",
+    details: true,
+  },
+];
+
+export const sccs2UBSemifinal: MatchType[] = [
+  {
+    slot1: "VX黑夜",
+    slot1Score: 0,
+    slot2: "SFCTOXIC",
+    slot2Score: 2,
+    slot1logo: sfcLogo,
+    slot2logo: sfcLogo,
+    date: "Sat, Mar 16 - 5:00 PM",
+    round: "upper semifinal",
+    status: "completed",
+    details: true,
+  },
+  {
+    slot1: "TOKIWOTOMARE",
+    slot1Score: 2,
+    slot2: "SFCBITE",
     slot2Score: 0,
     slot1logo: sfcLogo,
     slot2logo: sfcLogo,
     date: "Sat, Mar 16 - 6:00 PM",
-    round: "semifinal",
+    round: "upper semifinal",
     status: "completed",
-    details: false,
+    details: true,
   },
 ];
-export const sfcxnovaDay2GrandFinal: MatchType[] = [
+
+export const sccs2LBSemifinal: MatchType[] = [
   {
-    slot1: "SFC SG",
-    slot1Score: 3,
-    slot2: "SFC XENXEN",
+    slot1: "SFCBITE",
+    slot1Score: 0,
+    slot2: "VX黑夜",
     slot2Score: 2,
+    slot1logo: sfcLogo,
+    slot2logo: sfcLogo,
+    date: "Sat, Mar 16 - 5:00 PM",
+    round: "lower semifinal",
+    status: "completed",
+    details: true,
+  },
+];
+
+export const sccs2UBFinal: MatchType[] = [
+  {
+    slot1: "SFCTOXIC",
+    slot1Score: 1,
+    slot2: "TOKIWOTOMARE",
+    slot2Score: 2,
+    slot1logo: sfcLogo,
+    slot2logo: sfcLogo,
+    date: "Sat, Mar 16 - 7:00 PM",
+    round: "upper final",
+    status: "completed",
+    details: true,
+  },
+];
+
+export const sccs2LBFinal: MatchType[] = [
+  {
+    slot1: "SFCTOXIC",
+    slot1Score: 0,
+    slot2: "VX黑夜",
+    slot2Score: 2,
+    slot1logo: sfcLogo,
+    slot2logo: sfcLogo,
+    date: "Sat, Mar 16 - 7:00 PM",
+    round: "lower final",
+    status: "completed",
+    details: true,
+  },
+];
+
+export const sccs2GrandFinal: MatchType[] = [
+  {
+    slot1: "TOKIWOTOMARE",
+    slot1Score: 2,
+    slot2: "VX黑夜",
+    slot2Score: 1,
     slot1logo: sfcLogo,
     slot2logo: sfcLogo,
     date: "Sat, Mar 16 - 7:00 PM",
     round: "grand final",
     status: "completed",
-    details: false,
+    details: true,
   },
 ];
 
