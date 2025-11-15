@@ -188,7 +188,7 @@ export type MatchRound = {
   opp: string;
   ps: number | "-";
   os: number | "-";
-  res: string; // "W" | "L" | "T" | ""
+  res: string; // "W" | "L" | "T"
 };
 
 export type ParticipatingTeamList = {

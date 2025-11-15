@@ -75,7 +75,7 @@ export const events: EventsByYear = {
         { place: 4, name: "SFC・Bite", prize: "S$30" },
         { place: 5, name: "WasikuttanOP", prize: "S$30" },
         { place: 6, name: "FRGMel", prize: "S$30" },
-        { place: 7, name: "HY・Babycumpla", prize: "S$25" },
+        { place: 7, name: "HYBabycumpla", prize: "S$25" },
         { place: 8, name: "SFC・Shibe", prize: "S$25" },
         { place: 9, name: "Stove", prize: "S$25" },
         { place: 10, name: "N6 | 猛攻", prize: "S$25" },

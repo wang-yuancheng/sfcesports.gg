@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { tdms5Matches } from "@/data/events/1v1s5";
+import TdmLeaderboardDialog from "@/components/leaderboards/TdmLeaderboardDialog";
 
 export default function TdmLeaderboard({ rows }: { rows: TdmLeaderboard[] }) {
   const hasLogos = rows.some((r) => r.logo !== undefined && r.logo !== null);
@@ -122,73 +123,15 @@ export default function TdmLeaderboard({ rows }: { rows: TdmLeaderboard[] }) {
                     )}
                   </tr>
                 </DialogTrigger>
-
-                {/* Popup */}
                 <DialogContent className="sm:max-w-xl">
                   <DialogHeader>
-                    <DialogTitle className="tracking-wide uppercase text-lg">
-                      {r.name}
+                    <DialogTitle className="text-2xl font-bold max-md:text-[21px]">
+                      Semi-Finals
                     </DialogTitle>
                   </DialogHeader>
-
                   {(() => {
                     const match = tdms5Matches.find((m) => m.name === r.name);
-
-                    return (
-                      <div className="mt-3 space-y-2">
-                        {match ? (
-                          <table className="w-full text-xs md:text-sm border-collapse">
-                            <thead>
-                              <tr className="font-semibold border-b">
-                                <th className="text-left py-1">Round</th>
-                                <th className="text-left py-1">Opponent</th>
-                                <th className="text-right py-1">PS</th>
-                                <th className="text-right py-1">OS</th>
-                                <th className="text-right py-1">Result</th>
-                              </tr>
-                            </thead>
-
-                            <tbody>
-                              {(
-                                [
-                                  "r1",
-                                  "r2",
-                                  "r3",
-                                  "r4",
-                                  "r5",
-                                  "r6",
-                                  "r7",
-                                ] as const
-                              ).map((key, index) => {
-                                const round = match[key];
-                                return (
-                                  <tr
-                                    key={key}
-                                    className="border-b last:border-none"
-                                  >
-                                    <td className="py-1">R{index + 1}</td>
-                                    <td className="py-1">{round.opp}</td>
-                                    <td className="py-1 text-right">
-                                      {round.ps}
-                                    </td>
-                                    <td className="py-1 text-right">
-                                      {round.os}
-                                    </td>
-                                    <td className="py-1 text-right">
-                                      {round.res}
-                                    </td>
-                                  </tr>
-                                );
-                              })}
-                            </tbody>
-                          </table>
-                        ) : (
-                          <p className="text-sm text-neutral-500">
-                            No match data found.
-                          </p>
-                        )}
-                      </div>
-                    );
+                    return <TdmLeaderboardDialog match={match} />;
                   })()}
                 </DialogContent>
               </Dialog>
