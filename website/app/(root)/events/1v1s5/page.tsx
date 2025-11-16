@@ -50,7 +50,7 @@ export default function tdms5() {
             <section>
               <div className="flex flex-col gap-3">
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
-                  Brackets
+                  Playoffs
                 </h2>
                 <DoubleEliminationBracket
                   ubQuarterfinal={sccs2UBQuarterfinal}

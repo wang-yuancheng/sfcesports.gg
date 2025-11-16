@@ -14,14 +14,15 @@ export default function Match({
   round = "",
   status = "completed",
   details = false,
+  bgColor = "bg-gray-100"
 }: MatchType) {
   const s1lost = slot1Score < slot2Score ? true : false;
   const s2lost = slot2Score < slot1Score ? true : false;
 
   return (
     <div
-      className={`flex w-[220px] shrink-0 flex-col gap-1 rounded-sm p-1 md:w-[264px] md:gap-1.5 md:rounded-lg md:p-2 bg-gray-100 shadow-[0px_8px_24px_0px_#FFFFFF4D] ${
-        details ? "cursor-pointer hover:bg-gray-50" : ""
+      className={`flex w-[220px] shrink-0 flex-col gap-1 rounded-sm p-1 md:w-[264px] md:gap-1.5 md:rounded-lg md:p-2 ${bgColor} shadow-[0px_8px_24px_0px_#FFFFFF4D] ${
+        details ? "cursor-pointer hover:bg-pink-bright/70 transition-colors duration-200" : ""
       }`}
     >
       <div className="flex h-3 items-center justify-between gap-2.5 text-[8px] leading-none font-bold uppercase md:h-4 md:text-[10px]">

@@ -328,6 +328,7 @@ export default function DoubleEliminationBracket({
                                 round={m.round}
                                 status={m.status}
                                 details={m.details}
+                                bgColor="bg-pink-bright"
                               />
                             </div>
                           ))}

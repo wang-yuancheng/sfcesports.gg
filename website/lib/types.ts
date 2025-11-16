@@ -190,6 +190,10 @@ export type MatchRound = {
   os: number | "-";
   res: string; // "W" | "L" | "T"
 };
+export type BracketRound = {
+  s1score: number | "-";
+  s2score: number | "-";
+};
 
 export type ParticipatingTeamList = {
   name: string;
@@ -208,6 +212,10 @@ export type MatchType = {
   round: string;
   status: string;
   details: boolean;
+  bgColor?: string;
+  r1?: BracketRound;
+  r2?: BracketRound;
+  r3?: BracketRound;
 };
 
 /* ---------------------------- Teams Page ---------------------------- */

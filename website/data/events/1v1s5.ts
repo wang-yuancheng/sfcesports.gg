@@ -1,5 +1,16 @@
-import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
 import tdms5Banner from "@/assets/pictures/1v1s5thumbnail.png";
+import wasikuttanopProfile from "@/assets/profiles/wasikuttanopprofile.jpg";
+import vxheiyeProfile from "@/assets/profiles/vxheiyeprofile.jpg";
+import sfcbiteProfile from "@/assets/profiles/sfcbiteprofile.jpg";
+import tokiwotomareProfile from "@/assets/profiles/tokiwotomareprofile.png";
+import frgmelProfile from "@/assets/profiles/frgmelprofile.jpg";
+import sfctoxicProfile from "@/assets/profiles/sfctoxicprofile.png";
+import tdms5Logo from "@/assets/pictures/1v1s5/LOGO.png";
+import finalStandings from "@/assets/pictures/1v1s5/FINAL_STANDINGS.png";
+import tdms5Prizes from "@/assets/pictures/1v1s5/PRIZES.png";
+import semiFinals from "@/assets/pictures/1v1s5/SEMI_FINALS.png";
+import grandFinals from "@/assets/pictures/1v1s5/DOUBLE_ELIMINATION_BRACKET.png";
+
 import {
   MatchType,
   VideoItem,
@@ -251,21 +262,24 @@ export const sccs2UBQuarterfinal: MatchType[] = [
     slot1Score: 2,
     slot2: "FRGMEL",
     slot2Score: 1,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 1:00 PM",
+    slot1logo: sfctoxicProfile,
+    slot2logo: frgmelProfile,
+    date: "Tue, Jun 13 - 7:00 PM",
     round: "upper quarterfinal",
     status: "completed",
     details: true,
+    r1: { s1score: 16, s2score: 14 },
+    r2: { s1score: 13, s2score: 11 },
+    r3: { s1score: 17, s2score: 13 },
   },
   {
     slot1: "WASIKUTTANOP",
     slot1Score: 1,
     slot2: "SFCBITE",
     slot2Score: 2,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 2:00 PM",
+    slot1logo: wasikuttanopProfile,
+    slot2logo: sfcbiteProfile,
+    date: "Tue, Jun 13 - 9:00 PM",
     round: "upper quarterfinal",
     status: "completed",
     details: true,
@@ -278,24 +292,29 @@ export const sccs2LBQuarterfinal: MatchType[] = [
     slot1Score: 2,
     slot2: "FRGMEL",
     slot2Score: 1,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 1:00 PM",
+    slot1logo: sfcbiteProfile,
+    slot2logo: frgmelProfile,
+    date: "Wed, Jun 14 - 9:00 PM",
     round: "lower quarterfinal",
     status: "completed",
     details: true,
+    r1: { s1score: 15, s2score: 11 },
+    r2: { s1score: 12, s2score: 14 },
+    r3: { s1score: 15, s2score: 12 },
   },
   {
     slot1: "VX黑夜",
     slot1Score: 2,
     slot2: "WASIKUTTANOP",
     slot2Score: 0,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 2:00 PM",
+    slot1logo: vxheiyeProfile,
+    slot2logo: wasikuttanopProfile,
+    date: "Wed, Jun 14 - 11:00 PM",
     round: "lower quarterfinal",
     status: "completed",
     details: true,
+    r1: { s1score: 13, s2score: 6 },
+    r2: { s1score: 17, s2score: 3 },
   },
 ];
 
@@ -305,24 +324,26 @@ export const sccs2UBSemifinal: MatchType[] = [
     slot1Score: 0,
     slot2: "SFCTOXIC",
     slot2Score: 2,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 5:00 PM",
+    slot1logo: vxheiyeProfile,
+    slot2logo: sfctoxicProfile,
+    date: "Wed, Jun 14 - 5:00 PM",
     round: "upper semifinal",
     status: "completed",
-    details: true,
+    details: false,
   },
   {
     slot1: "TOKIWOTOMARE",
     slot1Score: 2,
     slot2: "SFCBITE",
     slot2Score: 0,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 6:00 PM",
+    slot1logo: tokiwotomareProfile,
+    slot2logo: sfcbiteProfile,
+    date: "Wed, Jun 14 - 7:00 PM",
     round: "upper semifinal",
     status: "completed",
     details: true,
+    r1: { s1score: 20, s2score: 12 },
+    r2: { s1score: 20, s2score: 12 },
   },
 ];
 
@@ -332,12 +353,14 @@ export const sccs2LBSemifinal: MatchType[] = [
     slot1Score: 0,
     slot2: "VX黑夜",
     slot2Score: 2,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 5:00 PM",
+    slot1logo: sfcbiteProfile,
+    slot2logo: vxheiyeProfile,
+    date: "Thu, Jun 15 - 10:00 PM",
     round: "lower semifinal",
     status: "completed",
     details: true,
+    r1: { s1score: 12, s2score: 20 },
+    r2: { s1score: 17, s2score: 20 },
   },
 ];
 
@@ -347,12 +370,15 @@ export const sccs2UBFinal: MatchType[] = [
     slot1Score: 1,
     slot2: "TOKIWOTOMARE",
     slot2Score: 2,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 7:00 PM",
+    slot1logo: sfctoxicProfile,
+    slot2logo: tokiwotomareProfile,
+    date: "Thu, Jun 15 - 8:00 PM",
     round: "upper final",
     status: "completed",
     details: true,
+    r1: { s1score: 20, s2score: 12 },
+    r2: { s1score: 14, s2score: 18 },
+    r3: { s1score: 9, s2score: 15 },
   },
 ];
 
@@ -362,12 +388,12 @@ export const sccs2LBFinal: MatchType[] = [
     slot1Score: 0,
     slot2: "VX黑夜",
     slot2Score: 2,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 7:00 PM",
+    slot1logo: sfctoxicProfile,
+    slot2logo: vxheiyeProfile,
+    date: "Fri, Jun 16 - 8:00 PM",
     round: "lower final",
     status: "completed",
-    details: true,
+    details: false,
   },
 ];
 
@@ -377,12 +403,15 @@ export const sccs2GrandFinal: MatchType[] = [
     slot1Score: 2,
     slot2: "VX黑夜",
     slot2Score: 1,
-    slot1logo: sfcLogo,
-    slot2logo: sfcLogo,
-    date: "Sat, Mar 16 - 7:00 PM",
+    slot1logo: tokiwotomareProfile,
+    slot2logo: vxheiyeProfile,
+    date: "Sat, Jun 17 - 8:00 PM",
     round: "grand final",
     status: "completed",
     details: true,
+    r1: { s1score: 17, s2score: 10 },
+    r2: { s1score: 14, s2score: 12 },
+    r3: { s1score: 13, s2score: 9 },
   },
 ];
 
@@ -393,8 +422,6 @@ export const videos: VideoItem[] = [
     thumbnail: tdms5Banner,
   },
 ];
-
-export const tdms5Media: StaticImageData[] = [tdms5Banner];
 
 export const tdms5Matches: TdmMatchData[] = [
   {
@@ -683,4 +710,11 @@ export const tdms5Matches: TdmMatchData[] = [
     r6: { opp: "N6 | 猛攻", ps: 12, os: 10, res: "W" },
     r7: { opp: "FRGMel", ps: 15, os: 21, res: "L" },
   },
+];
+
+export const tdms5Media: StaticImageData[] = [
+  grandFinals,
+  finalStandings,
+  semiFinals,
+  tdms5Prizes,
 ];
