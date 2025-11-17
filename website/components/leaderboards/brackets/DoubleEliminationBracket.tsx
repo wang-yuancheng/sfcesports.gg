@@ -93,6 +93,9 @@ export default function DoubleEliminationBracket({
                             round={m.round}
                             status={m.status}
                             details={m.details}
+                            r1={m.r1}
+                            r2={m.r2}
+                            r3={m.r3}
                           />
                         </div>
                       ))}
@@ -121,6 +124,9 @@ export default function DoubleEliminationBracket({
                             round={m.round}
                             status={m.status}
                             details={m.details}
+                            r1={m.r1}
+                            r2={m.r2}
+                            r3={m.r3}
                           />
                         </div>
                       ))}
@@ -174,6 +180,9 @@ export default function DoubleEliminationBracket({
                             round={m.round}
                             status={m.status}
                             details={m.details}
+                            r1={m.r1}
+                            r2={m.r2}
+                            r3={m.r3}
                           />
                         </div>
                       ))}
@@ -204,6 +213,9 @@ export default function DoubleEliminationBracket({
                             round={m.round}
                             status={m.status}
                             details={m.details}
+                            r1={m.r1}
+                            r2={m.r2}
+                            r3={m.r3}
                           />
                         </div>
                       ))}
@@ -253,6 +265,9 @@ export default function DoubleEliminationBracket({
                             round={m.round}
                             status={m.status}
                             details={m.details}
+                            r1={m.r1}
+                            r2={m.r2}
+                            r3={m.r3}
                           />
                         </div>
                       ))}
@@ -283,6 +298,9 @@ export default function DoubleEliminationBracket({
                               round={m.round}
                               status={m.status}
                               details={m.details}
+                              r1={m.r1}
+                              r2={m.r2}
+                              r3={m.r3}
                             />
                           </div>
                         ))}
@@ -329,6 +347,9 @@ export default function DoubleEliminationBracket({
                                 status={m.status}
                                 details={m.details}
                                 bgColor="bg-pink-bright"
+                                r1={m.r1}
+                                r2={m.r2}
+                                r3={m.r3}
                               />
                             </div>
                           ))}

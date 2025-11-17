@@ -191,8 +191,8 @@ export type MatchRound = {
   res: string; // "W" | "L" | "T"
 };
 export type BracketRound = {
-  s1score: number | "-";
-  s2score: number | "-";
+  s1score: number;
+  s2score: number;
 };
 
 export type ParticipatingTeamList = {

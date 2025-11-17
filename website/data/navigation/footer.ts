@@ -45,7 +45,7 @@ export const footerAbout = [
 ];
 export const footerActivity = [
   { label: "Events", href: "/events" },
-  { label: "Shop", href: "/Shop" },
+  { label: "Shop", href: "/shop" },
 ];
 export const termsAndPolicies = [
   { label: "All Terms and Policies", href: "/policies/all" },

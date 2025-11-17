@@ -72,7 +72,7 @@ export default function TdmLeaderboardDialog({
                     return (
                       <div
                         key={roundKey}
-                        className="flex flex-col gap-2.5 max-md:gap-0.5 cursor-pointer"
+                        className="flex flex-col gap-2.5 max-md:gap-0.5 "
                       >
                         <div className="flex">
                           {/* Player side */}
