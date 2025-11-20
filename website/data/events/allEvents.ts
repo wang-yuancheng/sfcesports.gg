@@ -78,7 +78,7 @@ export const events: EventsByYear = {
         { place: 7, name: "HYBabycumpla", prize: "S$25" },
         { place: 8, name: "SFC・Shibe", prize: "S$25" },
         { place: 9, name: "Stove", prize: "S$25" },
-        { place: 10, name: "N6 | 猛攻", prize: "S$25" },
+        { place: 10, name: "N6丨猛攻", prize: "S$25" },
         { place: 11, name: "FakeCalvinsen", prize: "S$20" },
         { place: 12, name: "SFC・Vander", prize: "S$20" },
         { place: 13, name: "DZ¹ | 炒饭", prize: "S$15" },
@@ -106,7 +106,7 @@ export const events: EventsByYear = {
       standings: [
         { place: 1, name: "FlyLikeaBirdie", prize: "$50" },
         { place: 2, name: "SFC・Matrix", prize: "$20" },
-        { place: 3, name: "4EC | Melon", prize: "$10" },
+        { place: 3, name: "4EC丨Melon", prize: "$10" },
         { place: 4, name: "BOT", prize: "$10" },
         { place: 5, name: "CosaJieeOkie", prize: "$10" },
         { place: 6, name: "Z¹ | FiveIce", prize: "-" },

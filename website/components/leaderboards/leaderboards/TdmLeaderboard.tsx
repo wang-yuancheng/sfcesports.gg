@@ -1,4 +1,4 @@
-import type { TdmLeaderboard } from "@/lib/types";
+import type { TdmLeaderboard, TdmMatchData } from "@/lib/types";
 import { ordinal } from "@/lib/utils";
 import Image from "next/image";
 import {
@@ -8,10 +8,15 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { tdms5Matches } from "@/data/events/1v1s5";
 import TdmLeaderboardDialog from "@/components/leaderboards/TdmLeaderboardDialog";
 
-export default function TdmLeaderboard({ rows }: { rows: TdmLeaderboard[] }) {
+export default function TdmLeaderboard({
+  rows,
+  matchData,
+}: {
+  rows: TdmLeaderboard[];
+  matchData: TdmMatchData[];
+}) {
   const hasLogos = rows.some((r) => r.logo !== undefined && r.logo !== null);
   const hasPrize = rows.some((r) => r.prize !== undefined && r.prize !== null);
 
@@ -130,7 +135,7 @@ export default function TdmLeaderboard({ rows }: { rows: TdmLeaderboard[] }) {
                     </DialogTitle>
                   </DialogHeader>
                   {(() => {
-                    const match = tdms5Matches.find((m) => m.name === r.name);
+                    const match = matchData.find((m) => m.name === r.name);
                     return <TdmLeaderboardDialog match={match} />;
                   })()}
                 </DialogContent>

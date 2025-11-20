@@ -5,7 +5,7 @@ import tdms5Banner from "@/assets/pictures/1v1s5.webp";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";
-import { tdms5SemiFinals, tdms5Media, videos } from "@/data/events/1v1s5";
+import { tdms5SemiFinals, tdms5Media, videos, tdms5Matches } from "@/data/events/1v1s5";
 import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
 import MediaGallery from "@/components/home/MediaGallery";
@@ -20,6 +20,7 @@ import {
   sccs2UBFinal,
   sccs2UBQuarterfinal,
 } from "@/data/events/1v1s5";
+
 
 export default function tdms5() {
   const [active, setActive] = useState<VideoItem | null>(null);
@@ -69,7 +70,7 @@ export default function tdms5() {
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Semifinals Standings
                 </h2>
-                <TdmLeaderboard rows={tdms5SemiFinals} />
+                <TdmLeaderboard rows={tdms5SemiFinals} matchData={tdms5Matches}/>
               </div>
             </section>
 

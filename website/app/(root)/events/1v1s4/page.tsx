@@ -5,12 +5,11 @@ import tdms4Banner from "@/assets/pictures/1v1s4thumbnail.jpg";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";
-import { tdms4SemiFinals, tdms4Media, videos } from "@/data/events/1v1s4";
+import { tdms4SemiFinals, tdms4Media, videos, tdms4Matches } from "@/data/events/1v1s4";
 import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
 import MediaGallery from "@/components/home/MediaGallery";
 import TdmLeaderboard from "@/components/leaderboards/leaderboards/TdmLeaderboard";
-
 
 export default function tdms4() {
   const [active, setActive] = useState<VideoItem | null>(null);
@@ -43,7 +42,7 @@ export default function tdms4() {
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Standings
                 </h2>
-                <TdmLeaderboard rows={tdms4SemiFinals} />
+                <TdmLeaderboard rows={tdms4SemiFinals} matchData={tdms4Matches}/>
               </div>
             </section>
 
