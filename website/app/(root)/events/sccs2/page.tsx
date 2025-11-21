@@ -16,7 +16,7 @@ import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
 import MediaGallery from "@/components/home/MediaGallery";
 import DefaultLeaderboard from "@/components/leaderboards/leaderboards/DefaultLeaderboard";
-import ParticipatingTeams from "@/components/leaderboards/ParticipatingTeams";
+import ParticipatingTeam from "@/components/leaderboards/ParticipatingTeam";
 
 export default function sccs2() {
   const [active, setActive] = useState<VideoItem | null>(null);
@@ -59,11 +59,11 @@ export default function sccs2() {
                 </h2>
                 <div
                   className="overflow-auto scrollbar-hide grid w-full auto-rows-fr gap-2 overflow-x-auto py-4 
-                              max-md:grid-flow-col max-md:grid-rows-2 max-md:px-4 max-md:pt-10 
+                              max-md:grid-flow-col max-md:grid-rows-1 max-md:px-0 pt-2 sm:pt-3 md:pt-5
                               md:grid-cols-3 xmd:grid-cols-4 md:gap-5 md:overflow-visible lg:grid-cols-4 xlg:grid-cols-5"
                 >
                   {sccs2InvitedTeams.map((t) => (
-                    <ParticipatingTeams key={t.name} team={t} />
+                    <ParticipatingTeam key={t.name} team={t} />
                   ))}
                 </div>
               </div>
@@ -73,11 +73,11 @@ export default function sccs2() {
                 </h2>
                 <div
                   className="overflow-auto scrollbar-hide grid w-full auto-rows-fr gap-2 overflow-x-auto py-4 
-                              max-md:grid-flow-col max-md:grid-rows-2 max-md:px-4 max-md:pt-10 
+                              max-md:grid-flow-col max-md:grid-rows-2 max-md:px-0 pt-2 sm:pt-3 md:pt-5
                               md:grid-cols-3 xmd:grid-cols-4 md:gap-5 md:overflow-visible lg:grid-cols-4 xlg:grid-cols-5"
                 >
                   {sccs2Teams.map((t) => (
-                    <ParticipatingTeams key={t.name} team={t} />
+                    <ParticipatingTeam key={t.name} team={t} />
                   ))}
                 </div>
               </div>

@@ -12,7 +12,7 @@ import { VideoItem } from "@/lib/types";
 import { videos } from "@/data/home/atc/vods";
 import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
-import ParticipatingTeams from "@/components/leaderboards/ParticipatingTeams";
+import ParticipatingTeam from "@/components/leaderboards/ParticipatingTeam";
 import ImageAndTextBlock from "@/components/global/ImageAndTextBlock";
 import type { StaticImageData } from "next/image";
 
@@ -155,11 +155,11 @@ export default function ATCPage() {
                 </h2>
                 <div
                   className="overflow-auto scrollbar-hide grid w-full auto-rows-fr gap-2 overflow-x-auto py-4 
-                  max-md:grid-flow-col max-md:grid-rows-2 max-md:px-4 max-md:pt-10 
-                  md:grid-cols-3 xmd:grid-cols-4 md:gap-5 md:overflow-visible lg:grid-cols-4 xlg:grid-cols-5"
+                              max-md:grid-flow-col max-md:grid-rows-2 max-md:px-0 pt-2 sm:pt-3 md:pt-5
+                              md:grid-cols-3 xmd:grid-cols-4 md:gap-5 md:overflow-visible lg:grid-cols-4 xlg:grid-cols-5"
                 >
                   {atcTeams.map((t) => (
-                    <ParticipatingTeams key={t.name} team={t} />
+                    <ParticipatingTeam key={t.name} team={t} />
                   ))}
                 </div>
               </div>
