@@ -1,10 +1,91 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { mediaItems } from "@/data/media/media";
+import { mediaItems, ContentBlock } from "@/data/media/media";
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 
 export async function generateStaticParams() {
   return mediaItems.map((item) => ({ media: item.slug }));
+}
+
+// Helper component to render different content blocks
+function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
+  return (
+    <div className="flex flex-col gap-6 text-lg md:text-xl leading-relaxed text-gray-800">
+      {blocks.map((block, index) => {
+        switch (block.type) {
+          case "heading":
+            return (
+              <h2
+                key={index}
+                className="font-druk text-2xl md:text-3xl uppercase mt-6 mb-2 text-black"
+              >
+                {block.text}
+              </h2>
+            );
+          case "subheading":
+            return (
+              <h3
+                key={index}
+                className="font-druk text-xl md:text-2xl uppercase mt-4 mb-1 text-gray-700"
+              >
+                {block.text}
+              </h3>
+            );
+          case "paragraph":
+            return (
+              <p key={index} className="text-gray-600">
+                {block.text}
+              </p>
+            );
+          case "quote":
+            return (
+              <blockquote
+                key={index}
+                className="border-l-4 border-black pl-6 italic my-6 py-2 bg-gray-50"
+              >
+                <p className="font-medium text-xl">"{block.text}"</p>
+                {block.author && (
+                  <footer className="text-sm text-gray-500 mt-2 uppercase tracking-wider font-bold">
+                    — {block.author}
+                  </footer>
+                )}
+              </blockquote>
+            );
+          case "list":
+            return (
+              <ul
+                key={index}
+                className="list-disc pl-6 space-y-2 text-gray-600 marker:text-black"
+              >
+                {block.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            );
+          case "image":
+            return (
+              <figure key={index} className="my-8">
+                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 border border-gray-200">
+                  <Image
+                    src={block.src}
+                    alt={block.alt}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                {block.caption && (
+                  <figcaption className="mt-3 text-center text-sm text-gray-500 font-medium">
+                    {block.caption}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          default:
+            return null;
+        }
+      })}
+    </div>
+  );
 }
 
 export default async function MediaPostPage({
@@ -19,58 +100,61 @@ export default async function MediaPostPage({
 
   return (
     <div className="mb-16 min-h-screen">
+      {/* Optional: Use your PageHeaderImage component if you want a banner style */}
+      <PageHeaderImage desktopSrc={item.image} />
       <div className="section-container md:mt-6">
         <div className="mx-auto max-w-[800px]">
           {/* Header Info */}
           <div className="mb-6">
-            <span className="text-sm font-medium text-gray-600">
+            <span className="text-sm font-medium text-gray-600 block mb-2">
               Published: {item.date}
             </span>
-            <h1 className="mt-2 font-druk text-3xl md:mt-3 md:text-[40px] uppercase leading-tight">
+            <h1 className="font-druk text-3xl md:text-5xl uppercase leading-[0.9] tracking-tight">
               {item.title}
             </h1>
           </div>
 
           {/* Main Image */}
-          <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 border border-gray-200 mb-8">
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              priority
-              className="object-cover"
-            />
+          <div className="mb-10">
+            <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                priority
+                className="object-cover"
+              />
+            </div>
+            {/* Main Image Caption */}
+            {item.imageCaption && (
+              <div className="mt-3 text-center text-sm text-gray-500 font-medium">
+                {item.imageCaption}
+              </div>
+            )}
           </div>
 
           {/* Content Body */}
-          <div className="max-w-none text-xl">
-            {item.content ? (
-              <p>{item.content}</p>
+          <div className="max-w-none">
+            {item.content && item.content.length > 0 ? (
+              <ContentRenderer blocks={item.content} />
             ) : (
-              <>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <p className="mt-4">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.
-                </p>
-              </>
+              // Fallback content if no data is present
+              <div className="text-gray-500 italic text-lg">
+                <p>No details available for this post.</p>
+              </div>
             )}
           </div>
 
           {/* Back Button */}
-          <div className="mt-12 pt-8 border-t border-gray-100">
+          <div className="mt-16 pt-8 border-t border-gray-100">
             <a
               href="/media"
-              className="inline-flex items-center text-sm font-medium text-gray-600 hover:text-black transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors group"
             >
-              ← Back to all news
+              <span className="group-hover:-translate-x-1 transition-transform duration-200">
+                ←
+              </span>{" "}
+              Back to all news
             </a>
           </div>
         </div>
