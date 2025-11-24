@@ -82,13 +82,17 @@ export function LiveContentFront({ showVod }: { showVod: boolean }) {
     </Link>
   );
 }
-
 function StatusLine({ showVod }: { showVod: boolean }) {
   return (
     <div className="relative block leading-tight min-w-100">
-      {/* default line */}
+      {/* Mobile version of default line */}
+      <div className="font-[400] text-xs text-gray-600 whitespace-nowrap overflow-hidden text-ellipsis navbarsm:hidden">
+        Event has ended
+      </div>
+
+      {/* Desktop default line */}
       <div
-        className={`font-[400] text-xs text-gray-600 whitespace-nowrap overflow-hidden text-ellipsis transition-opacity duration-300 ${
+        className={`hidden navbarsm:block font-[400] text-xs text-gray-600 whitespace-nowrap overflow-hidden text-ellipsis transition-opacity duration-300 ${
           showVod
             ? "opacity-0 pointer-events-none"
             : "opacity-100 group-hover:opacity-0 group-hover:duration-0"
@@ -97,15 +101,15 @@ function StatusLine({ showVod }: { showVod: boolean }) {
         Event has ended
       </div>
 
-      {/* VOD prompt overlays the same spot */}
+      {/* Desktop VOD overlay */}
       <div
-        className={`absolute inset-0 font-[400] text-xs text-gray-600 whitespace-nowrap overflow-hidden text-ellipsis transition-opacity duration-300 ${
+        className={`hidden navbarsm:block absolute inset-0 font-[400] text-xs text-gray-600 whitespace-nowrap overflow-hidden text-ellipsis transition-opacity duration-300 ${
           showVod
             ? "opacity-100"
             : "opacity-0 group-hover:opacity-100 group-hover:duration-0"
         }`}
       >
-        View VODs
+        View More
       </div>
     </div>
   );
