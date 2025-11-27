@@ -269,7 +269,7 @@ export const sccs2UBQuarterfinal: MatchType[] = [
     status: "completed",
     details: true,
     r1: { s1score: 16, s2score: 14 },
-    r2: { s1score: 13, s2score: 11 },
+    r2: { s1score: 11, s2score: 13 },
     r3: { s1score: 17, s2score: 13 },
   },
   {
