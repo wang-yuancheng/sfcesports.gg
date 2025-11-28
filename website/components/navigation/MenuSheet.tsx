@@ -34,25 +34,15 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
           <SheetTrigger asChild>
             <button
               className="relative rounded-md p-2 md:hover:bg-gray-100 md:hidden"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label="Toggle menu"
             >
-              {open ? (
-                <Image
-                  src={X}
-                  alt="Close"
-                  width={24}
-                  height={24}
-                  className="hover:cursor-pointer"
-                />
-              ) : (
-                <Image
-                  src={Menu}
-                  alt="Menu"
-                  width={24}
-                  height={24}
-                  className="hover:cursor-pointer"
-                />
-              )}
+              <Image
+                src={open ? X : Menu}
+                alt=""
+                width={24}
+                height={24}
+                className="hover:cursor-pointer"
+              />
             </button>
           </SheetTrigger>
 
