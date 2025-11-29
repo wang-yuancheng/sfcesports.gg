@@ -31,13 +31,10 @@ export default function Match(props: MatchType) {
 
   const s1lost = slot1Score < slot2Score;
   const s2lost = slot2Score < slot1Score;
+
   const Card = (
     <div
-      className={`flex w-[220px] shrink-0 flex-col gap-1 rounded-sm p-1 md:w-[264px] md:gap-1.5 md:rounded-lg md:p-2 ${bgColor} shadow-[0px_8px_24px_0px_#FFFFFF4D] ${
-        details
-          ? "cursor-pointer hover:bg-pink-bright/70 transition-colors duration-200"
-          : ""
-      }`}
+      className={`flex w-[220px] shrink-0 flex-col gap-1 rounded-sm p-1 md:w-[264px] md:gap-1.5 md:rounded-lg md:p-2 ${bgColor} shadow-[0px_8px_24px_0px_#FFFFFF4D] cursor-pointer hover:bg-pink-bright/70 transition-colors duration-200`}
     >
       <div className="flex h-3 items-center justify-between gap-2.5 text-[8px] leading-none font-bold uppercase md:h-4 md:text-[10px]">
         <p className="ps-1.5">{date}</p>
@@ -138,15 +135,11 @@ export default function Match(props: MatchType) {
     return "Tie";
   }
 
-  // If details = false, do not wrap in dialog
-  if (!details) return Card;
-
   return (
     <Dialog>
       <DialogTrigger asChild>{Card}</DialogTrigger>
 
       <DialogContent className="sm:max-w-xl">
-        {/* Header (title) */}
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold max-md:text-[21px] uppercase">
             Playoffs - {round}
@@ -154,95 +147,103 @@ export default function Match(props: MatchType) {
         </DialogHeader>
 
         <div className="relative flex h-full flex-col bg-gray-50 flex-grow overflow-y-auto">
-          <div className="hide-scrollbar flex-grow overflow-y-auto">
-            <section className="relative w-full">
-              <div>
-                <div className="relative flex flex-col gap-5 md:gap-8">
-                  <div className="flex flex-col gap-2.5">
-                    {([r1, r2, r3] as const).map((roundData, idx) => {
-                      if (!roundData) return null;
+          {!details ? (
+            <div className="flex h-24 w-full items-center justify-center">
+              <p className="text-sm font-bold uppercase text-gray-500">
+                Information is unavailable
+              </p>
+            </div>
+          ) : (
+            <div className="hide-scrollbar flex-grow overflow-y-auto">
+              <section className="relative w-full">
+                <div>
+                  <div className="relative flex flex-col gap-5 md:gap-8">
+                    <div className="flex flex-col gap-2.5">
+                      {([r1, r2, r3] as const).map((roundData, idx) => {
+                        if (!roundData) return null;
 
-                      const ps = roundData.s1score;
-                      const os = roundData.s2score;
+                        const ps = roundData.s1score;
+                        const os = roundData.s2score;
 
-                      const outcome = getOutcome(ps, os);
+                        const outcome = getOutcome(ps, os);
 
-                      const isPlayerWinner = outcome === "win";
-                      const isOpponentWinner = outcome === "lose";
+                        const isPlayerWinner = outcome === "win";
+                        const isOpponentWinner = outcome === "lose";
 
-                      return (
-                        <div
-                          key={idx}
-                          className="flex flex-col gap-2.5 max-md:gap-0.5"
-                        >
-                          <div className="flex">
-                            {/* Player side */}
-                            <div className="relative flex min-h-[55px] w-full justify-end gap-2 rounded-md bg-white p-1 max-md:rounded-t-none max-md:rounded-b-sm max-md:p-1.5">
-                              <div className="flex items-center gap-4 max-md:flex-1 max-md:flex-col-reverse max-md:justify-center max-md:gap-1">
-                                <h5 className="text-[16px] max-md:text-center max-md:text-[12px] text-right max-w-full truncate leading-none font-bold uppercase md:text-sm text-wrap">
-                                  {slot1}
-                                </h5>
-                              </div>
-                              <div
-                                className={`relative flex h-auto min-w-[49px] items-center justify-center self-stretch rounded-md ${
-                                  isPlayerWinner
-                                    ? "bg-pink-bright"
-                                    : "bg-gray-100 text-gray-600"
-                                }`}
-                              >
-                                <span
-                                  className={`text-base leading-none font-bold md:text-2xl ${
-                                    isPlayerWinner ? "text-white" : ""
+                        return (
+                          <div
+                            key={idx}
+                            className="flex flex-col gap-2.5 max-md:gap-0.5"
+                          >
+                            <div className="flex">
+                              {/* Player side */}
+                              <div className="relative flex min-h-[55px] w-full justify-end gap-2 rounded-md bg-white p-1 max-md:rounded-t-none max-md:rounded-b-sm max-md:p-1.5">
+                                <div className="flex items-center gap-4 max-md:flex-1 max-md:flex-col-reverse max-md:justify-center max-md:gap-1">
+                                  <h5 className="text-[16px] max-md:text-center max-md:text-[12px] text-right max-w-full truncate leading-none font-bold uppercase md:text-sm text-wrap">
+                                    {slot1}
+                                  </h5>
+                                </div>
+                                <div
+                                  className={`relative flex h-auto min-w-[49px] items-center justify-center self-stretch rounded-md ${
+                                    isPlayerWinner
+                                      ? "bg-pink-bright"
+                                      : "bg-gray-100 text-gray-600"
                                   }`}
                                 >
-                                  {ps}
-                                </span>
+                                  <span
+                                    className={`text-base leading-none font-bold md:text-2xl ${
+                                      isPlayerWinner ? "text-white" : ""
+                                    }`}
+                                  >
+                                    {ps}
+                                  </span>
+                                </div>
                               </div>
-                            </div>
 
-                            {/* Middle: round + result */}
-                            <div className="hidden md:contents">
-                              <div className="flex min-w-[130px] flex-col items-center justify-center text-center px-2.5">
-                                <div className="flex w-fit items-center justify-center rounded-sm px-2 py-1 text-gray-600 bg-white">
-                                  <span className="font-druk text-[13px] flex items-center gap-1 uppercase">
-                                    Round {idx + 1}
+                              {/* Middle: round + result */}
+                              <div className="hidden md:contents">
+                                <div className="flex min-w-[130px] flex-col items-center justify-center text-center px-2.5">
+                                  <div className="flex w-fit items-center justify-center rounded-sm px-2 py-1 text-gray-600 bg-white">
+                                    <span className="font-druk text-[13px] flex items-center gap-1 uppercase">
+                                      Round {idx + 1}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Opponent side */}
+                              <div className="relative flex min-h-[55px] w-full justify-end gap-2 rounded-md bg-white p-1 max-md:rounded-t-none max-md:rounded-b-sm max-md:p-1.5 flex-row-reverse">
+                                <div className="mr-4 flex items-center gap-4 max-md:flex-1 max-md:flex-col-reverse max-md:justify-center max-md:gap-1 flex-row-reverse">
+                                  <h5 className="text-[16px] max-md:text-center max-md:text-[12px] max-w-full truncate leading-none font-bold uppercase md:text-sm">
+                                    {slot2}
+                                  </h5>
+                                </div>
+                                <div
+                                  className={`relative flex h-auto min-w-[49px] items-center justify-center self-stretch rounded-md ${
+                                    isOpponentWinner
+                                      ? "bg-pink-bright"
+                                      : "bg-gray-100 text-gray-600"
+                                  }`}
+                                >
+                                  <span
+                                    className={`text-base leading-none font-bold md:text-2xl ${
+                                      isOpponentWinner ? "text-white" : ""
+                                    }`}
+                                  >
+                                    {os}
                                   </span>
                                 </div>
                               </div>
                             </div>
-
-                            {/* Opponent side */}
-                            <div className="relative flex min-h-[55px] w-full justify-end gap-2 rounded-md bg-white p-1 max-md:rounded-t-none max-md:rounded-b-sm max-md:p-1.5 flex-row-reverse">
-                              <div className="mr-4 flex items-center gap-4 max-md:flex-1 max-md:flex-col-reverse max-md:justify-center max-md:gap-1 flex-row-reverse">
-                                <h5 className="text-[16px] max-md:text-center max-md:text-[12px] max-w-full truncate leading-none font-bold uppercase md:text-sm">
-                                  {slot2}
-                                </h5>
-                              </div>
-                              <div
-                                className={`relative flex h-auto min-w-[49px] items-center justify-center self-stretch rounded-md ${
-                                  isOpponentWinner
-                                    ? "bg-pink-bright"
-                                    : "bg-gray-100 text-gray-600"
-                                }`}
-                              >
-                                <span
-                                  className={`text-base leading-none font-bold md:text-2xl ${
-                                    isOpponentWinner ? "text-white" : ""
-                                  }`}
-                                >
-                                  {os}
-                                </span>
-                              </div>
-                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
-          </div>
+              </section>
+            </div>
+          )}
         </div>
       </DialogContent>
     </Dialog>
