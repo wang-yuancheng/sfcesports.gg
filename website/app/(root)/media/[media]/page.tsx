@@ -7,7 +7,6 @@ export async function generateStaticParams() {
   return mediaItems.map((item) => ({ media: item.slug }));
 }
 
-// Helper component to render different content blocks
 function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
   return (
     <div className="flex flex-col gap-6 text-lg md:text-xl leading-relaxed text-gray-800">
@@ -17,7 +16,7 @@ function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
             return (
               <h2
                 key={index}
-                className="font-druk text-2xl md:text-3xl uppercase mt-6 mb-2 text-black"
+                className="font-druk text-2xl md:text-3xl uppercase mt-6 md:-mb-4 text-black"
               >
                 {block.text}
               </h2>
@@ -33,7 +32,7 @@ function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
             );
           case "paragraph":
             return (
-              <p key={index} className="text-gray-600">
+              <p key={index} className="text-gray-600 font-[400]">
                 {block.text}
               </p>
             );
@@ -64,7 +63,7 @@ function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
             );
           case "image":
             return (
-              <figure key={index} className="my-8">
+              <figure key={index} className="md:my-6">
                 <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 border border-gray-200">
                   <Image
                     src={block.src}
@@ -100,37 +99,17 @@ export default async function MediaPostPage({
 
   return (
     <div className="mb-16 min-h-screen">
-      {/* Optional: Use your PageHeaderImage component if you want a banner style */}
       <PageHeaderImage desktopSrc={item.image} />
       <div className="section-container md:mt-6">
         <div className="mx-auto max-w-[800px]">
           {/* Header Info */}
-          <div className="mb-6">
+          <div className="mb-6 mt-10 md:mt-12 space-y-4">
+            <h1 className="font-druk text-3xl md:text-4xl uppercase leading-[0.9] tracking-tight">
+              {item.title}
+            </h1>
             <span className="text-sm font-medium text-gray-600 block mb-2">
               Published: {item.date}
             </span>
-            <h1 className="font-druk text-3xl md:text-5xl uppercase leading-[0.9] tracking-tight">
-              {item.title}
-            </h1>
-          </div>
-
-          {/* Main Image */}
-          <div className="mb-10">
-            <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                priority
-                className="object-cover"
-              />
-            </div>
-            {/* Main Image Caption */}
-            {item.imageCaption && (
-              <div className="mt-3 text-center text-sm text-gray-500 font-medium">
-                {item.imageCaption}
-              </div>
-            )}
           </div>
 
           {/* Content Body */}
