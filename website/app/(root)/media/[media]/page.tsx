@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { mediaItems, ContentBlock } from "@/data/media/media";
 import PageHeaderImage from "@/components/global/PageHeaderImage";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   return mediaItems.map((item) => ({ media: item.slug }));
@@ -25,10 +26,23 @@ function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
             return (
               <h3
                 key={index}
-                className="font-druk text-xl md:text-2xl uppercase mt-4 mb-1 text-gray-700"
+                className="font-druk text-xl md:text-2xl uppercase mt-4 md:-mb-3"
               >
                 {block.text}
               </h3>
+            );
+          case "linkSubheading":
+            return (
+              <Link
+                key={index}
+                href={block.url}
+                className="group font-druk text-xl md:text-2xl uppercase mt-4 md:-mb-3 block w-fit hover:text-gray-600 transition-colors"
+              >
+                {block.text}
+                <span className="inline-block ml-2 transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
             );
           case "paragraph":
             return (
@@ -40,7 +54,7 @@ function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
             return (
               <blockquote
                 key={index}
-                className="border-l-4 border-black pl-6 italic my-6 py-2 bg-gray-50"
+                className="border-l-4 border-black pl-6 italic my-6 py-2 md:mt-0 bg-gray-50"
               >
                 <p className="font-medium text-xl">"{block.text}"</p>
                 {block.author && (
@@ -63,13 +77,15 @@ function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
             );
           case "image":
             return (
-              <figure key={index} className="md:my-6">
-                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-100 border border-gray-200">
+              <figure key={index} className="md:my-4">
+                <div className="relative w-full rounded-xl overflow-hidden bg-gray-100 border border-gray-200">
                   <Image
                     src={block.src}
                     alt={block.alt}
-                    fill
-                    className="object-cover"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full h-auto"
                   />
                 </div>
                 {block.caption && (

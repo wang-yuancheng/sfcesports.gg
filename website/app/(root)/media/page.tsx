@@ -16,7 +16,7 @@ function MediaCard({ item }: { item: MediaItem }) {
             className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
         </div>
-        <div className="text-xs mt-3 mb-1 text-gray-600">{item.date}</div>
+        <div className="text-xs mt-3 mb-1 font-[500] text-gray-600">{item.date}</div>
         {/* Added group-hover color change */}
         <div className="font-druk text-xl leading-tight uppercase group-hover:text-gray-600 transition-colors">
           {item.title}
