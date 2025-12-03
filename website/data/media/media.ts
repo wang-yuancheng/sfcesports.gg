@@ -16,6 +16,12 @@ import atcs16_3 from "@/assets/pictures/media/atcs16-3.png";
 import atcs16_4 from "@/assets/pictures/media/atcs16-4.png";
 import events from "@/assets/pictures/media/events.png";
 import gameling from "@/assets/pictures/media/gameling.png";
+import gamelingPoster from "@/assets/pictures/media/gamelingPoster.jpg";
+import gamelingFinal from "@/assets/pictures/media/gamelingFinal.jpg";
+import gamelingSemi from "@/assets/pictures/media/gamelingSemi.jpg";
+import gamelingRevival from "@/assets/pictures/media/gamelingRevival.png";
+import gamelingR2 from "@/assets/pictures/media/gamelingR2.jpg";
+import gamelingR1 from "@/assets/pictures/media/gamelingR1.jpg";
 import matchresult from "@/assets/pictures/media/matchresult.png";
 import ourcompetitivehighlights from "@/assets/pictures/media/ourcompetitivehighlights.png";
 import rank1 from "@/assets/pictures/media/rank1.png";
@@ -25,6 +31,7 @@ import sccs1final from "@/assets/pictures/media/sccs1final.jpg";
 import sccs2final from "@/assets/pictures/media/sccs2final.jpeg";
 import sfcxnova from "@/assets/pictures/media/sfcxnova.jpeg";
 import thm from "@/assets/pictures/media/thm.png";
+import ultimateRoyaleRank1 from "@/assets/pictures/media/ultimateroyalerank1.jpg";
 import worldseason1 from "@/assets/pictures/media/worldseason1.png";
 import worldtitle1 from "@/assets/pictures/media/worldtitle1.png";
 import wowfinal from "@/assets/pictures/media/wowfinal.jpeg";
@@ -212,7 +219,7 @@ export const mediaItems: MediaItem[] = [
       },
       {
         type: "paragraph",
-        text: "Reflecting on these milestones, it is evident that what began as modest community gatherings has evolved into a recognized platform for aspiring talent across the region. As we continue to scale our operations, ShibeFanClub remains dedicated to professionalizing grassroots esports, providing a stage where players can compete with integrity and showcase their potential to the world."
+        text: "Reflecting on these milestones, it is evident that what began as modest community gatherings has evolved into a recognized platform for aspiring talent across the region. As we continue to scale our operations, ShibeFanClub remains dedicated to professionalizing grassroots esports, providing a stage where players can compete with integrity and showcase their potential to the world.",
       },
     ],
   },
@@ -221,23 +228,188 @@ export const mediaItems: MediaItem[] = [
     slug: "our-competitive-highlights",
     date: "19 Sep 2025",
     title: "Our Competitive Highlights",
-    image: tempimage,
-    content: [],
+    image: ourcompetitivehighlights,
+    content: [
+      {
+        type: "paragraph",
+        text: "Since the founding of ShibeFanClub, we’ve brought teams to countless tournaments across different levels of competition. Along the way, we’ve learned, grown, and pushed ourselves against some of the toughest opponents out there. In this article, we’ll look back at three of our biggest regional tournaments we’ve played in.",
+      },
+      {
+        type: "subheading",
+        text: "THM Challenge Cup (2023)",
+      },
+      {
+        type: "paragraph",
+        text: "PUBG Mobile THM Challenge Cup 2023 is an official tournament organized by KRAFTON and Level Infinite for esport teams in Taiwan, Hongkong and Macau. It features a prize pool of NT$136,500 TWD (≃ $4,227 USD).",
+      },
+      {
+        type: "image",
+        src: thm,
+        alt: "",
+        caption: "#7 in THM Challenge Cup Finals",
+      },
+      {
+        type: "paragraph",
+        text: "Our roster for this event was made up of 4 players from Taiwan, marking one of our first times stepping into an official regional stage. The competition was intense, with some of the strongest teams in the region fighting for the top spots. Finishing 7th in the finals gave us valuable experience and confidence, showing that we could hold our own in high-stakes tournaments. ",
+      },
+      {
+        type: "linkSubheading",
+        text: "All Talent Championship S16 (2024)",
+        url: "/atc",
+      },
+      {
+        type: "image",
+        src: atcs16_2,
+        alt: "",
+        caption: "SFC Teams holding both #1 and #2 in Asia Finals",
+      },
+      {
+        type: "paragraph",
+        text: "This was the biggest achievement in our competitive journey. With our strongest roster yet, we managed to push through qualifiers, semifinals, and playoffs against some of the toughest teams in the Asia. In the grand finals, SFC secured both 1st and 2nd place.",
+      },
+      {
+        type: "subheading",
+        text: "GamelinG Gauntlet (2024)",
+      },
+      {
+        type: "paragraph",
+        text: "This is a regional tournament taking place in Asia featuring $1000 USD prize pool. Unlike most of our previous events, this was a real test of endurance. The lobby was stacked with official PMCL Southeast Asia teams, some of which had already proven themselves on the global stage. As the only team representing Singapore in the tournament, we had to show that SFC could compete side by side with established organizations.",
+      },
+      {
+        type: "image",
+        src: gameling,
+        alt: "",
+        caption: "#2 in Grand Final",
+      },
+      {
+        type: "paragraph",
+        text: "We ended the tournament in 2nd place overall. While it wasn’t the trophy, it was one of the clearest signs yet that our team can compete against the top teams in the region.",
+      },
+    ],
   },
   {
     id: 3,
     slug: "shibe-breaks-game-record",
     date: "18 May 2024",
     title: "Shibe Breaks PUBG Mobile Game Record with 3x Rank 1 in a Season",
-    image: tempimage,
-    content: [],
+    image: ultimateRoyaleRank1,
+    content: [
+      {
+        type: "paragraph",
+        text: "Rank pushing is the first thing one would do when they become devoted to a game. It is the most direct way to measure skill and prove one’s dedication. This goal of reaching the top first came as an idea for a video. Reaching a good rank would bring in many views and boost our YouTube channel. As such, we treated it like a content challenge at the start, to just achieve a simple rank 10 in Asia.",
+      },
+      {
+        type: "subheading",
+        text: "Our First Rank #1 (2022)",
+      },
+      {
+        type: "image",
+        src: worldseason1,
+        alt: "",
+        caption:
+          "Former world record for most points gained in a season: 12000",
+      },
+      {
+        type: "paragraph",
+        text: "It was a simple plan at first. We just focused and played the game. Within two weeks, we reached the goal. It felt almost too easy, and that’s when the motivation changed. It stopped being about making a video, but to proof to others that we are the most dedicated in the world. After 1 month of SFC players averaging 12 hours a day, we finally achieved #1 globally. ",
+      },
+      {
+        type: "subheading",
+        text: "Our Second Rank #1 (2024)",
+      },
+      {
+        type: "paragraph",
+        text: 'It was very draining to be playing the game for such a long time over a long period. Moreover, we started expanding the competitive side of PUBG Mobile, which lead to the pause in rank pushing. After 2 years, our previous record for most points gained was broken, and with players constantly improving, the "World Rank #1" in 2022 did not seem impressive anymore in the current year. ',
+      },
+      {
+        type: "paragraph",
+        text: "This led us to set out to retake our record, but this time, we plan to achieve more, doing something that has never been done before in the history of the game: achieving rank 1 in all game modes PUBG Mobile has to offer (Solo, Duos and Squads). Achieving this would automatically imply world rank #1 as with that many points, we would 100% be far ahead of others.",
+      },
+      {
+        type: "image",
+        src: rank1,
+        alt: "",
+        caption:
+          "Current world record for most points gained in a season: 17124",
+      },
+      {
+        type: "paragraph",
+        text: "With experience from past rank pushing sessions, and collaboration with over 20+ players in the organization we managed to pull it off! 8 weeks of 16 hour a day games helped us beat the intense competition from players all over the world.",
+      },
+      {
+        type: "image",
+        src: worldtitle1,
+        alt: "",
+        caption: "4x World #1 Titles",
+      },
+      {
+        type: "paragraph",
+        text: "In the process, we also claimed 10 world titles, 4 of which were #1 finishes, proving what’s possible when a group of dedicated and skilled players come together with one shared goal. It is an achievement that reflects not just our dedication, but the strength of the entire SFC community behind it.",
+      },
+    ],
   },
   {
     id: 4,
     slug: "sfc-secures-2-spot",
     date: "1 Apr 2024",
     title: "SFC Secures #2 Spot in SEA Tier-1 Tournament",
-    image: tempimage,
+    image: gamelingPoster,
+    content: [
+      {
+        type: "paragraph",
+        text: "GamelinG Gauntlet Season 3 was a regional online PUBG Mobile tournament held in February 2024, mainly targetting teams in Southeast Asia and pro teams that plan to participate in the PUBG Mobile Challengers League SEA Spring Split. The event featured a modest $1,000 USD prize pool, and attracted a competitive lobby of semi-pro teams from across the region.",
+      },
+      {
+        type: "image",
+        src: gamelingR1,
+        alt: "",
+        caption: "Round 1 Standings",
+      },
+      {
+        type: "paragraph",
+        text: "The first round was like a warm up for SFC, where we claimed the #7 spot and proceeded to the next round.",
+      },
+      {
+        type: "image",
+        src: gamelingR2,
+        alt: "",
+        caption: "Round 2 Standings",
+      },
+      {
+        type: "paragraph",
+        text: 'In round 2, we got destroyed. Literally. But thanks for the tournament having a "Revival Round", we had a final chance to prove ourselves that we can compete with the best.',
+      },
+      {
+        type: "image",
+        src: gamelingRevival,
+        alt: "",
+        caption: "Revival Round Standings",
+      },
+      {
+        type: "paragraph",
+        text: "With our backs against the wall, we finally clicked. We managed to clinch a top 3 spot—just enough to make the cutoff for the Top 32. Being the only Singaporean team left in the mix, the pressure was on. We couldn't fail now.",
+      },
+      {
+        type: "image",
+        src: gamelingSemi,
+        alt: "",
+        caption: "Semi Finals Standings",
+      },
+      {
+        type: "paragraph",
+        text: "To our utmost surprise, we actually made it to the grand finals with a respectable result. We put up a fight against some of the offical league teams in the region. Finishing with a top 6 position secured our ticket to the Grand Finals which is a massive result considering we almost went out two rounds ago.",
+      },
+      {
+        type: "image",
+        src: gamelingFinal,
+        alt: "",
+        caption: "Grand Finals Standings",
+      },
+      {
+        type: "paragraph",
+        text: "We did our best and clinched #2 in the Grand Finals, securing a $250 prize. It is rare for a Singapore team to have made it so far in a regional tournament, and we are proud to have represented the scene and proved we belong at this level. ",
+      },
+    ],
   },
   {
     id: 5,

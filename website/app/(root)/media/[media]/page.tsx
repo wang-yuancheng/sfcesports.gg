@@ -133,7 +133,6 @@ export default async function MediaPostPage({
             {item.content && item.content.length > 0 ? (
               <ContentRenderer blocks={item.content} />
             ) : (
-              // Fallback content if no data is present
               <div className="text-gray-500 italic text-lg">
                 <p>No details available for this post.</p>
               </div>
@@ -149,7 +148,7 @@ export default async function MediaPostPage({
               <span className="group-hover:-translate-x-1 transition-transform duration-200">
                 ←
               </span>{" "}
-              Back to all news
+              Back to all media
             </a>
           </div>
         </div>
