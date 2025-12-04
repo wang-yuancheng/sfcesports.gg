@@ -1,13 +1,13 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { mediaItems, MediaItem } from "@/data/media/media";
+import { mediaItems } from "@/data/media/media";
+import { MediaItem } from "@/lib/types";
 
 function MediaCard({ item }: { item: MediaItem }) {
   return (
     <Link href={`/media/${item.slug}`} className="group block w-full h-full">
       <div className="rounded-lg flex flex-col w-full h-full cursor-pointer">
-        {/* Added group-hover for a nice interaction effect */}
         <div className="relative w-full overflow-hidden rounded-lg border border-gray-100 bg-black aspect-[16/9]">
           <Image
             src={item.image}
@@ -17,7 +17,6 @@ function MediaCard({ item }: { item: MediaItem }) {
           />
         </div>
         <div className="text-xs mt-3 mb-1 font-[500] text-gray-600">{item.date}</div>
-        {/* Added group-hover color change */}
         <div className="font-druk text-xl leading-tight uppercase group-hover:text-gray-600 transition-colors">
           {item.title}
         </div>

@@ -282,3 +282,23 @@ export interface Events {
   prizepool?: string;
 }
 export type EventsByYear = Record<number, Events[]>;
+
+/* ---------------------------- Media Page ---------------------------- */
+
+export type ContentBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "heading"; text: string }
+  | { type: "subheading"; text: string }
+  | { type: "linkSubheading"; text: string; url: string }
+  | { type: "quote"; text: string; author?: string }
+  | { type: "list"; items: string[] }
+  | { type: "image"; src: StaticImageData; alt: string; caption?: string };
+
+export interface MediaItem {
+  id: number;
+  slug: string;
+  date: string;
+  title: string;
+  image: StaticImageData;
+  content?: ContentBlock[];
+}

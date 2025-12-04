@@ -83,7 +83,7 @@ export default function Footer() {
             />
 
             <p className="font-[800] text-[20px]">
-              PRESTIGE ESPORTS & GAMING ORGANIZATION
+              PREMIER ESPORTS & GAMING ORGANIZATION
             </p>
             <p className="font-[500] text-base">
               Building communities to win high quality tournament and events

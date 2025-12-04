@@ -1,4 +1,3 @@
-import { StaticImageData } from "next/image";
 import tenyear0 from "@/assets/pictures/media/10year-0.png";
 import tenyear1 from "@/assets/pictures/media/10year-1.png";
 import tenyear2 from "@/assets/pictures/media/10year-2.png";
@@ -45,24 +44,7 @@ import ultimateRoyaleRank1 from "@/assets/pictures/media/ultimateroyalerank1.jpg
 import worldseason1 from "@/assets/pictures/media/worldseason1.png";
 import worldtitle1 from "@/assets/pictures/media/worldtitle1.png";
 import wowfinal from "@/assets/pictures/media/wowfinal.jpeg";
-
-export type ContentBlock =
-  | { type: "paragraph"; text: string }
-  | { type: "heading"; text: string }
-  | { type: "subheading"; text: string }
-  | { type: "linkSubheading"; text: string; url: string }
-  | { type: "quote"; text: string; author?: string }
-  | { type: "list"; items: string[] }
-  | { type: "image"; src: StaticImageData; alt: string; caption?: string };
-
-export interface MediaItem {
-  id: number;
-  slug: string;
-  date: string;
-  title: string;
-  image: StaticImageData;
-  content?: ContentBlock[];
-}
+import { MediaItem } from "@/lib/types";
 
 export const mediaItems: MediaItem[] = [
   {
@@ -583,7 +565,7 @@ export const mediaItems: MediaItem[] = [
         type: "paragraph",
         text: "We even tried Minecraft, but nothing really stuck until we tested a video on PUBG Mobile's 'Infection Mode'.",
       },
-        {
+      {
         type: "image",
         src: tenyear6,
         alt: "",
@@ -611,7 +593,8 @@ export const mediaItems: MediaItem[] = [
         type: "image",
         src: atcs1,
         alt: "",
-        caption: "Our first esports team participating in All Talent Championship",
+        caption:
+          "Our first esports team participating in All Talent Championship",
       },
       {
         type: "paragraph",
