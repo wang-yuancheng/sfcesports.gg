@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import shopHero from "@/assets/pictures/tempshop.png";
+import Link from "next/link";
 
 export default function Shop() {
   return (
@@ -45,12 +46,17 @@ export default function Shop() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-black text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-pink-bright transition-all shadow-lgs">
-              Start Boosting
-            </button>
-            <button className="bg-transparent text-gray-600 px-6 py-3 rounded-full font-semibold text-lg hover:bg-gray-100 hover:text-gray-900 transition-colors">
-              View Pricing
-            </button>
+            <Link href="/shop/boosting">
+              <button className="bg-black text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-pink-bright transition-all shadow-lg hover:-translate-y-1">
+                Start Boosting
+              </button>
+            </Link>
+
+            <Link href="/shop/boosting/pricing">
+              <button className="bg-transparent text-gray-600 px-6 py-3 rounded-full font-semibold text-lg hover:bg-gray-100 hover:text-gray-900 transition-colors">
+                View Pricing
+              </button>
+            </Link>
           </div>
         </section>
 
@@ -72,16 +78,18 @@ export default function Shop() {
 
               {/* Pricing Cards Container (Right Side) */}
               <div className="lg:w-2/3 w-full flex flex-col md:flex-row justify-center items-center relative pt-10 md:pt-0">
-                {/* --- Card 1 ($7) --- */}
+                {/* --- Card 1 ($7) - LEFT --- */}
                 <div
-                  className="bg-white p-7 rounded-[32px] shadow-sm border border-gray-100 w-full md:w-[250px] h-[250px]
-                    flex flex-col justify-between
-                    relative transition-all duration-300
-                    md:z-10 transform md:-rotate-[6deg] md:translate-x-6 md:translate-y-4
-                    hover:z-30 hover:scale-105 hover:shadow-md"
+                  className="bg-white p-6 rounded-[32px] shadow-sm border border-gray-100 w-full md:w-[250px] h-[280px]
+            flex flex-col justify-between
+            relative transition-all duration-300
+            md:z-10 transform md:-rotate-[6deg] md:translate-x-6 md:translate-y-4
+            hover:z-30 hover:scale-105 hover:shadow-md group cursor-pointer"
                 >
-                  <div className="text-left">
-                    <h3 className="text-gray-900 font-bold text-lg">Pro</h3>
+                  <div>
+                    <h3 className="text-gray-900 font-bold text-lg text-left">
+                      Pro
+                    </h3>
                     <div className="flex items-start mt-1">
                       <span className="text-5xl font-bold tracking-tight text-gray-900 leading-none">
                         $7
@@ -90,50 +98,62 @@ export default function Shop() {
                         .00
                       </span>
                     </div>
+                    <p className="text-gray-400 text-sm font-medium text-left mt-2">
+                      The perfect balance.
+                    </p>
                   </div>
 
-                  <p className="text-gray-400 text-sm font-medium text-left">
-                    The perfect balance.
-                  </p>
+                  {/* Button */}
+                  <button className="w-full py-2 rounded-full bg-gray-100 text-gray-900 font-bold text-sm mt-2 group-hover:bg-black group-hover:text-white transition-colors">
+                    Choose Plan
+                  </button>
                 </div>
 
-                {/* --- Card 2 ($3) --- */}
+                {/* --- Card 2 ($3) - MIDDLE (Pink/Highlighted) --- */}
                 <div
-                  className="bg-pink-bright p-7 rounded-[32px] shadow-xl w-full md:w-[270px] h-[270px]
-                    flex flex-col justify-between
-                    relative transition-all duration-300
-                    md:z-20 transform  md:rotate-[1deg] md:-translate-y-4
-                    hover:scale-105"
+                  className="bg-pink-bright p-6 rounded-[32px] shadow-xl w-full md:w-[270px] h-[300px]
+            flex flex-col justify-between
+            relative transition-all duration-300
+            md:z-20 transform md:rotate-[1deg] md:-translate-y-4
+            hover:scale-105 group cursor-pointer"
                 >
                   <div className="absolute top-5 right-5 bg-white text-pink-bright text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
                     Best Value
                   </div>
 
-                  <div className="text-left">
-                    <h3 className="text-white font-bold text-lg">Starter</h3>
+                  <div>
+                    <h3 className="text-white font-bold text-lg text-left">
+                      Starter
+                    </h3>
                     <div className="flex items-start mt-1 text-white">
                       <span className="text-6xl font-bold tracking-tight leading-none">
                         $3
                       </span>
                       <span className="text-2xl font-bold mt-1">.00</span>
                     </div>
+                    <p className="text-white/80 text-sm font-medium text-left mt-2">
+                      Most popular choice.
+                    </p>
                   </div>
 
-                  <p className="text-white/80 text-sm font-medium text-left">
-                    Most popular choice.
-                  </p>
+                  {/* Button (White on Pink) */}
+                  <button className="w-full py-3 rounded-full bg-white text-pink-bright font-bold text-sm mt-4 shadow-sm hover:bg-gray-50 transition-colors">
+                    Choose Plan
+                  </button>
                 </div>
 
-                {/* --- Card 3 ($15) --- */}
+                {/* --- Card 3 ($15) - RIGHT --- */}
                 <div
-                  className="bg-white p-7 rounded-[32px] shadow-sm border border-gray-100 w-full md:w-[250px] h-[250px]
-                    flex flex-col justify-between
-                    relative transition-all duration-300
-                    md:z-10 transform md:rotate-[6deg] md:-translate-x-4 md:translate-y-4
-                    hover:z-30 hover:scale-105 hover:shadow-md"
+                  className="bg-white p-6 rounded-[32px] shadow-sm border border-gray-100 w-full md:w-[250px] h-[280px]
+            flex flex-col justify-between
+            relative transition-all duration-300
+            md:z-10 transform md:rotate-[6deg] md:-translate-x-4 md:translate-y-4
+            hover:z-30 hover:scale-105 hover:shadow-md group cursor-pointer"
                 >
-                  <div className="text-left">
-                    <h3 className="text-gray-900 font-bold text-lg">Elite</h3>
+                  <div>
+                    <h3 className="text-gray-900 font-bold text-lg text-left">
+                      Elite
+                    </h3>
                     <div className="flex items-start mt-1">
                       <span className="text-5xl font-bold tracking-tight text-gray-900 leading-none">
                         $15
@@ -142,11 +162,15 @@ export default function Shop() {
                         .00
                       </span>
                     </div>
+                    <p className="text-gray-400 text-sm font-medium text-left mt-2">
+                      All access pass.
+                    </p>
                   </div>
 
-                  <p className="text-gray-400 text-sm font-medium text-left">
-                    All access pass.
-                  </p>
+                  {/* Button */}
+                  <button className="w-full py-2 rounded-full bg-gray-100 text-gray-900 font-bold text-sm mt-2 group-hover:bg-black group-hover:text-white transition-colors">
+                    Choose Plan
+                  </button>
                 </div>
               </div>
             </div>
