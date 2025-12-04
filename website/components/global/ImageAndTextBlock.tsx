@@ -37,7 +37,7 @@ export default function ImageAndTextBlock({
       <div className="w-full md:w-1/2 text-left">
         <div className="border-gray-100 px-5 md:bg-white md:rounded-lg md:minh-full md:p-12 lg:p-16 flex items-center pt-4 md:shadow-sm md:border md:aspect-square ">
           <div className="w-full block">
-            <h2 className="font-druk font-[400] uppercase text-xl md:text-2xl lg:text-3xl leading-tight mb-3 md:mb-4 text-pink-bright text-center md:text-left">
+            <h2 className="font-druk font-[500] uppercase text-xl md:text-2xl lg:text-3xl navbarlg:text-4xl leading-tight mb-3 md:mb-4 text-pink-bright text-center md:text-left">
               {title}
             </h2>
             <p className="text-gray-600 font-[400] text-justify lg:text-lg">
