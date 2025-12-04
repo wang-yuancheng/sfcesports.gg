@@ -1,5 +1,15 @@
 import { StaticImageData } from "next/image";
-import tempimage from "@/assets/pictures/ar15skins1.jpg";
+import tenyear0 from "@/assets/pictures/media/10year-0.png";
+import tenyear1 from "@/assets/pictures/media/10year-1.png";
+import tenyear2 from "@/assets/pictures/media/10year-2.png";
+import tenyear3 from "@/assets/pictures/media/10year-3.png";
+import tenyear4 from "@/assets/pictures/media/10year-4.png";
+import tenyear5 from "@/assets/pictures/media/10year-5.png";
+import tenyear6 from "@/assets/pictures/media/10year-6.png";
+import tenyear7 from "@/assets/pictures/media/10year-7.png";
+import tenyear8 from "@/assets/pictures/media/10year-8.png";
+import tenyear9 from "@/assets/pictures/media/10year-9.jpg";
+import tenyear10 from "@/assets/pictures/media/10year-10.jpg";
 import tdms1 from "@/assets/pictures/media/1v1s1.jpeg";
 import tdms2m24 from "@/assets/pictures/media/1v1s2m24.jpeg";
 import tdms2m4 from "@/assets/pictures/media/1v1s2m4.jpeg";
@@ -487,20 +497,135 @@ export const mediaItems: MediaItem[] = [
     slug: "10-years-of-shibe",
     date: "5 Oct 2023",
     title: "10 Years of Shibe: Looking Back at 2013–2023",
-    image: tempimage,
+    image: tenyear0,
     content: [
       {
-        type: "subheading",
-        text: "Key Statistics",
+        type: "paragraph",
+        text: "October 2023 marked a full decade of content creation and community building for our YouTube channel. It hasn't always been a smooth ride, but this is the story of how we went from 2013 to where we are today.",
       },
       {
-        type: "list",
-        items: [
-          "Win Rate: 32%",
-          "Average Damage: 1,450 per game",
-          "Top 10 Finishes: 85%",
-          "Most Used Weapon: AR-15 Custom",
-        ],
+        type: "subheading",
+        text: "The Origins (2013–2015)",
+      },
+      {
+        type: "image",
+        src: tenyear7,
+        alt: "",
+        caption: "Oldest standing video on our first channel",
+      },
+      {
+        type: "paragraph",
+        text: "The journey began in March 2013 with the launch of two channels, 'Tankifighter' and 'Shibecaisu'. By late 2013, we consolidated the brand identity under the name 'Shibe123'. The early years were tough where we gained only 33 subscribers in the 1st year and few hundred subscribers per year subsequently. While much of the initial content from this era was eventually archived to uphold video quality standards, it laid the necessary technical groundwork for what was to come.",
+      },
+      {
+        type: "subheading",
+        text: "Growth and Community Engagement (2015–2016)",
+      },
+      {
+        type: "image",
+        src: tenyear5,
+        alt: "",
+        caption: "Flowchart Solution for Day 4 of 'The Game' Scavenger Hunt",
+      },
+      {
+        type: "paragraph",
+        text: "Between 2015 and 2016, the channel found its first major stride by capitalizing on niche community events. We focused on covering 'The Game' a biannual scavenger hunt event within Tanki Online. By being fast and publishing solutions within 1-2 hours of the release of the first clue, players in the community started relying on us. That consistency is what finally pushed the channel to our first 1,000 subscribers.",
+      },
+      {
+        type: "subheading",
+        text: "Recognized in Tanki Online (2017–2018)",
+      },
+      {
+        type: "image",
+        src: tenyear8,
+        alt: "",
+        caption: "Popular Road To Legend Series",
+      },
+      {
+        type: "paragraph",
+        text: "Variations and creativity in our videos led to a major increase in subscribers. We were even nominated for the best Tanki Online creator in 2017. This period was defined by a strategic elevation in production value. By introducing structured series such as 'Road to Legend' and refining our editing standards, we transitioned from casual uploads to compelling storytelling that resonated with a wider audience.",
+      },
+      {
+        type: "image",
+        src: tenyear4,
+        alt: "",
+        caption: "Opening of Discord Server in 2017",
+      },
+      {
+        type: "paragraph",
+        text: "As we improved our editing and started series like 'Road to Legend', the views followed. We were even nominated for the best Tanki Online creator in 2017. It was during this time that we launched our Discord server. It wasn't huge back then, but it was the start of the community that supports SFC today.",
+      },
+      {
+        type: "subheading",
+        text: "The Pivot to PUBG Mobile (2019–2020)",
+      },
+      {
+        type: "image",
+        src: tenyear9,
+        alt: "",
+        caption: "Reaching 10,000 Subscribers",
+      },
+      {
+        type: "paragraph",
+        text: "By early 2019, we hit a big milestone: 10,000 subscribers. It was a huge achievement for us in the Tanki community, but we knew we couldn't stay there forever.",
+      },
+      {
+        type: "image",
+        src: tenyear2,
+        alt: "",
+        caption: "22 Kills in Hypixel UHC",
+      },
+      {
+        type: "paragraph",
+        text: "2019 represented the most critical strategic pivot in our history. We recognized that even though we were the top 5% of creators in the game, with over 20k subscribers, growth was slow. With Tanki Online players dropping year over year, we knew we needed to pivot fast.",
+      },
+      {
+        type: "paragraph",
+        text: "We even tried Minecraft, but nothing really stuck until we tested a video on PUBG Mobile's 'Infection Mode'.",
+      },
+        {
+        type: "image",
+        src: tenyear6,
+        alt: "",
+        caption: "Viral PUBG Mobile video on Tanki Online YouTube channel",
+      },
+      {
+        type: "paragraph",
+        text: "A specific video outperformed all previous metrics, signaling a clear market demand for content even though many have already created channels. As a result, we decided to create a dedicated channel in November 2019. With deep analysis on current video trends and market gaps, we targeted the huge influx of new players joining the game with educational 'Tips and Tricks / Analysis' videos. This approach, bolstered by recognition from other established creators, fueled a period of rapid exponential growth.",
+      },
+      {
+        type: "subheading",
+        text: "The Competitive Era (2021–2023)",
+      },
+      {
+        type: "image",
+        src: tenyear3,
+        alt: "",
+        caption: "Reaching the highest rank in PUBG Mobile",
+      },
+      {
+        type: "paragraph",
+        text: "As the channel matured, the focus shifted from educational content to high-level competitive performance. 2021 marked the beginning of serious rank pushing and tournament organization. However, this intensity came with challenges. Following a gruelling rank push in early 2021 and subsequent enlistment in National Service for Singapore, operations faced a temporary slowdown due to burnout.",
+      },
+      {
+        type: "image",
+        src: atcs1,
+        alt: "",
+        caption: "Our first esports team participating in All Talent Championship",
+      },
+      {
+        type: "paragraph",
+        text: "We returned to the scene with a renewed focus on competitive play, joining organized teams and participating in events like the All Talent Championship. Today, the 10-year legacy serves not just as a history of a YouTube channel, but as the foundation upon which the ShibeFanClub esports organization was built.",
+      },
+      {
+        type: "image",
+        src: tenyear1,
+        alt: "",
+        caption: "Clip from Old Tanki Online Gold Box Montage",
+      },
+      {
+        type: "paragraph",
+        text: "From playing browser games in a bedroom to competing in the PUBG Mobile scene, the last decade has been a test of persistence. We started this just for fun, and today it’s become a recognized organization. We learned that if you keep evolving and treating the community right, the results will follow.",
       },
     ],
   },
