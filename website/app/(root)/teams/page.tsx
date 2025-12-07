@@ -87,7 +87,7 @@ export default function TeamsPage() {
         <div className="flex-1 min-w-0">
           <div className="flex items-center">
             <p className="hidden md:block font-druk font-medium uppercase text-base lg:text-lg pt-1">
-              Active Teams
+              Our Teams
             </p>
             <div className="ml-auto hidden md:block">
               <button

@@ -9,9 +9,9 @@ import tenyear7 from "@/assets/pictures/media/10year-7.png";
 import tenyear8 from "@/assets/pictures/media/10year-8.png";
 import tenyear9 from "@/assets/pictures/media/10year-9.jpg";
 import tenyear10 from "@/assets/pictures/media/10year-10.jpg";
-import tdms1 from "@/assets/pictures/media/1v1s1.jpeg";
-import tdms2m24 from "@/assets/pictures/media/1v1s2m24.jpeg";
-import tdms2m4 from "@/assets/pictures/media/1v1s2m4.jpeg";
+import tdms1 from "@/assets/pictures/media/1v1s1.png";
+import tdms2m24 from "@/assets/pictures/media/1v1s2m24.png";
+import tdms2m4 from "@/assets/pictures/media/1v1s2m416.png";
 import tdms3semi from "@/assets/pictures/media/1v1s3semi.jpeg";
 import tdms4champion from "@/assets/pictures/media/1v1s4champion.jpeg";
 import tdms4semi from "@/assets/pictures/media/1v1s4semi.jpg";
@@ -604,7 +604,7 @@ export const mediaItems: MediaItem[] = [
         type: "image",
         src: tenyear1,
         alt: "",
-        caption: "Clip from Old Tanki Online Gold Box Montage",
+        caption: "Screenshot from Old Tanki Online Gold Box Montage",
       },
       {
         type: "paragraph",
