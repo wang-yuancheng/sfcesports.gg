@@ -40,11 +40,11 @@ export const footerSocialsList = [
 
 export const footerAbout = [
   { label: "Our Story", href: "/about" },
-  { label: "Brand Kit", href: "/brand" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Our Teams", href: "/teams" },
+  { label: "Our Events", href: "/events" },
 ];
 export const footerActivity = [
-  { label: "Events", href: "/events" },
+  { label: "Media", href: "/media" },
   { label: "Shop", href: "/shop" },
 ];
 export const termsAndPolicies = [
