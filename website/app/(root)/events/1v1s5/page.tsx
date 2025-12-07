@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import tdms5Banner from "@/assets/pictures/1v1s5.webp";
+import tdms5Banner from "@/assets/pictures/1v1s5banner.png";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";
@@ -35,7 +35,7 @@ export default function tdms5() {
           <div className="flex flex-col gap-10">
             <section className="flex flex-col gap-4">
               <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center  leading-tight">
-                Shibe's 1v1 Tournament: Season 5
+                Shibe x Dz 1v1 Tournament: <br className="sm:hidden"/>Season 5
               </h1>
               <p className="text-gray-600 font-[400] text-base text-justify">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

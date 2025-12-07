@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import sccs1banner from "@/assets/pictures/sccs1thumbnail.png";
+import sccs1banner from "@/assets/pictures/sccs1banner.png";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";

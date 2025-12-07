@@ -1,5 +1,8 @@
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import React from "react";
+import weWin from "@/assets/pictures/about-wewin.png";
+import weCreate from "@/assets/pictures/about-wecreate.png";
+import weHost from "@/assets/pictures/about-wehost.png";
 import sfcbanner from "@/assets/pictures/shibefanclubaboutbanner.png";
 import ImageAndTextBlock from "@/components/global/ImageAndTextBlock";
 
@@ -74,19 +77,19 @@ export default function Company() {
             <section className="-mt-6 md:-mt-8 lg:-mt-12 space-y-7 mb-4">
               <ImageAndTextBlock
                 imageSide="left"
-                image={sfcbanner}
+                image={weWin}
                 title="We Win"
                 text="Our competitive division stands at the forefront of the regional scene. We have firmly established ourselves as one of the top performing PUBG Mobile organizations in Singapore. Through rigorous training and strategic adaptability, our rosters have consistently secured podium finishes against some of Asia’s most established organizations. We shall and will continue to prove that with dedication and strategy, we can conquer the toughest lobbies in the region."
               />
               <ImageAndTextBlock
                 imageSide="right"
-                image={sfcbanner}
+                image={weCreate}
                 title="We Create"
                 text="For over 12 years, we have been telling stories through video, bridging the gap between players and fans by producing high-quality educational guides, competitive highlights, and documentaries that capture the journey of our players and the spirit of our community."
               />
               <ImageAndTextBlock
                 imageSide="left"
-                image={sfcbanner}
+                image={weHost}
                 title="We Host"
                 text="We believe esports belongs to everyone. That is why we are dedicated to hosting the region's most engaging community tournaments. From our signature Shibe’s Community Cup to our massive 1v1 events with hundreds of participants, we provide a professional stage with casting and prizes, giving aspiring talent the spotlight they deserve."
               />

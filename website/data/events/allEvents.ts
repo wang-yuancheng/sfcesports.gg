@@ -63,7 +63,7 @@ export const events: EventsByYear = {
       ],
     },
     {
-      name: "Shibe's 1v1 Tournament: Season 5",
+      name: "Shibe x Dz 1v1 Tournament: Season 5",
       duration: "1 – 18 June",
       description: "Sample Description",
       participants: 380,

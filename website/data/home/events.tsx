@@ -3,7 +3,7 @@ import sccs1Banner from "@/assets/pictures/sccs1.webp";
 import sccs2Banner from "@/assets/pictures/sccs2.webp";
 import tdmTourS4Banner from "@/assets/pictures/1v1s4.webp";
 import tdmTourS5Banner from "@/assets/pictures/1v1s5.webp";
-import sfcxnovaBanner from "@/assets/pictures/sfcxnova.webp";
+import sfcxnovaBanner from "@/assets/pictures/sfcxnova.png";
 import { EventHeroContent } from "@/lib/types";
 
 export const events: EventHeroContent[] = [
@@ -31,7 +31,7 @@ export const events: EventHeroContent[] = [
   {
     header: (
       <p>
-        Shibe&apos;s 1v1 Tour{" "}
+        Shibe x Dz 1v1 Tour{" "}
         <span className="whitespace-nowrap">Season 5</span>
       </p>
     ),
