@@ -1,9 +1,9 @@
 "use client";
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import atcQualifiers from "@/assets/pictures/atcqualifiers.png";
 import atcWinnerTitle from "@/assets/pictures/atcwinnertitle.png";
-import atcCrew from "@/assets/pictures/atcchampioncrew.png";
+import atc from "@/assets/pictures/atc.webp";
+import atcCrew from "@/assets/pictures/atcchampioncrewsquare.png";
 import ATCLeaderboard from "@/components/leaderboards/leaderboards/AtcLeaderboard";
 import { atcLeaderboard, atcTeams } from "@/data/home/atc/atc";
 import { useMemo, useState } from "react";
@@ -42,12 +42,12 @@ export default function ATCPage() {
 
   return (
     <div className="mb-16">
-      <PageHeaderImage desktopSrc={atcCrew} />
+      <PageHeaderImage desktopSrc={atc} />
       <div className="max-w-[1600px] mx-auto px-[clamp(1rem,4vw,4rem)]">
         <div className="md:mx-[clamp(1rem,6vw,20rem)]">
           <div className="flex flex-col gap-20">
             <section className="flex flex-col gap-4">
-              <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center text-pink-bright leading-tight">
+              <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-druk uppercase text-center text-pink-bright leading-tight">
                 All talent championship
               </h1>
               <p className="text-gray-600 font-[400] text-base text-justify">
@@ -118,7 +118,7 @@ export default function ATCPage() {
             <section className="-mt-6 md:-mt-8 lg:-mt-12 space-y-7">
               <ImageAndTextBlock
                 imageSide="left"
-                picture={atcQualifiers}
+                image={atcCrew}
                 title="Qualification"
                 text="We achieved #2 for week 1 qualifiers, right behind NGX,
                       a team that had achieved top 3 in the prestigious PUBG 
@@ -130,7 +130,7 @@ export default function ATCPage() {
               />
               <ImageAndTextBlock
                 imageSide="right"
-                picture={atcWinnerTitle}
+                image={atcWinnerTitle}
                 title="Final Round"
                 text="After 4 intense matches, 3 years of constant improvement and 
                       focus, SFC 女队 managed to clinch 1st Place! We applaud the excellent

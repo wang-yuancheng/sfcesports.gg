@@ -25,7 +25,7 @@ import atcs16_3 from "@/assets/pictures/media/atcs16-3.png";
 import atcs16_4 from "@/assets/pictures/media/atcs16-4.png";
 import events from "@/assets/pictures/media/events.png";
 import gameling from "@/assets/pictures/media/gameling.png";
-import gamelingPoster from "@/assets/pictures/media/gamelingPoster.jpg";
+import gamelingPoster from "@/assets/pictures/media/gamelingPoster.png";
 import gamelingFinal from "@/assets/pictures/media/gamelingFinal.jpg";
 import gamelingSemi from "@/assets/pictures/media/gamelingSemi.jpg";
 import gamelingRevival from "@/assets/pictures/media/gamelingRevival.png";

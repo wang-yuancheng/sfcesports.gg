@@ -1,6 +1,6 @@
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import React from "react";
-import sfcbanner from "@/assets/pictures/shibefanclubaboutbanner.jpg";
+import sfcbanner from "@/assets/pictures/shibefanclubaboutbanner.png";
 import ImageAndTextBlock from "@/components/global/ImageAndTextBlock";
 
 export default function Company() {
@@ -11,9 +11,6 @@ export default function Company() {
         <div className="md:mx-[clamp(1rem,6vw,20rem)]">
           <div className="flex flex-col gap-20">
             <section className="flex flex-col gap-8 text-center max-w-4xl mx-auto mt-16">
-              <h1 className="text-2xl xs:text-4xl sm:text-5xl lg:text-6xl font-druk uppercase text-pink-bright leading-tight font-[600]">
-                ShibeFanClub
-              </h1>
               <div className="space-y-6 text-lg md:text-xl text-gray-700 leading-relaxed font-[400]">
                 <p>
                   ShibeFanClub is a premier gaming and entertainment
@@ -77,19 +74,19 @@ export default function Company() {
             <section className="-mt-6 md:-mt-8 lg:-mt-12 space-y-7 mb-4">
               <ImageAndTextBlock
                 imageSide="left"
-                picture={sfcbanner}
+                image={sfcbanner}
                 title="We Win"
                 text="Our competitive division stands at the forefront of the regional scene. We have firmly established ourselves as one of the top performing PUBG Mobile organizations in Singapore. Through rigorous training and strategic adaptability, our rosters have consistently secured podium finishes against some of Asia’s most established organizations. We shall and will continue to prove that with dedication and strategy, we can conquer the toughest lobbies in the region."
               />
               <ImageAndTextBlock
                 imageSide="right"
-                picture={sfcbanner}
+                image={sfcbanner}
                 title="We Create"
                 text="For over 12 years, we have been telling stories through video, bridging the gap between players and fans by producing high-quality educational guides, competitive highlights, and documentaries that capture the journey of our players and the spirit of our community."
               />
               <ImageAndTextBlock
                 imageSide="left"
-                picture={sfcbanner}
+                image={sfcbanner}
                 title="We Host"
                 text="We believe esports belongs to everyone. That is why we are dedicated to hosting the region's most engaging community tournaments. From our signature Shibe’s Community Cup to our massive 1v1 events with hundreds of participants, we provide a professional stage with casting and prizes, giving aspiring talent the spotlight they deserve."
               />
