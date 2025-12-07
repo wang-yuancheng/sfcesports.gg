@@ -19,7 +19,7 @@ export default function Company() {
                   ShibeFanClub is a premier gaming and entertainment
                   organization based in Singapore.
                 </p>
-                <p>
+                <p className="text-justify md:text-center">
                   Founded in 2021, we rapidly evolved into a recognized force in
                   PUBG Mobile's regional esports scene. Over the past few years,
                   SFC has built a reputation not just for competitive
@@ -74,7 +74,7 @@ export default function Company() {
               </div>
             </section>
 
-            <section className="-mt-6 md:-mt-8 lg:-mt-12 space-y-7 mb-4">
+            <section className="-mt-6 md:-mt-8 lg:-mt-12 space-y-7">
               <ImageAndTextBlock
                 imageSide="left"
                 image={weWin}
@@ -94,29 +94,16 @@ export default function Company() {
                 text="We believe esports belongs to everyone. That is why we are dedicated to hosting the region's most engaging community tournaments. From our signature Shibe’s Community Cup to our massive 1v1 events with hundreds of participants, we provide a professional stage with casting and prizes, giving aspiring talent the spotlight they deserve."
               />
             </section>
-            <section className="border-gray-200 pb-8">
-              <div className="flex flex-col items-center text-center gap-5 max-w-3xl mx-auto">
-                <h2 className="text-3xl md:text-5xl font-druk uppercase text-gray-900 leading-tight">
-                  Be Part of the{" "}
-                  <span className="text-pink-bright">Legacy</span>
-                </h2>
-
-                <div className="flex flex-col sm:flex-row gap-4 w-full justify-center mt-4">
-                  <a
-                    href="https://discord.gg/2Sby35W"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 pt-[13px] pb-[11px] bg-pink-bright text-white font-druk uppercase text-base hover:bg-pink-600 transition-colors duration-200 tracking-wide rounded-sm"
-                  >
-                    Join the Community
-                  </a>
-                  <a
-                    href="mailto:tankifighter@gmail.com"
-                    className="px-6 py-3 border-2 border-gray-900 text-gray-900 font-druk uppercase text-base hover:bg-gray-900 hover:text-white transition-colors duration-200 tracking-wide rounded-sm"
-                  >
-                    Partner With&nbsp;Us
-                  </a>
-                </div>
+            <section className="flex flex-col text-center max-w-4xl mx-auto">
+              <div className="text-lg md:text-xl text-gray-700 leading-relaxed font-[400] mb-12 -mt-10 sm:-mt-0">
+                <p className="text-justify md:text-center">
+                  Through our relentless efforts, we have expanded beyond
+                  borders to reach a truly global audience.
+                  <br className="hidden xlg:block" /> We are proud to be a
+                  recognized force in the scene, with a verified presence on
+                  YouTube, <br className="hidden xlg:block" /> and a loyal
+                  community that spans across continents.
+                </p>
               </div>
             </section>
           </div>

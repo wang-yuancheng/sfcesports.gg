@@ -21,7 +21,7 @@ export default function PastEvents() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 md:hidden">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 md:hidden">
         {events.map((evt, i) => (
           <EventHero
             key={i}
