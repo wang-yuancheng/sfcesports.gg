@@ -34,13 +34,13 @@ export default function sccs2() {
                 Shibe's Community Cup: Season 2
               </h1>
               <p className="text-gray-600 font-[400] text-base text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Season 2 was our largest event to date, featuring over 144 teams
+                and 600 players. We upgraded our broadcast quality by bringing
+                in professional casters for the live streams. For the first
+                time, we opened registration globally, attracting teams from
+                over 16 countries across Europe, the Middle East, and Asia to
+                compete for a $500 prize pool. The tournament ran from November
+                17 to December 3.
               </p>
             </section>
 

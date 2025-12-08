@@ -11,7 +11,12 @@ import VideoModal from "@/components/home/VideoModal";
 import MediaGallery from "@/components/home/MediaGallery";
 import DefaultLeaderboard from "@/components/leaderboards/leaderboards/DefaultLeaderboard";
 import SingleEliminationBracket from "@/components/leaderboards/brackets/SingleEliminationBracket";
-import { sfcxnovaDay1, sfcxnovaDay2GrandFinal, sfcxnovaDay2Quarterfinal, sfcxnovaDay2Semifinal } from "@/data/events/sfcxnova";
+import {
+  sfcxnovaDay1,
+  sfcxnovaDay2GrandFinal,
+  sfcxnovaDay2Quarterfinal,
+  sfcxnovaDay2Semifinal,
+} from "@/data/events/sfcxnova";
 
 export default function sfcxnova() {
   const [active, setActive] = useState<VideoItem | null>(null);
@@ -29,13 +34,16 @@ export default function sfcxnova() {
                 SFC VS NOVA COMMUNITY TOURNAMENT
               </h1>
               <p className="text-gray-600 font-[400] text-base text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                The SFC x NOVA Community Tournament was a collaboration between
+                Shibe and Xifan, uniting two passionate player bases for a
+                thrilling weekend of competition on March 15-16, 2024. With a
+                total prize pool of $200 USD on the line, the event offered a
+                diverse test of skill. Day 1 challenged teams with the strategic
+                depth of Classic Mode, rewarding consistent rotations and
+                survival instincts. The intensity peaked on Day 2 as the format
+                shifted to a cutthroat single-elimination bracket in the 'World
+                of Wonder' (WoW) mode, where pure mechanical skill and
+                adaptability crowned the ultimate champion.
               </p>
             </section>
 

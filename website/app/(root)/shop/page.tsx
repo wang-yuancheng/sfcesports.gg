@@ -51,7 +51,7 @@ export default function Shop() {
                 alt="Boosting Services"
                 width={850}
                 height={500}
-                className="w-full h-auto object-contain drop-shadow-2xl"
+                className="w-full h-auto object-contain"
                 priority
               />
             </div>

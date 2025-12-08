@@ -5,7 +5,12 @@ import tdms4Banner from "@/assets/pictures/1v1s4banner.png";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";
-import { tdms4SemiFinals, tdms4Media, videos, tdms4Matches } from "@/data/events/1v1s4";
+import {
+  tdms4SemiFinals,
+  tdms4Media,
+  videos,
+  tdms4Matches,
+} from "@/data/events/1v1s4";
 import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
 import MediaGallery from "@/components/home/MediaGallery";
@@ -27,13 +32,15 @@ export default function tdms4() {
                 Shibe's 1v1 Tournament: Season 4
               </h1>
               <p className="text-gray-600 font-[400] text-base text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Season 4 represented a significant milestone for the tournament
+                as it transitioned to an open-registration format, welcoming
+                over 400 players from across Asia. This massive influx of
+                participants expanded the competition into a rigorous two-week
+                event, with a $100 USD prize pool awarded to the top 5
+                finalists. Managing hundreds of individual competitors presented
+                a new operational challenge compared to team events, but it
+                ultimately established the tournament as a major test of
+                individual skill in the region.
               </p>
             </section>
 
@@ -42,7 +49,10 @@ export default function tdms4() {
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Standings
                 </h2>
-                <TdmLeaderboard rows={tdms4SemiFinals} matchData={tdms4Matches}/>
+                <TdmLeaderboard
+                  rows={tdms4SemiFinals}
+                  matchData={tdms4Matches}
+                />
               </div>
             </section>
 

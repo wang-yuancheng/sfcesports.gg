@@ -33,13 +33,14 @@ export default function sccs1() {
                 Shibe's Community Cup: Season 1
               </h1>
               <p className="text-gray-600 font-[400] text-base text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Shibe's Community Cup Season 1 served as our inaugural major
+                tournament, laying the foundation for the series by gathering
+                over 80 teams primarily from the Malaysian competitive scene.
+                Running from August 23rd to September 12th, 2021, this
+                three-week event provided a platform for tier 2 talent to
+                showcase their skills. The competition intensified through
+                multiple stages, culminating in a battle for the championship
+                title and a $100 USD grand prize.
               </p>
             </section>
 

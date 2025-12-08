@@ -5,7 +5,12 @@ import tdms5Banner from "@/assets/pictures/1v1s5banner.png";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";
-import { tdms5SemiFinals, tdms5Media, videos, tdms5Matches } from "@/data/events/1v1s5";
+import {
+  tdms5SemiFinals,
+  tdms5Media,
+  videos,
+  tdms5Matches,
+} from "@/data/events/1v1s5";
 import VideoCard from "@/components/home/VideoCard";
 import VideoModal from "@/components/home/VideoModal";
 import MediaGallery from "@/components/home/MediaGallery";
@@ -21,7 +26,6 @@ import {
   sccs2UBQuarterfinal,
 } from "@/data/events/1v1s5";
 
-
 export default function tdms5() {
   const [active, setActive] = useState<VideoItem | null>(null);
   const ids = useMemo(() => videos.map((v) => v.id), []);
@@ -35,16 +39,17 @@ export default function tdms5() {
           <div className="flex flex-col gap-10">
             <section className="flex flex-col gap-4">
               <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center  leading-tight">
-                Shibe x Dz 1v1 Tournament: <br className="sm:hidden"/>Season 5
+                Shibe x Dz 1v1 Tournament: <br className="sm:hidden" />
+                Season 5
               </h1>
               <p className="text-gray-600 font-[400] text-base text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Season 5 marked a historic milestone as the biggest prize pool
+                event we have ever held, featuring $500 USD distributed among
+                the top 15 competitors. Through a strategic partnership with
+                独尊 (Dz), we elevated the competitive standard, introducing a
+                high stake double-elimination bracket for the final 6. This new
+                format intensified the rivalry, giving top contenders a fighting
+                chance to claw their way back to the championship.
               </p>
             </section>
 
@@ -70,7 +75,10 @@ export default function tdms5() {
                 <h2 className="text-xl md:text-2xl font-druk uppercase">
                   Semifinals Standings
                 </h2>
-                <TdmLeaderboard rows={tdms5SemiFinals} matchData={tdms5Matches}/>
+                <TdmLeaderboard
+                  rows={tdms5SemiFinals}
+                  matchData={tdms5Matches}
+                />
               </div>
             </section>
 
