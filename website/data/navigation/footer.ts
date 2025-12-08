@@ -48,7 +48,7 @@ export const footerActivity = [
   { label: "Shop", href: "/shop" },
 ];
 export const termsAndPolicies = [
-  { label: "All Terms and Policies", href: "/policies/all" },
+  { label: "All Terms and Policies", href: "/policies" },
 ];
 export const currency = [
   { label: "$ SGD" },

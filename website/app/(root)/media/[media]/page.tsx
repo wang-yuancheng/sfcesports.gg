@@ -51,7 +51,7 @@ export default async function MediaPostPage({
             >
               <span className="group-hover:-translate-x-1 transition-transform duration-200">
                 ←
-              </span>{" "}
+              </span>
               Back to all media
             </a>
           </div>
