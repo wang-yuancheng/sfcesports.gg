@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import React from "react";
 import { policies } from "@/data/policies/policies";
+import ContentRenderer from "@/components/global/ContentRenderer";
+import { ContentBlock } from "@/lib/types";
 
 export async function generateStaticParams() {
   return policies.map((policy) => ({ policy: policy.id }));
@@ -20,7 +22,6 @@ export default async function PolicyPage({
     <div className="mb-16">
       <div className="mx-auto max-w-[1000px] px-[clamp(1rem,4vw,4rem)]">
         <div className="w-full max-w-2xl mx-auto pt-3 md:pt-10 lg:pt-12">
-          {/* Header Section */}
           <div className="flex flex-col gap-2 mb-8 border-b border-gray-100 pb-6">
             <span className="text-sm font-[400] text-gray-400 tracking-widest">
               Last Updated: 9/12/2025
@@ -30,12 +31,10 @@ export default async function PolicyPage({
             </h1>
           </div>
 
-          {/* Content Body */}
-          <div className="text-lg text-gray-700 leading-relaxed font-[400] whitespace-pre-wrap">
-            {policy.content}
+          <div className="max-w-none">
+            <ContentRenderer blocks={policy.content as ContentBlock[]} />
           </div>
 
-          {/* Back Link */}
           <div className="mt-16 pt-8 border-t border-gray-100">
             <a
               href="/policies"

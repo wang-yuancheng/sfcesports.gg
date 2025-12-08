@@ -290,6 +290,7 @@ export type ContentBlock =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string }
   | { type: "subheading"; text: string }
+  | { type: "subsubheading"; text: string }
   | { type: "linkSubheading"; text: string; url: string }
   | { type: "quote"; text: string; author?: string }
   | { type: "list"; items: string[] }

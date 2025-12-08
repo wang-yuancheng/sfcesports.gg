@@ -32,7 +32,7 @@ export default function sccs1() {
               <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center  leading-tight">
                 Shibe's Community Cup: Season 1
               </h1>
-              <p className="text-gray-600 font-[400] text-base text-justify">
+              <p className="text-gray-600 font-[400] text-lg text-justify">
                 Shibe's Community Cup Season 1 served as our inaugural major
                 tournament, laying the foundation for the series by gathering
                 over 80 teams primarily from the Malaysian competitive scene.

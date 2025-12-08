@@ -42,7 +42,7 @@ export default function tdms5() {
                 Shibe x Dz 1v1 Tournament: <br className="sm:hidden" />
                 Season 5
               </h1>
-              <p className="text-gray-600 font-[400] text-base text-justify">
+              <p className="text-gray-600 font-[400] text-lg text-justify">
                 Season 5 marked a historic milestone as the biggest prize pool
                 event we have ever held, featuring $500 USD distributed among
                 the top 15 competitors. Through a strategic partnership with

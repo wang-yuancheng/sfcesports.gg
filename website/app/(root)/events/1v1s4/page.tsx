@@ -31,7 +31,7 @@ export default function tdms4() {
               <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center  leading-tight">
                 Shibe's 1v1 Tournament: Season 4
               </h1>
-              <p className="text-gray-600 font-[400] text-base text-justify">
+              <p className="text-gray-600 font-[400] text-lg text-justify">
                 Season 4 represented a significant milestone for the tournament
                 as it transitioned to an open-registration format, welcoming
                 over 400 players from across Asia. This massive influx of

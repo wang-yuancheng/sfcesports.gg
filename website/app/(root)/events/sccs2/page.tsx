@@ -33,7 +33,7 @@ export default function sccs2() {
               <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center  leading-tight">
                 Shibe's Community Cup: Season 2
               </h1>
-              <p className="text-gray-600 font-[400] text-base text-justify">
+              <p className="text-gray-600 font-[400] text-lg text-justify">
                 Season 2 was our largest event to date, featuring over 144 teams
                 and 600 players. We upgraded our broadcast quality by bringing
                 in professional casters for the live streams. For the first

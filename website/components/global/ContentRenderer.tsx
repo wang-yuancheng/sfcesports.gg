@@ -2,9 +2,13 @@ import { ContentBlock } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
+export default function ContentRenderer({
+  blocks,
+}: {
+  blocks: ContentBlock[];
+}) {
   return (
-    <div className="flex flex-col gap-6 text-lg md:text-xl leading-relaxed text-gray-800">
+    <div className="flex flex-col gap-6 text-lg md:text-xl leading-relaxed text-gray-800 ">
       {blocks.map((block, index) => {
         switch (block.type) {
           case "heading":
@@ -25,6 +29,15 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
                 {block.text}
               </h3>
             );
+          case "subsubheading":
+            return (
+              <h3
+                key={index}
+                className="font-druk text-base md:text-lg uppercase mt-4 md:-mb-3"
+              >
+                {block.text}
+              </h3>
+            );
           case "linkSubheading":
             return (
               <Link
@@ -40,7 +53,7 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
             );
           case "paragraph":
             return (
-              <p key={index} className="text-gray-600 font-[400]">
+              <p key={index} className="text-gray-600 font-[400] text-justify">
                 {block.text}
               </p>
             );
@@ -62,7 +75,7 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
             return (
               <ul
                 key={index}
-                className="list-disc pl-6 space-y-2 text-gray-600 marker:text-black"
+                className="list-disc pl-6 space-y-2 text-gray-600 font-[400]"
               >
                 {block.items.map((item, i) => (
                   <li key={i}>{item}</li>

@@ -33,7 +33,7 @@ export default function sfcxnova() {
               <h1 className="mt-10 text-xl xs:text-2xl sm:text-3xl md:text-4xl font-druk uppercase text-center  leading-tight">
                 SFC VS NOVA COMMUNITY TOURNAMENT
               </h1>
-              <p className="text-gray-600 font-[400] text-base text-justify">
+              <p className="text-gray-600 font-[400] text-lg text-justify">
                 The SFC x NOVA Community Tournament was a collaboration between
                 Shibe and Xifan, uniting two passionate player bases for a
                 thrilling weekend of competition on March 15-16, 2024. With a
