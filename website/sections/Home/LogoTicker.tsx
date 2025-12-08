@@ -81,7 +81,7 @@ export default function LogoTicker() {
   const logos = useMemo(() => Array.from({ length: sets * 2 }, () => srcList).flat(), [sets]);
 
   return (
-    <div className="section-container navbarsm:py-5 mb-5" ref={viewportRef}>
+    <div className="section-container navbarsm:py-3 mb-5" ref={viewportRef}>
       <div
         className="flex overflow-hidden"
         style={{

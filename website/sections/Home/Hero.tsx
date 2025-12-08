@@ -3,9 +3,9 @@ import atcBanner from "@/assets/pictures/atc.webp";
 import cardHero from "@/assets/pictures/card-hero-gradient.png";
 import ShortHero from "@/components/home/ShortHero";
 import LongHero from "@/components/home/LongHero";
-import ar15SkinsBanner from "@/assets/pictures/ar15skins.jpg";
-import ar15Skins1Banner from "@/assets/pictures/ar15skins1.jpg";
-import ShopHero from "@/components/home/ShopHero";
+import boosting from "@/assets/pictures/media/rank1.png";
+import subscription from "@/assets/pictures/subscription.png";
+import BasicHero from "@/components/home/BasicHero";
 import { tournamentHighlights } from "@/data/home/highlights";
 
 export default function MainHero() {
@@ -24,20 +24,22 @@ export default function MainHero() {
           list={tournamentHighlights}
           background={cardHero}
         />
-        <ShopHero
-          header="Don’t Miss Out"
-          subheader="New items in shop"
-          grayImage={ar15Skins1Banner}
-          colorImage={ar15SkinsBanner}
+        <BasicHero
+          header="Membership"
+          subheader="Premium Benefits"
+          grayImage={subscription}
+          colorImage={subscription}
           variant="small"
+          href="/shop"
         />
 
-        <ShopHero
-          header="Don’t Miss Out"
-          subheader="New items in shop"
-          grayImage={ar15Skins1Banner}
-          colorImage={ar15SkinsBanner}
+        <BasicHero
+          header="Latest Deals"
+          subheader="Boosting Services"
+          grayImage={boosting}
+          colorImage={boosting}
           variant="big"
+          href="/shop"
         />
       </div>
     </section>

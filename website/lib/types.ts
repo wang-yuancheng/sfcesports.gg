@@ -102,13 +102,14 @@ export interface LongHeroContent {
 }
 
 // Shop Hero Content
-export interface ShopHeroContent {
+export interface BasicHeroContent {
   header: string;
   subheader: string;
   matchLabel?: string;
   grayImage: string | StaticImageData;
   colorImage: string | StaticImageData;
   variant: "big" | "small";
+  href: string;
 }
 
 // Event Hero Content

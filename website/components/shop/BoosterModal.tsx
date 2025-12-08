@@ -173,7 +173,7 @@ export default function BoosterModal({
                     onClick={() =>
                       window.open("https://discord.gg/2Sby35W", "_blank")
                     }
-                    className="rounded-full bg-black hover:bg-pink-bright text-white px-10 h-12 text-base font-bold shadow-xl shadow-gray-200 transition-transform active:scale-95"
+                    className="rounded-full bg-black hover:bg-pink-bright transition-colors text-white px-10 h-12 text-base font-bold shadow-xl shadow-gray-200 active:scale-95"
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     Send Message

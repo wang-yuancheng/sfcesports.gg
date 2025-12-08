@@ -20,7 +20,7 @@ export default function Shop() {
               {/* Left Floating Bubble (Conqueror) */}
               <div className="absolute -top-5 left-[5%] xs:-top-5 xs:left-[0%] md:-top-4 lg:-top-4 md:left-0 z-20 transition-all duration-300">
                 <div
-                  className="bg-[#FFB800] text-white 
+                  className="bg-pink-bright text-white
                   text-[10px] xs:text-xs sm:text-sm lg:text-base 
                   px-3 py-1 xs:px-4 xs:py-1.5 md:px-6 md:py-2 
                   rounded-xl rounded-bl-none md:rounded-2xl md:rounded-bl-none 
@@ -34,7 +34,7 @@ export default function Shop() {
               {/* Right Floating Bubble (+125 PTS) */}
               <div className="absolute -top-5 right-[4%] xs:-top-5 xs:-right-[2%] md:-top-6 md:right-[0%] z-20 transition-all duration-300">
                 <div
-                  className="bg-[#4ADE80] text-white 
+                  className="bg-pink-bright text-white
                   text-[10px] xs:text-xs sm:text-sm lg:text-base 
                   px-3 py-1 xs:px-4 xs:py-1.5 md:px-6 md:py-2 
                   rounded-xl rounded-br-none md:rounded-2xl md:rounded-br-none 
