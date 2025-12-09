@@ -12,6 +12,7 @@ import {
   currency,
   copyright,
 } from "@/data/navigation/footer";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -41,7 +42,7 @@ export default function Footer() {
         {/* social icons – mobile */}
         <div className="flex gap-2 flex-nowrap justify-between">
           {footerSocialsList.map(({ src, alt, href }) => (
-            <a
+            <Link
               key={alt}
               href={href}
               target="_blank"
@@ -56,7 +57,7 @@ export default function Footer() {
                 className="object-contain"
                 draggable={false}
               />
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -101,13 +102,13 @@ export default function Footer() {
             <div key={title} className="flex flex-col">
               <span className="font-[600] mb-2">{title}</span>
               {items.map(({ label, href }) => (
-                <a
+                <Link
                   key={label}
                   href={href}
                   className="py-1 font-[500] text-gray-500 hover:text-pink-bright"
                 >
                   {label}
-                </a>
+                </Link>
               ))}
             </div>
           ))}
@@ -123,7 +124,7 @@ export default function Footer() {
           {/* social icons row */}
           <div className="flex gap-2 flex-wrap justify-end">
             {footerSocialsList.map(({ src, alt, href }) => (
-              <a
+              <Link
                 key={alt}
                 href={href}
                 target="_blank"
@@ -138,7 +139,7 @@ export default function Footer() {
                   className="object-contain"
                   draggable={false}
                 />
-              </a>
+              </Link>
             ))}
           </div>
           {/* copyright */}

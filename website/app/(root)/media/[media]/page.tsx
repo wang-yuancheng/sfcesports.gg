@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { mediaItems } from "@/data/media/media";
+import Link from "next/link";
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import ContentRenderer from "@/components/global/ContentRenderer";
 
@@ -45,7 +46,7 @@ export default async function MediaPostPage({
 
           {/* Back Button */}
           <div className="mt-16 pt-8 border-t border-gray-100">
-            <a
+            <Link
               href="/media"
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors group"
             >
@@ -53,7 +54,7 @@ export default async function MediaPostPage({
                 ←
               </span>
               Back to all media
-            </a>
+            </Link>
           </div>
         </div>
       </div>

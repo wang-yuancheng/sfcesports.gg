@@ -1,8 +1,9 @@
-import { notFound } from "next/navigation";
 import React from "react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import { policies } from "@/data/policies/policies";
-import ContentRenderer from "@/components/global/ContentRenderer";
 import { ContentBlock } from "@/lib/types";
+import ContentRenderer from "@/components/global/ContentRenderer";
 
 export async function generateStaticParams() {
   return policies.map((policy) => ({ policy: policy.id }));
@@ -36,7 +37,7 @@ export default async function PolicyPage({
           </div>
 
           <div className="mt-16 pt-8 border-t border-gray-100">
-            <a
+            <Link
               href="/policies"
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors group"
             >
@@ -44,7 +45,7 @@ export default async function PolicyPage({
                 ←
               </span>
               Back to Overview
-            </a>
+            </Link>
           </div>
         </div>
       </div>
