@@ -6,7 +6,7 @@ import shanshanprofile from "@/assets/profiles/shanshanprofile.jpeg";
 import tronprofile from "@/assets/profiles/tronprofile.jpg";
 import senpaiprofile from "@/assets/profiles/senpaiprofile.jpeg";
 import libieprofile from "@/assets/profiles/libieprofile.jpg";
-import honeyprofile from "@/assets/profiles/libieprofile.jpg";
+import honeyprofile from "@/assets/profiles/honeyprofile.jpg";
 import rasorprofile from "@/assets/profiles/rasorprofile.jpg";
 
 import honey1 from "@/assets/pictures/boosters/honey/honey-1.png";
@@ -172,7 +172,7 @@ export const boosters = [
     country: "HK",
     availability: true,
     profile: biteprofile,
-    cover: bite4,
+    cover: bite6,
     highlight: "6.55 K/D Ratio",
     subHighlight: "CQC master",
     rating: "4.9",

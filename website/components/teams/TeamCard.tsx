@@ -32,7 +32,7 @@ export default function TeamCard({
       >
         {/* Header */}
         <div className="shrink-0 py-3 border-b border-gray-200 text-center">
-          <span className="uppercase text-sm font-bold text-gray-600">
+          <span className="uppercase text-sm font-bold">
             {team.name}
           </span>
         </div>

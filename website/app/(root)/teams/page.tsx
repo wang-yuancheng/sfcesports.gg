@@ -94,7 +94,7 @@ export default function TeamsPage() {
                 type="button"
                 aria-pressed={showAllRosters}
                 onClick={() => setShowAllRosters((v) => !v)}
-                className="inline-flex items-center rounded-md border border-gray-200 bg-white px-3 py-[7px] text-sm hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                className="inline-flex items-center rounded-xl border border-gray-200 bg-white px-3 py-[7px] text-sm hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
                 title="Toggle all rosters"
               >
                 {showAllRosters ? "Hide rosters" : "Show rosters"}
