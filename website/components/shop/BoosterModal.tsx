@@ -20,10 +20,7 @@ export default function BoosterModal({
   open: boolean;
   onClose: (open: boolean) => void;
 }) {
-  // 1. Create a reference to the Contact Section
   const contactRef = useRef<HTMLDivElement>(null);
-
-  // 2. Scroll function
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -33,20 +30,24 @@ export default function BoosterModal({
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-[1200px] w-[95vw] h-[90vh] md:h-auto md:max-h-[90vh] p-0 overflow-hidden bg-white flex flex-col rounded-xl border-none outline-none">
-        {/* Scrollable Container - Everything lives inside here */}
         <div className="flex-1 overflow-y-auto overflow-x-hidden relative">
-          {/* 1. SERVICE TITLE SECTION (Scrolls away) */}
-          <div className="bg-white px-6 pt-10 pb-2 md:px-10 md:pt-12 md:pb-4">
-            <DialogTitle className="font-druk text-3xl md:text-5xl uppercase tracking-wide text-gray-900 leading-[0.9] text-center md:text-left">
+          <div className="bg-white px-6 pt-10 pb-4 md:px-10 md:pt-12 md:pb-6 flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-pink-bright font-sans">
+                Current Service Offer
+              </span>
+            </div>
+
+            <DialogTitle className="font-druk text-3xl md:text-5xl uppercase tracking-wide text-gray-900 leading-[0.9] text-left">
               {booster.title}
             </DialogTitle>
+
             <DialogDescription className="sr-only">
               Service details for {booster.name}
             </DialogDescription>
           </div>
 
-          {/* 2. STICKY HEADER (Name & Actions) */}
-          <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-gray-100 px-6 py-3 md:px-10 md:py-4 flex items-center justify-between shadow-sm">
+          <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-6 py-3 md:px-10 md:py-4 flex items-center justify-between shadow-sm">
             {/* Left: Profile Info */}
             <div className="flex items-center gap-3">
               <div className="relative w-10 h-10 rounded-full overflow-hidden border border-gray-200 shrink-0">
@@ -61,16 +62,29 @@ export default function BoosterModal({
                 <h3 className="font-bold text-gray-900 text-base leading-none">
                   {booster.name}
                 </h3>
+
                 <div className="flex items-center gap-2 mt-1">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-green-600 text-[10px] font-bold uppercase tracking-wide">
-                    Available for work
+                  <div
+                    className={`w-1.5 h-1.5 rounded-full ${
+                      booster.availability
+                        ? "bg-green-500 animate-pulse"
+                        : "bg-red-500"
+                    }`}
+                  />
+
+                  <span
+                    className={`text-[10px] font-bold uppercase tracking-wide ${
+                      booster.availability ? "text-green-600" : "text-red-600"
+                    }`}
+                  >
+                    {booster.availability
+                      ? "Available for work"
+                      : "Not available"}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Right: Actions */}
             <div className="flex items-center gap-2 md:gap-3">
               <Button
                 variant="outline"
@@ -85,10 +99,8 @@ export default function BoosterModal({
             </div>
           </div>
 
-          {/* 3. SCROLLABLE BODY CONTENT */}
           <div className="px-6 py-8 md:px-10 md:py-10 bg-[#FAFAFA] min-h-full">
             <div className="max-w-[1000px] mx-auto flex flex-col gap-8">
-              {/* Main Cover Image */}
               <div className="relative w-full aspect-video md:aspect-[2/1] rounded-xl overflow-hidden shadow-sm bg-white border border-gray-200">
                 <Image
                   src={booster.cover}
@@ -99,23 +111,21 @@ export default function BoosterModal({
                 />
               </div>
 
-              {/* Custom Description */}
               <div className="max-w-[800px] mx-auto w-full py-2">
-                <div className="prose prose-lg text-gray-700 leading-relaxed text-lg">
+                <div className="prose prose-lg text-gray-700 leading-relaxed text-lg text-justify">
                   <p>{booster.description}</p>
                 </div>
               </div>
 
               <div className="w-full h-px bg-gray-200 my-2" />
 
-              {/* Achievements Gallery */}
               <div className="w-full">
                 <div className="flex items-center justify-between mb-6">
                   <h4 className="font-druk text-lg md:text-xl uppercase text-gray-900">
-                    Achievements
+                    Portfolio
                   </h4>
                   <span className="text-sm text-gray-500 font-medium">
-                    {booster.gallery?.length} shots
+                    {booster.gallery?.length} Verified Stats
                   </span>
                 </div>
 
@@ -136,15 +146,11 @@ export default function BoosterModal({
                 </div>
               </div>
 
-              {/* 4. CONTACT SECTION (MODIFIED) */}
               <div ref={contactRef} className="mt-16 mb-10 w-full">
                 <div className="w-full mx-auto flex flex-col items-center text-center">
-                  {/* The "Divider" Row */}
                   <div className="flex items-center justify-center w-full mb-8">
-                    {/* Left Line - Stretches fully */}
                     <div className="h-px bg-gray-300 flex-1 opacity-50" />
 
-                    {/* Center Avatar - Smaller (w-16 h-16) */}
                     <div className="mx-8 relative w-20 h-20 rounded-full overflow-hidden border-[4px] border-white shadow-md shrink-0 z-10 bg-gray-50">
                       <Image
                         src={booster.profile}
@@ -154,21 +160,17 @@ export default function BoosterModal({
                       />
                     </div>
 
-                    {/* Right Line - Stretches fully */}
                     <div className="h-px bg-gray-300 flex-1 opacity-50" />
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-3xl md:text-4xl uppercase tracking-wide text-gray-900 mb-3">
+                  <h3 className="text-3xl md:text-4xl uppercase tracking-tight text-gray-900 mb-3 font-druk">
                     Let's work together
                   </h3>
 
-                  {/* Statement - Smaller text */}
                   <p className="font-bold tracking-tight text-gray-900 max-w-lg mx-auto mb-8">
                     Discuss your goals, schedule, and budget before booking.
                   </p>
 
-                  {/* Button */}
                   <Button
                     onClick={() =>
                       window.open("https://discord.gg/2Sby35W", "_blank")
