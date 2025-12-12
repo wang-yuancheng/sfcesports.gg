@@ -127,7 +127,7 @@ export default function Shop() {
                 className="bg-pink-bright p-6 rounded-[24px] md:rounded-[32px] shadow-xl w-full max-w-[320px] md:w-[280px] min-h-[280px] md:h-[320px]
                 flex flex-col justify-between relative transition-all duration-300
                 z-20 md:transform md:rotate-[0deg] md:-translate-y-4
-                hover:scale-105 group cursor-pointer"
+                hover:z-40 hover:scale-105 group cursor-pointer"
               >
                 <div className="absolute top-5 right-5 bg-white text-pink-bright text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
                   Best Value
@@ -155,8 +155,8 @@ export default function Shop() {
               <div
                 className="bg-white p-6 rounded-[24px] md:rounded-[32px] shadow-sm border border-gray-100 w-full max-w-[300px] md:w-[260px] min-h-[260px] md:h-[280px]
                 flex flex-col justify-between relative transition-all duration-300
-                md:z-10 md:transform md:rotate-[6deg] md:-translate-x-8 md:translate-y-6
-                hover:z-30 hover:scale-105 hover:shadow-xl group cursor-pointer"
+                md:z-30 md:transform md:rotate-[6deg] md:-translate-x-8 md:translate-y-6
+                hover:scale-105 hover:shadow-xl group cursor-pointer"
               >
                 <div>
                   <h3 className="text-gray-900 font-bold text-lg text-left">
