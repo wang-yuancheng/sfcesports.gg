@@ -1,23 +1,27 @@
-import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
 import undercoverThumbnail from "@/assets/pictures/undercover.jpg";
 import sccs2Banner from "@/assets/pictures/sccs2thumbnail.png";
 import { ParticipatingTeamList, VideoItem } from "@/lib/types";
 import { Leaderboard } from "@/lib/types";
 import { StaticImageData } from "next/image";
 
-import cosaPerakLogo from "@/assets/logos/pubgm.svg";
-import c4TikusLogo from "@/assets/logos/pubgm.svg";
-import GNAllstarLogo from "@/assets/logos/pubgm.svg";
-import wbbMelxLogo from "@/assets/logos/pubgm.svg";
-import wbbLogo from "@/assets/logos/pubgm.svg";
-import manisXtremeLogo from "@/assets/logos/pubgm.svg";
-import xmmJayzLogo from "@/assets/logos/pubgm.svg";
-import PEAxSMEBaruzLogo from "@/assets/logos/pubgm.svg";
-import shawnLogo from "@/assets/logos/pubgm.svg";
-import vermillionesportsLogo from "@/assets/logos/pubgm.svg";
-import FTWXtremeLogo from "@/assets/logos/pubgm.svg";
-import wbbRebornLogo from "@/assets/logos/pubgm.svg";
-import hastalavistaEsportLogo from "@/assets/logos/pubgm.svg";
+import cosaPerakLogo from "@/assets/logos/sccs2/COSA_PERAK.png";
+import c4TikusLogo from "@/assets/logos/sccs2/C4_TIKUS.png";
+import GNAllstarLogo from "@/assets/logos/sccs2/GN_ALLSTAR.png";
+import wbbMelxLogo from "@/assets/logos/sccs2/WBB.png";
+import wbbLogo from "@/assets/logos/sccs2/WBB.png";
+import manisXtremeLogo from "@/assets/logos/sccs2/MANIS_XTREME.png";
+import xmmJayzLogo from "@/assets/logos/sccs2/XMM_JAYZ.png";
+import PEAxSMEBaruzLogo from "@/assets/logos/sccs2/PEA_X_SME_BARUZ.png";
+import shawnLogo from "@/assets/logos/sccs2/SHAWN.png";
+import vermillionesportsLogo from "@/assets/logos/sccs2/VERMILLION_ESPORTS.png";
+import FTWXtremeLogo from "@/assets/logos/sccs2/FTW_XTREME.png";
+import wbbRebornLogo from "@/assets/logos/sccs2/WBB.png";
+import hastalavistaEsportLogo from "@/assets/logos/sccs2/HASTALAVISTA_ESPORT.png";
+import vipsquadcoreLogo from "@/assets/logos/sccs2/VIP_SQUAD_CORE.png";
+import sfcLogo from "@/assets/logos/sccs2/SFC.png";
+import sfcvLogo from "@/assets/logos/sccs2/SFC_V.png";
+import sfcrexLogo from "@/assets/logos/sccs2/SFC_REX.png";
+import sfc17kLogo from "@/assets/logos/sccs2/SFC_17K.png";
 
 import groupAQualifier from "@/assets/pictures/sccs2/GROUP_A_QUALIFIER.png";
 import groupBQualifier from "@/assets/pictures/sccs2/GROUP_B_QUALIFIER.png";
@@ -132,7 +136,7 @@ export const sccs2GrandFinal: Leaderboard[] = [
   {
     place: 10,
     name: "VIP Squad Core",
-    logo: wbbLogo,
+    logo: vipsquadcoreLogo,
     wwcd: 1,
     kp: 39,
     pp: 5,
@@ -152,7 +156,7 @@ export const sccs2GrandFinal: Leaderboard[] = [
   {
     place: 12,
     name: "SFC 17K",
-    logo: sfcLogo,
+    logo: sfc17kLogo,
     wwcd: 0,
     kp: 26,
     pp: 11,
@@ -182,7 +186,7 @@ export const sccs2GrandFinal: Leaderboard[] = [
   {
     place: 15,
     name: "SFC Rex",
-    logo: sfcLogo,
+    logo: sfcrexLogo,
     wwcd: 0,
     kp: 27,
     pp: 3,
@@ -192,7 +196,7 @@ export const sccs2GrandFinal: Leaderboard[] = [
   {
     place: 16,
     name: "SFC V",
-    logo: sfcLogo,
+    logo: sfcvLogo,
     wwcd: 0,
     kp: 15,
     pp: 5,
@@ -246,17 +250,17 @@ export const sccs2InvitedTeams: ParticipatingTeamList[] = [
   },
   {
     name: "SFC 17K",
-    logo: sfcLogo,
+    logo: sfc17kLogo,
     advanced: "Invited",
   },
   {
     name: "SFC Rex",
-    logo: sfcLogo,
+    logo: sfcrexLogo,
     advanced: "Invited",
   },
   {
     name: "SFC V",
-    logo: sfcLogo,
+    logo: sfcvLogo,
     advanced: "Invited",
   },
 ];
@@ -295,6 +299,11 @@ export const sccs2Teams: ParticipatingTeamList[] = [
     name: "XMM JayZ",
     logo: xmmJayzLogo,
     advanced: "Semi-Final Grp D #1",
+  },
+  {
+    name: "VIP SQUAD CORE",
+    logo: vipsquadcoreLogo,
+    advanced: "Semi-Final Grp D #2",
   },
   {
     name: "PEA x SME Baruz",

@@ -1,25 +1,28 @@
-import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
 import sccs1Banner from "@/assets/pictures/sccs1thumbnail.png";
 import { ParticipatingTeamList, VideoItem } from "@/lib/types";
 import { Leaderboard } from "@/lib/types";
 import { StaticImageData } from "next/image";
 
-import cosaPerakLogo from "@/assets/logos/pubgm.svg";
-import dazzyLogo from "@/assets/logos/pubgm.svg";
-import mpxNemesisLogo from "@/assets/logos/pubgm.svg";
-import xanaxRushLogo from "@/assets/logos/pubgm.svg";
-import slatanEsportLogo from "@/assets/logos/pubgm.svg";
-import unravelGamingLogo from "@/assets/logos/pubgm.svg";
-import forceGamingLogo from "@/assets/logos/pubgm.svg";
-import topgunzGaiaLogo from "@/assets/logos/pubgm.svg";
-import bootcampFunhouseLogo from "@/assets/logos/pubgm.svg";
-import yeensLegionLogo from "@/assets/logos/pubgm.svg";
-import rusOfficialsLogo from "@/assets/logos/pubgm.svg";
-import xqgEsportsLogo from "@/assets/logos/pubgm.svg";
-import pieceOfCakeLogo from "@/assets/logos/pubgm.svg";
-import mpxLetterLogo from "@/assets/logos/pubgm.svg";
-import commandanEspLogo from "@/assets/logos/pubgm.svg";
-import i4uAresLogo from "@/assets/logos/pubgm.svg";
+import cosaPerakLogo from "@/assets/logos/sccs1/COSA_PERAK.png";
+import dazzyLogo from "@/assets/logos/sccs1/DAZZY.png";
+import mpxNemesisLogo from "@/assets/logos/sccs1/MPX_NEMESIS.png";
+import xanaxRushLogo from "@/assets/logos/sccs1/XANAX_RUSH.png";
+import slatanEsportLogo from "@/assets/logos/sccs1/SLATAN_ESPORTS.png";
+import unravelGamingLogo from "@/assets/logos/sccs1/UNRAVEL_GAMING.png";
+import forceGamingLogo from "@/assets/logos/sccs1/FORCE_GAMING.png";
+import topgunzGaiaLogo from "@/assets/logos/sccs1/TOPGUNZ_GAIA.png";
+import bootcampFunhouseLogo from "@/assets/logos/sccs1/BOOTCAMP_FUNHOUSE.png";
+import yeensLegionLogo from "@/assets/logos/sccs1/YEENS_LEGION.png";
+import rusOfficialsLogo from "@/assets/logos/sccs1/RUS_OFFICIALS.png";
+import xqgEsportsLogo from "@/assets/logos/sccs1/XQG_ESPORTS.png";
+import pieceOfCakeLogo from "@/assets/logos/sccs1/PIECE_OF_CAKE.png";
+import mpxLetterLogo from "@/assets/logos/sccs1/MPX_LETTER.png";
+import commandanEspLogo from "@/assets/logos/sccs1/COMMANDAN_ESP.png";
+import i4uAresLogo from "@/assets/logos/sccs1/I4U_ARES.png";
+import sfcHeirsLogo from "@/assets/logos/sccs1/SFC_HEIRS.png";
+import sfcNemesisLogo from "@/assets/logos/sccs1/SFC_NEMESIS.png";
+import sfcAcademyLogo from "@/assets/logos/sccs1/SFC_ACADEMY.png";
+import sfcValenceLogo from "@/assets/logos/sccs1/SFC_VALENCE.png";
 
 import groupAQualifier from "@/assets/pictures/sccs1/GROUP_A_QUALIFIER.jpg";
 import groupBQualifier from "@/assets/pictures/sccs1/GROUP_B_QUALIFIER.png";
@@ -58,7 +61,7 @@ export const sccs1GrandFinal: Leaderboard[] = [
   {
     place: 3,
     name: "SFC HEIRS",
-    logo: sfcLogo,
+    logo: sfcHeirsLogo,
     wwcd: 0,
     kp: 73,
     pp: 51,
@@ -78,7 +81,7 @@ export const sccs1GrandFinal: Leaderboard[] = [
   {
     place: 5,
     name: "SFC VALENCE",
-    logo: sfcLogo,
+    logo: sfcValenceLogo,
     wwcd: 0,
     kp: 44,
     pp: 37,
@@ -108,7 +111,7 @@ export const sccs1GrandFinal: Leaderboard[] = [
   {
     place: 8,
     name: "SFC NEMESIS",
-    logo: sfcLogo,
+    logo: sfcNemesisLogo,
     wwcd: 0,
     kp: 39,
     pp: 24,
@@ -198,7 +201,7 @@ export const sccs1GrandFinal: Leaderboard[] = [
   {
     place: 17,
     name: "SFC ACADEMY",
-    logo: sfcLogo,
+    logo: sfcAcademyLogo,
     wwcd: 0,
     kp: 15,
     pp: 19,
@@ -281,7 +284,7 @@ export const sccs1Teams: ParticipatingTeamList[] = [
   // GROUP B -----------------------------
   {
     name: "SFC VALENCE",
-    logo: sfcLogo,
+    logo: sfcValenceLogo,
     advanced: "Semi-Finals Grp B #1",
   },
   {
@@ -306,7 +309,7 @@ export const sccs1Teams: ParticipatingTeamList[] = [
   },
   {
     name: "SFC HEIRS",
-    logo: sfcLogo,
+    logo: sfcHeirsLogo,
     advanced: "Semi-Finals Grp B #6",
   },
 
@@ -328,7 +331,7 @@ export const sccs1Teams: ParticipatingTeamList[] = [
   },
   {
     name: "SFC NEMESIS",
-    logo: sfcLogo,
+    logo: sfcNemesisLogo,
     advanced: "Semi-Finals Grp C #4",
   },
 
@@ -350,7 +353,7 @@ export const sccs1Teams: ParticipatingTeamList[] = [
   },
   {
     name: "SFC ACADEMY",
-    logo: sfcLogo,
+    logo: sfcAcademyLogo,
     advanced: "Semi-Finals Grp D #4",
   },
   {
