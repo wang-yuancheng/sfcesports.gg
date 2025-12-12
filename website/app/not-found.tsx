@@ -5,7 +5,6 @@ import {
   Trophy,
   Newspaper,
   ShoppingBag,
-  ShieldAlert,
   Info,
 } from "lucide-react";
 
@@ -76,7 +75,7 @@ function NotFoundLinkCard({ item }: { item: (typeof notFoundLinks)[0] }) {
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center section-container my-16">
+    <div className="flex flex-col items-center justify-center min-h-screen section-container py-16">
       <div className="max-w-4xl mx-auto text-center mb-16">
         <h1 className="font-druk text-4xl sm:text-5xl md:text-6xl uppercase leading-[0.85] tracking-tighter text-black">
           The page you’re looking for

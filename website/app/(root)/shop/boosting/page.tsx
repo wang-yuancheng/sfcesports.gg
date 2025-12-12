@@ -74,7 +74,7 @@ export default function BoostingPage() {
   const [selectedBooster, setSelectedBooster] = useState<any>(null);
 
   return (
-    <div className="mb-24 min-h-screen">
+    <div className="mb-24">
       {/* Header */}
       <div className="section-container pt-12 pb-10">
         <div className="max-w-2xl">
