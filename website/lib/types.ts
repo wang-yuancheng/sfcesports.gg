@@ -134,6 +134,12 @@ export interface VideoModalProps {
   onClose: () => void;
 }
 
+// Logo Ticker
+export type LogoItem = {
+  src: string | StaticImageData;
+  alt: string;
+};
+
 /* ---------------------------- Tournaments ---------------------------- */
 
 export interface TournamentHighlight {
