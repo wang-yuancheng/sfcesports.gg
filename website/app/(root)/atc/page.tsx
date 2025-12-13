@@ -1,9 +1,9 @@
 "use client";
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import atcWinnerTitle from "@/assets/pictures/atcwinnertitle.png";
-import atc from "@/assets/pictures/atc.webp";
-import atcCrew from "@/assets/pictures/atcchampioncrewsquare.png";
+import atcWinnerTitle from "@/assets/pictures/atc/atcwinnertitle.png";
+import atc from "@/assets/pictures/atc/atc.webp";
+import atcCrew from "@/assets/pictures/atc/atcchampioncrewsquare.png";
 import ATCLeaderboard from "@/components/leaderboards/leaderboards/AtcLeaderboard";
 import { atcLeaderboard, atcTeams } from "@/data/home/atc/atc";
 import { useMemo, useState } from "react";
@@ -16,13 +16,13 @@ import ParticipatingTeam from "@/components/leaderboards/ParticipatingTeam";
 import ImageAndTextBlock from "@/components/global/ImageAndTextBlock";
 import type { StaticImageData } from "next/image";
 
-import atcMedia1 from "@/assets/pictures/atcmedia1.png";
-import atcMedia2 from "@/assets/pictures/atcmedia2.png";
-import atcMedia3 from "@/assets/pictures/atcmedia3.png";
-import atcMedia4 from "@/assets/pictures/atcmedia4.png";
-import atcMedia5 from "@/assets/pictures/atcmedia5.png";
-import atcMedia6 from "@/assets/pictures/atcmedia6.png";
-import atcMedia7 from "@/assets/pictures/atcmedia7.png";
+import atcMedia1 from "@/assets/pictures/atc/atcmedia1.png";
+import atcMedia2 from "@/assets/pictures/atc/atcmedia2.png";
+import atcMedia3 from "@/assets/pictures/atc/atcmedia3.png";
+import atcMedia4 from "@/assets/pictures/atc/atcmedia4.png";
+import atcMedia5 from "@/assets/pictures/atc/atcmedia5.png";
+import atcMedia6 from "@/assets/pictures/atc/atcmedia6.png";
+import atcMedia7 from "@/assets/pictures/atc/atcmedia7.png";
 import MediaGallery from "@/components/home/MediaGallery";
 
 export default function ATCPage() {

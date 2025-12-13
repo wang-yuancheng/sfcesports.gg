@@ -1,4 +1,4 @@
-import sccs1Banner from "@/assets/pictures/sccs1thumbnail.png";
+import sccs1Banner from "@/assets/pictures/thumbnails/sccs1thumbnail.png";
 import { ParticipatingTeamList, VideoItem } from "@/lib/types";
 import { Leaderboard } from "@/lib/types";
 import { StaticImageData } from "next/image";
@@ -24,18 +24,18 @@ import sfcNemesisLogo from "@/assets/logos/sccs1/SFC_NEMESIS.png";
 import sfcAcademyLogo from "@/assets/logos/sccs1/SFC_ACADEMY.png";
 import sfcValenceLogo from "@/assets/logos/sccs1/SFC_VALENCE.png";
 
-import groupAQualifier from "@/assets/pictures/sccs1/GROUP_A_QUALIFIER.jpg";
-import groupBQualifier from "@/assets/pictures/sccs1/GROUP_B_QUALIFIER.png";
-import groupCQualifier from "@/assets/pictures/sccs1/GROUP_C_QUALIFIER.jpg";
-import groupDQualifier from "@/assets/pictures/sccs1/GROUP_D_QUALIFIER.png";
-import groupEQualifier from "@/assets/pictures/sccs1/GROUP_E_QUALIFIER.png";
-import groupFQualifier from "@/assets/pictures/sccs1/GROUP_F_QUALIFIER.jpg";
-import groupASemiFinals from "@/assets/pictures/sccs1/GROUP_A_SEMI_FINALS.jpg";
-import groupBSemiFinals from "@/assets/pictures/sccs1/GROUP_B_SEMI_FINALS.png";
-import groupCSemiFinals from "@/assets/pictures/sccs1/GROUP_C_SEMI_FINALS.jpg";
-import groupDSemiFinals from "@/assets/pictures/sccs1/GROUP_D_SEMI_FINALS.png";
-import grandFinals from "@/assets/pictures/sccs1/GRAND_FINALS.png";
-import finalsTop3 from "@/assets/pictures/sccs1/FINALS_TOP_3.png";
+import groupAQualifier from "@/assets/pictures/tourmedia/sccs1/GROUP_A_QUALIFIER.jpg";
+import groupBQualifier from "@/assets/pictures/tourmedia/sccs1/GROUP_B_QUALIFIER.png";
+import groupCQualifier from "@/assets/pictures/tourmedia/sccs1/GROUP_C_QUALIFIER.jpg";
+import groupDQualifier from "@/assets/pictures/tourmedia/sccs1/GROUP_D_QUALIFIER.png";
+import groupEQualifier from "@/assets/pictures/tourmedia/sccs1/GROUP_E_QUALIFIER.png";
+import groupFQualifier from "@/assets/pictures/tourmedia/sccs1/GROUP_F_QUALIFIER.jpg";
+import groupASemiFinals from "@/assets/pictures/tourmedia/sccs1/GROUP_A_SEMI_FINALS.jpg";
+import groupBSemiFinals from "@/assets/pictures/tourmedia/sccs1/GROUP_B_SEMI_FINALS.png";
+import groupCSemiFinals from "@/assets/pictures/tourmedia/sccs1/GROUP_C_SEMI_FINALS.jpg";
+import groupDSemiFinals from "@/assets/pictures/tourmedia/sccs1/GROUP_D_SEMI_FINALS.png";
+import grandFinals from "@/assets/pictures/tourmedia/sccs1/GRAND_FINALS.png";
+import finalsTop3 from "@/assets/pictures/tourmedia/sccs1/FINALS_TOP_3.png";
 
 export const sccs1GrandFinal: Leaderboard[] = [
   {

@@ -1,4 +1,4 @@
-import tdms4Banner from "@/assets/pictures/1v1s4thumbnail.jpg";
+import tdms4Banner from "@/assets/pictures/thumbnails/1v1s4thumbnail.jpg";
 
 import { VideoItem, TdmLeaderboard, TdmMatchData } from "@/lib/types";
 import type { StaticImageData } from "next/image";

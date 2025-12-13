@@ -1,5 +1,4 @@
-import tempstats from "@/assets/pictures/tempstats.webp";
-import atcBanner from "@/assets/pictures/atc.webp";
+import atcBanner from "@/assets/pictures/atc/atc.webp";
 import saiprofile from "@/assets/profiles/saiprofile.jpg";
 import biteprofile from "@/assets/profiles/biteprofile.jpg";
 import shanshanprofile from "@/assets/profiles/shanshanprofile.jpeg";
@@ -157,7 +156,7 @@ export const boosters = [
     country: "KR",
     availability: false,
     profile: shanshanprofile,
-    cover: tempstats,
+    cover: atcBanner,
     highlight: "Girl Gamer",
     subHighlight: "Mic On & Chill",
     rating: "5.0",

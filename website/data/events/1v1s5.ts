@@ -1,15 +1,14 @@
-import tdms5Banner from "@/assets/pictures/1v1s5thumbnail.png";
+import tdms5Banner from "@/assets/pictures/thumbnails/1v1s5thumbnail.png";
 import wasikuttanopProfile from "@/assets/profiles/wasikuttanopprofile.jpg";
 import vxheiyeProfile from "@/assets/profiles/vxheiyeprofile.jpg";
 import sfcbiteProfile from "@/assets/profiles/sfcbiteprofile.jpg";
 import tokiwotomareProfile from "@/assets/profiles/tokiwotomareprofile.png";
 import frgmelProfile from "@/assets/profiles/frgmelprofile.jpg";
 import sfctoxicProfile from "@/assets/profiles/sfctoxicprofile.png";
-import tdms5Logo from "@/assets/pictures/1v1s5/LOGO.png";
-import finalStandings from "@/assets/pictures/1v1s5/FINAL_STANDINGS.png";
-import tdms5Prizes from "@/assets/pictures/1v1s5/PRIZES.png";
-import semiFinals from "@/assets/pictures/1v1s5/SEMI_FINALS.png";
-import grandFinals from "@/assets/pictures/1v1s5/DOUBLE_ELIMINATION_BRACKET.png";
+import finalStandings from "@/assets/pictures/tourmedia/1v1s5/FINAL_STANDINGS.png";
+import tdms5Prizes from "@/assets/pictures/tourmedia/1v1s5/PRIZES.png";
+import semiFinals from "@/assets/pictures/tourmedia/1v1s5/SEMI_FINALS.png";
+import grandFinals from "@/assets/pictures/tourmedia/1v1s5/DOUBLE_ELIMINATION_BRACKET.png";
 
 import {
   MatchType,

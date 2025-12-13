@@ -1,5 +1,5 @@
 import React from "react";
-import atcBanner from "@/assets/pictures/atc.webp";
+import atcBanner from "@/assets/pictures/atc/atc.webp";
 import cardHero from "@/assets/pictures/card-hero-gradient.png";
 import ShortHero from "@/components/home/ShortHero";
 import LongHero from "@/components/home/LongHero";

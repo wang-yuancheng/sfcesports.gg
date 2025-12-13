@@ -1,9 +1,9 @@
 import React from "react";
-import sccs1Banner from "@/assets/pictures/sccs1.webp";
-import sccs2Banner from "@/assets/pictures/sccs2.webp";
-import tdmTourS4Banner from "@/assets/pictures/1v1s4.webp";
-import tdmTourS5Banner from "@/assets/pictures/1v1s5.webp";
-import sfcxnovaBanner from "@/assets/pictures/sfcxnova.png";
+import sccs1Banner from "@/assets/pictures/tourmedia/sccs1/sccs1.webp";
+import sccs2Banner from "@/assets/pictures/tourmedia/sccs2/sccs2.webp";
+import tdmTourS4Banner from "@/assets/pictures/tourmedia/1v1s4/1v1s4.webp";
+import tdmTourS5Banner from "@/assets/pictures/tourmedia/1v1s5/1v1s5.webp";
+import sfcxnovaBanner from "@/assets/pictures/tourmedia/sfcxnova/sfcxnova.png";
 import { EventHeroContent } from "@/lib/types";
 
 export const events: EventHeroContent[] = [

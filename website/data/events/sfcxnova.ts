@@ -1,8 +1,8 @@
 import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
 import novaLogo from "@/assets/logos/nova.webp";
-import sfcxnovaBanner from "@/assets/pictures/sfcxnovabanner.png";
-import sfcxnovaMedia1 from "@/assets/pictures/sfcxnovaday1result.png";
-import sfcxnovaMedia2 from "@/assets/pictures/sfcxnovaday2result.png";
+import sfcxnovaThumbnail from "@/assets/pictures/thumbnails/sfcxnovathumbnail.png";
+import sfcxnovaMedia1 from "@/assets/pictures/tourmedia/sfcxnova/sfcxnovaday1result.png";
+import sfcxnovaMedia2 from "@/assets/pictures/tourmedia/sfcxnova/sfcxnovaday2result.png";
 import { MatchType, VideoItem, Leaderboard } from "@/lib/types";
 import type { StaticImageData } from "next/image";
 
@@ -265,7 +265,7 @@ export const videos: VideoItem[] = [
   {
     title: "SFC vs NOVA Community Tournament",
     id: "wTAx3_uxhhg",
-    thumbnail: sfcxnovaBanner,
+    thumbnail: sfcxnovaThumbnail,
   },
 ];
 

@@ -1,5 +1,5 @@
-import atcs16Semi from "@/assets/pictures/atcs16semi.webp";
-import atcs16Final from "@/assets/pictures/atcs16final.webp";
+import atcs16Semi from "@/assets/pictures/thumbnails/atcs16semithumbnail.webp";
+import atcs16Final from "@/assets/pictures/thumbnails/atcs16finalthumbnail.webp";
 
 import { VideoItem } from "@/lib/types";
 

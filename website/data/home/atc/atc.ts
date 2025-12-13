@@ -1,16 +1,16 @@
-import crewEagle from "@/assets/logos/crew-eagle.png";
-import crewBear from "@/assets/logos/crew-bear.png";
-import crewTiger from "@/assets/logos/crew-tiger.png";
-import crewPanda from "@/assets/logos/crew-panda.png";
-import crewBird from "@/assets/logos/crew-bird.png";
-import crewRooster from "@/assets/logos/crew-rooster.png";
-import crewFish from "@/assets/logos/crew-fish.png";
-import crewFootball from "@/assets/logos/crew-football.png";
-import crewElephant from "@/assets/logos/crew-elephant.png";
-import crewBalloon from "@/assets/logos/crew-balloon.png";
-import crewMouse from "@/assets/logos/crew-mouse.png";
-import crewDino from "@/assets/logos/crew-dino.png";
-import crewCrocodile from "@/assets/logos/crew-crocodile.png";
+import crewEagle from "@/assets/logos/crew/crew-eagle.png";
+import crewBear from "@/assets/logos/crew/crew-bear.png";
+import crewTiger from "@/assets/logos/crew/crew-tiger.png";
+import crewPanda from "@/assets/logos/crew/crew-panda.png";
+import crewBird from "@/assets/logos/crew/crew-bird.png";
+import crewRooster from "@/assets/logos/crew/crew-rooster.png";
+import crewFish from "@/assets/logos/crew/crew-fish.png";
+import crewFootball from "@/assets/logos/crew/crew-football.png";
+import crewElephant from "@/assets/logos/crew/crew-elephant.png";
+import crewBalloon from "@/assets/logos/crew/crew-balloon.png";
+import crewMouse from "@/assets/logos/crew/crew-mouse.png";
+import crewDino from "@/assets/logos/crew/crew-dino.png";
+import crewCrocodile from "@/assets/logos/crew/crew-crocodile.png";
 
 import { ParticipatingTeamList, Leaderboard } from "@/lib/types";
 

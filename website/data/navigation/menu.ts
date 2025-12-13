@@ -1,6 +1,6 @@
 import shibeLogoColor from "@/assets/icons/shibe-color.webp";
-import shibeINTeamLogo from "@/assets/logos/shibe-in.png";
-import shibe17kTeamLogo from "@/assets/logos/shibe-17k.png";
+import shibeINTeamLogo from "@/assets/logos/sfc/shibe-in.png";
+import shibe17kTeamLogo from "@/assets/logos/sfc/shibe-17k.png";
 
 export const navItems = [
   { name: "Events", href: "/events" },

@@ -2,28 +2,28 @@ import shibeLogoColor from "@/assets/icons/shibe-color.webp";
 import shibeLogoPink from "@/assets/icons/shibe-pinkbright.svg";
 
 // Team Logos
-import shibeBoysTeamLogo from "@/assets/logos/shibe-boys.png";
-import shibeGirlsTeamLogo from "@/assets/logos/shibe-girls.png";
-import shibeHKTeamLogo from "@/assets/logos/shibe-hk.png";
-import shibeINTeamLogo from "@/assets/logos/shibe-in.png";
-import shibeTronfireTeamLogo from "@/assets/logos/shibe-tronfire.png";
-import shibe17kTeamLogo from "@/assets/logos/shibe-17k.png";
-import shibeFallenAngelsTeamLogo from "@/assets/logos/shibe-fa.png";
-import shibeMLTeamLogo from "@/assets/logos/shibe-ml.png";
-import shibeVMTeamLogo from "@/assets/logos/shibe-vm.png";
+import shibeBoysTeamLogo from "@/assets/logos/sfc/shibe-boys.png";
+import shibeGirlsTeamLogo from "@/assets/logos/sfc/shibe-girls.png";
+import shibeHKTeamLogo from "@/assets/logos/sfc/shibe-hk.png";
+import shibeINTeamLogo from "@/assets/logos/sfc/shibe-in.png";
+import shibeTronfireTeamLogo from "@/assets/logos/sfc/shibe-tronfire.png";
+import shibe17kTeamLogo from "@/assets/logos/sfc/shibe-17k.png";
+import shibeFallenAngelsTeamLogo from "@/assets/logos/sfc/shibe-fa.png";
+import shibeMLTeamLogo from "@/assets/logos/sfc/shibe-ml.png";
+import shibeVMTeamLogo from "@/assets/logos/sfc/shibe-vm.png";
 
 // Individual Teams
-import sfcTeamBanner from "@/assets/pictures/sfcteambanner.png";
-import sfcGirlsTeamBanner from "@/assets/pictures/sfcgirlsteambanner.png";
-import sfcBoysTeamBanner from "@/assets/pictures/sfcboysteambanner.png";
-import sfcFallenAngelsTeamBanner from "@/assets/pictures/sfcfallenangelsteambanner.png";
-import sfc17kTeamBanner from "@/assets/pictures/sfc17kteambanner.png";
-import sfcHKTeamBanner from "@/assets/pictures/sfchkteambanner.png";
-import sfcINTeamBanner from "@/assets/pictures/sfcinteambanner.png";
-import sfcTronFireTeamBanner from "@/assets/pictures/sfctronfireteambanner.png";
-import sfcMLTeamBanner from "@/assets/pictures/sfcmlteambanner.png";
-import sfcVMTeamBanner from "@/assets/pictures/sfcvmteambanner.png";
-import sfcLegacyTeamBanner from "@/assets/pictures/sfclegacyteambanner.png";
+import sfcTeamBanner from "@/assets/pictures/sfcbanner/sfcteambanner.png";
+import sfcGirlsTeamBanner from "@/assets/pictures/sfcbanner/sfcgirlsteambanner.png";
+import sfcBoysTeamBanner from "@/assets/pictures/sfcbanner/sfcboysteambanner.png";
+import sfcFallenAngelsTeamBanner from "@/assets/pictures/sfcbanner/sfcfallenangelsteambanner.png";
+import sfc17kTeamBanner from "@/assets/pictures/sfcbanner/sfc17kteambanner.png";
+import sfcHKTeamBanner from "@/assets/pictures/sfcbanner/sfchkteambanner.png";
+import sfcINTeamBanner from "@/assets/pictures/sfcbanner/sfcinteambanner.png";
+import sfcTronFireTeamBanner from "@/assets/pictures/sfcbanner/sfctronfireteambanner.png";
+import sfcMLTeamBanner from "@/assets/pictures/sfcbanner/sfcmlteambanner.png";
+import sfcVMTeamBanner from "@/assets/pictures/sfcbanner/sfcvmteambanner.png";
+import sfcLegacyTeamBanner from "@/assets/pictures/sfcbanner/sfclegacyteambanner.png";
 
 // Individual Player Profiles
 import defaultprofile from "@/assets/profiles/defaultprofile.jpg";
