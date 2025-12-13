@@ -1,4 +1,3 @@
-import atcBanner from "@/assets/pictures/atc/atc.webp";
 import saiprofile from "@/assets/profiles/saiprofile.jpg";
 import biteprofile from "@/assets/profiles/biteprofile.jpg";
 import shanshanprofile from "@/assets/profiles/shanshanprofile.jpeg";
@@ -22,6 +21,13 @@ import honey11 from "@/assets/pictures/boosters/honey/honey-11.webp";
 import honey12 from "@/assets/pictures/boosters/honey/honey-12.webp";
 import honey13 from "@/assets/pictures/boosters/honey/honey-13.webp";
 
+import shanshan1 from "@/assets/pictures/boosters/shanshan/shanshan-1.png";
+import shanshan2 from "@/assets/pictures/boosters/shanshan/shanshan-2.png";
+import shanshan3 from "@/assets/pictures/boosters/shanshan/shanshan-3.png";
+import shanshan4 from "@/assets/pictures/boosters/shanshan/shanshan-4.png";
+import shanshan5 from "@/assets/pictures/boosters/shanshan/shanshan-5.png";
+import shanshan6 from "@/assets/pictures/boosters/shanshan/shanshan-6.png";
+
 import bite1 from "@/assets/pictures/boosters/bite/bite-1.png";
 import bite2 from "@/assets/pictures/boosters/bite/bite-2.png";
 import bite3 from "@/assets/pictures/boosters/bite/bite-3.png";
@@ -42,6 +48,10 @@ import bite17 from "@/assets/pictures/boosters/bite/bite-17.jpg";
 import bite18 from "@/assets/pictures/boosters/bite/bite-18.jpg";
 
 import libie1 from "@/assets/pictures/boosters/libie/libie-1.png";
+import libie2 from "@/assets/pictures/boosters/libie/libie-2.jpg";
+import libie3 from "@/assets/pictures/boosters/libie/libie-3.jpg";
+import libie4 from "@/assets/pictures/boosters/libie/libie-4.jpg";
+import libie5 from "@/assets/pictures/boosters/libie/libie-5.jpg";
 
 import sai1 from "@/assets/pictures/boosters/sai/sai-1.png";
 import sai2 from "@/assets/pictures/boosters/sai/sai-2.jpeg";
@@ -89,6 +99,7 @@ import senpai9 from "@/assets/pictures/boosters/senpai/senpai-9.png";
 import senpai10 from "@/assets/pictures/boosters/senpai/senpai-10.png";
 import senpai11 from "@/assets/pictures/boosters/senpai/senpai-11.png";
 import senpai12 from "@/assets/pictures/boosters/senpai/senpai-12.png";
+
 export const boosters = [
   {
     id: 1,
@@ -151,18 +162,18 @@ export const boosters = [
   },
   {
     id: 3,
-    name: "ShanShan",
+    name: "姗姗",
     title: "All Modes",
     country: "KR",
     availability: false,
     profile: shanshanprofile,
-    cover: atcBanner,
+    cover: shanshan2,
     highlight: "Girl Gamer",
     subHighlight: "Mic On & Chill",
     rating: "5.0",
-    gallery: [atcBanner],
+    gallery: [shanshan1, shanshan2, shanshan3, shanshan4, shanshan5, shanshan6],
     description:
-      "If you are tired of silent teammates or toxic randoms, I’m here to change your ranked experience! Whether you want to grind seriously or just chill while we push rank, I promise a fun and engaging session every time we queue up :)",
+      "If you are tired of silent teammates or toxic randoms, I’m here to change your ranked experience! I played with the main SFC lineup for multiple tournaments and was even part of the team when we won champions in All Talent Championship in Season 16! Whether you want to grind seriously or just chill while we push rank, I promise a fun and engaging session every time we queue up :)",
   },
   {
     id: 4,
@@ -252,7 +263,7 @@ export const boosters = [
     highlight: "#17 Ladder Arena",
     subHighlight: "Tdm enjoyer",
     rating: "4.7",
-    gallery: [libie1],
+    gallery: [libie1, libie2, libie3, libie4, libie5],
     description:
       "Hi, I’m 离别. I play Ranked Arena, where fast reactions and close-range gun skill matter the most. I pride myself on being a solid, consistent player. I don't make risky plays that cost us the round; instead, I focus on winning my 1v1s and supporting the team to secure the win. If you are looking for a teammate who is skilled, reliable, and knows the Arena meta inside and out, I’m here to help you climb.",
   },
