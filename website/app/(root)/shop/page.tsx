@@ -68,12 +68,6 @@ export default function Shop() {
                 Start Boosting
               </button>
             </Link>
-
-            <Link href="/shop/boosting/pricing">
-              <button className="bg-transparent text-gray-600 px-6 py-3 rounded-full font-semibold text-lg hover:bg-gray-100 hover:text-gray-900 transition-colors w-full sm:w-auto">
-                View Pricing
-              </button>
-            </Link>
           </div>
         </section>
 

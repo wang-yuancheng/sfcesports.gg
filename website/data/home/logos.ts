@@ -10,13 +10,13 @@ import streamelementsLogo from "@/assets/logos/logoticker/streamelements.png";
 import { LogoItem } from "@/lib/types";
 
 export const logoList = [
+  { src: streamelementsLogo, alt: "Streamelements Logo" },
   { src: neteaseLogo, alt: "NetEase Logo" },
   { src: tiktokLogo, alt: "TikTok Logo" },
   { src: redmagicLogo, alt: "Redmagic Logo" },
+  { src: kooruiLogo, alt: "Koorui Logo" },
   { src: creatorhubLogo, alt: "CreatorHub Logo" },
   { src: shopeeLogo, alt: "Shopee Logo" },
   { src: bilibiliLogo, alt: "Bilibili Logo" },
   { src: expressvpnLogo, alt: "ExpressVPN Logo" },
-  { src: streamelementsLogo, alt: "Streamelements Logo" },
-  { src: kooruiLogo, alt: "Koorui Logo" },
 ] as LogoItem[];

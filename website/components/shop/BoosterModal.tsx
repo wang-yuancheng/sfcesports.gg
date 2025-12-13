@@ -261,9 +261,6 @@ export default function BoosterModal({
                       <div className="h-px bg-gray-300 flex-1 opacity-50" />
                     </div>
 
-                    <h3 className="text-3xl md:text-4xl uppercase tracking-tight text-gray-900 mb-3 font-druk">
-                      Let's work together
-                    </h3>
 
                     <p className="font-bold tracking-tight text-gray-900 max-w-lg mx-auto mb-8">
                       Discuss your goals, schedule, and budget before booking.
