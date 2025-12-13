@@ -20,30 +20,59 @@ export function SignUpForm() {
     setError(null);
 
     if (password !== repeatPassword) {
-      setError("Passwords do not match");
+      setError("Passwords do not match.");
+      setIsLoading(false);
+      return;
+    }
+
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long.");
+      setIsLoading(false);
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(email)) {
+      setError("The email format is invalid.");
       setIsLoading(false);
       return;
     }
 
     try {
+      const { data: emailExists, error: rpcError } = await supabase.rpc(
+        "check_email_exists",
+        {
+          email_to_check: email,
+        }
+      );
+
+      if (rpcError) throw rpcError;
+
+      if (emailExists) {
+        throw new Error("The email has already been taken.");
+      }
+
       const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/protected`,
+          emailRedirectTo: `${window.location.origin}/confirm?next=/protected`,
         },
       });
+
       if (error) throw error;
+
       router.push("/sign-up-success");
-    } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+    } catch (error: any) {
+      setError(error.message || "An error occurred");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSignUp}>
+    <form onSubmit={handleSignUp} noValidate>
       <h2>Sign up</h2>
       <p>Create a new account</p>
 

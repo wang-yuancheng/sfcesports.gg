@@ -14,9 +14,9 @@ export const logoList = [
   { src: neteaseLogo, alt: "NetEase Logo" },
   { src: tiktokLogo, alt: "TikTok Logo" },
   { src: redmagicLogo, alt: "Redmagic Logo" },
-  { src: kooruiLogo, alt: "Koorui Logo" },
-  { src: creatorhubLogo, alt: "CreatorHub Logo" },
   { src: shopeeLogo, alt: "Shopee Logo" },
+  { src: creatorhubLogo, alt: "CreatorHub Logo" },
+  { src: kooruiLogo, alt: "Koorui Logo" },
   { src: bilibiliLogo, alt: "Bilibili Logo" },
   { src: expressvpnLogo, alt: "ExpressVPN Logo" },
 ] as LogoItem[];

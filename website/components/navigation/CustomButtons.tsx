@@ -20,7 +20,7 @@ export function SignUpButton() {
   );
 }
 
-export function SearchButton() {
+export function CurrencyButton() {
   return (
     <button
       className="relative rounded-md p-2 sm:hover:bg-gray-100"

@@ -2,6 +2,7 @@ import Header from "@/sections/Header";
 import Footer from "@/sections/Footer";
 import { LongLiveDisplay } from "@/components/navigation/LiveDisplay";
 
+
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

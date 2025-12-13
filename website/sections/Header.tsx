@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import LogoFade from "@/components/ui/logofade";
+import { useUser } from "@/hooks/useUser";
 
+import LogoFade from "@/components/ui/logofade";
 import { CartSheetResponsive } from "@/components/navigation/CartSheet";
 import { MenuSheetResponsive } from "@/components/navigation/MenuSheet";
 import NavbarProfile from "@/components/navigation/NavbarProfile";
 import {
   LoginButton,
   SignUpButton,
-  SearchButton,
+  CurrencyButton,
 } from "@/components/navigation/CustomButtons";
 import {
   LongLiveDisplay,
@@ -17,24 +18,26 @@ import {
 } from "@/components/navigation/LiveDisplay";
 import { NavbarMain } from "@/components/navigation/NavbarMain";
 
-export default function Navbar() {
+export default function Header() {
+  const { user } = useUser();
+
   return (
     <>
-      {/* Mobile */}
+      {/* Mobile Header */}
       <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div className="flex flex-col h-fit min-h-[58px] flex-shrink-0 md:hidden">
           <div className="w-full h-14 flex justify-between items-center px-4 flex-shrink-0">
             {/* Left */}
             <div className="flex items-center">
               <MenuSheetResponsive />
-              <SearchButton />
+              <CurrencyButton />
             </div>
             {/* Logo Mid */}
             <Link href="/" aria-label="Home">
               <LogoFade />
             </Link>
             {/* Right */}
-            <div className="flex">
+            <div className="flex items-center gap-1">
               <CartSheetResponsive />
               <NavbarProfile />
             </div>
@@ -42,11 +45,10 @@ export default function Navbar() {
         </div>
       </header>
 
+      {/* Desktop Header */}
       <header>
-        {/* Desktop / Ipad */}
         <div className="section-container">
           <div className="hidden md:flex w-full md:py-2 flex-col">
-            {/* Left side */}
             <div className="relative flex h-16 items-center justify-between">
               <nav className="flex flex-1 lg:flex-initial items-center justify-center md:items-stretch md:justify-start md:ml-0">
                 <Link
@@ -63,16 +65,26 @@ export default function Navbar() {
 
               {/* Right Side */}
               <div className="absolute inset-y-0 right-0 flex items-center md:static md:inset-auto md:mr-0">
-                <div className="md:mr-2">
-                  <SearchButton />
-                  <CartSheetResponsive />
-                </div>
-                {/* auth */}
-                <div className="hidden md:flex gap-2 mx-0">
-                  <LoginButton />
-                  <SignUpButton />
-                </div>
+                {user ? (
+                  <div className="flex gap-1">
+                    <CurrencyButton />
+                    <CartSheetResponsive />
+                    <NavbarProfile />
+                  </div>
+                ) : (
+                  <>
+                    <div className="mr-2">
+                      <CurrencyButton />
+                      <CartSheetResponsive />
+                    </div>
+                    <div className="hidden md:flex gap-2 mx-0">
+                      <LoginButton />
+                      <SignUpButton />
+                    </div>
+                  </>
+                )}
 
+                {/* Mobile/Tablet fallback for this specific breakpoint */}
                 <div className="md:hidden">
                   <NavbarProfile />
                 </div>

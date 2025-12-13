@@ -18,6 +18,13 @@ export function LoginForm() {
     setIsLoading(true);
     setError(null);
 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setError("The email format is invalid.");
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email,
@@ -33,7 +40,7 @@ export function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin} noValidate>
       <h2>Login</h2>
       <p>Enter your email below to log in to your account</p>
 
@@ -67,7 +74,7 @@ export function LoginForm() {
       </button>
 
       <p>
-        Dont have an account? <Link href="/sign-up">Sign up</Link>
+        Don&apos;t have an account? <Link href="/sign-up">Sign up</Link>
       </p>
     </form>
   );

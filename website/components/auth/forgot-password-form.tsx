@@ -16,9 +16,16 @@ export function ForgotPasswordForm() {
     setIsLoading(true);
     setError(null);
 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setError("The email format is invalid.");
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/update-password`,
+        redirectTo: `${window.location.origin}/confirm?next=/update-password`,
       });
       if (error) throw error;
       setSuccess(true);
@@ -40,7 +47,7 @@ export function ForgotPasswordForm() {
           </p>
         </>
       ) : (
-        <form onSubmit={handleForgotPassword}>
+        <form onSubmit={handleForgotPassword} noValidate>
           <h2>Reset Your Password</h2>
           <p>
             Enter your email and we will send you a link to reset your password.
