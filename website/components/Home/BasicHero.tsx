@@ -7,8 +7,7 @@ import { BasicHeroContent } from "@/lib/types";
 export default function BasicHero({
   header,
   subheader,
-  grayImage,
-  colorImage,
+  image,
   variant,
   href,
 }: BasicHeroContent) {
@@ -18,42 +17,29 @@ export default function BasicHero({
         variant === "big" ? "md:col-span-4" : "md:col-span-2"
       }`}
     >
-      {/* Back image, fades in on hover */}
-      <Image
-        src={colorImage}
-        alt=""
-        fill
-        className="absolute top-0 bottom-0 object-cover object-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-      />
       {/* Front image, fades out on hover */}
       <Image
-        src={grayImage}
+        src={image}
         alt=""
         fill
         priority={true}
-        className="absolute top-0 bottom-0 object-cover object-center opacity-100 group-hover:opacity-0 transition-opacity duration-500"
-      />
-
-      {/* Pink gradient base */}
-      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-t md:from-black/20 md:to-pink-bright/80 brightness-110 group-hover:opacity-0 transition-opacity duration-500" />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t md:top-0 md:bg-gradient-to-b md:from-pink-bright/90 brightness-125 md:to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
+        className="absolute top-0 bottom-0 object-cover object-center duration-500"
       />
 
       {/* Black hover gradient */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-40
-               bg-gradient-to-b from-black/50 to-transparent
-               opacity-100 transition-opacity duration-500 z-0"
+               bg-gradient-to-b from-black/75 to-transparent
+               opacity-100 transition-opacity duration-500
+               group-hover:opacity-50 z-0"
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40
-               bg-gradient-to-t from-black/50 to-transparent
-               opacity-100 transition-opacity duration-500 z-0"
+               bg-gradient-to-t from-black/75 to-transparent
+               opacity-100 transition-opacity duration-500
+               group-hover:opacity-50 z-0"
       />
 
       {/* Heading overlay */}

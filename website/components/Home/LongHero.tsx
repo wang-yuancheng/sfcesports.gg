@@ -4,29 +4,20 @@ import ChevronRight from "@/assets/icons/chevron-right-white.svg";
 import { LongHeroContent } from "@/lib/types";
 import Link from "next/link";
 
-
 export default function LongHero({
   header,
   subheader,
   matchLabel,
-  img,
+  image,
 }: LongHeroContent) {
   return (
     <div className="group relative isolate overflow-hidden rounded-2xl h-[540px] md:col-span-4">
       <Image
-        src={img}
+        src={image}
         alt=""
         fill
         priority={true}
-        className="absolute top-0 bottom-0 object-cover object-center opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"
-      />
-
-      {/* Pink gradient base */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-pink-bright/90 brightness-110 group-hover:opacity-0 transition-opacity duration-500" />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 h-14 bottom-0 bg-gradient-to-t from-pink-bright/90  brightness-125 to-transparent opacity-100 transition-opacity duration-500 group-hover:opacity-0 z-0"
+        className="absolute top-0 bottom-0 object-cover object-center opacity-100 transition-all duration-500"
       />
 
       {/* Black hover gradient */}
@@ -34,15 +25,15 @@ export default function LongHero({
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-40
                bg-gradient-to-b from-black/50 to-transparent
-               opacity-0 transition-opacity duration-500
-               group-hover:opacity-100 z-0"
+               opacity-100 transition-opacity duration-500
+               group-hover:opacity-50 z-0"
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40
                bg-gradient-to-t from-black/50 to-transparent
-               opacity-0 transition-opacity duration-500
-               group-hover:opacity-100 z-0"
+               opacity-100 transition-opacity duration-500
+               group-hover:opacity-50 z-0"
       />
 
       {/* Heading overlay */}

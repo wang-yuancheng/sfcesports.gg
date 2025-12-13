@@ -98,7 +98,7 @@ export interface LongHeroContent {
   header: string;
   subheader: string;
   matchLabel?: string;
-  img: string | StaticImageData;
+  image: string | StaticImageData;
 }
 
 // Shop Hero Content
@@ -106,8 +106,7 @@ export interface BasicHeroContent {
   header: string;
   subheader: string;
   matchLabel?: string;
-  grayImage: string | StaticImageData;
-  colorImage: string | StaticImageData;
+  image: string | StaticImageData;
   variant: "big" | "small";
   href: string;
 }

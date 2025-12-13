@@ -16,7 +16,7 @@ export default function MainHero() {
           header="All Talent Championship"
           subheader="1st Place"
           matchLabel="Regional Championship Final"
-          img={atcBanner}
+          image={atcBanner}
         />
         <ShortHero
           header="Highlights"
@@ -27,8 +27,7 @@ export default function MainHero() {
         <BasicHero
           header="Membership"
           subheader="Premium Benefits"
-          grayImage={subscription}
-          colorImage={subscription}
+          image={subscription}
           variant="small"
           href="/shop"
         />
@@ -36,8 +35,7 @@ export default function MainHero() {
         <BasicHero
           header="Latest Deals"
           subheader="Boosting Services"
-          grayImage={boosting}
-          colorImage={boosting}
+          image={boosting}
           variant="big"
           href="/shop"
         />
