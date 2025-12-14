@@ -2,9 +2,11 @@
 
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import confirmationEmailPicture from "@/assets/pictures/confirmationemail.png";
 
 export function SignUpForm() {
   const [email, setEmail] = useState("");
@@ -13,12 +15,11 @@ export function SignUpForm() {
 
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState(false); // Controls the view
-  const [resendCooldown, setResendCooldown] = useState(0); // Prevents spamming
+  const [success, setSuccess] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState(0);
 
   const supabase = createClient();
 
-  // The Main Sign Up Logic
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -36,17 +37,12 @@ export function SignUpForm() {
     }
 
     try {
-      // --- Check if email exists first ---
       const { data: emailExists, error: rpcError } = await supabase.rpc(
         "check_email_exists",
         { email_to_check: email }
       );
 
-      if (rpcError) {
-        // If the check fails (e.g. network error), we log it but usually
-        // allow the process to continue or handle it as a generic error.
-        console.error("RPC Error checking email:", rpcError);
-      }
+      if (rpcError) console.error("RPC Error checking email:", rpcError);
 
       if (emailExists) {
         setError("This email is already registered. Please sign in instead.");
@@ -75,15 +71,15 @@ export function SignUpForm() {
   const handleResend = async () => {
     if (resendCooldown > 0) return;
 
+    // Reset errors but keep loading UI minimal or handled
     setError(null);
-    setIsLoading(true);
 
     try {
       const { error } = await supabase.auth.resend({
         type: "signup",
         email,
         options: {
-          emailRedirectTo: `${window.location.origin}/confirm?next=/onboarding`,
+          emailRedirectTo: `${window.location.origin}/confirm?next=/welcome`,
         },
       });
 
@@ -101,52 +97,55 @@ export function SignUpForm() {
       }, 1000);
     } catch (error: any) {
       setError(error.message || "Failed to resend email");
-    } finally {
-      setIsLoading(false);
     }
   };
 
-  // --- VIEW 1: SUCCESS STATE (Check Email) ---
+  // --- VIEW 1: CLEAN SUCCESS STATE ---
   if (success) {
     return (
-      <div className="flex flex-col gap-6 text-center animate-in fade-in zoom-in-95 duration-300">
-        <div className="space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight">
-            Check your inbox
-          </h2>
-          <p className="text-gray-500">
-            We sent a confirmation link to:
-            <br />
-            <span className="font-bold text-black">{email}</span>
+      <div className="mx-auto flex max-w-md flex-col items-center justify-center text-center">
+        {/* Illustration */}
+        <div className="w-full">
+          <Image
+            src={confirmationEmailPicture}
+            alt="Check your email"
+            className="mx-auto w-full max-w-sm object-contain"
+            priority
+          />
+        </div>
+
+        {/* Main message */}
+        <div className="mt-6 space-y-2">
+          <h1 className="text-xl font-semibold tracking-tight text-gray-900 md:text-2xl">
+            Check your email
+          </h1>
+          <p className="text-sm leading-6 text-gray-600 md:text-base">
+            We sent a verification link to your inbox.
+            <br className="hidden md:block" />
+            Open it to finish setting up your account.
           </p>
         </div>
 
-        <div className="p-4 bg-gray-50 rounded-lg border border-gray-100 text-sm text-gray-600">
-          Click the link in the email to activate your account and set up your
-          profile.
-        </div>
+        {/* Resend */}
+        <div className="mt-6 w-full rounded-xl border bg-gray-50 p-4">
+          <p className="text-sm text-gray-700">Didn’t receive the email?</p>
 
-        <div className="flex flex-col gap-3">
-          <Button
-            onClick={handleResend}
-            disabled={isLoading || resendCooldown > 0}
-            variant="outline"
-            className="w-full"
-          >
-            {resendCooldown > 0
-              ? `Resend available in ${resendCooldown}s`
-              : "Resend Email"}
-          </Button>
+          {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
 
           <button
-            onClick={() => setSuccess(false)}
-            className="text-xs text-gray-400 hover:text-black transition-colors"
+            onClick={handleResend}
+            disabled={resendCooldown > 0}
+            className="mt-1 inline-flex items-center justify-center text-sm font-medium text-gray-900 underline underline-offset-4 transition-opacity disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Typo? Use a different email
+            {resendCooldown > 0
+              ? `Resend in ${resendCooldown}s`
+              : "Resend email"}
           </button>
-        </div>
 
-        {error && <p className="text-red-500 text-sm font-medium">{error}</p>}
+          <p className="mt-2 text-xs text-gray-500">
+            Tip: check spam, promotions, or junk folders.
+          </p>
+        </div>
       </div>
     );
   }
