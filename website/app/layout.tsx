@@ -20,10 +20,23 @@ export default async function RootLayout({
     data: { user },
   } = await supabase.auth.getUser();
 
+  let userProfile = null;
+  if (user) {
+    const { data } = await supabase
+      .from("profiles")
+      .select("username, avatar_url")
+      .eq("id", user.id)
+      .single();
+      
+    if (data) {
+      userProfile = data;
+    }
+  }
+
   return (
     <html lang="en">
       <body>
-        <UserProvider initialUser={user}>
+        <UserProvider initialUser={user} initialProfile={userProfile}>
           <InitialFontWrapper>{children}</InitialFontWrapper>
         </UserProvider>
       </body>

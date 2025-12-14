@@ -25,14 +25,22 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  const { data } = await supabase.auth.getClaims();
-  const user = data?.claims;
+  // 1. Get User
+  const { data: { user } } = await supabase.auth.getUser();
 
-  if (request.nextUrl.pathname.startsWith("/protected") && !user) {
-  const url = request.nextUrl.clone();
-  url.pathname = "/login";
-  return NextResponse.redirect(url);
-}
+  // 2. Define Protected Routes
+  const protectedPaths = ["/protected", "/profile", "/onboarding"];
+  const isProtected = protectedPaths.some((path) => 
+    request.nextUrl.pathname.startsWith(path)
+  );
+
+  // 3. Handle Unauthorized Access
+  if (isProtected && !user) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+    url.searchParams.set("error", "Please log in to view this page");
+    return NextResponse.redirect(url);
+  }
 
   return supabaseResponse;
 }

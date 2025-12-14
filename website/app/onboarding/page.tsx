@@ -9,7 +9,7 @@ import LogoFade from "@/components/ui/logofade";
 
 export default function Onboarding() {
   const supabase = createClient();
-  const { user } = useUser();
+  const { user, profile, isLoading } = useUser();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
@@ -17,25 +17,23 @@ export default function Onboarding() {
   const [avatarUrl, setAvatarUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  // Load existing data if they have it
+  // 1. Redirect if already onboarded (has a username)
   useEffect(() => {
-    const getProfile = async () => {
-      if (!user) return;
-
-      const { data } = await supabase
-        .from("profiles")
-        .select("username, avatar_url")
-        .eq("id", user.id)
-        .single();
-
-      if (data) {
-        setUsername(data.username || "");
-        setAvatarUrl(data.avatar_url || "");
+    // Wait for main loading to finish before deciding
+    if (!isLoading) {
+      if (profile?.username) {
+        router.replace("/profile");
       }
-    };
+    }
+  }, [profile, isLoading, router]);
 
-    getProfile();
-  }, [user, supabase]);
+  // 2. Pre-fill form if data exists (e.g. they uploaded avatar but didn't finish)
+  useEffect(() => {
+    if (profile) {
+      if (profile.username) setUsername(profile.username);
+      if (profile.avatar_url) setAvatarUrl(profile.avatar_url);
+    }
+  }, [profile]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,13 +43,13 @@ export default function Onboarding() {
     try {
       if (!user) throw new Error("No user found");
 
-      if (username.length < 3) {
+      if (username.trim().length < 3) {
         throw new Error("Username must be at least 3 characters long.");
       }
 
       const updates = {
         id: user.id,
-        username,
+        username: username.trim(),
         avatar_url: avatarUrl,
         updated_at: new Date().toISOString(),
       };
@@ -63,8 +61,9 @@ export default function Onboarding() {
         throw error;
       }
 
-      // Success: Redirect to protected page
-      router.push("/protected");
+      // Success
+      router.refresh(); 
+      router.push("/profile");
     } catch (error: any) {
       setError(error.message);
     } finally {
@@ -72,9 +71,13 @@ export default function Onboarding() {
     }
   };
 
+  // Show a blank loading state while we check the profile to prevent flashing
+  if (isLoading || profile?.username) {
+    return <div className="min-h-screen bg-white" />;
+  }
+
   return (
     <div className="min-h-screen bg-white flex flex-col items-center pt-20 px-4">
-      {/* 1. Header Area */}
       <div className="mb-10 flex flex-col items-center gap-4">
         <LogoFade />
         <div className="text-center space-y-2">
@@ -86,7 +89,6 @@ export default function Onboarding() {
       </div>
 
       <div className="w-full max-w-md">
-        {/* 2. Avatar Uploader */}
         <div className="mb-8 flex justify-center">
           <AvatarUpload
             uid={user?.id ?? null}
@@ -95,10 +97,7 @@ export default function Onboarding() {
           />
         </div>
 
-        {/* 3. The Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          
-          {/* Username Input */}
           <div className="space-y-2">
             <label htmlFor="username" className="text-sm font-bold uppercase tracking-wider text-gray-700">
               Username
@@ -108,7 +107,7 @@ export default function Onboarding() {
               type="text"
               required
               value={username}
-              onChange={(e) => setUsername(e.target.value.trim())} 
+              onChange={(e) => setUsername(e.target.value)} 
               className="w-full border border-gray-300 rounded-md px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all placeholder:text-gray-300"
               placeholder="shibefan123"
             />
@@ -117,14 +116,12 @@ export default function Onboarding() {
             </p>
           </div>
 
-          {/* Error Message */}
           {error && (
             <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-600 text-sm text-center">
               {error}
             </div>
           )}
 
-          {/* Finish Button */}
           <button
             type="submit"
             disabled={loading}
