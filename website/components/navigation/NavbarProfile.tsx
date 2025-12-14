@@ -61,9 +61,9 @@ export default function NavbarProfile() {
                 Profile Settings
               </DropdownMenuItem>
             </Link>
-            <Link href="/dashboard">
+            <Link href="/shop">
               <DropdownMenuItem className="cursor-pointer">
-                Dashboard
+                Membership
               </DropdownMenuItem>
             </Link>
             <DropdownMenuSeparator />

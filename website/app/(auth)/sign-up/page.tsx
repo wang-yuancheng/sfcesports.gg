@@ -176,9 +176,9 @@ export default function SignUpPage() {
 
   // --- VIEW 2: SIGN UP FORM (MATCHING LOGIN PAGE LAYOUT) ---
   return (
-    <div className="flex w-full flex-col items-center justify-start pt-6 md:justify-center md:pt-10 gap-4 md:gap-8">
+    <div className="flex w-full flex-col items-center justify-start md:justify-center gap-4 md:gap-0">
       {/* Top Right Link */}
-      <div className="mb-5 md:mb-0 md:w-full text-center md:text-right px-10">
+      <div className="mb-5 md:mb-0 md:w-full text-center md:text-right px-10 pt-10 md:pt-6">
         <span className="text-base text-gray-500 font-[400]">
           Already have an account?{" "}
         </span>
@@ -207,7 +207,7 @@ export default function SignUpPage() {
       </div>
 
       {/* Form Container */}
-      <div className="w-full max-w-[450px] flex flex-col items-center px-6">
+      <div className="w-full max-w-[450px] flex flex-col items-center px-6 mb-10 mt-4 md:mt-8">
         {/* Social Buttons */}
         <div className="mb-8 grid w-full grid-cols-4 gap-7">
           <button
@@ -350,7 +350,7 @@ export default function SignUpPage() {
               {passwordError ? (
                 <p className="text-sm text-red-600 pt-1">{passwordError}</p>
               ) : (
-                <p className="text-xs text-gray-500 font-[500] first-letter:pt-1 ml-1">
+                <p className="text-xs text-gray-500 font-[500] ml-1">
                   Minimum length of 8 characters.
                 </p>
               )}
@@ -360,11 +360,11 @@ export default function SignUpPage() {
           {/* Legal Text */}
           <div className="text-xs text-gray-500 font-[500] leading-relaxed text-center px-2">
             By signing up you agree to our{" "}
-            <Link href="/terms" className="underline hover:text-black">
+            <Link href="/policies/website-terms" className="underline hover:text-black">
               Terms
             </Link>{" "}
             &{" "}
-            <Link href="/privacy" className="underline hover:text-black">
+            <Link href="/policies/privacy" className="underline hover:text-black">
               Privacy Policy
             </Link>
             .

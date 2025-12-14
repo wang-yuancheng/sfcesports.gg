@@ -9,13 +9,20 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get("code");
   const token_hash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
-  const next = searchParams.get("next") ?? "/welcome";
+
+  const nextPath = searchParams.get("next") ?? "/";
+  const nextUrl = new URL(nextPath, request.url);
+
+  // If this is a password recovery flow, pass that flag to the next page
+  if (type) {
+    nextUrl.searchParams.set("type", type);
+  }
 
   if (code) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
-      redirect(next);
+      redirect(nextUrl.toString());
     } else {
       redirect(`/error?error=${encodeURIComponent(error.message)}`);
     }
@@ -28,7 +35,7 @@ export async function GET(request: NextRequest) {
       token_hash,
     });
     if (!error) {
-      redirect(next);
+      redirect(nextUrl.toString());
     } else {
       redirect(`/error?error=${encodeURIComponent(error.message)}`);
     }

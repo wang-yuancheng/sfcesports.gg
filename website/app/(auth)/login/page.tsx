@@ -84,8 +84,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-start pt-6 md:justify-center md:pt-10 gap-4 md:gap-8">
-      <div className="mb-5 md:mb-0 md:w-full text-center md:text-right px-10">
+    <div className="flex w-full flex-col items-center justify-start md:justify-center gap-4 md:gap-0">
+      <div className="mb-5 md:mb-0 md:w-full text-center md:text-right px-10 pt-10 md:pt-6 ">
         <span className="text-base text-gray-500 font-[400]">
           New to SFC ID?{" "}
         </span>
@@ -112,7 +112,7 @@ export default function LoginPage() {
         </h1>
       </div>
 
-      <div className="w-full max-w-[450px] flex flex-col items-center px-6">
+      <div className="w-full max-w-[450px] flex flex-col items-center px-6 mb-10 mt-4 md:mt-8">
         <div className="mb-8 grid w-full grid-cols-4 gap-7">
           <button
             type="button"
