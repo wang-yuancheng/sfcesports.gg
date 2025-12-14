@@ -159,7 +159,7 @@ export default function SignUpPage() {
             <button
               onClick={handleResend}
               disabled={resendCooldown > 0}
-              className="mt-1 inline-flex items-center justify-center text-sm font-medium text-gray-900 underline underline-offset-4 transition-opacity disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-1 inline-flex items-center justify-center text-sm font-medium text-gray-900 underline underline-offset-3 transition-opacity disabled:cursor-not-allowed disabled:opacity-50"
             >
               {resendCooldown > 0
                 ? `Resend in ${resendCooldown}s`
@@ -178,7 +178,7 @@ export default function SignUpPage() {
   return (
     <div className="flex w-full flex-col items-center justify-start pt-6 md:justify-center md:pt-10 gap-4 md:gap-8">
       {/* Top Right Link */}
-      <div className="mt-8 md:mt-0 md:w-full text-center md:text-right px-10">
+      <div className="mb-5 md:mb-0 md:w-full text-center md:text-right px-10">
         <span className="text-base text-gray-500 font-[400]">
           Already have an account?{" "}
         </span>
@@ -191,17 +191,17 @@ export default function SignUpPage() {
       </div>
 
       {/* Header */}
-      <div className="flex flex-col items-center gap-5">
+      <div className="flex flex-col items-center gap-5 mb-4 md:mb-0">
         <div className="relative h-12 w-12">
           <Image
             src={shibeLogo}
             alt="SFC"
             fill
-            className="object-contain"
+            className="object-contain" 
             priority
           />
         </div>
-        <h1 className="font-druk font-[500] text-2xl uppercase tracking-wide text-black text-center leading-none">
+        <h1 className="font-druk font-[500] text-xl md:text-2xl uppercase tracking-wide text-black text-center leading-none">
           Join The Community
         </h1>
       </div>
@@ -236,7 +236,7 @@ export default function SignUpPage() {
 
           <button
             type="button"
-            className="flex h-12 md:h-14 items-center justify-center rounded-lg bg-[#5865F2] text-white hover:opacity-90 transition-opacity"
+            className="flex h-12 md:h-14 items-center justify-center rounded-lg bg-[#5865F2] text-white hover:opacity-90 "
           >
             <svg className="h-6 w-6 fill-current" viewBox="0 0 127.14 96.36">
               <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.11,77.11,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.89,105.89,0,0,0,126.6,80.22c1.25-23.23-3.25-47.57-18.9-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
@@ -245,7 +245,7 @@ export default function SignUpPage() {
 
           <button
             type="button"
-            className="flex h-12 md:h-14 items-center justify-center rounded-lg bg-[#55ACEE] text-white hover:opacity-90 transition-opacity"
+            className="flex h-12 md:h-14 items-center justify-center rounded-lg bg-[#55ACEE] text-white hover:opacity-90 "
           >
             <svg
               className="h-6 w-6 md:h-8 md:w-8 fill-current"
@@ -257,7 +257,7 @@ export default function SignUpPage() {
 
           <button
             type="button"
-            className="flex h-12 md:h-14 items-center justify-center rounded-lg bg-[#1877F2] text-white hover:opacity-90 transition-opacity"
+            className="flex h-12 md:h-14 items-center justify-center rounded-lg bg-[#1877F2] text-white hover:opacity-90"
           >
             <svg
               className="h-6 w-6 md:h-8 md:w-8 fill-current"
