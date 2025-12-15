@@ -1,12 +1,12 @@
 import Link from "next/link";
-import {
-  LayoutGrid,
-  Users,
-  Trophy,
-  Newspaper,
-  ShoppingBag,
-  Info,
-} from "lucide-react";
+import Image from "next/image";
+
+import layoutGridIcon from "@/assets/icons/layout-grid.svg"
+import infoIcon from "@/assets/icons/info.svg"
+import usersIcon from "@/assets/icons/users.svg";
+import trophyIcon from "@/assets/icons/trophy.svg"
+import newspaperIcon from "@/assets/icons/newspaper.svg"
+import shoppingBagIcon from "@/assets/icons/shopping-bag.svg";
 
 const foundingYear = 2021;
 const currentYear = new Date().getFullYear();
@@ -17,37 +17,37 @@ const notFoundLinks = [
     title: "Feed",
     description: "Latest of everything SFC",
     href: "/",
-    icon: <LayoutGrid className="w-5 h-5" />,
+    icon: layoutGridIcon,
   },
   {
     title: "About",
     description: `${yearsActive} years leading esports`,
     href: "/about",
-    icon: <Info className="w-5 h-5" />,
+    icon: infoIcon,
   },
   {
     title: "Our Teams",
     description: "Meet our rosters and players",
     href: "/teams",
-    icon: <Users className="w-5 h-5" />,
+    icon: usersIcon,
   },
   {
     title: "Events",
     description: "Tournaments and match results",
     href: "/events",
-    icon: <Trophy className="w-5 h-5" />,
+    icon: trophyIcon,
   },
   {
     title: "Media",
     description: "The latest SFC updates",
     href: "/media",
-    icon: <Newspaper className="w-5 h-5" />,
+    icon: newspaperIcon,
   },
   {
     title: "Shop",
     description: "Boosting services and memberships",
     href: "/shop",
-    icon: <ShoppingBag className="w-5 h-5" />,
+    icon: shoppingBagIcon,
   },
 ];
 
@@ -58,7 +58,13 @@ function NotFoundLinkCard({ item }: { item: (typeof notFoundLinks)[0] }) {
       className="group flex items-center gap-4 p-4 rounded-2xl transition-colors duration-200 hover:bg-[#F3F4F6]"
     >
       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-black group-hover:bg-white group-hover:shadow-sm transition-all duration-200">
-        {item.icon}
+        <Image
+          src={item.icon}
+          alt=""
+          width={20}
+          height={20}
+          className="w-5 h-5 object-contain"
+        />
       </div>
 
       <div className="flex flex-col gap-1">

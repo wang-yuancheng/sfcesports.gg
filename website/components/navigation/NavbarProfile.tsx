@@ -13,7 +13,6 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdownMenu";
 import { useUser } from "@/hooks/useUser";
-// Using your original asset import
 import profileIcon from "@/assets/icons/circle-user-round.svg";
 
 export default function NavbarProfile() {

@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Check, Star } from "lucide-react";
 
 export default function MembershipPage() {
   return (
@@ -20,8 +19,8 @@ export default function MembershipPage() {
               </span>
             </div>
             <p className="text-gray-600 text-sm max-w-md">
-              You are currently on the standard community plan. Upgrade to unlock
-              exclusive tournament slots and badges.
+              You are currently on the standard community plan. Upgrade to
+              unlock exclusive tournament slots and badges.
             </p>
           </div>
           <Button className="bg-pink-bright hover:bg-pink-bright/90 text-white rounded-lg px-6">
@@ -37,10 +36,11 @@ export default function MembershipPage() {
               "Standard discord role",
               "Basic profile customization",
             ].map((feature, i) => (
-              <li key={i} className="flex items-center gap-3 text-sm text-gray-600">
-                <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3 text-green-600" strokeWidth={3} />
-                </div>
+              <li
+                key={i}
+                className="flex items-center gap-3 text-sm text-gray-600"
+              >
+                <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0"></div>
                 {feature}
               </li>
             ))}

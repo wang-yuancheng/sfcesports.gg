@@ -28,7 +28,7 @@ function MediaCard({ item }: { item: MediaItem }) {
 export default function Media() {
   return (
     <div className="mb-16">
-      <div className="section-container lg:mt-6 flex flex-col gap-4">
+      <div className="section-container navbarsm:mt-6 flex flex-col gap-4">
         <div
           className="
             grid gap-6

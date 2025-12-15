@@ -1,7 +1,5 @@
 "use client";
 
-import { Bell } from "lucide-react";
-
 export default function NotificationsPage() {
   const notifications = [
     {
@@ -37,23 +35,32 @@ export default function NotificationsPage() {
                 }`}
               >
                 <div className="shrink-0 mt-1">
-                  <div className={`w-2 h-2 rounded-full ${!n.read ? "bg-pink-bright" : "bg-transparent"}`} />
+                  <div
+                    className={`w-2 h-2 rounded-full ${
+                      !n.read ? "bg-pink-bright" : "bg-transparent"
+                    }`}
+                  />
                 </div>
                 <div className="flex-1">
-                    <div className="flex justify-between items-start">
-                        <h4 className={`text-sm ${!n.read ? "font-bold text-black" : "font-medium text-gray-700"}`}>
-                            {n.title}
-                        </h4>
-                        <span className="text-xs text-gray-400">{n.date}</span>
-                    </div>
-                    <p className="text-sm text-gray-600 mt-1">{n.msg}</p>
+                  <div className="flex justify-between items-start">
+                    <h4
+                      className={`text-sm ${
+                        !n.read
+                          ? "font-bold text-black"
+                          : "font-medium text-gray-700"
+                      }`}
+                    >
+                      {n.title}
+                    </h4>
+                    <span className="text-xs text-gray-400">{n.date}</span>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">{n.msg}</p>
                 </div>
               </div>
             ))}
           </div>
         ) : (
           <div className="p-12 text-center text-gray-500">
-            <Bell className="w-8 h-8 mx-auto mb-3 opacity-20" />
             <p>No new notifications</p>
           </div>
         )}

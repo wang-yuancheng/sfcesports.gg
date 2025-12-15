@@ -9,7 +9,6 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
 import ImageModal from "@/components/home/ImageModal";
 
 export default function BoosterModal({
@@ -272,7 +271,6 @@ export default function BoosterModal({
                       }
                       className="rounded-full bg-black hover:bg-pink-bright transition-colors text-white px-10 h-12 text-base font-bold shadow-xl shadow-gray-200 active:scale-95"
                     >
-                      <Mail className="w-4 h-4 mr-2" />
                       Send Message
                     </Button>
                   </div>
