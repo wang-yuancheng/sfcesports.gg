@@ -54,13 +54,18 @@ export default function NavbarProfile() {
         {user ? (
           // --- LOGGED IN VIEW ---
           <>
-            <div className="px-2 py-1.5 text-sm font-semibold text-gray-900 truncate">
-              {user.email}
+            <div className="py-1.5">
+              <div className="px-2 text-sm font-[500] text-gray-600 truncate">
+                Signed in as
+              </div>
+              <div className="px-2 text-sm font-semibold truncate">
+                {user.email}
+              </div>
             </div>
             <DropdownMenuSeparator />
             <Link href="/account">
               <DropdownMenuItem className="cursor-pointer">
-                Profile Settings
+                Edit Profile
               </DropdownMenuItem>
             </Link>
             <Link href="/shop">
@@ -71,9 +76,9 @@ export default function NavbarProfile() {
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={handleLogout}
-              className="text-red-600 cursor-pointer focus:text-red-600"
+              className="cursor-pointer focus:text-red-500"
             >
-              Log out
+              Sign out
             </DropdownMenuItem>
           </>
         ) : (
