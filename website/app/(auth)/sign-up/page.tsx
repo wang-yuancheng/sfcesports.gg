@@ -71,7 +71,7 @@ export default function SignUpPage() {
 
       if (emailExists) {
         setServerError(
-          "This email is already registered. Please log in instead."
+          "This email is already registered. Please log in. If you need to verify your email, you can request a new link from the login page."
         );
         setIsLoading(false);
         return;
@@ -174,7 +174,7 @@ export default function SignUpPage() {
     );
   }
 
-  // --- VIEW 2: SIGN UP FORM (MATCHING LOGIN PAGE LAYOUT) ---
+  // --- VIEW 2: SIGN UP FORM ---
   return (
     <div className="flex w-full flex-col items-center justify-start md:justify-center gap-4 md:gap-0">
       {/* Top Right Link */}

@@ -46,8 +46,9 @@ function UpdatePasswordContent() {
       });
       if (error) throw error;
       setSuccess(true);
+      // Redirect to profile to confirm they are logged in and verified
       setTimeout(() => {
-        router.push("/");
+        router.push("/profile");
       }, 2000);
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
@@ -61,7 +62,7 @@ function UpdatePasswordContent() {
       {success ? (
         <>
           <h2 className="text-2xl font-bold mb-4">Success!</h2>
-          <p className="text-gray-600">Your password has been updated. Redirecting...</p>
+          <p className="text-gray-600">Your password has been updated. Redirecting to your profile...</p>
         </>
       ) : (
         <form onSubmit={handleUpdatePassword} noValidate className="space-y-4">

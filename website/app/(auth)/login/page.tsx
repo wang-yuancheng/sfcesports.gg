@@ -15,23 +15,30 @@ export default function LoginPage() {
 
   // Server/Auth level errors (e.g. wrong credentials)
   const [authError, setAuthError] = useState<string | null>(null);
+  const [authSuccess, setAuthSuccess] = useState<string | null>(null);
 
   // Field-level validation errors
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
 
+  // Verification Logic
+  const [needsVerification, setNeedsVerification] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState(0);
+
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const supabase = createClient();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const supabase = createClient();
     setIsLoading(true);
 
     // Reset all errors
     setAuthError(null);
+    setAuthSuccess(null);
     setEmailError(null);
     setPasswordError(null);
+    setNeedsVerification(false);
 
     let hasValidationError = false;
 
@@ -66,6 +73,12 @@ export default function LoginPage() {
       });
 
       if (error) {
+        // --- LOGIN INTERCEPT LOGIC ---
+        if (error.message.includes("Email not confirmed")) {
+          setNeedsVerification(true);
+          throw new Error("You have not verified your email address yet.");
+        }
+
         // Specific message for credential failure
         if (error.message === "Invalid login credentials") {
           throw new Error(
@@ -80,6 +93,41 @@ export default function LoginPage() {
       setAuthError(error.message || "An error occurred during login.");
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleResendVerification = async () => {
+    if (resendCooldown > 0) return;
+    setAuthError(null);
+    setAuthSuccess(null);
+
+    try {
+      const { error } = await supabase.auth.resend({
+        type: "signup",
+        email: email.trim(),
+        options: {
+          emailRedirectTo: `${window.location.origin}/confirm?next=/welcome`,
+        },
+      });
+
+      if (error) throw error;
+
+      setAuthSuccess(`Verification link sent to ${email}`);
+      
+      // Start Cooldown
+      setResendCooldown(60);
+      const interval = setInterval(() => {
+        setResendCooldown((prev) => {
+          if (prev <= 1) {
+            clearInterval(interval);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+    } catch (error: any) {
+      setAuthError(error.message || "Failed to resend verification email.");
     }
   };
 
@@ -184,19 +232,45 @@ export default function LoginPage() {
         </div>
 
         <form onSubmit={handleLogin} className="w-full space-y-6" noValidate>
-          {/* TOP ALERT: Only shows if there is a main AUTH error (like wrong password) */}
+          {/* AUTH ERROR DISPLAY */}
           {authError && (
-            <div className="flex w-full items-start gap-3 rounded-md border border-red-200 bg-red-50 p-4 text-red-600">
-              <svg
-                className="mt-0.5 h-5 w-5 flex-shrink-0"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm1 15h-2v-2h2zm0-4h-2V7h2z" />
-              </svg>
-              <p className="text-sm leading-6">{authError}</p>
+            <div className="flex w-full flex-col gap-3 rounded-md border border-red-200 bg-red-50 p-4 text-red-600">
+              <div className="flex items-start gap-3">
+                <svg
+                  className="mt-0.5 h-5 w-5 flex-shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm1 15h-2v-2h2zm0-4h-2V7h2z" />
+                </svg>
+                <p className="text-sm leading-6">{authError}</p>
+              </div>
+
+              {/* RESEND VERIFICATION BUTTON */}
+              {needsVerification && (
+                 <div className="pl-8">
+                   <button
+                     type="button"
+                     onClick={handleResendVerification}
+                     disabled={resendCooldown > 0}
+                     className="text-sm font-bold underline underline-offset-2 hover:text-red-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                   >
+                     {resendCooldown > 0 ? `Resend email in ${resendCooldown}s` : "Resend Verification Email"}
+                   </button>
+                 </div>
+              )}
             </div>
+          )}
+
+          {/* SUCCESS MESSAGE */}
+          {authSuccess && (
+             <div className="flex w-full items-start gap-3 rounded-md border border-green-200 bg-green-50 p-4 text-green-700">
+               <svg xmlns="http://www.w3.org/2000/svg" className="mt-0.5 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+               </svg>
+               <p className="text-sm leading-6">{authSuccess}</p>
+             </div>
           )}
 
           <div className="space-y-5">
