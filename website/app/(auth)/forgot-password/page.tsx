@@ -156,7 +156,7 @@ export default function ForgotPasswordPage() {
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
-                    if (emailError) setEmailError(null); // Clear error on type
+                    if (emailError) setEmailError(null); 
                   }}
                   className={[
                     "h-12 bg-white px-4 text-base focus-visible:border-black focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-300",

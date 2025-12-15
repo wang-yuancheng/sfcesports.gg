@@ -2,7 +2,7 @@
 
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react"; 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,7 +13,6 @@ export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Clean field-level error handling
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -21,8 +20,21 @@ export default function SignUpPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [resendCooldown, setResendCooldown] = useState(0);
+  const [isResending, setIsResending] = useState(false); 
 
   const supabase = createClient();
+
+  // --- TIMER LOGIC ---
+  // This runs automatically whenever resendCooldown > 0
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (resendCooldown > 0) {
+      interval = setInterval(() => {
+        setResendCooldown((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [resendCooldown]);
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +47,7 @@ export default function SignUpPage() {
 
     let hasError = false;
 
-    // 1. Validation
+    // Validation
     if (!email.trim()) {
       setEmailError("The email field is required.");
       hasError = true;
@@ -61,7 +73,7 @@ export default function SignUpPage() {
     }
 
     try {
-      // 2. Check if email exists
+      // Check if email exists
       const { data: emailExists, error: rpcError } = await supabase.rpc(
         "check_email_exists",
         { email_to_check: email }
@@ -77,7 +89,7 @@ export default function SignUpPage() {
         return;
       }
 
-      // 3. Sign Up
+      // Sign Up
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -97,13 +109,16 @@ export default function SignUpPage() {
   };
 
   const handleResend = async () => {
-    if (resendCooldown > 0) return;
+    // Guard clause prevents double clicks
+    if (resendCooldown > 0 || isResending) return;
+
     setServerError(null);
+    setIsResending(true);
 
     try {
       const { error } = await supabase.auth.resend({
         type: "signup",
-        email,
+        email: email.trim(),
         options: {
           emailRedirectTo: `${window.location.origin}/confirm?next=/welcome`,
         },
@@ -112,21 +127,14 @@ export default function SignUpPage() {
       if (error) throw error;
 
       setResendCooldown(60);
-      const interval = setInterval(() => {
-        setResendCooldown((prev) => {
-          if (prev <= 1) {
-            clearInterval(interval);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
     } catch (error: any) {
       setServerError(error.message || "Failed to resend email");
+    } finally {
+      setIsResending(false);
     }
   };
 
-  // --- VIEW 1: CLEAN SUCCESS STATE (Unchanged) ---
+  // --- VIEW 1: CLEAN SUCCESS STATE ---
   if (success) {
     return (
       <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-white px-4">
@@ -158,10 +166,12 @@ export default function SignUpPage() {
             )}
             <button
               onClick={handleResend}
-              disabled={resendCooldown > 0}
+              disabled={resendCooldown > 0 || isResending}
               className="mt-1 inline-flex items-center justify-center text-sm font-medium text-gray-900 underline underline-offset-3 transition-opacity disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {resendCooldown > 0
+              {isResending
+                ? "Sending..."
+                : resendCooldown > 0
                 ? `Resend in ${resendCooldown}s`
                 : "Resend email"}
             </button>
@@ -197,7 +207,7 @@ export default function SignUpPage() {
             src={shibeLogo}
             alt="SFC"
             fill
-            className="object-contain" 
+            className="object-contain"
             priority
           />
         </div>
@@ -268,7 +278,6 @@ export default function SignUpPage() {
           </button>
         </div>
 
-        {/* Divider */}
         <div className="relative mb-8 w-full">
           <div className="absolute inset-0 flex items-center">
             <span className="w-full border-t border-gray-200" />
@@ -350,7 +359,7 @@ export default function SignUpPage() {
               {passwordError ? (
                 <p className="text-sm text-red-600 pt-1">{passwordError}</p>
               ) : (
-                <p className="text-xs text-gray-500 font-[500] ml-1">
+                <p className="text-xs text-gray-500 font-[500] ml-0.5">
                   Minimum length of 8 characters.
                 </p>
               )}
@@ -360,11 +369,17 @@ export default function SignUpPage() {
           {/* Legal Text */}
           <div className="text-xs text-gray-500 font-[500] leading-relaxed text-center px-2">
             By signing up you agree to our{" "}
-            <Link href="/policies/website-terms" className="underline hover:text-black">
+            <Link
+              href="/policies/website-terms"
+              className="underline hover:text-black"
+            >
               Terms
             </Link>{" "}
             &{" "}
-            <Link href="/policies/privacy" className="underline hover:text-black">
+            <Link
+              href="/policies/privacy"
+              className="underline hover:text-black"
+            >
               Privacy Policy
             </Link>
             .

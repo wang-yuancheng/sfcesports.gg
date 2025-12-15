@@ -29,7 +29,7 @@ export async function updateSession(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser();
 
   // 2. Define Protected Routes
-  const protectedPaths = ["/protected", "/profile", "/onboarding", "/update-password"];
+  const protectedPaths = ["/protected", "/profile", "/update-password", "/welcome"];
   const isProtected = protectedPaths.some((path) => 
     request.nextUrl.pathname.startsWith(path)
   );

@@ -2,27 +2,24 @@
 
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
-import { 
-  User, 
-  Settings, 
-  Bell, 
-  Shield, 
-  Link as LinkIcon, 
-  LogOut, 
-  Users,
-  CreditCard
+import {
+  User,
+  Settings,
+  Bell,
+  Shield,
+  Link as LinkIcon,
+  LogOut,
+  CreditCard,
 } from "lucide-react";
 import Link from "next/link";
 
 const menuItems = [
-  { icon: Users, label: "Following", href: "#" },
-  { icon: User, label: "Edit Profile", href: "/profile", active: true },
-  { icon: CreditCard, label: "Membership", href: "#" },
-  { icon: Users, label: "Invite Friends", href: "#" },
-  { icon: Settings, label: "Settings", href: "#" },
-  { icon: Bell, label: "Notifications", href: "#" },
-  { icon: Shield, label: "Security", href: "#" },
-  { icon: LinkIcon, label: "Connections", href: "#" },
+  { icon: User, label: "Edit Profile", href: "/account", active: true },
+  { icon: CreditCard, label: "Membership", href: "/account/membership" },
+  { icon: Settings, label: "Settings", href: "/account/settings" },
+  { icon: Bell, label: "Notifications", href: "/account/notifications" },
+  { icon: Shield, label: "Security", href: "/account/security" },
+  { icon: LinkIcon, label: "Connections", href: "/account/connections" },
 ];
 
 export default function ProfileSidebar() {
