@@ -35,12 +35,15 @@ export default function NavbarProfile() {
       <DropdownMenuTrigger asChild>
         <div className="relative items-center flex cursor-pointer rounded-md p-2 sm:hover:bg-gray-100 transition-colors">
           {user && profile?.avatar_url ? (
-            <Image
-              src={profile.avatar_url}
-              alt="Profile"
-              width={22}
-              height={22}
-              className="rounded-full object-cover"
+            <div
+              className="rounded-full bg-cover bg-center bg-no-repeat bg-gray-200 border border-gray-200"
+              style={{
+                width: "22px",
+                height: "22px",
+                minWidth: "22px",
+                minHeight: "22px",
+                backgroundImage: `url('${profile.avatar_url}')`,
+              }}
             />
           ) : (
             <Image src={profileIcon} alt="Profile" width={22} height={22} />

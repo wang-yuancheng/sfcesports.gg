@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <>
       {/* Mobile Header */}
-      <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+      <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-md border-b border-white/10 transition-all duration-300 mr-1">
         <div className="flex flex-col h-fit min-h-[58px] flex-shrink-0 md:hidden">
           <div className="w-full h-14 flex justify-between items-center px-4 flex-shrink-0">
             {/* Left */}
