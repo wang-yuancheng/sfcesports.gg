@@ -16,7 +16,7 @@ function UpdatePasswordContent() {
 
   useEffect(() => {
     if (!isRecovery) {
-      router.replace("/profile"); 
+      router.replace("/account"); 
     }
   }, [isRecovery, router]);
 
@@ -48,7 +48,7 @@ function UpdatePasswordContent() {
       setSuccess(true);
       // Redirect to profile to confirm they are logged in and verified
       setTimeout(() => {
-        router.push("/profile");
+        router.push("/account");
       }, 2000);
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");

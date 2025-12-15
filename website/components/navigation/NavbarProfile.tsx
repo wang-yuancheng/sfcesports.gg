@@ -38,10 +38,10 @@ export default function NavbarProfile() {
             <div
               className="rounded-full bg-cover bg-center bg-no-repeat bg-gray-200 border border-gray-200"
               style={{
-                width: "22px",
-                height: "22px",
-                minWidth: "22px",
-                minHeight: "22px",
+                width: "24px",
+                height: "24px",
+                minWidth: "24px",
+                minHeight: "24px",
                 backgroundImage: `url('${profile.avatar_url}')`,
               }}
             />
@@ -59,7 +59,7 @@ export default function NavbarProfile() {
               {user.email}
             </div>
             <DropdownMenuSeparator />
-            <Link href="/profile">
+            <Link href="/account">
               <DropdownMenuItem className="cursor-pointer">
                 Profile Settings
               </DropdownMenuItem>

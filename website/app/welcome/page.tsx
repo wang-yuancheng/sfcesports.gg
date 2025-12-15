@@ -31,7 +31,7 @@ export default function WelcomePage() {
   // If they already have a username, kick them to the app
   useEffect(() => {
     if (!isLoading && profile?.username) {
-      router.replace("/profile");
+      router.replace("/account");
     }
   }, [profile, isLoading, router]);
 
@@ -73,7 +73,7 @@ export default function WelcomePage() {
 
       // Success! Refresh ensures the new username propagates to the layout
       router.refresh();
-      router.push("/profile");
+      router.push("/account");
     } catch (error: any) {
       setError(error.message);
     } finally {
