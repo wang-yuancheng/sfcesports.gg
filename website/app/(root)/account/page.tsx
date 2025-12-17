@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import ProfileForm from "@/components/account/ProfileForm";
 import FeatureRequest from "@/components/account/FeatureRequest";
 

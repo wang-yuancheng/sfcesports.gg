@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import Image from "next/image";
-import profileIcon from "@/assets/icons/circle-user-round.svg"; // Default icon
+import profileIcon from "@/assets/icons/circle-user-round.svg";
+import editIcon from "@/assets/icons/square-pen.svg";
 
 export default function AvatarUpload({
   uid,
@@ -63,7 +64,7 @@ export default function AvatarUpload({
       <div className="relative group">
         <label
           htmlFor="avatar-upload"
-          className="cursor-pointer relative block h-32 w-32 rounded-full overflow-hidden border-4 border-gray-100 hover:border-pink-bright transition-colors"
+          className="cursor-pointer relative block h-32 w-32 rounded-full overflow-hidden border-4 border-gray-100 transition-colors"
         >
           {/* Display Image */}
           {avatarUrl ? (
@@ -75,18 +76,44 @@ export default function AvatarUpload({
             />
           ) : (
             <div className="h-full w-full bg-gray-200 flex items-center justify-center text-gray-400">
-                <Image src={profileIcon} alt="Default" width={64} height={64} className="opacity-50"/>
+              <Image
+                src={profileIcon}
+                alt="Default"
+                width={64}
+                height={64}
+                className="opacity-50"
+              />
             </div>
           )}
 
-          {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-            <span className="text-white text-xs font-bold uppercase tracking-wider">
-              {uploading ? "..." : "Edit"}
-            </span>
+          {/* Edit Button Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            {uploading ? (
+              <div className="bg-black/50 rounded-full p-2 backdrop-blur-sm">
+                <span className="text-white text-xs font-bold uppercase tracking-wider">
+                  ...
+                </span>
+              </div>
+            ) : (
+              <div className="
+                w-10 h-10 flex items-center justify-center rounded-full 
+                bg-black/40 backdrop-blur-[2px] 
+                transition-all duration-0 
+                group-hover:scale-95 group-hover:ring-2 group-hover:ring-white
+              ">
+                <div className="relative h-5 w-5">
+                  <Image
+                    src={editIcon}
+                    alt="Edit"
+                    fill
+                    className="object-contain invert"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </label>
-        
+
         {/* Hidden Input */}
         <input
           type="file"

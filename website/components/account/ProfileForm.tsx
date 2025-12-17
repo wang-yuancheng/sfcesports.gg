@@ -13,6 +13,7 @@ export default function ProfileForm() {
 
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [message, setMessage] = useState<{
     type: "success" | "error";
@@ -23,6 +24,8 @@ export default function ProfileForm() {
   useEffect(() => {
     if (profile) {
       setUsername(profile.username || "");
+      // If you have a display_name column, map it here. Otherwise leaving blank for now.
+      // setDisplayName(profile.display_name || "");
       setAvatarUrl(profile.avatar_url || "");
     }
   }, [profile]);
@@ -54,82 +57,83 @@ export default function ProfileForm() {
   };
 
   return (
-    <div className="bg-gray-50 rounded-2xl p-1 pb-8 w-full shadow-sm border border-gray-100/50">
-      {/* Banner Area */}
-      <div className="relative h-48 w-full bg-gray-200 rounded-t-xl overflow-hidden group" />
+    <div className="bg-[#FAFAFA] rounded-[20px] w-full flex flex-col overflow-hidden border border-gray-100">
+      {/* 1. Banner Area */}
+      <div className="relative h-44 w-full bg-[#E5E7EB] " />
 
-      {/* Header & Avatar */}
-      <div className="px-8 relative mb-8">
-        <div className="flex justify-between items-end -mt-12">
-          {/* Avatar */}
-          <div className="relative rounded-full border-4 border-white bg-white shadow-sm">
+      {/* 2. Avatar & Content */}
+      <div className="px-8 pb-8 flex-1 flex flex-col">
+        {/* Avatar overlapping banner */}
+        <div className="relative -mt-12 mb-8 flex justify-between items-end">
+          <div className="relative rounded-full border-[6px] border-[#FAFAFA] bg-white shadow-sm w-fit">
             <AvatarUpload
               uid={user?.id ?? null}
               url={avatarUrl}
               onUpload={(url) => setAvatarUrl(url)}
             />
           </div>
-
-          {/* View Profile Button */}
-          <Button
-            variant="default"
-            className="bg-black text-white hover:bg-gray-800 rounded-lg mb-2"
-          >
-            View Profile
-          </Button>
-        </div>
-      </div>
-
-      {/* Form Fields */}
-      <form
-        onSubmit={updateProfile}
-        className="px-8 flex flex-col gap-6 max-w-2xl"
-      >
-        {/* Username */}
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700">
-            Username
-          </label>
-          <Input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="bg-white border-gray-200 h-11"
-            placeholder="Enter your username"
-          />
-          <p className="text-xs text-gray-400">
-            This is how other members recognize you across the community.
-          </p>
         </div>
 
-        {/* Read-Only Email */}
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700">
-            Email Address
-          </label>
-          <Input
-            value={user?.email || ""}
-            disabled
-            className="bg-gray-100 border-gray-200 text-gray-500 cursor-not-allowed h-11"
-          />
-        </div>
+        {/* Form Fields */}
+        <form onSubmit={updateProfile} className="flex flex-col gap-6 flex-1">
+          {/* Display Name */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-700 ml-1">
+              Display Name
+            </label>
+            <Input
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+              className="bg-white border-gray-200 h-12 rounded-lg focus-visible:ring-1 focus-visible:ring-black"
+            />
+            <p className="text-xs text-gray-500 ml-1">
+              If you do not want to set a custom display name, we will display
+              your username.
+            </p>
+          </div>
 
-        {/* Message & Action */}
-        <div className="flex items-center gap-4 pt-4">
-          <Button type="submit" disabled={loading} className="px-8 h-11">
-            {loading ? "Saving..." : "Save Changes"}
-          </Button>
+          {/* Username */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-700 ml-1">
+              Username
+            </label>
+            <Input
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="bg-white border-gray-200 h-12 rounded-lg focus-visible:ring-1 focus-visible:ring-black"
+              placeholder="Enter your username"
+            />
+            <p className="text-xs text-gray-500 ml-1 leading-relaxed">
+              Your username will be how other members recognize you across the
+              SFC Community and ecosystems.
+            </p>
+          </div>
 
+          {/* Message Display */}
           {message && (
-            <span
-              className={`text-sm font-medium ${
-                message.type === "success" ? "text-green-600" : "text-red-600"
+            <div
+              className={`p-3 rounded-md text-sm font-medium text-center -mb-8 ${
+                message.type === "success"
+                  ? "bg-green-50 text-green-600"
+                  : "bg-red-50 text-red-600"
               }`}
             >
               {message.text}
-            </span>
+            </div>
           )}
-        </div>
-      </form>
+
+          {/* 3. Save Button */}
+          <div className="mt-8">
+            <Button
+              type="submit"
+              disabled={loading}
+              className="w-full h-12 text-base font-bold bg-black text-white hover:bg-gray-800 rounded-lg transition-all"
+            >
+              {loading ? "Saving..." : "Save"}
+            </Button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

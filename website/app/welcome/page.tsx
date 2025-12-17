@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
+import editIcon from "@/assets/icons/square-pen.svg";
 
 export default function WelcomePage() {
   const supabase = createClient();
@@ -21,21 +22,18 @@ export default function WelcomePage() {
   const [marketingConsent, setMarketingConsent] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Security Check: Redirect if not logged in
   useEffect(() => {
     if (!isLoading && !user) {
       router.replace("/login");
     }
   }, [user, isLoading, router]);
 
-  // If they already have a username, kick them to the app
   useEffect(() => {
     if (!isLoading && profile?.username) {
       router.replace("/account");
     }
   }, [profile, isLoading, router]);
 
-  // Pre-fill form if they started earlier but didn't finish
   useEffect(() => {
     if (profile) {
       if (profile.username) setUsername(profile.username);
@@ -60,7 +58,6 @@ export default function WelcomePage() {
         username: username.trim(),
         avatar_url: avatarUrl,
         updated_at: new Date().toISOString(),
-        // Note: You can save 'marketingConsent' here if you have a column for it
       };
 
       const { error } = await supabase.from("profiles").upsert(updates);
@@ -71,7 +68,6 @@ export default function WelcomePage() {
         throw error;
       }
 
-      // Success! Refresh ensures the new username propagates to the layout
       router.refresh();
       router.push("/account");
     } catch (error: any) {
@@ -81,7 +77,6 @@ export default function WelcomePage() {
     }
   };
 
-  // Prevent flash of content while checking auth
   if (isLoading || !user || profile?.username) {
     return <div className="min-h-screen bg-white" />;
   }
@@ -103,14 +98,12 @@ export default function WelcomePage() {
         </h1>
       </div>
       <div className="w-full max-w-md space-y-8">
-        {/* Header */}
         <div className="space-y-2 text-center">
           <p className="text-lg font-[400] text-gray-500">
             Let's set up your profile to get started.
           </p>
         </div>
 
-        {/* Form */}
         <div className="flex flex-col gap-6">
           <div className="flex justify-center">
             <div className="relative group">
@@ -121,19 +114,13 @@ export default function WelcomePage() {
               />
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="bg-black/40 rounded-full p-2.5 backdrop-blur-[2px] transition-opacity group-hover:bg-black/50">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
-                    <path d="m15 5 4 4" />
-                  </svg>
+                  <Image
+                    src={editIcon}
+                    alt="Edit"
+                    width={14}
+                    height={14}
+                    className="object-contain"
+                  />
                 </div>
               </div>
             </div>
@@ -161,7 +148,6 @@ export default function WelcomePage() {
               </p>
             </div>
 
-            {/* Marketing Checkbox */}
             <div className="flex items-start gap-3">
               <label className="relative flex items-center p-0.5 cursor-pointer">
                 <input
@@ -170,8 +156,6 @@ export default function WelcomePage() {
                   checked={marketingConsent}
                   onChange={(e) => setMarketingConsent(e.target.checked)}
                 />
-
-                {/* The Custom Visual Box */}
                 <div
                   className={`
                     w-5 h-5 rounded-[4px] border transition-all duration-200 ease-out
@@ -183,7 +167,6 @@ export default function WelcomePage() {
                     }
                   `}
                 >
-                  {/* The Checkmark Icon */}
                   <svg
                     className={`w-3.5 h-3.5 text-white transition-transform duration-200 ${
                       marketingConsent ? "scale-100" : "scale-0"
