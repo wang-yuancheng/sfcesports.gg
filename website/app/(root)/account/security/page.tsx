@@ -22,11 +22,10 @@ export default function SecurityPage() {
     setLoading(true);
     setMessage(null);
 
-    // 1. Basic Validation
-    if (newPassword.length < 12) {
+    if (newPassword.length < 8) {
       setMessage({
         type: "error",
-        text: "Password must be at least 12 characters long.",
+        text: "Password must be at least 8 characters long.",
       });
       setLoading(false);
       return;
@@ -39,8 +38,6 @@ export default function SecurityPage() {
     }
 
     try {
-      // 2. Verify Current Password (Optional security step)
-      // We attempt to sign in with the current password to verify ownership
       const {
         data: { user },
       } = await supabase.auth.getUser();
@@ -56,7 +53,6 @@ export default function SecurityPage() {
         }
       }
 
-      // 3. Update to New Password
       const { error: updateError } = await supabase.auth.updateUser({
         password: newPassword,
       });
@@ -68,7 +64,6 @@ export default function SecurityPage() {
         text: "Password updated successfully.",
       });
 
-      // Clear fields
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
@@ -85,7 +80,7 @@ export default function SecurityPage() {
         Security
       </h1>
 
-      <div className="bg-[#f5f6f7] rounded-xl p-8 md:p-10 border border-gray-100">
+      <div className="bg-[#f5f6f7] rounded-xl p-5 md:p-8">
         <div className="max-w-3xl">
           <div className="mb-8">
             <h2 className="text-lg font-bold text-gray-900">Change Password</h2>

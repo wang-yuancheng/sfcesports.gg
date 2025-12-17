@@ -48,7 +48,7 @@ export default function ConnectionsPage() {
         Connections
       </h1>
 
-      <div className="bg-[#f5f6f7] rounded-xl p-8 md:p-8 border border-gray-100 flex flex-col gap-4">
+      <div className="bg-[#f5f6f7] rounded-xl p-5 md:p-8 flex flex-col gap-4">
         {connections.map((item) => (
           <div
             key={item.id}

@@ -1,22 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/hooks/useUser";
+import { createClient } from "@/lib/supabase/client";
 
 export default function NotificationsPage() {
+  const { user, profile, refreshProfile } = useUser();
+  const supabase = createClient();
+
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{
     type: "success" | "error";
     text: string;
   } | null>(null);
 
-  // State for preferences
+  // Default state matches in DB
   const [preferences, setPreferences] = useState({
     tournaments: true,
     contents: true,
     mentions: true,
     marketing: false,
   });
+
+  useEffect(() => {
+    if (profile?.notifications) {
+      setPreferences(profile.notifications as typeof preferences);
+    }
+  }, [profile]);
 
   const handleToggle = (key: keyof typeof preferences) => {
     setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -26,11 +37,28 @@ export default function NotificationsPage() {
     setLoading(true);
     setMessage(null);
 
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      if (!user) throw new Error("No user found.");
+
+      const { error } = await supabase
+        .from("profiles")
+        .update({
+          notifications: preferences,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", user.id);
+
+      if (error) throw error;
+
+      await refreshProfile();
+
       setMessage({ type: "success", text: "Preferences saved successfully." });
-    }, 800);
+    } catch (error: any) {
+      console.error(error);
+      setMessage({ type: "error", text: error.message || "Failed to save." });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,8 +67,8 @@ export default function NotificationsPage() {
         Notifications
       </h1>
 
-      <div className="bg-[#f5f6f7] rounded-xl p-8 md:p-10 border border-gray-100">
-        <div className="flex flex-col gap-6">
+      <div className="bg-[#f5f6f7] rounded-xl p-5 md:p-8">
+        <div className="flex flex-col gap-8 md:gap-6">
           <CheckboxRow
             label="Email me when a new tournament is available to be registered"
             checked={preferences.tournaments}
@@ -66,7 +94,9 @@ export default function NotificationsPage() {
           {message && (
             <div
               className={`text-sm font-medium text-center py-3 -mb-4 ${
-                message.type === "success" ? "bg-green-50 text-green-600" : "text-red-600"
+                message.type === "success"
+                  ? "bg-green-50 text-green-600"
+                  : "text-red-600"
               }`}
             >
               {message.text}
@@ -89,7 +119,7 @@ export default function NotificationsPage() {
   );
 }
 
-// Reusable Checkbox Component to match the design perfectly
+// Reusable Checkbox Component
 function CheckboxRow({
   label,
   checked,

@@ -24,10 +24,10 @@ export default async function RootLayout({
   if (user) {
     const { data } = await supabase
       .from("profiles")
-      .select("username, avatar_url")
+      .select("*")
       .eq("id", user.id)
       .single();
-      
+
     if (data) {
       userProfile = data;
     }

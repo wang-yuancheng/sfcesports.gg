@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import Image from "next/image";
 import profileIcon from "@/assets/icons/circle-user-round.svg";
 import editIcon from "@/assets/icons/square-pen.svg";
+import uploadingIcon from "@/assets/icons/cloud-upload.svg";
 
 export default function AvatarUpload({
   uid,
@@ -68,12 +69,7 @@ export default function AvatarUpload({
         >
           {/* Display Image */}
           {avatarUrl ? (
-            <Image
-              src={avatarUrl}
-              alt="Avatar"
-              fill
-              className="object-cover"
-            />
+            <Image src={avatarUrl} alt="Avatar" fill className="object-cover" />
           ) : (
             <div className="h-full w-full bg-gray-200 flex items-center justify-center text-gray-400">
               <Image
@@ -89,18 +85,32 @@ export default function AvatarUpload({
           {/* Edit Button Overlay */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             {uploading ? (
-              <div className="bg-black/50 rounded-full p-2 backdrop-blur-sm">
-                <span className="text-white text-xs font-bold uppercase tracking-wider">
-                  ...
-                </span>
-              </div>
-            ) : (
-              <div className="
+              <div
+                className="
                 w-10 h-10 flex items-center justify-center rounded-full 
                 bg-black/40 backdrop-blur-[2px] 
                 transition-all duration-0 
                 group-hover:scale-95 group-hover:ring-2 group-hover:ring-white
-              ">
+              "
+              >
+                <div className="relative h-5 w-5">
+                  <Image
+                    src={uploadingIcon}
+                    alt="Edit"
+                    fill
+                    className="object-contain invert"
+                  />
+                </div>
+              </div>
+            ) : (
+              <div
+                className="
+                w-10 h-10 flex items-center justify-center rounded-full 
+                bg-black/40 backdrop-blur-[2px] 
+                transition-all duration-0 
+                group-hover:scale-95 group-hover:ring-2 group-hover:ring-white
+              "
+              >
                 <div className="relative h-5 w-5">
                   <Image
                     src={editIcon}

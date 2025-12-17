@@ -9,7 +9,7 @@ import AvatarUpload from "@/components/auth/avatar-upload";
 
 export default function ProfileForm() {
   const supabase = createClient();
-  const { user, profile } = useUser();
+  const { user, profile, refreshProfile } = useUser();
 
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState("");
@@ -20,12 +20,10 @@ export default function ProfileForm() {
     text: string;
   } | null>(null);
 
-  // Sync state with profile whenever it changes
   useEffect(() => {
     if (profile) {
       setUsername(profile.username || "");
-      // If you have a display_name column, map it here. Otherwise leaving blank for now.
-      // setDisplayName(profile.display_name || "");
+      setDisplayName(profile.display_name || "");
       setAvatarUrl(profile.avatar_url || "");
     }
   }, [profile]);
@@ -38,9 +36,15 @@ export default function ProfileForm() {
     try {
       if (!user) throw new Error("No user logged in");
 
+      // 1. Client-side Check (Best Practice: Catch it before sending)
+      if (username.length < 3) {
+        throw new Error("Username must be at least 3 characters long.");
+      }
+
       const updates = {
         id: user.id,
         username,
+        display_name: displayName,
         avatar_url: avatarUrl,
         updated_at: new Date().toISOString(),
       };
@@ -48,9 +52,23 @@ export default function ProfileForm() {
       const { error } = await supabase.from("profiles").upsert(updates);
 
       if (error) throw error;
+
+      await refreshProfile();
       setMessage({ type: "success", text: "Profile updated successfully!" });
     } catch (error: any) {
-      setMessage({ type: "error", text: error.message });
+      if (error.message?.includes("username_length")) {
+        setMessage({
+          type: "error",
+          text: "Username must be at least 3 characters long.",
+        });
+      } else if (error.code === "23505") {
+        setMessage({
+          type: "error",
+          text: "This username is already taken.",
+        });
+      } else {
+        setMessage({ type: "error", text: error.message });
+      }
     } finally {
       setLoading(false);
     }
@@ -58,12 +76,8 @@ export default function ProfileForm() {
 
   return (
     <div className="bg-[#FAFAFA] rounded-lg w-full flex flex-col overflow-hidden border border-gray-100">
-      {/* 1. Banner Area */}
       <div className="relative h-44 w-full bg-[#E5E7EB] " />
-
-      {/* 2. Avatar & Content */}
       <div className="px-8 pb-8 flex-1 flex flex-col">
-        {/* Avatar overlapping banner */}
         <div className="relative -mt-12 mb-8 flex justify-between items-end">
           <div className="relative rounded-full border-[6px] border-[#FAFAFA] bg-white shadow-sm w-fit">
             <AvatarUpload
@@ -74,9 +88,7 @@ export default function ProfileForm() {
           </div>
         </div>
 
-        {/* Form Fields */}
         <form onSubmit={updateProfile} className="flex flex-col gap-6 flex-1">
-          {/* Display Name */}
           <div className="space-y-2">
             <label className="text-sm font-normal text-gray-600">
               Display Name
@@ -85,6 +97,7 @@ export default function ProfileForm() {
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
               className="bg-white border-gray-200 h-12 rounded-lg focus-visible:ring-1 focus-visible:ring-black"
+              placeholder="Your Name"
             />
             <p className="text-xs text-gray-500 font-[500] ml-0.5">
               If you do not want to set a custom display name, we will display
@@ -92,7 +105,6 @@ export default function ProfileForm() {
             </p>
           </div>
 
-          {/* Username */}
           <div className="space-y-2">
             <label className="text-sm font-normal text-gray-600">
               Username
@@ -103,13 +115,8 @@ export default function ProfileForm() {
               className="bg-white border-gray-200 h-12 rounded-lg focus-visible:ring-1 focus-visible:ring-black"
               placeholder="Enter your username"
             />
-            <p className="text-xs text-gray-500 font-[500] ml-0.5">
-              Your username will be how other members recognize you across the
-              SFC Community and ecosystems.
-            </p>
           </div>
 
-          {/* Message Display */}
           {message && (
             <div
               className={`p-3 rounded-md text-sm font-medium text-center -mb-8 ${
@@ -122,7 +129,6 @@ export default function ProfileForm() {
             </div>
           )}
 
-          {/* 3. Save Button */}
           <div className="mt-8">
             <Button
               type="submit"
