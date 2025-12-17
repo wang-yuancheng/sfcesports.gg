@@ -1,7 +1,6 @@
 "use client";
 
 import ProfileForm from "@/components/account/ProfileForm";
-import FeatureRequest from "@/components/account/FeatureRequest";
 
 export default function ProfilePage() {
   return (
@@ -13,7 +12,6 @@ export default function ProfilePage() {
         <div className="flex-1">
           <ProfileForm />
         </div>
-        <FeatureRequest />
       </div>
     </section>
   );

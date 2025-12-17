@@ -72,7 +72,7 @@ export default function Shop() {
         </section>
 
         {/* --- MEMBERSHIP SECTION --- */}
-        <section className="mb-16">
+        <section className="mb-16" >
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Text Content (Left) */}
             <div className="lg:w-1/3 text-center lg:text-left space-y-6">

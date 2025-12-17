@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import ProfileSidebar from "@/components/account/ProfileSidebar";
+import FeatureRequest from "@/components/account/FeatureRequest";
 
 export default function AccountLayout({
   children,
@@ -16,6 +19,9 @@ export default function AccountLayout({
 
         {/* Main Content Area */}
         <div className="flex-1 min-w-0 w-full">{children}</div>
+        <div className="mt-14">
+          <FeatureRequest />
+        </div>
       </div>
     </div>
   );

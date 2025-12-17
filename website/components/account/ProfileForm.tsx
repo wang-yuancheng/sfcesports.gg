@@ -78,7 +78,7 @@ export default function ProfileForm() {
         <form onSubmit={updateProfile} className="flex flex-col gap-6 flex-1">
           {/* Display Name */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 ml-1">
+            <label className="text-sm font-normal text-gray-600">
               Display Name
             </label>
             <Input
@@ -86,7 +86,7 @@ export default function ProfileForm() {
               onChange={(e) => setDisplayName(e.target.value)}
               className="bg-white border-gray-200 h-12 rounded-lg focus-visible:ring-1 focus-visible:ring-black"
             />
-            <p className="text-xs text-gray-500 ml-1">
+            <p className="text-xs text-gray-500 font-[500] ml-0.5">
               If you do not want to set a custom display name, we will display
               your username.
             </p>
@@ -94,7 +94,7 @@ export default function ProfileForm() {
 
           {/* Username */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 ml-1">
+            <label className="text-sm font-normal text-gray-600">
               Username
             </label>
             <Input
@@ -103,7 +103,7 @@ export default function ProfileForm() {
               className="bg-white border-gray-200 h-12 rounded-lg focus-visible:ring-1 focus-visible:ring-black"
               placeholder="Enter your username"
             />
-            <p className="text-xs text-gray-500 ml-1 leading-relaxed">
+            <p className="text-xs text-gray-500 font-[500] ml-0.5">
               Your username will be how other members recognize you across the
               SFC Community and ecosystems.
             </p>
