@@ -9,8 +9,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import { SocialButtons } from "@/components/auth/social-buttons";
+import { useUser } from "@/hooks/useUser"; // Import useUser
 
 export default function LoginPage() {
+  const { user, isLoading: userLoading } = useUser(); // Get user state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState<string | null>(null);
@@ -24,6 +26,13 @@ export default function LoginPage() {
 
   const router = useRouter();
   const supabase = createClient();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (!userLoading && user) {
+      router.replace("/");
+    }
+  }, [user, userLoading, router]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -110,6 +119,9 @@ export default function LoginPage() {
       setIsResending(false);
     }
   };
+
+  // Prevent flash of login screen if already logged in
+  if (!userLoading && user) return null;
 
   return (
     <div className="flex w-full flex-col items-center justify-start md:justify-center gap-4 md:gap-0">

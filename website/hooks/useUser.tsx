@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
   useCallback,
+  useRef,
 } from "react";
 import { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
@@ -47,7 +48,18 @@ export function UserProvider({
   const [user, setUser] = useState<User | null>(initialUser);
   const [profile, setProfile] = useState<UserProfile | null>(initialProfile);
   const [isLoading, setIsLoading] = useState(!initialUser && !initialProfile);
+  
+  // Ref to track if the component is mounted
+  const isMounted = useRef(false);
   const supabase = createClient();
+
+  // Track mounting state
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   const fetchProfile = useCallback(async () => {
     if (!user) return;
@@ -57,16 +69,24 @@ export function UserProvider({
         .from("profiles")
         .select("*")
         .eq("id", user.id)
-        .single();
+        .maybeSingle();
+
+      // Prevent state updates if unmounted
+      if (!isMounted.current) return;
 
       if (data) {
         setProfile(data as UserProfile);
       }
-      if (error) {
+      
+      // FIX: Check if error is NOT empty object. 
+      // This silences the {} error caused by cancellations.
+      if (error && Object.keys(error).length > 0) {
         console.error("Error fetching profile:", error);
       }
     } catch (error) {
-      console.error("Unexpected error:", error);
+      if (isMounted.current) {
+        console.error("Unexpected error:", error);
+      }
     }
   }, [user, supabase]);
 
@@ -75,6 +95,9 @@ export function UserProvider({
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
+      // Prevent updates if unmounted
+      if (!isMounted.current) return;
+
       const sessionUser = session?.user ?? null;
 
       // Update user state if it changed
@@ -106,10 +129,8 @@ export function UserProvider({
   useEffect(() => {
     if (!user) return;
 
-    // This function runs whenever the user clicks back onto the tab/window
     const handleFocus = () => {
-      // We perform a "soft" refresh to check for updates (like new membership status)
-      fetchProfile();
+      if (isMounted.current) fetchProfile();
     };
 
     window.addEventListener("focus", handleFocus);

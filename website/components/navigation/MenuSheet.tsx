@@ -35,6 +35,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
             <button
               className="relative rounded-md p-2 md:hover:bg-gray-100 md:hidden"
               aria-label="Toggle menu"
+              suppressHydrationWarning={true}
             >
               <Image
                 src={open ? X : Menu}

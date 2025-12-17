@@ -72,7 +72,7 @@ export default function Shop() {
         </section>
 
         {/* --- MEMBERSHIP SECTION --- */}
-        <section className="mb-16" >
+        <section className="mb-16">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Text Content (Left) */}
             <div className="lg:w-1/3 text-center lg:text-left space-y-6">
@@ -81,8 +81,8 @@ export default function Shop() {
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed font-medium">
                 Enjoy premium benefits including priority access to events,
-                exclusive rewards, and opportunities to be featured in our
-                content.
+                discounts, exclusive rewards, and opportunities to be featured
+                in our content.
               </p>
             </div>
 

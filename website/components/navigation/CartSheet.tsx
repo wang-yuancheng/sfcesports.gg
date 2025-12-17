@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -36,6 +35,7 @@ export function CartSheet({
             title="Search Button"
             aria-label="Open cart"
             className="relative rounded-md p-2 sm:hover:bg-gray-100"
+            suppressHydrationWarning={true}
           >
             <Image
               src={LucideShoppingBag}

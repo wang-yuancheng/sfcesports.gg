@@ -3,14 +3,19 @@
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import confirmationEmailPicture from "@/assets/pictures/confirmationemail.png";
 import { SocialButtons } from "@/components/auth/social-buttons";
+import { useUser } from "@/hooks/useUser"; // Import useUser
 
 export default function SignUpPage() {
+  const { user, isLoading: userLoading } = useUser(); // Get user state
+  const router = useRouter();
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState<string | null>(null);
@@ -22,6 +27,13 @@ export default function SignUpPage() {
   const [isResending, setIsResending] = useState(false);
 
   const supabase = createClient();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (!userLoading && user) {
+      router.replace("/");
+    }
+  }, [user, userLoading, router]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -107,6 +119,9 @@ export default function SignUpPage() {
       setIsResending(false);
     }
   };
+
+  // Prevent flash
+  if (!userLoading && user) return null;
 
   if (success) {
     return (

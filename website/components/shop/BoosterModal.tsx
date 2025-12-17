@@ -21,13 +21,8 @@ export default function BoosterModal({
   onClose: (open: boolean) => void;
 }) {
   const contactRef = useRef<HTMLDivElement>(null);
-  
-  // Ref for the scrollable container
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  // Ref to store the scroll position across unmounts
   const scrollPosRef = useRef(0);
-
-  // 1. Persist booster data
   const [displayedBooster, setDisplayedBooster] = useState(booster);
 
   useEffect(() => {
@@ -36,16 +31,13 @@ export default function BoosterModal({
     }
   }, [booster]);
 
-  // 2. Visibility States
   const [isDialogVisible, setIsDialogVisible] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
 
-  // Sync open state from parent
   useEffect(() => {
     if (open) {
       setIsDialogVisible(true);
       setActiveImageIndex(null);
-      // Only reset scroll on a fresh open from the parent
       scrollPosRef.current = 0;
     } else {
       setIsDialogVisible(false);
@@ -53,12 +45,8 @@ export default function BoosterModal({
     }
   }, [open]);
 
-  // 3. Scroll Restoration Logic
   useLayoutEffect(() => {
     if (isDialogVisible) {
-      // We use setTimeout(0) to push this to the end of the event loop.
-      // This ensures we set scrollTop AFTER Radix UI has finished its focus management
-      // and the browser has finished layout.
       const timer = setTimeout(() => {
         if (scrollContainerRef.current) {
           scrollContainerRef.current.scrollTop = scrollPosRef.current;
@@ -72,24 +60,21 @@ export default function BoosterModal({
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // --- TRANSITION LOGIC ---
-
   const handleImageClick = (index: number) => {
-    // Capture the current scroll position right before we unmount
     if (scrollContainerRef.current) {
       scrollPosRef.current = scrollContainerRef.current.scrollTop;
     }
 
-    setIsDialogVisible(false); // Fade out Dialog
+    setIsDialogVisible(false);
     setTimeout(() => {
-      setActiveImageIndex(index); // Fade in Image
+      setActiveImageIndex(index);
     }, 200);
   };
 
   const handleImageClose = () => {
-    setActiveImageIndex(null); // Fade out Image
+    setActiveImageIndex(null);
     setTimeout(() => {
-      setIsDialogVisible(true); // Fade in Dialog (will trigger scroll restore)
+      setIsDialogVisible(true);
     }, 300);
   };
 
@@ -110,13 +95,8 @@ export default function BoosterModal({
           if (!val) handleFullClose();
         }}
       >
-        <DialogContent 
-          // !overflow-hidden forces the outer dialog shell to NOT scroll.
-          // This ensures only our inner div (with the ref) handles scrolling.
-          className="max-w-[1200px] w-[95vw] h-[90vh] md:h-auto md:max-h-[90vh] p-0 !overflow-hidden bg-white flex flex-col rounded-xl border-none outline-none"
-        >
-          {/* We attach the ref here to control scrolling explicitly */}
-          <div 
+        <DialogContent className="max-w-[1200px] w-[95vw] h-[90vh] md:h-auto md:max-h-[90vh] p-0 !overflow-hidden bg-white flex flex-col rounded-xl border-none outline-none">
+          <div
             ref={scrollContainerRef}
             className="flex-1 overflow-y-auto overflow-x-hidden relative"
           >
@@ -137,7 +117,7 @@ export default function BoosterModal({
             </div>
 
             <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 px-6 py-3 md:px-10 md:py-4 flex items-center justify-between shadow-sm">
-              {/* Left: Profile Info */}
+              {/* Profile Info */}
               <div className="flex items-center gap-3">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden border border-gray-200 shrink-0">
                   <Image
@@ -182,10 +162,7 @@ export default function BoosterModal({
                   onClick={scrollToContact}
                   className="rounded-full border-gray-200 hover:bg-gray-50 text-gray-900 px-4 md:px-6 text-sm font-semibold h-9"
                 >
-                  Message
-                </Button>
-                <Button className="rounded-full bg-gray-900 hover:bg-black text-white px-4 md:px-6 text-sm font-semibold h-9">
-                  Make Payment
+                  Get in touch
                 </Button>
               </div>
             </div>
@@ -235,7 +212,6 @@ export default function BoosterModal({
                               fill
                               className="object-cover transition-transform duration-500 group-hover:scale-105"
                             />
-                            {/* Hover Overlay hint */}
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                           </button>
                         </div>
@@ -245,7 +221,7 @@ export default function BoosterModal({
 
                 <div ref={contactRef} className="mt-16 mb-10 w-full">
                   <div className="w-full mx-auto flex flex-col items-center text-center">
-                    <div className="flex items-center justify-center w-full mb-8">
+                    <div className="flex items-center justify-center w-full mb-4">
                       <div className="h-px bg-gray-300 flex-1 opacity-50" />
 
                       <div className="mx-8 relative w-20 h-20 rounded-full overflow-hidden border-[4px] border-white shadow-md shrink-0 z-10 bg-gray-50">
@@ -260,16 +236,20 @@ export default function BoosterModal({
                       <div className="h-px bg-gray-300 flex-1 opacity-50" />
                     </div>
 
-
-                    <p className="font-bold tracking-tight text-gray-900 max-w-lg mx-auto mb-8">
-                      Discuss your goals, schedule, and budget before booking.
-                    </p>
+                    <div className="flex flex-col mb-6">
+                      <div className="tracking-tight text-xl font-bold text-gray-900 max-w-lg mx-auto">
+                        {displayedBooster.name}
+                      </div>
+                      <div className="tracking-tight font-[400] text-gray-900 max-w-lg mx-auto">
+                        Discuss your goals, schedule, and budget before booking.
+                      </div>
+                    </div>
 
                     <Button
                       onClick={() =>
                         window.open("https://discord.gg/2Sby35W", "_blank")
                       }
-                      className="rounded-full bg-black hover:bg-pink-bright transition-colors text-white px-10 h-12 text-base font-bold shadow-xl shadow-gray-200 active:scale-95"
+                      className="rounded-full bg-black hover:bg-pink-bright transition-colors text-white px-6 h-10 text-sm shadow-xl shadow-gray-200 active:scale-95 border-gray-200 md:px-6 font-semibold"
                     >
                       Send Message
                     </Button>
