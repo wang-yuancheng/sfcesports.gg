@@ -73,7 +73,7 @@ export default function ProfileSidebar() {
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    router.push("/login");
+    router.push("/");
   };
 
   // Identify active page for display
@@ -171,7 +171,7 @@ export default function ProfileSidebar() {
       </div>
 
       {/* ---------------- DESKTOP SIDEBAR (hidden lg:block) ---------------- */}
-      <div className="hidden lg:block flex-shrink-0 py-3 px-3 rounded-xl w-[280px] bg-[#f5f6f7] p-4 h-fit">
+      <div className="hidden lg:block flex-shrink-0 py-3 px-3 rounded-xl w-[280px] bg-gray-100 p-4 h-fit">
         <nav className="flex flex-col gap-1 relative">
           {menuItems.map((item) => {
             const isActive =

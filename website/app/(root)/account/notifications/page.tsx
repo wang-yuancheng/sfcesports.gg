@@ -1,22 +1,37 @@
 "use client";
 
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+
 export default function NotificationsPage() {
-  const notifications = [
-    {
-      id: 1,
-      title: "Welcome to SFC!",
-      msg: "Thanks for joining the club. Check out the shop for starter deals.",
-      date: "2h ago",
-      read: false,
-    },
-    {
-      id: 2,
-      title: "Tournament Registration",
-      msg: "Registration for Season 6 opens this weekend.",
-      date: "1d ago",
-      read: true,
-    },
-  ];
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+
+  // State for preferences
+  const [preferences, setPreferences] = useState({
+    tournaments: true,
+    contents: true,
+    mentions: true,
+    marketing: false,
+  });
+
+  const handleToggle = (key: keyof typeof preferences) => {
+    setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const handleSave = async () => {
+    setLoading(true);
+    setMessage(null);
+
+    // Simulate API call
+    setTimeout(() => {
+      setLoading(false);
+      setMessage({ type: "success", text: "Preferences saved successfully." });
+    }, 800);
+  };
 
   return (
     <section>
@@ -24,47 +39,104 @@ export default function NotificationsPage() {
         Notifications
       </h1>
 
-      <div className="bg-gray-50 rounded-2xl border border-gray-100/50 overflow-hidden">
-        {notifications.length > 0 ? (
-          <div className="divide-y divide-gray-100">
-            {notifications.map((n) => (
-              <div
-                key={n.id}
-                className={`p-6 flex gap-4 hover:bg-gray-100/50 transition-colors ${
-                  !n.read ? "bg-white" : ""
-                }`}
-              >
-                <div className="shrink-0 mt-1">
-                  <div
-                    className={`w-2 h-2 rounded-full ${
-                      !n.read ? "bg-pink-bright" : "bg-transparent"
-                    }`}
-                  />
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start">
-                    <h4
-                      className={`text-sm ${
-                        !n.read
-                          ? "font-bold text-black"
-                          : "font-medium text-gray-700"
-                      }`}
-                    >
-                      {n.title}
-                    </h4>
-                    <span className="text-xs text-gray-400">{n.date}</span>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-1">{n.msg}</p>
-                </div>
-              </div>
-            ))}
+      <div className="bg-[#f5f6f7] rounded-xl p-8 md:p-10 border border-gray-100">
+        <div className="flex flex-col gap-6">
+          <CheckboxRow
+            label="Email me when a new tournament is available to be registered"
+            checked={preferences.tournaments}
+            onChange={() => handleToggle("tournaments")}
+          />
+          <CheckboxRow
+            label="Email me when a new post or video is published."
+            checked={preferences.contents}
+            onChange={() => handleToggle("contents")}
+          />
+          <CheckboxRow
+            label="Email me when somebody mentions me in a post."
+            checked={preferences.mentions}
+            onChange={() => handleToggle("mentions")}
+          />
+          <CheckboxRow
+            label="Email me on new products, exclusive offers, drops and more."
+            checked={preferences.marketing}
+            onChange={() => handleToggle("marketing")}
+          />
+
+          {/* Message Display */}
+          {message && (
+            <div
+              className={`text-sm font-medium text-center py-3 -mb-4 ${
+                message.type === "success" ? "bg-green-50 text-green-600" : "text-red-600"
+              }`}
+            >
+              {message.text}
+            </div>
+          )}
+
+          {/* Save Button */}
+          <div className="mt-4">
+            <Button
+              onClick={handleSave}
+              disabled={loading}
+              className="w-full h-12 bg-black text-white tracking-wider font-[400] rounded-lg hover:bg-gray-800 transition-colors"
+            >
+              {loading ? "Saving..." : "Save Preferences"}
+            </Button>
           </div>
-        ) : (
-          <div className="p-12 text-center text-gray-500">
-            <p>No new notifications</p>
-          </div>
-        )}
+        </div>
       </div>
     </section>
+  );
+}
+
+// Reusable Checkbox Component to match the design perfectly
+function CheckboxRow({
+  label,
+  checked,
+  onChange,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+}) {
+  return (
+    <div
+      onClick={onChange}
+      className="flex items-center gap-4 cursor-pointer group"
+    >
+      {/* Custom Checkbox Visual */}
+      <div className="relative flex items-center justify-center shrink-0">
+        <div
+          className={`
+            w-6 h-6 rounded-[6px] border transition-all duration-200 ease-out flex items-center justify-center
+            ${
+              checked
+                ? "bg-pink-bright border-pink-bright"
+                : "bg-white border-gray-300 group-hover:border-gray-400"
+            }
+          `}
+        >
+          {/* Checkmark Icon */}
+          <svg
+            className={`w-3.5 h-3.5 text-white transition-transform duration-200 ${
+              checked ? "scale-100" : "scale-0"
+            }`}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Label Text */}
+      <span className="text-gray-700 text-base font-[400] leading-tight select-none">
+        {label}
+      </span>
+    </div>
   );
 }

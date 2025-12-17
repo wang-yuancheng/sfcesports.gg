@@ -162,7 +162,7 @@ export default function WelcomePage() {
                     flex items-center justify-center
                     ${
                       marketingConsent
-                        ? "bg-pink-bright border-pink"
+                        ? "bg-pink-bright border-pink-bright" 
                         : "bg-white border-gray-300 hover:border-gray-400"
                     }
                   `}

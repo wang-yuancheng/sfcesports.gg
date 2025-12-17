@@ -57,7 +57,7 @@ export default function ProfileForm() {
   };
 
   return (
-    <div className="bg-[#FAFAFA] rounded-[20px] w-full flex flex-col overflow-hidden border border-gray-100">
+    <div className="bg-[#FAFAFA] rounded-lg w-full flex flex-col overflow-hidden border border-gray-100">
       {/* 1. Banner Area */}
       <div className="relative h-44 w-full bg-[#E5E7EB] " />
 
@@ -127,7 +127,7 @@ export default function ProfileForm() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-12 text-base font-bold bg-black text-white hover:bg-gray-800 rounded-lg transition-all"
+              className="w-full h-12 text-base tracking-wider font-[400] bg-black text-white hover:bg-gray-800 rounded-lg transition-all"
             >
               {loading ? "Saving..." : "Save"}
             </Button>

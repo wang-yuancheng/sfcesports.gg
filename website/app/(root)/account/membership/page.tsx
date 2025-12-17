@@ -25,7 +25,7 @@ export default function MembershipPage() {
 
       {isSubscribed ? (
         // --- VIEW 1: ALREADY SUBSCRIBED ---
-        <div className="bg-[#f5f6f7] rounded-[20px] p-5 md:p-8 border border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="bg-[#f5f6f7] rounded-xl p-5 md:p-8 border border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-3">
               <h2 className="text-lg font-bold text-gray-900">
@@ -48,7 +48,7 @@ export default function MembershipPage() {
         </div>
       ) : (
         // --- VIEW 2: NOT SUBSCRIBED ---
-        <div className="bg-[#f5f6f7] rounded-[20px] p-8 md:p-8 border border-gray-100">
+        <div className="bg-[#f5f6f7] rounded-lg p-8 md:p-8 border border-gray-100">
           <div className="space-y-2 mb-4">
             <h2 className="text-lg font-bold text-gray-900">SFC+ Membership</h2>
             <p className="text-gray-700 text-base leading-relaxed font-[400]">
