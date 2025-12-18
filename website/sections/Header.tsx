@@ -17,6 +17,7 @@ import {
   ShortLiveDisplay,
 } from "@/components/navigation/LiveDisplay";
 import { NavbarMain } from "@/components/navigation/NavbarMain";
+import CartContents from "@/components/shop/CartContents"; 
 
 export default function Header() {
   const { user } = useUser();
@@ -38,7 +39,10 @@ export default function Header() {
             </Link>
             {/* Right */}
             <div className="flex items-center gap-1">
-              <CartSheetResponsive />
+              {/* 👇 2. PASS IT AS A CHILD */}
+              <CartSheetResponsive>
+                <CartContents />
+              </CartSheetResponsive>
               <NavbarProfile />
             </div>
           </div>
@@ -68,14 +72,20 @@ export default function Header() {
                 {user ? (
                   <div className="flex gap-1">
                     <CurrencyButton />
-                    <CartSheetResponsive />
+                    {/* 👇 3. PASS IT AS A CHILD HERE TOO */}
+                    <CartSheetResponsive>
+                      <CartContents />
+                    </CartSheetResponsive>
                     <NavbarProfile />
                   </div>
                 ) : (
                   <>
                     <div className="mr-2">
                       <CurrencyButton />
-                      <CartSheetResponsive />
+                      {/* 👇 4. AND HERE */}
+                      <CartSheetResponsive>
+                        <CartContents />
+                      </CartSheetResponsive>
                     </div>
                     <div className="hidden md:flex gap-2 mx-0">
                       <LoginButton />
@@ -84,7 +94,6 @@ export default function Header() {
                   </>
                 )}
 
-                {/* Mobile/Tablet fallback for this specific breakpoint */}
                 <div className="md:hidden">
                   <NavbarProfile />
                 </div>

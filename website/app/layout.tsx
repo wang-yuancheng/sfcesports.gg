@@ -4,6 +4,7 @@ import "@/styles/fonts.css";
 import { InitialFontWrapper } from "@/components/other/InitialFontWrapper";
 import { createClient } from "@/lib/supabase/server";
 import { UserProvider } from "@/hooks/useUser";
+import { Toaster } from "@/components/ui/sonner"; // <--- 1. ADD IMPORT
 
 export const metadata: Metadata = {
   title: "ShibeFanClub - SFC Esports",
@@ -38,6 +39,7 @@ export default async function RootLayout({
       <body>
         <UserProvider initialUser={user} initialProfile={userProfile}>
           <InitialFontWrapper>{children}</InitialFontWrapper>
+          <Toaster /> 
         </UserProvider>
       </body>
     </html>

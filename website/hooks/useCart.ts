@@ -5,7 +5,7 @@ export interface CartItem {
   id: string;
   name: string;
   price: number;
-  priceId: string; // The Stripe Price ID (e.g., price_123...)
+  priceId: string; // Stripe Price ID
   type: 'membership' | 'one-time';
 }
 
@@ -22,12 +22,14 @@ export const useCart = create<CartStore>()(
       items: [],
       addItem: (item) =>
         set((state) => {
-          // Rule: Only one membership allowed in cart at a time
+          // CRITICAL FIX: "One Membership Rule"
+          // If adding a membership, it replaces EVERYTHING to prevent "Phantom Totals"
           if (item.type === 'membership') {
-            const nonMembershipItems = state.items.filter((i) => i.type !== 'membership');
-            return { items: [...nonMembershipItems, item] };
+            return { items: [item] };
           }
-          return { items: [...state.items, item] };
+          // If adding a normal item, ensure no membership exists in cart
+          const nonMembershipItems = state.items.filter((i) => i.type !== 'membership');
+          return { items: [...nonMembershipItems, item] };
         }),
       removeItem: (id) =>
         set((state) => ({
@@ -36,7 +38,7 @@ export const useCart = create<CartStore>()(
       clearCart: () => set({ items: [] }),
     }),
     {
-      name: 'shopping-cart', // local storage key
+      name: 'shopping-cart',
     }
   )
 );

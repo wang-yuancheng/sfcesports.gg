@@ -3,11 +3,37 @@
 import { useUser } from "@/hooks/useUser";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function MembershipPage() {
   const { profile } = useUser();
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  
   const isSubscribed =
     profile?.membership_tier && profile.membership_tier !== "free";
+
+  const handleManageSubscription = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/portal", {
+        method: "POST",
+      });
+      const data = await res.json();
+      
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("Failed to create portal session");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section>
@@ -27,19 +53,22 @@ export default function MembershipPage() {
               </span>
             </div>
             <p className="text-gray-700 text-base leading-relaxed font-[400] max-w-lg">
-              You are currently subscribed to SFC+
+              You are currently subscribed to SFC+. Manage your plan, payment method, or billing history here.
             </p>
           </div>
           <div className="shrink-0">
             <Button
               variant="outline"
+              onClick={handleManageSubscription}
+              disabled={loading}
               className="h-11 px-6 border-gray-300 bg-white text-gray-900 font-bold hover:bg-gray-200 transition-colors tracking-wide"
             >
-              Manage Subscription
+              {loading ? "Loading..." : "Manage Subscription"}
             </Button>
           </div>
         </div>
       ) : (
+        // ... Render for non-subscribed users (keep existing) ...
         <div className="bg-[#f5f6f7] rounded-lg p-8 md:p-8 border border-gray-100">
           <div className="space-y-2 mb-4">
             <h2 className="text-lg font-bold text-gray-900">SFC+ Membership</h2>

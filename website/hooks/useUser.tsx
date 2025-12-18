@@ -49,11 +49,9 @@ export function UserProvider({
   const [profile, setProfile] = useState<UserProfile | null>(initialProfile);
   const [isLoading, setIsLoading] = useState(!initialUser && !initialProfile);
   
-  // Ref to track if the component is mounted
   const isMounted = useRef(false);
   const supabase = createClient();
 
-  // Track mounting state
   useEffect(() => {
     isMounted.current = true;
     return () => {
@@ -71,41 +69,49 @@ export function UserProvider({
         .eq("id", user.id)
         .maybeSingle();
 
-      // Prevent state updates if unmounted
       if (!isMounted.current) return;
 
       if (data) {
         setProfile(data as UserProfile);
       }
       
-      // FIX: Check if error is NOT empty object. 
-      // This silences the {} error caused by cancellations.
-      if (error && Object.keys(error).length > 0) {
-        console.error("Error fetching profile:", error);
+      // FIX: Explicitly ignore "AbortError" or "browsing context" errors
+      if (error) {
+        const errMsg = error.message || "";
+        const isIgnorable = 
+          errMsg.includes("browsing context") || 
+          errMsg.includes("AbortError") ||
+          errMsg.includes("Failed to fetch");
+
+        // Only log if it's a REAL error, not a navigation cancellation
+        if (!isIgnorable && (error.message || error.code)) {
+          console.error("Error fetching profile:", error.message || error);
+        }
       }
-    } catch (error) {
+
+    } catch (error: any) {
+      // Also catch any thrown AbortErrors here just in case
       if (isMounted.current) {
-        console.error("Unexpected error:", error);
+        const errMsg = error?.message || "";
+        if (!errMsg.includes("browsing context") && !errMsg.includes("AbortError")) {
+          console.error("Unexpected error:", error);
+        }
       }
     }
   }, [user, supabase]);
 
-  // Auth Listener (Handles Login/Logout)
   useEffect(() => {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      // Prevent updates if unmounted
       if (!isMounted.current) return;
 
       const sessionUser = session?.user ?? null;
 
-      // Update user state if it changed
       if (sessionUser?.id !== user?.id) {
         setUser(sessionUser);
       }
 
-      // Clear profile on logout
       if (_event === "SIGNED_OUT") {
         setProfile(null);
       }
@@ -116,7 +122,6 @@ export function UserProvider({
     return () => subscription.unsubscribe();
   }, [user, supabase]);
 
-  // Initial Fetch on Mount
   useEffect(() => {
     if (user && !profile) {
       fetchProfile();
@@ -125,7 +130,6 @@ export function UserProvider({
     }
   }, [user, profile, fetchProfile]);
 
-  // Revalidate on Focus
   useEffect(() => {
     if (!user) return;
 

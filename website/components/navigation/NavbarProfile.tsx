@@ -32,7 +32,7 @@ export default function NavbarProfile() {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <div className="relative items-center flex cursor-pointer rounded-md p-2 sm:hover:bg-gray-100 transition-colors">
+        <div className="relative items-center flex cursor-pointer rounded-md p-2 sm:hover:bg-gray-100 transition-colors" suppressHydrationWarning={true}>
           {user && profile?.avatar_url ? (
             <div
               className="rounded-full bg-cover bg-center bg-no-repeat bg-gray-200 border border-gray-200"
