@@ -543,4 +543,63 @@ export const policies: {
       },
     ],
   },
+  {
+    id: "data-deletion",
+    title: "Data Deletion Policy",
+    content: [
+      {
+        type: "subheading",
+        text: "1. OVERVIEW AND RIGHTS",
+      },
+      {
+        type: "paragraph",
+        text: "ShibeFanClub ('SFC') recognizes your right to the erasure of personal data ('Right to be Forgotten') in accordance with applicable data protection laws. This policy outlines the official procedures for requesting the permanent deletion of your account and all associated personally identifiable information.",
+      },
+      {
+        type: "subheading",
+        text: "2. DELETION VIA ACCOUNT SETTINGS",
+      },
+      {
+        type: "paragraph",
+        text: "For the most efficient processing, registered users are advised to initiate the deletion protocol directly through the user dashboard. This method automatically verifies account ownership.",
+      },
+      {
+        type: "list",
+        items: [
+          "Log in to your valid account on the SFC platform.",
+          "Navigate to the 'Settings' tab located in the user dashboard.",
+          "Locate the 'Deactivate Account' section at the bottom of the page.",
+          "Select 'Request Deletion'. You will be redirected to our secure support environment (Discord) to finalize the request with an administrator.",
+        ],
+      },
+      {
+        type: "subheading",
+        text: "3. MANUAL DELETION REQUESTS",
+      },
+      {
+        type: "paragraph",
+        text: "Users who cannot access their account dashboard or prefer manual processing may submit a formal request via email. To ensure the security of the account, strictly verifiable identification details must be provided.",
+      },
+      {
+        type: "list",
+        items: [
+          "Requests must be sent to tankifighter@gmail.com.",
+          "The email subject line must state: 'Formal Data Deletion Request'.",
+          "The body of the correspondence must include the registered Username and associated Email Address.",
+        ],
+      },
+      {
+        type: "subheading",
+        text: "4. PROCESSING AND RETENTION",
+      },
+      {
+        type: "paragraph",
+        text: "Upon receipt of a verified request, SFC will permanently erase all personal data within 30 days. Please be advised that certain non-personal transaction records may be retained solely for legal, tax, or accounting purposes as required by law.",
+      },
+      {
+        type: "paragraph",
+        text: "Deletion of your data is irreversible. Once completed, you will lose access to all memberships, ranks, and purchase history associated with the account.",
+      },
+    ],
+  },
 ];

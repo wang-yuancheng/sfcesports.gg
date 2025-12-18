@@ -21,16 +21,21 @@ const INITIAL_CONNECTIONS: ConnectionItem[] = [
 ];
 
 export default function ConnectionsPage() {
-  const [connections, setConnections] = useState<ConnectionItem[]>(INITIAL_CONNECTIONS);
+  const [connections, setConnections] =
+    useState<ConnectionItem[]>(INITIAL_CONNECTIONS);
   const [loading, setLoading] = useState<string | null>(null);
   const supabase = createClient();
 
   const fetchUserIdentities = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (user && user.identities) {
       setConnections((prev) =>
         prev.map((item) => {
-          const identity = user.identities?.find((id) => id.provider === item.id);
+          const identity = user.identities?.find(
+            (id) => id.provider === item.id
+          );
           return identity
             ? { ...item, connected: true, identity: identity }
             : { ...item, connected: false, identity: undefined };
@@ -81,44 +86,55 @@ export default function ConnectionsPage() {
     }
 
     // --- CONNECT ---
+    // 1. OPEN POPUP IMMEDIATELY (Before any async work)
+    const width = 500;
+    const height = 600;
+    const left = window.screen.width / 2 - width / 2;
+    const top = window.screen.height / 2 - height / 2;
+
+    const popup = window.open(
+      "about:blank",
+      "SFC_Connect_Popup",
+      `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars,status=1`
+    );
+
+    // Check if popup was blocked immediately (e.g., aggressive settings)
+    if (!popup) {
+      setLoading(null);
+      alert("Please allow popups for this site to connect your account.");
+      return;
+    }
+
     try {
+      // 2. GET URL FROM SUPABASE
       const { data, error } = await supabase.auth.linkIdentity({
         provider: item.id as Provider,
         options: {
           redirectTo: `${window.location.origin}/popup-callback`,
-          skipBrowserRedirect: true, // <--- CRITICAL FIX: Prevents main window redirect
+          skipBrowserRedirect: true,
         },
       });
 
       if (error) throw error;
 
+      // 3. UPDATE POPUP URL (Navigate the blank window to the auth URL)
       if (data.url) {
-        const width = 500;
-        const height = 600;
-        const left = window.screen.width / 2 - width / 2;
-        const top = window.screen.height / 2 - height / 2;
+        popup.location.href = data.url;
 
-        const popup = window.open(
-          data.url,
-          "SFC_Connect_Popup",
-          `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars,status=1`
-        );
-
-        if (popup) {
-          const timer = setInterval(() => {
-            if (popup.closed) {
-              clearInterval(timer);
-              setLoading((prev) => (prev === item.id ? null : prev));
-            }
-          }, 1000);
-        } else {
-            // If popup is blocked immediately
-            setLoading(null);
-            alert("Please allow popups for this site to connect your account.");
-        }
+        // Monitor for closure
+        const timer = setInterval(() => {
+          if (popup.closed) {
+            clearInterval(timer);
+            setLoading((prev) => (prev === item.id ? null : prev));
+          }
+        }, 1000);
+      } else {
+        popup.close(); // Close if no URL returned
+        throw new Error("No URL returned from Supabase");
       }
     } catch (err) {
       console.error("Link Error:", err);
+      popup.close(); // Ensure we close the blank window on error
       setLoading(null);
     }
   };
