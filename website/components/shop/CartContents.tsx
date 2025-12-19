@@ -6,6 +6,7 @@ import { useUser } from "@/hooks/useUser";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function CartContents() {
   const { items, removeItem, clearCart } = useCart();
@@ -118,12 +119,14 @@ export default function CartContents() {
             {loading ? "Processing..." : "Checkout"}
           </Button>
         ) : (
-          <Button
-            className="w-full bg-black text-white hover:bg-gray-800"
-            onClick={() => router.push("/login")}
-          >
-            Log in to Checkout
-          </Button>
+          <Link href="/login?next=/shop">
+            <Button
+              className="w-full bg-black text-white hover:bg-gray-800"
+              onClick={() => router.push("/login")}
+            >
+              Log in to Checkout
+            </Button>
+          </Link>
         )}
       </div>
     </div>

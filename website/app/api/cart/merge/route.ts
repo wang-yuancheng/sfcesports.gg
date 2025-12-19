@@ -13,19 +13,33 @@ export async function POST(req: Request) {
     if (!user)
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    // 1. Fetch DB Cart
     const { data: dbRows } = await supabase
       .from("cart_items")
       .select("*")
       .eq("user_id", user.id);
 
-    // Map: price_id -> DB Row Data
     const dbItemsMap = new Map();
     if (dbRows) {
       dbRows.forEach((row) => dbItemsMap.set(row.price_id, row));
     }
 
-    // 2. Process Local Items
+    const localMembership = (localItems as CartItem[]).find(
+      (i) => i.type === "membership"
+    );
+    const itemsToDelete: string[] = [];
+
+    if (localMembership) {
+      dbRows?.forEach((row) => {
+        if (
+          row.type === "membership" &&
+          row.price_id !== localMembership.priceId
+        ) {
+          itemsToDelete.push(row.price_id);
+          dbItemsMap.delete(row.price_id);
+        }
+      });
+    }
+
     const localCounts = new Map<string, { count: number; item: CartItem }>();
     (localItems as CartItem[]).forEach((item) => {
       const current = localCounts.get(item.priceId);
@@ -33,7 +47,6 @@ export async function POST(req: Request) {
       else localCounts.set(item.priceId, { count: 1, item });
     });
 
-    // 3. Merge Logic (Union + Sum)
     const upserts = [];
 
     for (const [priceId, data] of localCounts.entries()) {
@@ -44,7 +57,6 @@ export async function POST(req: Request) {
         newQuantity += dbItem.quantity;
       }
 
-      // Enforce Membership Limit
       if (data.item.type === "membership") newQuantity = 1;
 
       upserts.push({
@@ -56,8 +68,6 @@ export async function POST(req: Request) {
         quantity: newQuantity,
       });
 
-      // Update the map for the response
-      // If DB didn't have it, we add it to the map so the response includes it
       if (dbItem) {
         dbItem.quantity = newQuantity;
       } else {
@@ -65,7 +75,14 @@ export async function POST(req: Request) {
       }
     }
 
-    // 4. Perform Upsert
+    if (itemsToDelete.length > 0) {
+      await supabase
+        .from("cart_items")
+        .delete()
+        .eq("user_id", user.id)
+        .in("price_id", itemsToDelete);
+    }
+
     if (upserts.length > 0) {
       const { error } = await supabase
         .from("cart_items")
@@ -73,20 +90,16 @@ export async function POST(req: Request) {
       if (error) throw error;
     }
 
-    // 5. Expand to Flat List
     const finalItems: CartItem[] = [];
 
-    // Iterate over the MAP (which now contains DB items + Merged items)
     for (const [priceId, row] of dbItemsMap.entries()) {
-      // Handle case where row might be from DB (snake_case) or local (camelCase)
-      // Ideally, normalize this earlier.
       const currentPriceId = row.price_id || row.priceId || priceId;
 
       for (let i = 0; i < row.quantity; i++) {
         finalItems.push({
           id: crypto.randomUUID(),
           name: row.name,
-          price: Number(row.price), // Ensure number
+          price: Number(row.price),
           priceId: currentPriceId,
           type: row.type as "membership" | "one-time",
         });

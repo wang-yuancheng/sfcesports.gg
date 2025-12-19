@@ -2,17 +2,21 @@
 
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import { SocialButtons } from "@/components/auth/social-buttons";
-import { useUser } from "@/hooks/useUser"; // Import useUser
+import { useUser } from "@/hooks/useUser";
 
 export default function LoginPage() {
-  const { user, isLoading: userLoading } = useUser(); // Get user state
+  const { user, isLoading: userLoading } = useUser();
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next");
+  const redirectUrl = next && next.startsWith("/") ? next : "/";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState<string | null>(null);
@@ -27,12 +31,11 @@ export default function LoginPage() {
   const router = useRouter();
   const supabase = createClient();
 
-  // Redirect if already logged in
   useEffect(() => {
     if (!userLoading && user) {
-      router.replace("/");
+      router.replace(redirectUrl);
     }
-  }, [user, userLoading, router]);
+  }, [user, userLoading, router, redirectUrl]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -88,7 +91,8 @@ export default function LoginPage() {
         }
         throw error;
       }
-      router.push("/");
+
+      router.push(redirectUrl);
     } catch (error: any) {
       setAuthError(error.message || "An error occurred during login.");
     } finally {
@@ -107,7 +111,9 @@ export default function LoginPage() {
         type: "signup",
         email: email.trim(),
         options: {
-          emailRedirectTo: `${window.location.origin}/confirm?next=/welcome`,
+          emailRedirectTo: `${window.location.origin}/confirm?next=${
+            redirectUrl === "/" ? "/welcome" : redirectUrl
+          }`,
         },
       });
       if (error) throw error;
@@ -120,7 +126,6 @@ export default function LoginPage() {
     }
   };
 
-  // Prevent flash of login screen if already logged in
   if (!userLoading && user) return null;
 
   return (
@@ -130,7 +135,7 @@ export default function LoginPage() {
           New to SFC ID?{" "}
         </span>
         <Link
-          href="/sign-up"
+          href={`/sign-up?next=${redirectUrl}`} 
           className="ml-1 text-base text-black underline underline-offset-3 hover:text-gray-700"
         >
           Sign up

@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 import debounce from "lodash.debounce";
 
 export interface CartItem {
-  id: string; // Front-end unique ID (often random or matches priceId)
+  id: string;
   name: string;
   price: number;
   priceId: string;
@@ -19,10 +19,9 @@ interface CartStore {
   openCart: () => void;
   closeCart: () => void;
   setOpen: (open: boolean) => void;
-
-  // Async actions
   syncToDb: () => void;
   mergeCart: (userId: string) => Promise<void>;
+  disconnectCart: () => void;
 }
 
 export const useCart = create<CartStore>()(
@@ -31,12 +30,8 @@ export const useCart = create<CartStore>()(
       items: [],
       isOpen: false,
 
-      // ⚡ DEBOUNCED SYNC
-      // Waits 1000ms after the last action before hitting the database
       syncToDb: debounce(async () => {
         const { items } = get();
-        // We do a "fire and forget" here, or check auth inside the API.
-        // The API route handles the security check (ignoring if guest).
         try {
           await fetch("/api/cart/sync", {
             method: "POST",
@@ -50,10 +45,8 @@ export const useCart = create<CartStore>()(
 
       addItem: (item) => {
         const { syncToDb } = get();
-
         set((state) => {
           if (item.type === "membership") {
-            // Membership logic: replace cart
             return { items: [item], isOpen: true };
           }
           const nonMembershipItems = state.items.filter(
@@ -61,8 +54,6 @@ export const useCart = create<CartStore>()(
           );
           return { items: [...nonMembershipItems, item], isOpen: true };
         });
-
-        // Trigger the debounce
         syncToDb();
       },
 
@@ -84,8 +75,6 @@ export const useCart = create<CartStore>()(
       closeCart: () => set({ isOpen: false }),
       setOpen: (open) => set({ isOpen: open }),
 
-      // ⚡ MERGE ACTION
-      // Called by useUser when logging in
       mergeCart: async (userId: string) => {
         const { items } = get();
         try {
@@ -102,6 +91,10 @@ export const useCart = create<CartStore>()(
         } catch (error) {
           console.error("Merge cart error:", error);
         }
+      },
+
+      disconnectCart: () => {
+        set({ items: [], isOpen: false });
       },
     }),
     {
