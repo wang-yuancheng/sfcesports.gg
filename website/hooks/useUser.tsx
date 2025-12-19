@@ -19,7 +19,7 @@ export type UserProfile = {
   avatar_url: string | null;
   phone_country_code: string | null;
   phone_number: string | null;
-  membership_tier: string | null;
+  membership_tier: string;
   notifications: {
     tournaments: boolean;
     contents: boolean;

@@ -12,8 +12,7 @@ export default function MembershipPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const isSubscribed =
-    profile?.membership_tier && profile.membership_tier !== "free";
+  const isSubscribed = profile?.membership_tier !== "free";
 
   const handleManageSubscription = async () => {
     setLoading(true);

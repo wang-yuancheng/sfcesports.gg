@@ -4,7 +4,7 @@ import Stripe from "stripe";
 import { createClient } from "@supabase/supabase-js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-12-15.clover" as any,
+  apiVersion: "2025-12-15.clover",
 });
 
 const supabaseAdmin = createClient(
@@ -59,12 +59,14 @@ export async function POST(req: Request) {
         const customerId = subscription.customer as string;
 
         if (
-          subscription.status !== "active" &&
-          subscription.status !== "trialing"
+          subscription.status === "past_due" ||
+          subscription.status === "unpaid" ||
+          subscription.status === "canceled"
         ) {
-          console.log(
-            `[Webhook] Subscription status is ${subscription.status}, ignoring.`
-          );
+          await supabaseAdmin
+            .from("profiles")
+            .update({ membership_tier: "free" })
+            .eq("stripe_customer_id", customerId);
           break;
         }
 

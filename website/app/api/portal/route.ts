@@ -3,13 +3,15 @@ import { createClient } from "@/lib/supabase/server";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-12-15.clover" as any, 
+  apiVersion: "2025-12-15.clover",
 });
 
 export async function POST(req: Request) {
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
     if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -23,7 +25,10 @@ export async function POST(req: Request) {
       .single();
 
     if (!profile?.stripe_customer_id) {
-      return NextResponse.json({ error: "No customer ID found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "No customer ID found" },
+        { status: 404 }
+      );
     }
 
     // Create a Portal Session

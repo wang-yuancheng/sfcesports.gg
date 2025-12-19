@@ -30,11 +30,25 @@ export async function POST(req: Request) {
         email: user.email,
         metadata: { supabase_id: user.id },
       });
-      customerId = customer.id;
-      await supabase
+
+      const { error, data } = await supabase
         .from("profiles")
-        .update({ stripe_customer_id: customerId })
-        .eq("id", user.id);
+        .update({ stripe_customer_id: customer.id })
+        .eq("id", user.id)
+        .is("stripe_customer_id", null)
+        .select();
+
+      if (error || !data || data.length === 0) {
+        const { data: existingProfile } = await supabase
+          .from("profiles")
+          .select("stripe_customer_id")
+          .eq("id", user.id)
+          .single();
+
+        customerId = existingProfile?.stripe_customer_id;
+      } else {
+        customerId = customer.id;
+      }
     }
 
     // Check for Active Subscriptions

@@ -25,31 +25,45 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  // 1. Get User
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   const path = request.nextUrl.pathname;
 
-  // 2. Define Protected Routes
-  const protectedPaths = ["/protected", "/account", "/update-password", "/welcome"];
+  const protectedPaths = [
+    "/protected",
+    "/account",
+    "/update-password",
+    "/welcome",
+  ];
   const isProtected = protectedPaths.some((p) => path.startsWith(p));
-
-  // 3. Define Auth Routes (Pages logged-in users should NOT see)
   const authPaths = ["/login", "/sign-up", "/forgot-password"];
   const isAuthPage = authPaths.some((p) => path.startsWith(p));
 
-  // 4. Handle Unauthorized Access (Protect private pages)
   if (isProtected && !user) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.searchParams.set("error", "Please log in to view this page");
-    return NextResponse.redirect(url);
+
+    const redirectResponse = NextResponse.redirect(url);
+    const cookies = supabaseResponse.cookies.getAll();
+    cookies.forEach((cookie) => {
+      redirectResponse.cookies.set(cookie.name, cookie.value, cookie);
+    });
+
+    return redirectResponse;
   }
 
-  // 5. Handle Already Authorized Access (Redirect from login if already logged in)
   if (isAuthPage && user) {
     const url = request.nextUrl.clone();
     url.pathname = "/";
-    return NextResponse.redirect(url);
+    const redirectResponse = NextResponse.redirect(url);
+    const cookies = supabaseResponse.cookies.getAll();
+    cookies.forEach((cookie) => {
+      redirectResponse.cookies.set(cookie.name, cookie.value, cookie);
+    });
+
+    return redirectResponse;
   }
 
   return supabaseResponse;
