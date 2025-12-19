@@ -10,7 +10,7 @@ import NavbarProfile from "@/components/navigation/NavbarProfile";
 import {
   LoginButton,
   SignUpButton,
-  CurrencyButton,
+
 } from "@/components/navigation/CustomButtons";
 import {
   LongLiveDisplay,
@@ -31,7 +31,7 @@ export default function Header() {
             {/* Left */}
             <div className="flex items-center">
               <MenuSheetResponsive />
-              <CurrencyButton />
+
             </div>
             {/* Logo Mid */}
             <Link href="/" aria-label="Home">
@@ -70,7 +70,7 @@ export default function Header() {
               <div className="absolute inset-y-0 right-0 flex items-center md:static md:inset-auto md:mr-0">
                 {user ? (
                   <div className="flex gap-1">
-                    <CurrencyButton />
+
                     <CartSheetResponsive>
                       <CartContents />
                     </CartSheetResponsive>
@@ -79,7 +79,7 @@ export default function Header() {
                 ) : (
                   <>
                     <div className="mr-2">
-                      <CurrencyButton />
+
                       <CartSheetResponsive>
                         <CartContents />
                       </CartSheetResponsive>

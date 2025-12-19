@@ -9,7 +9,6 @@ import {
   footerAbout,
   footerActivity,
   termsAndPolicies,
-  currency,
   copyright,
 } from "@/data/navigation/footer";
 import Link from "next/link";
@@ -30,8 +29,6 @@ export default function Footer() {
           />
         </div>
 
-        {/* TODO: Change global state when currency is modified */}
-        <FooterDropdown trigger="$ USD" dropdownContent={currency} />
         <FooterDropdown trigger="About" dropdownContent={footerAbout} />
         <FooterDropdown trigger="Activity" dropdownContent={footerActivity} />
         <FooterDropdown

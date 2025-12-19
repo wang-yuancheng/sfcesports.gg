@@ -19,16 +19,3 @@ export function SignUpButton() {
     </Button>
   );
 }
-
-export function CurrencyButton() {
-  return (
-    <button
-      className="relative rounded-md p-2 sm:hover:bg-gray-100"
-      type="button"
-      aria-label="Search"
-      title="Search Button"
-    >
-      <Image src={DollarSign} alt="Chevron Right" width={22} height={22} />
-    </button>
-  );
-}

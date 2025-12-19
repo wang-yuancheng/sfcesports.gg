@@ -50,9 +50,4 @@ export const footerActivity = [
 export const termsAndPolicies = [
   { label: "All Terms and Policies", href: "/policies" },
 ];
-export const currency = [
-  { label: "$ SGD" },
-  { label: "₹ INR" },
-  { label: "RM MYR" },
-];
 export const copyright = `© 2021 - ${new Date().getFullYear()}, ShibeFanClub, All rights reserved`;

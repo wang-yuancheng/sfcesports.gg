@@ -11,14 +11,12 @@ export async function POST(req: Request) {
     const { priceId } = await req.json();
     const supabase = await createClient();
 
-    // Get User
     const {
       data: { user },
     } = await supabase.auth.getUser();
     if (!user)
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    // Get Profile (to check for existing customer ID)
     const { data: profile } = await supabase
       .from("profiles")
       .select("stripe_customer_id")
@@ -27,21 +25,19 @@ export async function POST(req: Request) {
 
     let customerId = profile?.stripe_customer_id;
 
-    // Create Stripe Customer if they don't exist
     if (!customerId) {
       const customer = await stripe.customers.create({
         email: user.email,
         metadata: { supabase_id: user.id },
       });
       customerId = customer.id;
-      // Save this ID to Supabase
       await supabase
         .from("profiles")
         .update({ stripe_customer_id: customerId })
         .eq("id", user.id);
     }
 
-    // 4. Check for Active Subscriptions
+    // Check for Active Subscriptions
     const subscriptions = await stripe.subscriptions.list({
       customer: customerId,
       status: "active",
@@ -57,6 +53,7 @@ export async function POST(req: Request) {
         line_items: [{ price: priceId, quantity: 1 }],
         success_url: `${process.env.NEXT_PUBLIC_URL}/account/membership?success=true`,
         cancel_url: `${process.env.NEXT_PUBLIC_URL}/shop?canceled=true`,
+        payment_method_types: ["card"],
       });
       return NextResponse.json({ url: session.url });
     }
@@ -64,7 +61,6 @@ export async function POST(req: Request) {
     // --- SCENARIO B: UPGRADE / DOWNGRADE ---
     const currentItem = currentSubscription.items.data[0];
 
-    // Fetch prices to compare amounts
     const [newPrice, oldPrice] = await Promise.all([
       stripe.prices.retrieve(priceId),
       stripe.prices.retrieve(currentItem.price.id),
@@ -75,40 +71,51 @@ export async function POST(req: Request) {
     const isUpgrade = newAmount > oldAmount;
 
     if (isUpgrade) {
-      // UPGRADE: Immediate change, charge the difference now
-      await stripe.subscriptions.update(currentSubscription.id, {
-        items: [
-          {
-            id: currentItem.id,
-            price: priceId,
-          },
-        ],
-        proration_behavior: "always_invoice", // Charges immediately
-      });
-      return NextResponse.json({
-        success: true,
-        message: "Upgraded successfully",
-      });
+      try {
+        await stripe.subscriptions.update(currentSubscription.id, {
+          items: [{ id: currentItem.id, price: priceId }],
+          proration_behavior: "always_invoice",
+        });
+
+        return NextResponse.json({
+          success: true,
+          message: "Upgraded successfully",
+        });
+      } catch (error: any) {
+        if (
+          error.type === "StripeCardError" ||
+          error.code === "card_declined" ||
+          error.code === "insufficient_funds"
+        ) {
+          return NextResponse.json(
+            {
+              error: "Payment declined. Please check your card.",
+              code: error.code,
+            },
+            { status: 402 }
+          );
+        }
+        throw error;
+      }
     } else {
-      // DOWNGRADE: Schedule for end of period (Twitch Style)
-      // This ensures they keep their current benefits until the month ends
+      const safeSubscription = currentSubscription as Stripe.Subscription & {
+        current_period_end: number;
+      };
 
-      // 1. Initialize a schedule from the existing sub
       const schedule = await stripe.subscriptionSchedules.create({
-        from_subscription: currentSubscription.id,
+        from_subscription: safeSubscription.id,
       });
 
-      // 2. Update schedule to switch plans at the end of the current phase
       await stripe.subscriptionSchedules.update(schedule.id, {
         end_behavior: "release",
         phases: [
           {
             start_date: "now",
-            end_date: (currentSubscription as any).current_period_end,
+            end_date: safeSubscription.current_period_end,
             items: [{ price: currentItem.price.id, quantity: 1 }],
           },
           {
-            start_date: (currentSubscription as any).current_period_end,
+            start_date: safeSubscription.current_period_end,
             items: [{ price: priceId, quantity: 1 }],
           },
         ],
