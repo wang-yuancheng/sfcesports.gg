@@ -26,13 +26,15 @@ export default function NavbarProfile() {
     router.refresh();
   };
 
-  // While loading, we render nothing to prevent jumps, or you could render the guest icon
   if (isLoading) return null;
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <div className="relative items-center flex cursor-pointer rounded-md p-2 sm:hover:bg-gray-100 transition-colors" suppressHydrationWarning={true}>
+        <div
+          className="relative items-center flex cursor-pointer rounded-md p-2 sm:hover:bg-gray-100 transition-colors"
+          suppressHydrationWarning={true}
+        >
           {user && profile?.avatar_url ? (
             <div
               className="rounded-full bg-cover bg-center bg-no-repeat bg-gray-200 border border-gray-200"

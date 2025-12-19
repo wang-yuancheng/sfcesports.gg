@@ -4,7 +4,7 @@ import "@/styles/fonts.css";
 import { InitialFontWrapper } from "@/components/other/InitialFontWrapper";
 import { createClient } from "@/lib/supabase/server";
 import { UserProvider } from "@/hooks/useUser";
-import { Toaster } from "@/components/ui/sonner"; // <--- 1. ADD IMPORT
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "ShibeFanClub - SFC Esports",

@@ -108,7 +108,7 @@ export default function NotificationsPage() {
             <Button
               onClick={handleSave}
               disabled={loading}
-              className="w-full h-12 bg-black text-white tracking-wider font-[400] rounded-lg hover:bg-gray-800 transition-colors"
+              className="w-full h-12 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
             >
               {loading ? "Saving..." : "Save Preferences"}
             </Button>

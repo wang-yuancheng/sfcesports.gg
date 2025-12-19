@@ -11,7 +11,7 @@ export default function MembershipPage() {
   const { profile } = useUser();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  
+
   const isSubscribed =
     profile?.membership_tier && profile.membership_tier !== "free";
 
@@ -22,7 +22,7 @@ export default function MembershipPage() {
         method: "POST",
       });
       const data = await res.json();
-      
+
       if (data.url) {
         window.location.href = data.url;
       } else {
@@ -53,7 +53,8 @@ export default function MembershipPage() {
               </span>
             </div>
             <p className="text-gray-700 text-base leading-relaxed font-[400] max-w-lg">
-              You are currently subscribed to SFC+. Manage your plan, payment method, or billing history here.
+              You are currently subscribed to SFC+. Manage your plan, payment
+              method, or billing history here.
             </p>
           </div>
           <div className="shrink-0">
@@ -68,7 +69,6 @@ export default function MembershipPage() {
           </div>
         </div>
       ) : (
-        // ... Render for non-subscribed users (keep existing) ...
         <div className="bg-[#f5f6f7] rounded-lg p-8 md:p-8 border border-gray-100">
           <div className="space-y-2 mb-4">
             <h2 className="text-lg font-bold text-gray-900">SFC+ Membership</h2>
@@ -77,7 +77,7 @@ export default function MembershipPage() {
             </p>
           </div>
           <Link href="/shop">
-            <Button className="h-11 px-6 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors tracking-wider font-[400]">
+            <Button className="h-11 px-6 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors ">
               Subscribe To SFC+
             </Button>
           </Link>

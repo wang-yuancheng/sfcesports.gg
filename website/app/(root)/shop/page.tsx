@@ -4,29 +4,28 @@ import Image from "next/image";
 import shopHero from "@/assets/pictures/shophero.png";
 import Link from "next/link";
 import { useCart } from "@/hooks/useCart";
-import { useUser } from "@/hooks/useUser"; // Import useUser
+import { useUser } from "@/hooks/useUser";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation"; // Import useRouter
+import { useRouter } from "next/navigation";
 
 export default function Shop() {
   const addItem = useCart((state) => state.addItem);
-  const { profile } = useUser(); // Get profile
+  const { profile } = useUser();
   const router = useRouter();
 
   const handleSubscribe = (tier: string, price: number, priceId: string) => {
-    // 1. Check if user is already subscribed (skip 'free' tier if that exists)
-    const isSubscribed = profile?.membership_tier && profile.membership_tier !== "free";
+    const isSubscribed =
+      profile?.membership_tier && profile.membership_tier !== "free";
 
     if (isSubscribed) {
-      // Use toast.error for better visibility
-      toast.error("You already have a membership. Please manage it in your settings.");
-      
-      // Redirect to the membership page so they can actually manage it
+      toast.error(
+        "You already have a membership. Please manage it in your settings."
+      );
+
       router.push("/account/membership");
       return;
     }
 
-    // 2. Add to cart if valid
     addItem({
       id: `membership-${tier.toLowerCase()}`,
       name: `${tier} Membership`,
@@ -34,10 +33,6 @@ export default function Shop() {
       priceId: priceId,
       type: "membership",
     });
-
-    toast.success(
-      `${tier} Membership added to bag! Click the bag icon to checkout.`
-    );
   };
 
   return (
@@ -125,7 +120,7 @@ export default function Shop() {
                     The perfect balance.
                   </p>
                 </div>
-                
+
                 <button
                   onClick={() =>
                     handleSubscribe(
@@ -159,7 +154,7 @@ export default function Shop() {
                     Most popular choice.
                   </p>
                 </div>
-                
+
                 <button
                   onClick={() =>
                     handleSubscribe(
@@ -192,7 +187,7 @@ export default function Shop() {
                     All access pass.
                   </p>
                 </div>
-                
+
                 <button
                   onClick={() =>
                     handleSubscribe(

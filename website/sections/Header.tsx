@@ -17,7 +17,7 @@ import {
   ShortLiveDisplay,
 } from "@/components/navigation/LiveDisplay";
 import { NavbarMain } from "@/components/navigation/NavbarMain";
-import CartContents from "@/components/shop/CartContents"; 
+import CartContents from "@/components/shop/CartContents";
 
 export default function Header() {
   const { user } = useUser();
@@ -39,7 +39,6 @@ export default function Header() {
             </Link>
             {/* Right */}
             <div className="flex items-center gap-1">
-              {/* 👇 2. PASS IT AS A CHILD */}
               <CartSheetResponsive>
                 <CartContents />
               </CartSheetResponsive>
@@ -72,7 +71,6 @@ export default function Header() {
                 {user ? (
                   <div className="flex gap-1">
                     <CurrencyButton />
-                    {/* 👇 3. PASS IT AS A CHILD HERE TOO */}
                     <CartSheetResponsive>
                       <CartContents />
                     </CartSheetResponsive>
@@ -82,7 +80,6 @@ export default function Header() {
                   <>
                     <div className="mr-2">
                       <CurrencyButton />
-                      {/* 👇 4. AND HERE */}
                       <CartSheetResponsive>
                         <CartContents />
                       </CartSheetResponsive>

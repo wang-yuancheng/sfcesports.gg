@@ -48,7 +48,7 @@ export function UserProvider({
   const [user, setUser] = useState<User | null>(initialUser);
   const [profile, setProfile] = useState<UserProfile | null>(initialProfile);
   const [isLoading, setIsLoading] = useState(!initialUser && !initialProfile);
-  
+
   const isMounted = useRef(false);
   const supabase = createClient();
 
@@ -74,26 +74,25 @@ export function UserProvider({
       if (data) {
         setProfile(data as UserProfile);
       }
-      
-      // FIX: Explicitly ignore "AbortError" or "browsing context" errors
+
       if (error) {
         const errMsg = error.message || "";
-        const isIgnorable = 
-          errMsg.includes("browsing context") || 
+        const isIgnorable =
+          errMsg.includes("browsing context") ||
           errMsg.includes("AbortError") ||
           errMsg.includes("Failed to fetch");
 
-        // Only log if it's a REAL error, not a navigation cancellation
         if (!isIgnorable && (error.message || error.code)) {
           console.error("Error fetching profile:", error.message || error);
         }
       }
-
     } catch (error: any) {
-      // Also catch any thrown AbortErrors here just in case
       if (isMounted.current) {
         const errMsg = error?.message || "";
-        if (!errMsg.includes("browsing context") && !errMsg.includes("AbortError")) {
+        if (
+          !errMsg.includes("browsing context") &&
+          !errMsg.includes("AbortError")
+        ) {
           console.error("Unexpected error:", error);
         }
       }

@@ -188,8 +188,8 @@ export default function ConnectionsPage() {
               disabled={loading === item.id}
               className={`h-10 px-6 rounded-lg font-bold text-sm transition-all ${
                 item.connected
-                  ? "bg-white text-gray-500 tracking-wider font-[400] hover:bg-gray-100 border border-gray-200"
-                  : "bg-black tracking-wider font-[400] text-white hover:bg-gray-800"
+                  ? "bg-white text-gray-500 hover:bg-gray-100 border border-gray-200"
+                  : "bg-black text-white hover:bg-gray-800"
               }`}
             >
               {loading === item.id

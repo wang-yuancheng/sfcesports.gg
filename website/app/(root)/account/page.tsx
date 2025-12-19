@@ -11,12 +11,12 @@ export default function ProfilePage() {
   const clearCart = useCart((state) => state.clearCart);
 
   useEffect(() => {
-    // CRITICAL FIX: "Zombie Cart"
-    // Clear the cart if we just returned from a successful payment
-    if (searchParams.get("success") === "true" || searchParams.get("updated") === "true") {
+    if (
+      searchParams.get("success") === "true" ||
+      searchParams.get("updated") === "true"
+    ) {
       clearCart();
-      
-      // Optional: Clean the URL
+
       router.replace("/account");
     }
   }, [searchParams, clearCart, router]);

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,8 +12,8 @@ import {
   SheetDescription,
   SheetClose,
 } from "@/components/ui/sheet";
-import LucideShoppingBag from "@/assets/icons/shopping-bag.svg";
 import { CartSheetProps } from "@/lib/types";
+import { useCart } from "@/hooks/useCart";
 
 export function CartSheet({
   side = "right",
@@ -26,33 +25,62 @@ export function CartSheet({
   children,
   contentClassName,
 }: CartSheetProps) {
+  const { isOpen, setOpen, items } = useCart();
+  const itemCount = items?.length || 0;
+
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         {trigger ?? (
           <button
             type="button"
-            title="Search Button"
+            title="Cart"
             aria-label="Open cart"
             className="relative rounded-md p-2 sm:hover:bg-gray-100"
             suppressHydrationWarning={true}
           >
-            <Image
-              src={LucideShoppingBag}
-              alt="Shopping Bag"
-              width={22}
-              height={22}
-            />
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 20 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="text-black"
+            >
+              {/* Clipboard Outline */}
+              <path
+                d="M6 6H2a1 1 0 00-1 1v12a2 2 0 002 2h14a2 2 0 002-2V7a1 1 0 00-1-1h-4M6 6V3a2 2 0 012-2h4a2 2 0 012 2v3M6 6h8"
+                stroke="currentColor"
+                strokeWidth="2"
+              />
+
+              {/* Dynamic Number */}
+              <text
+                x="50%"
+                y="14"
+                dominantBaseline="middle"
+                textAnchor="middle"
+                fontFamily="sans-serif"
+                fontSize="14px"
+                fill="currentColor"
+                stroke="none"
+              >
+                {itemCount > 0 ? itemCount : ""}
+              </text>
+            </svg>
           </button>
         )}
       </SheetTrigger>
 
-      <SheetContent side={side} className={contentClassName}>
+      <SheetContent
+        side={side}
+        className={contentClassName}
+        onCloseAutoFocus={(e) => e.preventDefault()}
+      >
         <SheetHeader>
           <SheetTitle>Your Bag</SheetTitle>
           {description && <SheetDescription>{description}</SheetDescription>}
         </SheetHeader>
-
         {children ? (
           children
         ) : (
@@ -70,7 +98,6 @@ export function CartSheet({
   );
 }
 
-// Responsive wrapper
 export function CartSheetResponsive(props: Omit<CartSheetProps, "side">) {
   const isSmall = useMediaQuery({ max: 640 });
   const side = isSmall ? "bottom" : "right";

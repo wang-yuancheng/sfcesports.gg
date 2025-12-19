@@ -12,7 +12,7 @@ export default function FeatureRequest() {
 
         <Button
           onClick={() => window.open("https://discord.gg/2Sby35W", "_blank")}
-          className="w-full bg-black text-white tracking-wider font-[400] py-3 rounded-lg hover:bg-gray-800 transition-colors shadow-gray-200"
+          className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors shadow-gray-200"
         >
           Submit An Idea
         </Button>
