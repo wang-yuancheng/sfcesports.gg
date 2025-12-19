@@ -1,25 +1,23 @@
-"use client";
-
-import { useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
-import { useCart } from "@/hooks/useCart";
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 import ProfileForm from "@/components/account/ProfileForm";
 
-export default function ProfilePage() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const clearCart = useCart((state) => state.clearCart);
+export default async function ProfilePage() {
+  const supabase = await createClient();
 
-  useEffect(() => {
-    if (
-      searchParams.get("success") === "true" ||
-      searchParams.get("updated") === "true"
-    ) {
-      clearCart();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-      router.replace("/account");
-    }
-  }, [searchParams, clearCart, router]);
+  if (!user) {
+    redirect("/login");
+  }
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("username, display_name, avatar_url")
+    .eq("id", user.id)
+    .single();
 
   return (
     <section>
@@ -28,7 +26,7 @@ export default function ProfilePage() {
       </h1>
       <div className="flex flex-col xlg:flex-row gap-10">
         <div className="flex-1">
-          <ProfileForm />
+          <ProfileForm user={user} initialProfile={profile} />
         </div>
       </div>
     </section>

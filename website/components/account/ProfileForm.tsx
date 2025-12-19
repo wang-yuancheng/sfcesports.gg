@@ -6,27 +6,50 @@ import { useUser } from "@/hooks/useUser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import AvatarUpload from "@/components/auth/avatar-upload";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useCart } from "@/hooks/useCart";
+import { User } from "@supabase/supabase-js";
 
-export default function ProfileForm() {
+type ProfileData = {
+  username: string | null;
+  display_name: string | null;
+  avatar_url: string | null;
+};
+
+export default function ProfileForm({
+  initialProfile,
+  user,
+}: {
+  initialProfile: ProfileData | null;
+  user: User;
+}) {
   const supabase = createClient();
-  const { user, profile, refreshProfile } = useUser();
+  const { refreshProfile } = useUser();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const clearCart = useCart((state) => state.clearCart);
+
+  useEffect(() => {
+    if (
+      searchParams.get("success") === "true" ||
+      searchParams.get("updated") === "true"
+    ) {
+      clearCart();
+      router.replace("/account");
+    }
+  }, [searchParams, clearCart, router]);
 
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [username, setUsername] = useState(initialProfile?.username || "");
+  const [displayName, setDisplayName] = useState(
+    initialProfile?.display_name || ""
+  );
+  const [avatarUrl, setAvatarUrl] = useState(initialProfile?.avatar_url || "");
+
   const [message, setMessage] = useState<{
     type: "success" | "error";
     text: string;
   } | null>(null);
-
-  useEffect(() => {
-    if (profile) {
-      setUsername(profile.username || "");
-      setDisplayName(profile.display_name || "");
-      setAvatarUrl(profile.avatar_url || "");
-    }
-  }, [profile]);
 
   const updateProfile = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,9 +57,6 @@ export default function ProfileForm() {
     setMessage(null);
 
     try {
-      if (!user) throw new Error("No user logged in");
-
-      // 1. Client-side Check (Best Practice: Catch it before sending)
       if (username.length < 3) {
         throw new Error("Username must be at least 3 characters long.");
       }
@@ -76,12 +96,12 @@ export default function ProfileForm() {
 
   return (
     <div className="bg-[#FAFAFA] rounded-lg w-full flex flex-col overflow-hidden border border-gray-100">
-      <div className="relative h-44 w-full bg-[#E5E7EB] " />
+      <div className="relative h-44 w-full bg-[#E5E7EB]" />
       <div className="px-8 pb-8 flex-1 flex flex-col">
         <div className="relative -mt-12 mb-8 flex justify-between items-end">
           <div className="relative rounded-full border-[6px] border-[#FAFAFA] bg-white shadow-sm w-fit">
             <AvatarUpload
-              uid={user?.id ?? null}
+              uid={user.id}
               url={avatarUrl}
               onUpload={(url) => setAvatarUrl(url)}
             />
