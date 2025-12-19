@@ -50,7 +50,7 @@ export default function SettingsPage() {
       if (error) throw error;
 
       await refreshProfile();
-      setMessage({ type: "success", text: "{Settings saved successfully}." });
+      setMessage({ type: "success", text: "Settings saved successfully." });
     } catch (error: any) {
       setMessage({ type: "error", text: error.message });
     } finally {
