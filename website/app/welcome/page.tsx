@@ -82,7 +82,7 @@ export default function WelcomePage() {
   }
 
   return (
-    <div className="flex mt-5 xs:mt-7 sm:mt-10 md:mt-14 xmd:mt-20 lg:mt-24 xlg:mt-32 xxlg:mt-36 flex-col items-center justify-center p-4">
+    <div className="flex mt-5 xs:mt-7 sm:mt-10 md:mt-14 flex-col items-center justify-center p-4">
       <div className="flex flex-col items-center gap-5">
         <div className="relative h-12 w-12">
           <Image
@@ -143,9 +143,6 @@ export default function WelcomePage() {
                 className="h-12 bg-white px-4 text-base focus-visible:border-black focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-300 "
                 placeholder="Pick a unique username"
               />
-              <p className="text-xs text-gray-500 font-[500] ml-0.5">
-                This is how you will appear on tournament brackets.
-              </p>
             </div>
 
             <div className="flex items-start gap-3">
@@ -162,7 +159,7 @@ export default function WelcomePage() {
                     flex items-center justify-center
                     ${
                       marketingConsent
-                        ? "bg-pink-bright border-pink-bright" 
+                        ? "bg-pink-bright border-pink-bright"
                         : "bg-white border-gray-300 hover:border-gray-400"
                     }
                   `}

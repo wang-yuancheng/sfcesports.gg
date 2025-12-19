@@ -103,7 +103,7 @@ export default function ForgotPasswordPage() {
       <div className="w-full max-w-[450px] flex flex-col items-center px-6 mb-10">
         {success ? (
           // SUCCESS STATE UI
-          <div className="w-full space-y-6 pt-4">
+          <div className="w-full space-y-6">
             <Link href="/login">
               <Button className="h-12 w-full bg-black text-base font-bold text-white hover:bg-gray-800 rounded-md transition-colors">
                 Return to Login
@@ -156,7 +156,7 @@ export default function ForgotPasswordPage() {
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
-                    if (emailError) setEmailError(null); 
+                    if (emailError) setEmailError(null);
                   }}
                   className={[
                     "h-12 bg-white px-4 text-base focus-visible:border-black focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-gray-300",

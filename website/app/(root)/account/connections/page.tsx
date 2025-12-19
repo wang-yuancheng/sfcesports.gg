@@ -186,7 +186,7 @@ export default function ConnectionsPage() {
             <Button
               onClick={() => handleToggle(item)}
               disabled={loading === item.id}
-              className={`h-10 px-6 rounded-lg font-bold text-sm transition-all ${
+              className={`h-10 px-6 rounded-lg font-[500] text-sm transition-all ${
                 item.connected
                   ? "bg-white text-gray-500 hover:bg-gray-100 border border-gray-200"
                   : "bg-black text-white hover:bg-gray-800"

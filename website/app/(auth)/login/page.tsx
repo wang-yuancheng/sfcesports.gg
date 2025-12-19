@@ -16,8 +16,7 @@ export default function LoginPage() {
   const searchParams = useSearchParams();
   const next = searchParams.get("next");
   const redirectUrl = next && next.startsWith("/") ? next : "/";
-
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(searchParams.get("email") || "");
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState<string | null>(null);
   const [authSuccess, setAuthSuccess] = useState<string | null>(null);
@@ -135,7 +134,7 @@ export default function LoginPage() {
           New to SFC ID?{" "}
         </span>
         <Link
-          href={`/sign-up?next=${redirectUrl}`} 
+          href={`/sign-up?next=${redirectUrl}&email=${encodeURIComponent(email)}`}
           className="ml-1 text-base text-black underline underline-offset-3 hover:text-gray-700"
         >
           Sign up

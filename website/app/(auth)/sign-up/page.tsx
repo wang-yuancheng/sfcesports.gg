@@ -3,20 +3,21 @@
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import confirmationEmailPicture from "@/assets/pictures/confirmationemail.png";
 import { SocialButtons } from "@/components/auth/social-buttons";
-import { useUser } from "@/hooks/useUser"; // Import useUser
+import { useUser } from "@/hooks/useUser";
 
 export default function SignUpPage() {
-  const { user, isLoading: userLoading } = useUser(); // Get user state
+  const { user, isLoading: userLoading } = useUser();
   const router = useRouter();
-  
-  const [email, setEmail] = useState("");
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next");
+  const [email, setEmail] = useState(searchParams.get("email") || "");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
@@ -28,7 +29,6 @@ export default function SignUpPage() {
 
   const supabase = createClient();
 
-  // Redirect if already logged in
   useEffect(() => {
     if (!userLoading && user) {
       router.replace("/");
@@ -177,7 +177,9 @@ export default function SignUpPage() {
           Already have an account?{" "}
         </span>
         <Link
-          href="/login"
+          href={`/login?${
+            next ? `next=${next}&` : ""
+          }email=${encodeURIComponent(email)}`}
           className="ml-1 text-base text-black underline underline-offset-3 hover:text-gray-700"
         >
           Log in
