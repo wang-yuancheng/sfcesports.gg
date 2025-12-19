@@ -68,23 +68,32 @@ export default function CartContents() {
 
   return (
     <div className="flex flex-col h-full md:pb-6">
-      <div className="flex-1 overflow-y-auto py-4">
+      <div className="flex-1 overflow-y-auto py-2">
         {items.map((item) => (
           <div
             key={item.id}
-            className="flex justify-between items-center py-4 border-b"
+            className="flex justify-between items-center py-4 border-b border-gray-100 last:border-0"
           >
-            <div>
-              <h4 className="font-bold">{item.name}</h4>
-              <p className="text-sm text-gray-500">
+            {/* Left: Info */}
+            <div className="flex flex-col gap-1">
+              <h4 className="font-semibold text-sm text-gray-900">
+                {item.name}
+              </h4>
+              <p className="text-[11px] font-medium uppercase tracking-wide text-gray-400">
                 {item.type === "membership" ? "Recurring" : "One-time"}
               </p>
             </div>
-            <div className="flex items-center gap-4">
-              <span className="font-medium">${item.price}</span>
+
+            {/* Right: Price & Action */}
+            <div className="flex items-center gap-5">
+              <span className="font-medium text-sm text-gray-900">
+                ${item.price}
+              </span>
+
               <button
                 onClick={() => removeItem(item.id)}
-                className="text-red-500 text-xs hover:underline"
+                className="text-xs font-medium text-gray-400 transition-colors hover:text-red-500 hover:underline decoration-red-500/30 underline-offset-4"
+                aria-label="Remove item"
               >
                 Remove
               </button>

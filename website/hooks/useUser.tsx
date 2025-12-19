@@ -10,6 +10,7 @@ import {
 } from "react";
 import { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
+import { useCart } from "@/hooks/useCart"; // Import useCart
 
 export type UserProfile = {
   id: string;
@@ -51,6 +52,9 @@ export function UserProvider({
 
   const isMounted = useRef(false);
   const supabase = createClient();
+
+  // Access the mergeCart function from the store
+  const mergeCart = useCart((state) => state.mergeCart);
 
   useEffect(() => {
     isMounted.current = true;
@@ -102,7 +106,7 @@ export function UserProvider({
   useEffect(() => {
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (!isMounted.current) return;
 
       const sessionUser = session?.user ?? null;
@@ -111,7 +115,13 @@ export function UserProvider({
         setUser(sessionUser);
       }
 
-      if (_event === "SIGNED_OUT") {
+      // ⚡ TRIGGER MERGE LOGIC
+      if (event === "SIGNED_IN" && sessionUser) {
+        // Trigger the merge. The Store handles fetching API and updating state.
+        await mergeCart(sessionUser.id);
+      }
+
+      if (event === "SIGNED_OUT") {
         setProfile(null);
       }
 
@@ -119,7 +129,7 @@ export function UserProvider({
     });
 
     return () => subscription.unsubscribe();
-  }, [user, supabase]);
+  }, [user, supabase, mergeCart]);
 
   useEffect(() => {
     if (user && !profile) {
