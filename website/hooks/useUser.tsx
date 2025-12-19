@@ -77,6 +77,8 @@ export function UserProvider({
 
       if (data) {
         setProfile(data as UserProfile);
+      } else if (!data && !isLoading) {
+        console.warn("Profile not found yet (trigger may be pending)");
       }
 
       if (error) {
@@ -92,16 +94,10 @@ export function UserProvider({
       }
     } catch (error: any) {
       if (isMounted.current) {
-        const errMsg = error?.message || "";
-        if (
-          !errMsg.includes("browsing context") &&
-          !errMsg.includes("AbortError")
-        ) {
-          console.error("Unexpected error:", error);
-        }
+        console.error("Unexpected error:", error);
       }
     }
-  }, [user, supabase]);
+  }, [user, supabase, isLoading]);
 
   useEffect(() => {
     const {

@@ -13,7 +13,6 @@ export async function GET(request: NextRequest) {
   const nextPath = searchParams.get("next") ?? "/";
   const nextUrl = new URL(nextPath, request.url);
 
-  // If this is a password recovery flow, pass that flag to the next page
   if (type) {
     nextUrl.searchParams.set("type", type);
   }
