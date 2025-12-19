@@ -5,6 +5,8 @@ import { useUser } from "@/hooks/useUser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createClient } from "@/lib/supabase/client";
+import { COUNTRY_CODES } from "@/lib/constants";
+import { parsePhoneNumberWithError } from "libphonenumber-js";
 
 export default function SettingsPage() {
   const { user, profile, refreshProfile } = useUser();
@@ -22,13 +24,20 @@ export default function SettingsPage() {
   useEffect(() => {
     if (user?.email) setEmail(user.email);
 
-    // Load phone data from profile
     if (profile) {
       if (profile.phone_number) setMobile(profile.phone_number);
       if (profile.phone_country_code)
         setCountryCode(profile.phone_country_code);
     }
   }, [user, profile]);
+
+  const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    // Allow digits, spaces, and dashes for formatting
+    if (/^[\d\s-]*$/.test(val)) {
+      setMobile(val);
+    }
+  };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,11 +47,26 @@ export default function SettingsPage() {
     try {
       if (!user) throw new Error("No user found");
 
+      const rawMobile = mobile.replace(/[^\d]/g, "");
+
+      if (!rawMobile) {
+        throw new Error("Phone number is required.");
+      }
+
+      const fullNumber = `${countryCode}${rawMobile}`;
+      const phone = parsePhoneNumberWithError(fullNumber);
+
+      if (!phone.isValid()) {
+        throw new Error(`This number is not valid for ${countryCode}`);
+      }
+
+      const cleanNationalNumber = phone.nationalNumber;
+
       const { error } = await supabase
         .from("profiles")
         .update({
           phone_country_code: countryCode,
-          phone_number: mobile,
+          phone_number: cleanNationalNumber,
           updated_at: new Date().toISOString(),
         })
         .eq("id", user.id);
@@ -50,9 +74,29 @@ export default function SettingsPage() {
       if (error) throw error;
 
       await refreshProfile();
+      setMobile(cleanNationalNumber);
       setMessage({ type: "success", text: "Settings saved successfully." });
     } catch (error: any) {
-      setMessage({ type: "error", text: error.message });
+      let errorMessage = error?.message || "Something went wrong.";
+
+      switch (errorMessage) {
+        case "TOO_SHORT":
+          errorMessage = "Phone number is too short.";
+          break;
+        case "TOO_LONG":
+          errorMessage = "Phone number is too long.";
+          break;
+        case "INVALID_COUNTRY":
+          errorMessage = "Invalid country code.";
+          break;
+        case "NOT_A_NUMBER":
+          errorMessage = "Input contains invalid characters.";
+          break;
+        default:
+          break;
+      }
+
+      setMessage({ type: "error", text: errorMessage });
     } finally {
       setLoading(false);
     }
@@ -64,7 +108,6 @@ export default function SettingsPage() {
         Settings
       </h1>
       <div className="flex flex-col gap-8">
-        {/* Contact Info Card */}
         <div className="bg-[#f5f6f7] rounded-xl p-5 md:p-8">
           <form onSubmit={handleSave} className="flex flex-col gap-6">
             <div className="space-y-2">
@@ -87,33 +130,29 @@ export default function SettingsPage() {
                   <select
                     value={countryCode}
                     onChange={(e) => setCountryCode(e.target.value)}
-                    className="appearance-none bg-transparent text-sm font-medium text-gray-700 pr-2 py-1 focus:outline-none cursor-pointer"
+                    className="appearance-none text-sm font-medium text-gray-700 py-1 focus:outline-none cursor-pointer z-20"
                   >
-                    <option value="+1">+1 (US)</option>
-                    <option value="+44">+44 (UK)</option>
-                    <option value="+60">+60 (MY)</option>
-                    <option value="+61">+61 (AU)</option>
-                    <option value="+62">+62 (ID)</option>
-                    <option value="+63">+63 (PH)</option>
-                    <option value="+65">+65 (SG)</option>
-                    <option value="+66">+66 (TH)</option>
-                    <option value="+81">+81 (JP)</option>
-                    <option value="+82">+82 (KR)</option>
-                    <option value="+84">+84 (VN)</option>
-                    <option value="+86">+86 (CN)</option>
-                    <option value="+91">+91 (IN)</option>
-                    <option value="+852">+852 (HK)</option>
-                    <option value="+881">+881 (BD)</option>
-                    <option value="+886">+886 (TW)</option>
+                    {COUNTRY_CODES.map((country) => (
+                      <option
+                        key={`${country.code}-${country.dial_code}`}
+                        value={country.dial_code}
+                      >
+                        {country.dial_code} ({country.code})
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <Input
                   type="tel"
                   value={mobile}
-                  onChange={(e) => setMobile(e.target.value)}
-                  className="bg-white border-gray-200 h-12 rounded-lg pl-[4.5rem] focus-visible:ring-1 focus-visible:ring-black"
+                  onChange={handleMobileChange}
+                  placeholder=""
+                  className="bg-white border-gray-200 h-12 rounded-lg pl-[5rem] focus-visible:ring-1 focus-visible:ring-black"
                 />
               </div>
+              <p className="text-xs text-gray-500 ml-1">
+                Enter your number without the country code.
+              </p>
             </div>
 
             {message && (
@@ -140,7 +179,7 @@ export default function SettingsPage() {
           </form>
         </div>
 
-        {/* Deactivate Account (Keep existing) */}
+        {/* Deactivate Account Area */}
         <div className="bg-[#f5f6f7] rounded-lg p-8 md:p-10 border border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-lg">
             <h3 className="text-lg font-bold text-gray-900">
