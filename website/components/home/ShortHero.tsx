@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { ShortHeroContent } from "@/lib/types";
 
 export default function ShortHero({
@@ -47,6 +46,7 @@ export default function ShortHero({
                     src={item.logoSrc}
                     alt=""
                     fill
+                    priority
                     className="object-contain transition grayscale group-hover:grayscale-0"
                   />
                 </span>

@@ -138,18 +138,42 @@ export default function ProfileForm({
           </div>
 
           {message && (
-            <div
-              className={`p-3 rounded-md text-sm font-medium text-center -mb-8 ${
-                message.type === "success"
-                  ? "bg-green-50 text-green-600"
-                  : "bg-red-50 text-red-600"
-              }`}
-            >
-              {message.text}
-            </div>
+            <>
+              {message.type === "success" ? (
+                <div className="flex w-full items-start gap-3 rounded-md border border-green-200 bg-green-50 p-4 text-green-700">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mt-0.5 h-5 w-5 flex-shrink-0"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <p className="text-sm leading-6">{message.text}</p>
+                </div>
+              ) : (
+                <div className="flex w-full flex-col gap-3 rounded-md border border-red-200 bg-red-50 p-4 text-red-600">
+                  <div className="flex items-start gap-3">
+                    <svg
+                      className="mt-0.5 h-5 w-5 flex-shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm1 15h-2v-2h2zm0-4h-2V7h2z" />
+                    </svg>
+                    <p className="text-sm leading-6">{message.text}</p>
+                  </div>
+                </div>
+              )}
+            </>
           )}
 
-          <div className="mt-8">
+          <div className="mt-4">
             <Button
               type="submit"
               disabled={loading}

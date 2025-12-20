@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-import React from "react";
 import Image from "next/image";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import pubgmLogo from "@/assets/logos/pubgm.svg";
@@ -20,6 +19,7 @@ export function LiveContentBack({ showVod }: { showVod: boolean }) {
             width={35}
             draggable={false}
             className="object-contain shrink-0"
+            priority
           />
           <div className="min-w-0 leading-none">
             <div className="font-[600] text-sm leading-tight whitespace-nowrap">
@@ -53,6 +53,7 @@ export function LiveContentFront({ showVod }: { showVod: boolean }) {
             alt="PUBGM Logo"
             width={35}
             draggable={false}
+            priority
             className="object-contain shrink-0"
           />
           <div className="min-w-0 leading-none">
@@ -70,6 +71,7 @@ export function LiveContentFront({ showVod }: { showVod: boolean }) {
             alt="Shibe Logo"
             width={35}
             draggable={false}
+            priority
             className="object-contain"
           />
           <Image
@@ -77,6 +79,7 @@ export function LiveContentFront({ showVod }: { showVod: boolean }) {
             alt="Nova Logo"
             width={35}
             draggable={false}
+            priority
             className="object-contain"
           />
         </div>

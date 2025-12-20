@@ -73,6 +73,7 @@ export default function LongHero({
                 alt="Chevron Right"
                 width={30}
                 height={30}
+                priority
               />
             </div>
           </Link>
