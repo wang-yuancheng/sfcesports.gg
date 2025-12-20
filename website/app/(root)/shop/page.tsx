@@ -6,12 +6,70 @@ import Link from "next/link";
 import { useCart } from "@/hooks/useCart";
 import { useUser } from "@/hooks/useUser";
 import { toast } from "sonner";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 export default function Shop() {
   const { addItem, openCart } = useCart();
-  const { profile } = useUser();
+  const { profile, user } = useUser();
+  const router = useRouter();
+  
+  // Track which specific button is loading
+  const [loadingId, setLoadingId] = useState<string | null>(null);
 
-  const handleSubscribe = (tier: string, price: number, priceId: string) => {
+  // Fix for "Stuck on Redirecting" when clicking Back button in browser
+  useEffect(() => {
+    const handlePageShow = (event: PageTransitionEvent) => {
+      // If page is restored from bfcache (back/forward cache), reset loading
+      if (event.persisted) {
+        setLoadingId(null);
+      }
+    };
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, []);
+
+  // Helper: Check if user has ANY active paid plan
+  const hasActivePlan =
+    profile?.membership_tier && profile.membership_tier !== "free";
+
+  const handlePlanAction = async (
+    tier: string,
+    price: number,
+    priceId: string
+  ) => {
+    // 1. Force Login if not authenticated
+    if (!user) {
+      router.push("/login?next=/shop");
+      return;
+    }
+
+    setLoadingId(tier);
+
+    // 2. If user already has a plan -> Redirect to Portal (Industry Standard)
+    if (hasActivePlan) {
+      try {
+        const res = await fetch("/api/portal", {
+          method: "POST",
+        });
+        const data = await res.json();
+        
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          toast.error("Could not load subscription portal.");
+          setLoadingId(null);
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error("Something went wrong.");
+        setLoadingId(null);
+      }
+      return;
+    }
+
+    // 3. If new customer -> Add to Cart
     addItem({
       id: `membership-${tier.toLowerCase()}`,
       name: `${tier} Membership`,
@@ -22,12 +80,31 @@ export default function Shop() {
 
     openCart();
     toast.success("Added to cart");
+    setLoadingId(null);
   };
 
   // Helper booleans for current plan status
   const isStarter = profile?.membership_tier === "Starter";
   const isPro = profile?.membership_tier === "Pro";
   const isElite = profile?.membership_tier === "Elite";
+
+  // Helper to get button content
+  const renderButtonContent = (tierName: string, isCurrentPlan: boolean) => {
+    const isLoading = loadingId === tierName;
+
+    if (isLoading) {
+      return (
+        <div className="flex items-center justify-center gap-2">
+          <Loader2 className="h-4 w-4 animate-spin" />
+          <span>Redirecting...</span>
+        </div>
+      );
+    }
+
+    if (isCurrentPlan) return "Current Plan";
+    if (hasActivePlan) return "Switch Plan";
+    return "Choose Plan";
+  };
 
   return (
     <div className="section-container flex flex-col items-center py-12 lg:py-20 xl:py-28 overflow-hidden">
@@ -41,14 +118,14 @@ export default function Shop() {
 
           <div className="relative w-full flex justify-center items-center mb-10 px-4">
             <div className="relative w-full max-w-[850px]">
-              {/* Left Floating Bubble */}
+              {/* Left Bubble */}
               <div className="absolute -top-5 left-[5%] xs:-top-5 xs:left-[0%] md:-top-4 lg:-top-4 md:left-0 z-20 transition-all duration-300">
                 <div className="bg-pink-bright text-white text-[10px] xs:text-xs sm:text-sm lg:text-base px-3 py-1 xs:px-4 xs:py-1.5 md:px-6 md:py-2 rounded-xl rounded-bl-none md:rounded-2xl md:rounded-bl-none transform -rotate-12 shadow-lg md:shadow-xl font-bold uppercase tracking-widest hover:scale-105 transition-transform">
                   Conqueror
                 </div>
               </div>
 
-              {/* Right Floating Bubble */}
+              {/* Right Bubble */}
               <div className="absolute -top-5 right-[4%] xs:-top-5 xs:-right-[2%] md:-top-6 md:right-[0%] z-20 transition-all duration-300">
                 <div className="bg-pink-bright text-white text-[10px] xs:text-xs sm:text-sm lg:text-base px-3 py-1 xs:px-4 xs:py-1.5 md:px-6 md:py-2 rounded-xl rounded-br-none md:rounded-2xl md:rounded-br-none transform rotate-12 shadow-lg md:shadow-xl font-bold uppercase tracking-widest hover:scale-105 transition-transform">
                   +125 PTS
@@ -96,6 +173,7 @@ export default function Shop() {
 
             {/* Pricing Cards (Right) */}
             <div className="lg:w-2/3 w-full flex flex-col md:flex-row justify-center items-center gap-6 md:gap-0 md:h-[400px]">
+              
               {/* Card 1 ($7 Pro) */}
               <div className="bg-white p-6 rounded-[24px] md:rounded-[32px] shadow-sm border border-gray-100 w-full max-w-[300px] md:w-[260px] min-h-[260px] md:h-[280px] flex flex-col justify-between relative transition-all duration-300 md:z-10 md:transform md:-rotate-[6deg] md:translate-x-8 md:translate-y-6 hover:z-30 hover:scale-105 hover:shadow-xl group">
                 <div>
@@ -116,9 +194,9 @@ export default function Shop() {
                 </div>
 
                 <button
-                  disabled={isPro}
+                  disabled={isPro || loadingId !== null}
                   onClick={() =>
-                    handleSubscribe(
+                    handlePlanAction(
                       "Pro",
                       7,
                       process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO!
@@ -130,7 +208,7 @@ export default function Shop() {
                       : "bg-gray-100 text-gray-900 group-hover:bg-black group-hover:text-white"
                   }`}
                 >
-                  {isPro ? "Current Plan" : "Choose Plan"}
+                  {renderButtonContent("Pro", isPro)}
                 </button>
               </div>
 
@@ -155,9 +233,9 @@ export default function Shop() {
                 </div>
 
                 <button
-                  disabled={isStarter}
+                  disabled={isStarter || loadingId !== null}
                   onClick={() =>
-                    handleSubscribe(
+                    handlePlanAction(
                       "Starter",
                       3,
                       process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_STARTER!
@@ -169,7 +247,7 @@ export default function Shop() {
                       : "bg-white text-pink-bright hover:bg-gray-50"
                   }`}
                 >
-                  {isStarter ? "Current Plan" : "Choose Plan"}
+                  {renderButtonContent("Starter", isStarter)}
                 </button>
               </div>
 
@@ -193,9 +271,9 @@ export default function Shop() {
                 </div>
 
                 <button
-                  disabled={isElite}
+                  disabled={isElite || loadingId !== null}
                   onClick={() =>
-                    handleSubscribe(
+                    handlePlanAction(
                       "Elite",
                       15,
                       process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_ELITE!
@@ -207,7 +285,7 @@ export default function Shop() {
                       : "bg-gray-100 text-gray-900 group-hover:bg-black group-hover:text-white"
                   }`}
                 >
-                  {isElite ? "Current Plan" : "Choose Plan"}
+                  {renderButtonContent("Elite", isElite)}
                 </button>
               </div>
             </div>
