@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import shibeLogo from "@/assets/icons/greencheckmark.png";
+import greenCheckMark from "@/assets/icons/greencheckmark.png";
 
 export default function WelcomePage() {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center bg-white px-4 text-center">
+    <div className="flex min-h-screen w-full flex-col items-center justify-center px-4 text-center">
       <div className="mb-3 relative h-16 w-16">
         <Image
-          src={shibeLogo}
+          src={greenCheckMark}
           alt="SFC"
           fill
           className="object-contain"
