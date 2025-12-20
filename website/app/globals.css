@@ -190,16 +190,15 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Helvetica Now Display", Helvetica, Arial, sans-serif;
-  }
-
-  body.initial-font-mobile {
     font-weight: 500;
     font-size: 14px;
   }
 
-  body.initial-font-desktop {
-    font-weight: 600;
-    font-size: 15px;
+  @media (min-width: 1500px) {
+    body {
+      font-weight: 600;
+      font-size: 15px;
+    }
   }
 
   ::selection {

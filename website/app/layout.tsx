@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "@/styles/fonts.css";
-import { InitialFontWrapper } from "@/components/other/InitialFontWrapper";
 import { createClient } from "@/lib/supabase/server";
 import { UserProvider } from "@/hooks/useUser";
 import { Toaster } from "@/components/ui/Sonner";
@@ -38,7 +37,7 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <UserProvider initialUser={user} initialProfile={userProfile}>
-          <InitialFontWrapper>{children}</InitialFontWrapper>
+          {children}
           <Toaster position="top-left" />
         </UserProvider>
       </body>
