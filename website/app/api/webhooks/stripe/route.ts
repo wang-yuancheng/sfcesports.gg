@@ -32,7 +32,6 @@ export async function POST(req: Request) {
 
   try {
     switch (event.type) {
-      // A. SUBSCRIPTION DELETED (User cancelled and term ended)
       case "customer.subscription.deleted": {
         const subscription = event.data.object as Stripe.Subscription;
         const customerId = subscription.customer as string;
@@ -41,7 +40,6 @@ export async function POST(req: Request) {
           `[Webhook] Subscription deleted for customer: ${customerId}`
         );
 
-        // Remove membership tier in Supabase
         const { error } = await supabaseAdmin
           .from("profiles")
           .update({ membership_tier: "free" })
@@ -51,13 +49,12 @@ export async function POST(req: Request) {
         break;
       }
 
-      // B. SUBSCRIPTION UPDATED (Upgrade/Downgrade/Renewal)
-      // or CREATED (Initial checkout if handled here)
       case "customer.subscription.updated":
       case "customer.subscription.created": {
         const subscription = event.data.object as Stripe.Subscription;
         const customerId = subscription.customer as string;
 
+        // 1. Handle Past Due / Unpaid
         if (
           subscription.status === "past_due" ||
           subscription.status === "unpaid" ||
@@ -70,7 +67,7 @@ export async function POST(req: Request) {
           break;
         }
 
-        // 2. Determine the Tier from the Price ID
+        // 2. Determine Tier
         const priceId = subscription.items.data[0].price.id;
         let tierName = "Pro";
 
@@ -86,12 +83,32 @@ export async function POST(req: Request) {
           `[Webhook] Updating customer ${customerId} to tier: ${tierName}`
         );
 
-        const { error } = await supabaseAdmin
+        // 3. Update Profile
+        const { error: profileError } = await supabaseAdmin
           .from("profiles")
           .update({ membership_tier: tierName })
           .eq("stripe_customer_id", customerId);
 
-        if (error) throw error;
+        if (profileError) throw profileError;
+
+        const { data: profile } = await supabaseAdmin
+          .from("profiles")
+          .select("id")
+          .eq("stripe_customer_id", customerId)
+          .single();
+
+        if (profile) {
+          await supabaseAdmin
+            .from("cart_items")
+            .delete()
+            .eq("user_id", profile.id)
+            .eq("type", "membership");
+
+          console.log(
+            `[Webhook] Cleared membership cart items for user ${profile.id}`
+          );
+        }
+
         break;
       }
 

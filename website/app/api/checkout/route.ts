@@ -73,7 +73,23 @@ export async function POST(req: Request) {
     }
 
     // --- SCENARIO B: UPGRADE / DOWNGRADE ---
+    if (currentSubscription.schedule) {
+      await stripe.subscriptionSchedules.release(
+        currentSubscription.schedule as string
+      );
+    }
+
     const currentItem = currentSubscription.items.data[0];
+
+    // FIX: Prevent checkout if already subscribed to this exact plan
+    // This prevents the "Phase 0 is invalid" error by stopping the code
+    // from trying to schedule a downgrade to the same plan.
+    if (currentItem.price.id === priceId) {
+      return NextResponse.json(
+        { error: "You are already subscribed to this plan." },
+        { status: 400 }
+      );
+    }
 
     const [newPrice, oldPrice] = await Promise.all([
       stripe.prices.retrieve(priceId),
@@ -120,11 +136,13 @@ export async function POST(req: Request) {
         from_subscription: safeSubscription.id,
       });
 
+      const currentPhaseStartDate = schedule.phases[0]?.start_date;
+
       await stripe.subscriptionSchedules.update(schedule.id, {
         end_behavior: "release",
         phases: [
           {
-            start_date: "now",
+            start_date: currentPhaseStartDate,
             end_date: safeSubscription.current_period_end,
             items: [{ price: currentItem.price.id, quantity: 1 }],
           },

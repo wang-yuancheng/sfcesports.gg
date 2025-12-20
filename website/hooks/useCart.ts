@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import debounce from "lodash.debounce";
+import { toast } from "sonner"; // Import toast
 
 export interface CartItem {
   id: string;
@@ -85,8 +86,15 @@ export const useCart = create<CartStore>()(
           });
 
           if (response.ok) {
-            const { items: mergedItems } = await response.json();
-            set({ items: mergedItems });
+            const data = await response.json();
+            set({ items: data.items });
+
+            // Toast feedback for Case 2
+            if (data.planRemoved) {
+              toast.info(
+                "Your existing membership plan was removed from the cart. You cannot purchase the same membership twice."
+              );
+            }
           }
         } catch (error) {
           console.error("Merge cart error:", error);

@@ -75,7 +75,7 @@ export default function MembershipPage() {
               Enjoy premium benefits including priority access.
             </p>
           </div>
-          <Link href="/shop">
+          <Link href="/shop#membership">
             <Button className="h-11 px-6 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors ">
               Subscribe To SFC+
             </Button>

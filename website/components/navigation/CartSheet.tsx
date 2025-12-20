@@ -1,7 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useCart } from "@/hooks/useCart";
+import { useUser } from "@/hooks/useUser"; // Added
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -13,7 +17,6 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { CartSheetProps } from "@/lib/types";
-import { useCart } from "@/hooks/useCart";
 
 export function CartSheet({
   side = "right",
@@ -25,8 +28,45 @@ export function CartSheet({
   children,
   contentClassName,
 }: CartSheetProps) {
-  const { isOpen, setOpen, items } = useCart();
+  // 1. Destructure removeItem and clearCart
+  const { isOpen, setOpen, items, removeItem, clearCart } = useCart();
   const itemCount = items?.length || 0;
+
+  // 2. Add Hooks for cleanup logic
+  const searchParams = useSearchParams();
+  const { profile } = useUser();
+
+  // --- FIX 1: Clear cart immediately on Stripe Success return ---
+  // This runs on the icon itself, so the number "1" disappears instantly.
+  useEffect(() => {
+    if (searchParams.get("success") === "true") {
+      clearCart();
+      // Optional: Clean URL
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete("success");
+      window.history.replaceState({}, "", newUrl.toString());
+    }
+  }, [searchParams, clearCart]);
+
+  // --- FIX 2: Reactive Cleanup (Ghost Item Fix) ---
+  // If the profile loads and matches the item in the cart, remove it silently.
+  useEffect(() => {
+    if (!profile || itemCount === 0) return;
+
+    const TIER_PRICE_MAP: Record<string, string | undefined> = {
+      Starter: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_STARTER,
+      Pro: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO,
+      Elite: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_ELITE,
+    };
+
+    const currentPriceId = TIER_PRICE_MAP[profile.membership_tier];
+
+    items.forEach((item) => {
+      if (item.type === "membership" && item.priceId === currentPriceId) {
+        removeItem(item.id);
+      }
+    });
+  }, [profile, items, removeItem, itemCount]);
 
   return (
     <Sheet open={isOpen} onOpenChange={setOpen}>
