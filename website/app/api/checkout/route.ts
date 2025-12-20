@@ -14,8 +14,10 @@ export async function POST(req: Request) {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-    if (!user)
+
+    if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
     const { data: profile } = await supabase
       .from("profiles")
@@ -51,113 +53,31 @@ export async function POST(req: Request) {
       }
     }
 
-    // Check for Active Subscriptions
     const subscriptions = await stripe.subscriptions.list({
       customer: customerId,
       status: "active",
       limit: 1,
     });
-    const currentSubscription = subscriptions.data[0];
 
-    // --- SCENARIO A: NEW SUBSCRIPTION ---
-    if (!currentSubscription) {
-      const session = await stripe.checkout.sessions.create({
-        customer: customerId,
-        mode: "subscription",
-        line_items: [{ price: priceId, quantity: 1 }],
-        success_url: `${process.env.NEXT_PUBLIC_URL}/account/membership?success=true`,
-        cancel_url: `${process.env.NEXT_PUBLIC_URL}/shop?canceled=true`,
-        payment_method_types: ["card"],
-      });
-      return NextResponse.json({ url: session.url });
-    }
-
-    // --- SCENARIO B: UPGRADE / DOWNGRADE ---
-    if (currentSubscription.schedule) {
-      await stripe.subscriptionSchedules.release(
-        currentSubscription.schedule as string
-      );
-    }
-
-    const currentItem = currentSubscription.items.data[0];
-
-    // FIX: Prevent checkout if already subscribed to this exact plan
-    // This prevents the "Phase 0 is invalid" error by stopping the code
-    // from trying to schedule a downgrade to the same plan.
-    if (currentItem.price.id === priceId) {
+    if (subscriptions.data.length > 0) {
       return NextResponse.json(
-        { error: "You are already subscribed to this plan." },
+        {
+          error:
+            "You already have an active subscription. Please manage it in your account settings.",
+        },
         { status: 400 }
       );
     }
 
-    const [newPrice, oldPrice] = await Promise.all([
-      stripe.prices.retrieve(priceId),
-      stripe.prices.retrieve(currentItem.price.id),
-    ]);
+    const session = await stripe.checkout.sessions.create({
+      customer: customerId,
+      mode: "subscription",
+      line_items: [{ price: priceId, quantity: 1 }],
+      success_url: `${process.env.NEXT_PUBLIC_URL}/account/membership?success=true`,
+      cancel_url: `${process.env.NEXT_PUBLIC_URL}/shop?canceled=true`,
+    });
 
-    const newAmount = newPrice.unit_amount || 0;
-    const oldAmount = oldPrice.unit_amount || 0;
-    const isUpgrade = newAmount > oldAmount;
-
-    if (isUpgrade) {
-      try {
-        await stripe.subscriptions.update(currentSubscription.id, {
-          items: [{ id: currentItem.id, price: priceId }],
-          proration_behavior: "always_invoice",
-        });
-
-        return NextResponse.json({
-          success: true,
-          message: "Upgraded successfully",
-        });
-      } catch (error: any) {
-        if (
-          error.type === "StripeCardError" ||
-          error.code === "card_declined" ||
-          error.code === "insufficient_funds"
-        ) {
-          return NextResponse.json(
-            {
-              error: "Payment declined. Please check your card.",
-              code: error.code,
-            },
-            { status: 402 }
-          );
-        }
-        throw error;
-      }
-    } else {
-      const safeSubscription = currentSubscription as Stripe.Subscription & {
-        current_period_end: number;
-      };
-
-      const schedule = await stripe.subscriptionSchedules.create({
-        from_subscription: safeSubscription.id,
-      });
-
-      const currentPhaseStartDate = schedule.phases[0]?.start_date;
-
-      await stripe.subscriptionSchedules.update(schedule.id, {
-        end_behavior: "release",
-        phases: [
-          {
-            start_date: currentPhaseStartDate,
-            end_date: safeSubscription.current_period_end,
-            items: [{ price: currentItem.price.id, quantity: 1 }],
-          },
-          {
-            start_date: safeSubscription.current_period_end,
-            items: [{ price: priceId, quantity: 1 }],
-          },
-        ],
-      });
-
-      return NextResponse.json({
-        success: true,
-        message: "Downgrade scheduled for end of billing cycle",
-      });
-    }
+    return NextResponse.json({ url: session.url });
   } catch (error: any) {
     console.error("Checkout Error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

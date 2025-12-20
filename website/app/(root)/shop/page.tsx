@@ -14,14 +14,13 @@ export default function Shop() {
   const { addItem, openCart } = useCart();
   const { profile, user } = useUser();
   const router = useRouter();
-  
+
   // Track which specific button is loading
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
-  // Fix for "Stuck on Redirecting" when clicking Back button in browser
+  // Reset loading state if user hits "Back" from Stripe
   useEffect(() => {
     const handlePageShow = (event: PageTransitionEvent) => {
-      // If page is restored from bfcache (back/forward cache), reset loading
       if (event.persisted) {
         setLoadingId(null);
       }
@@ -30,7 +29,6 @@ export default function Shop() {
     return () => window.removeEventListener("pageshow", handlePageShow);
   }, []);
 
-  // Helper: Check if user has ANY active paid plan
   const hasActivePlan =
     profile?.membership_tier && profile.membership_tier !== "free";
 
@@ -39,7 +37,6 @@ export default function Shop() {
     price: number,
     priceId: string
   ) => {
-    // 1. Force Login if not authenticated
     if (!user) {
       router.push("/login?next=/shop");
       return;
@@ -47,14 +44,16 @@ export default function Shop() {
 
     setLoadingId(tier);
 
-    // 2. If user already has a plan -> Redirect to Portal (Industry Standard)
+    // --- CASE A: EXISTING SUBSCRIBER (Redirect to Update Portal) ---
     if (hasActivePlan) {
       try {
         const res = await fetch("/api/portal", {
           method: "POST",
+          // CRITICAL: We tell the API we want the "Update" flow
+          body: JSON.stringify({ flowType: "subscription_update" }),
         });
         const data = await res.json();
-        
+
         if (data.url) {
           window.location.href = data.url;
         } else {
@@ -69,7 +68,7 @@ export default function Shop() {
       return;
     }
 
-    // 3. If new customer -> Add to Cart
+    // --- CASE B: NEW SUBSCRIBER (Add to Cart) ---
     addItem({
       id: `membership-${tier.toLowerCase()}`,
       name: `${tier} Membership`,
@@ -83,12 +82,10 @@ export default function Shop() {
     setLoadingId(null);
   };
 
-  // Helper booleans for current plan status
   const isStarter = profile?.membership_tier === "Starter";
   const isPro = profile?.membership_tier === "Pro";
   const isElite = profile?.membership_tier === "Elite";
 
-  // Helper to get button content
   const renderButtonContent = (tierName: string, isCurrentPlan: boolean) => {
     const isLoading = loadingId === tierName;
 
@@ -171,9 +168,8 @@ export default function Shop() {
               </p>
             </div>
 
-            {/* Pricing Cards (Right) */}
+            {/* Pricing Cards */}
             <div className="lg:w-2/3 w-full flex flex-col md:flex-row justify-center items-center gap-6 md:gap-0 md:h-[400px]">
-              
               {/* Card 1 ($7 Pro) */}
               <div className="bg-white p-6 rounded-[24px] md:rounded-[32px] shadow-sm border border-gray-100 w-full max-w-[300px] md:w-[260px] min-h-[260px] md:h-[280px] flex flex-col justify-between relative transition-all duration-300 md:z-10 md:transform md:-rotate-[6deg] md:translate-x-8 md:translate-y-6 hover:z-30 hover:scale-105 hover:shadow-xl group">
                 <div>

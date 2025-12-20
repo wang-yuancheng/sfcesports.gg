@@ -19,6 +19,8 @@ export default function MembershipPage() {
     try {
       const res = await fetch("/api/portal", {
         method: "POST",
+        // CRITICAL: We tell the API we want the "General" flow (Home page)
+        body: JSON.stringify({ flowType: "general" }),
       });
       const data = await res.json();
 

@@ -17,7 +17,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Get the customer ID from profiles
+    // Parse the request body safely to get the flow type
+    // flowType can be 'subscription_update' or 'general'
+    const body = await req.json().catch(() => ({}));
+    const { flowType } = body;
+
     const { data: profile } = await supabase
       .from("profiles")
       .select("stripe_customer_id")
@@ -31,11 +35,33 @@ export async function POST(req: Request) {
       );
     }
 
-    // Create a Portal Session
-    const session = await stripe.billingPortal.sessions.create({
+    // 1. Base Configuration (Points to Portal Home)
+    let portalConfig: Stripe.BillingPortal.SessionCreateParams = {
       customer: profile.stripe_customer_id,
       return_url: `${process.env.NEXT_PUBLIC_URL}/account/membership`,
-    });
+    };
+
+    // 2. Conditional Deep Link (Only if requested AND user has active sub)
+    if (flowType === "subscription_update") {
+      const subscriptions = await stripe.subscriptions.list({
+        customer: profile.stripe_customer_id,
+        status: "active",
+        limit: 1,
+      });
+
+      const activeSubscription = subscriptions.data[0];
+
+      if (activeSubscription) {
+        portalConfig.flow_data = {
+          type: "subscription_update",
+          subscription_update: {
+            subscription: activeSubscription.id,
+          },
+        };
+      }
+    }
+
+    const session = await stripe.billingPortal.sessions.create(portalConfig);
 
     return NextResponse.json({ url: session.url });
   } catch (error: any) {
