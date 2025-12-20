@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Player } from "@/lib/types";
 import Image from "next/image";
 import ChevronDown from "@/assets/icons/chevron-down.svg";
-import FlagIcon from "@/components/ui/flagicon";
+import FlagIcon from "@/components/ui/FlagIcon";
 
 export default function PlayerCard({ player }: { player: Player }) {
   const [open, setOpen] = useState(false);

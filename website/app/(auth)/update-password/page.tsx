@@ -3,8 +3,8 @@
 import { createClient } from "@/lib/supabase/client";
 import { useState } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import greenCheckMark from "@/assets/icons/greencheckmark.png";
 

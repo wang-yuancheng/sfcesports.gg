@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 import confirmationEmailPicture from "@/assets/pictures/confirmationemail.png";
-import { SocialButtons } from "@/components/auth/social-buttons";
+import { SocialButtons } from "@/components/auth/SocialButtons";
 import { useUser } from "@/hooks/useUser";
 
 export default function SignUpPage() {

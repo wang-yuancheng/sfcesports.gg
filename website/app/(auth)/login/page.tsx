@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
-import { SocialButtons } from "@/components/auth/social-buttons";
+import { SocialButtons } from "@/components/auth/SocialButtons";
 import { useUser } from "@/hooks/useUser";
 
 export default function LoginPage() {
@@ -134,7 +134,9 @@ export default function LoginPage() {
           New to SFC ID?{" "}
         </span>
         <Link
-          href={`/sign-up?next=${redirectUrl}&email=${encodeURIComponent(email)}`}
+          href={`/sign-up?next=${redirectUrl}&email=${encodeURIComponent(
+            email
+          )}`}
           className="ml-1 text-base text-black underline underline-offset-3 hover:text-gray-700"
         >
           Sign up

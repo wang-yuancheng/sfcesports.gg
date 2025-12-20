@@ -32,7 +32,6 @@ export function useInitialMediaQuery(input: MediaInput): boolean {
       const query = buildQuery(input)
       const mql = window.matchMedia(query)
       setMatches(mql.matches)
-      // No listener added, we only care about first value
     }
   }, [input])
 

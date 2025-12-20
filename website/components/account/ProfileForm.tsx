@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useUser } from "@/hooks/useUser";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import AvatarUpload from "@/components/auth/avatar-upload";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import AvatarUpload from "@/components/auth/AvatarUpload";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
 import { User } from "@supabase/supabase-js";

@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import Image from "next/image";
 import trophyIcon from "@/assets/icons/trophy.svg";
 import calendarClockIcon from "@/assets/icons/calendar-clock.svg";

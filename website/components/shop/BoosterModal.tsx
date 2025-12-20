@@ -7,8 +7,8 @@ import {
   DialogContent,
   DialogTitle,
   DialogDescription,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+} from "@/components/ui/Dialog";
+import { Button } from "@/components/ui/Button";
 import ImageModal from "@/components/home/ImageModal";
 
 export default function BoosterModal({

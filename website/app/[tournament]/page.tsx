@@ -3,8 +3,8 @@ import { tournamentHighlights } from "@/data/home/highlights";
 import PageHeaderImage from "@/components/global/PageHeaderImage";
 import matchBanner from "@/assets/pictures/match.webp";
 import DefaultLeaderboard from "@/components/leaderboards/leaderboards/DefaultLeaderboard";
-import Header from "@/sections/Header";
-import Footer from "@/sections/Footer";
+import Header from "@/components/global/Header";
+import Footer from "@/components/global/Footer";
 import { LongLiveDisplay } from "@/components/navigation/LiveDisplay";
 
 export async function generateStaticParams() {
@@ -46,7 +46,9 @@ export default async function TournamentPage({
               </p>
               <div>
                 <p className="text-gray-600 font-[400] text-base">
-                  <span className="font-bold text-black">Registered Teams: </span>
+                  <span className="font-bold text-black">
+                    Registered Teams:{" "}
+                  </span>
                   {tournament.details?.teams}
                 </p>
                 <p className="text-gray-600 font-[400] text-base">

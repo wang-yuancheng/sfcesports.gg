@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-} from "@/components/ui/dropdownMenu";
+} from "@/components/ui/DropdownMenu";
 import { useUser } from "@/hooks/useUser";
 import profileIcon from "@/assets/icons/circle-user-round.svg";
 

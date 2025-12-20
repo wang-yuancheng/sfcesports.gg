@@ -1,7 +1,7 @@
-import Hero from "@/sections/Home/Hero";
+import Hero from "@/components/home/sections/Hero";
 import LogoTicker from "@/components/global/LogoTicker";
-import PastEvents from "@/sections/Home/PastEvents";
-import Videos from "@/sections/Home/Videos";
+import PastEvents from "@/components/home/sections/PastEvents";
+import Videos from "@/components/home/sections/Videos";
 import { logoList } from "@/data/home/logos";
 
 export default function Home() {

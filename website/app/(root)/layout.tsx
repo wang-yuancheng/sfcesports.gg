@@ -1,5 +1,5 @@
-import Header from "@/sections/Header";
-import Footer from "@/sections/Footer";
+import Header from "@/components/global/Header";
+import Footer from "@/components/global/Footer";
 import { LongLiveDisplay } from "@/components/navigation/LiveDisplay";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";

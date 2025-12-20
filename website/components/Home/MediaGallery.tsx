@@ -8,7 +8,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "@/components/ui/Carousel";
 import ImageModal from "@/components/home/ImageModal";
 import ImageCard from "@/components/home/ImageCard";
 

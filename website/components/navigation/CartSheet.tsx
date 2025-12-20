@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useCart } from "@/hooks/useCart";
 import { useUser } from "@/hooks/useUser"; // Added
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import {
   Sheet,
   SheetTrigger,
@@ -15,7 +15,7 @@ import {
   SheetTitle,
   SheetDescription,
   SheetClose,
-} from "@/components/ui/sheet";
+} from "@/components/ui/Sheet";
 import { CartSheetProps } from "@/lib/types";
 
 export function CartSheet({

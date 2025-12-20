@@ -3,12 +3,12 @@
 import { GameCategories, GameStatsTotals, Team } from "@/lib/types";
 import { StaticImageData } from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import TeamBanner from "@/sections/Teams/TeamBanner";
-import GameCategoryDropdown from "@/sections/Teams/GameCategoryDropdown";
+import TeamBanner from "@/components/teams/sections/TeamBanner";
+import GameCategoryDropdown from "@/components/teams/sections/GameCategoryDropdown";
 import TeamCard from "@/components/teams/TeamCard";
-import TeamGrid from "@/sections/Teams/TeamGrid";
-import GameCategorySidebar from "@/sections/Teams/GameCategorySidebar";
-import LegacyTeamToggle from "@/sections/Teams/LegacyTeamToggle";
+import TeamGrid from "@/components/teams/sections/TeamGrid";
+import GameCategorySidebar from "@/components/teams/sections/GameCategorySidebar";
+import LegacyTeamToggle from "@/components/teams/sections/LegacyTeamToggle";
 import { gameCategories } from "@/data/teams/categories";
 import { teams } from "@/data/teams/teams";
 

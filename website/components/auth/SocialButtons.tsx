@@ -1,7 +1,7 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
-import PlatformIcon from "@/components/ui/platformIcon";
+import PlatformIcon from "@/components/ui/PlatformIcon";
 import { useState, useEffect } from "react";
 import { Provider } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
@@ -48,7 +48,7 @@ export function SocialButtons() {
     const height = 600;
     const left = window.screen.width / 2 - width / 2;
     const top = window.screen.height / 2 - height / 2;
-    
+
     // Open a blank window first
     const popup = window.open(
       "about:blank",

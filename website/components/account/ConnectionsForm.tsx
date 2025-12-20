@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import PlatformIcon from "@/components/ui/platformIcon";
+import { Button } from "@/components/ui/Button";
+import PlatformIcon from "@/components/ui/PlatformIcon";
 import { createClient } from "@/lib/supabase/client";
 import { type Provider, type UserIdentity } from "@supabase/supabase-js";
 

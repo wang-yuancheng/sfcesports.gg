@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useCart } from "@/hooks/useCart";
 import { useUser } from "@/hooks/useUser";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Link from "next/link";

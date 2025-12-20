@@ -4,8 +4,8 @@ import { createClient } from "@/lib/supabase/client";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
 
 export default function ForgotPasswordPage() {

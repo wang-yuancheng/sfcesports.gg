@@ -9,9 +9,9 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
-} from "@/components/ui/sheet";
+} from "@/components/ui/Sheet";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import Footer from "@/sections/Footer";
+import Footer from "@/components/global/Footer";
 import { RemoveScroll } from "react-remove-scroll";
 import Menu from "@/assets/icons/menu.svg";
 import X from "@/assets/icons/x.svg";

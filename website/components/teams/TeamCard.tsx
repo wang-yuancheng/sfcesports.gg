@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Team } from "@/lib/types";
-import FlagIcon from "@/components/ui/flagicon";
+import FlagIcon from "@/components/ui/FlagIcon";
 
 // To create label add props: showLabel={true} labelText={team.label}
 export default function TeamCard({
@@ -32,9 +32,7 @@ export default function TeamCard({
       >
         {/* Header */}
         <div className="shrink-0 py-3 border-b border-gray-200 text-center">
-          <span className="uppercase text-sm font-bold">
-            {team.name}
-          </span>
+          <span className="uppercase text-sm font-bold">{team.name}</span>
         </div>
 
         {/* Mobile */}

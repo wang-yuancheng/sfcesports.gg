@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import TdmLeaderboardDialog from "@/components/leaderboards/TdmLeaderboardDialog";
 
 export default function TdmLeaderboard({

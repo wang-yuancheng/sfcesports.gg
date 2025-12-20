@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import FlagIcon from "@/components/ui/flagicon";
+import FlagIcon from "@/components/ui/FlagIcon";
 import { boosters } from "@/data/boosters/boosters";
 import BoosterModal from "@/components/shop/BoosterModal";
 

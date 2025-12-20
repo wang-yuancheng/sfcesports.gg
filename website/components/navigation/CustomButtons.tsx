@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import DollarSign from "@/assets/icons/dollar-sign.svg";
 import Image from "next/image";
 
