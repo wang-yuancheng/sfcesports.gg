@@ -180,7 +180,7 @@ export const policies: {
       },
       {
         type: "paragraph",
-        text: 'ShibeFanClub ("SFC", "we", "us") offers various tiers of membership to eligible fans (e.g., Supporter, Elite). By acquiring a Membership, you agree to these Terms and Conditions ("Terms"), which govern your benefits, rights, and subscription obligations.',
+        text: 'ShibeFanClub ("SFC", "we", "us") offers various tiers of membership to eligible fans. By acquiring a Membership, you agree to these Terms and Conditions ("Terms"), which govern your benefits, rights, and subscription obligations.',
       },
       {
         type: "subheading",
@@ -197,26 +197,28 @@ export const policies: {
       },
       {
         type: "subheading",
-        text: "3. BENEFITS AND TIERS",
+        text: "3. MEMBERSHIP TIERS",
       },
       {
         type: "paragraph",
-        text: "We offer various tiers of membership. Benefits associated with each tier are subject to change. SFC reserves the right to vary, withdraw, or amend membership benefits at any time (Right to Vary). Benefits are for personal use only and may not be transferred.",
+        text: "We currently offer three primary tiers of membership: Starter, Pro, and Elite. Benefits associated with each tier are detailed on our Shop page and are subject to change. SFC reserves the right to vary, withdraw, or amend membership benefits at any time.",
       },
       {
         type: "subheading",
-        text: "4. PAYMENTS, RENEWALS, AND CANCELLATION",
+        text: "4. BILLING, RENEWALS, AND PLAN CHANGES",
       },
       {
         type: "paragraph",
-        text: "Memberships are billed on a recurring basis (monthly or annually). Payment will be charged to your chosen payment method at confirmation of purchase.",
+        text: "All membership payments are processed securely via Stripe. By subscribing, you authorize us to charge your payment method on a recurring basis.",
       },
       {
         type: "list",
         items: [
-          "Automatic Renewal: Your membership will automatically renew unless canceled at least 24 hours before the end of the current period.",
-          "Cancellation: You may cancel your membership at any time via your user profile. You will continue to have access to benefits until the end of your current billing cycle.",
-          "No Refunds: Membership fees are generally non-refundable, except where required by law. We do not provide credits for partial membership periods.",
+          "Automatic Renewal: Your membership automatically renews at the end of each billing cycle unless canceled.",
+          "Upgrades: If you upgrade to a higher tier, the change takes effect immediately. You will be charged a prorated amount for the remainder of the current cycle.",
+          "Downgrades: If you switch to a lower tier, the change will take effect at the end of your current billing cycle. You will retain your current tier benefits until that date.",
+          "Cancellation: You may cancel your membership at any time via the 'Manage Subscription' portal in your account settings. Cancellation takes effect at the end of your current billing cycle.",
+          "No Refunds: Membership fees are non-refundable. We do not provide credits or refunds for partially used membership periods.",
         ],
       },
       {
@@ -241,7 +243,7 @@ export const policies: {
       },
       {
         type: "paragraph",
-        text: "SFC shall not be liable for any failure of third-party services (such as payment processors or Discord) or for any indirect losses arising from your use of the Membership. The service is provided 'as is'.",
+        text: "SFC shall not be liable for any failure of third-party services (such as Stripe or YouTube) or for any indirect losses arising from your use of the Membership. The service is provided 'as is'.",
       },
       {
         type: "subheading",

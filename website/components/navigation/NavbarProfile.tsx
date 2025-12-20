@@ -70,7 +70,7 @@ export default function NavbarProfile() {
                 Edit Profile
               </DropdownMenuItem>
             </Link>
-            <Link href="/shop">
+            <Link href="/account/membership">
               <DropdownMenuItem className="cursor-pointer">
                 Membership
               </DropdownMenuItem>
