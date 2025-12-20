@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "@/styles/fonts.css";
 import { createClient } from "@/lib/supabase/server";
 import { UserProvider } from "@/hooks/useUser";
 import { Toaster } from "@/components/ui/Sonner";
+import { helvetica, druk } from "@/fonts";
 
 export const metadata: Metadata = {
   title: "ShibeFanClub - SFC Esports",
@@ -35,7 +35,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className={`${helvetica.variable} ${druk.variable}`}>
         <UserProvider initialUser={user} initialProfile={userProfile}>
           {children}
           <Toaster position="top-left" />

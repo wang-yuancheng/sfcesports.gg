@@ -27,14 +27,14 @@ const config: Config = {
       xlg: "1280px",
       navbarlg: "1350px",
       xxlg: "1440px",
-      xxxlg: "1600px"
+      xxxlg: "1600px",
     },
     extend: {
       fontFamily: {
-        helveticaNow: ["var(--font-helvetica-now)", ...fontFamily.sans],
+        helveticaNow: ["var(--font-helvetica)", ...fontFamily.sans],
         druk: [
-          "Druk Wide Web",
-          "Helvetica Now Display",
+          "var(--font-druk)",
+          "var(--font-helvetica)",
           "Helvetica",
           "sans-serif",
           "Arial",
@@ -53,13 +53,34 @@ const config: Config = {
 
         background: "hsl(0, 0%, 99.2%)",
         foreground: "hsl(var(--foreground))",
-        card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
-        popover: { DEFAULT: "hsl(var(--popover))", foreground: "hsl(var(--popover-foreground))" },
-        primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
-        secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
-        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
-        accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
-        destructive: { DEFAULT: "hsl(var(--destructive))", foreground: "hsl(var(--destructive-foreground))" },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -94,8 +115,8 @@ const config: Config = {
       addUtilities({
         ".no-scrollbar::-webkit-scrollbar": { display: "none" },
         ".no-scrollbar": {
-          "scrollbar-width": "none",     /* Firefox */
-          "-ms-overflow-style": "none",  /* IE/Edge legacy */
+          "scrollbar-width": "none" /* Firefox */,
+          "-ms-overflow-style": "none" /* IE/Edge legacy */,
         },
       });
     }),
