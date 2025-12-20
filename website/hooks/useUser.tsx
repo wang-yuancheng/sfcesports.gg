@@ -8,7 +8,7 @@ import {
   useCallback,
   useRef,
 } from "react";
-import { User } from "@supabase/supabase-js";
+import { User, AuthChangeEvent, Session } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
 import { useCart, CartItem } from "@/hooks/useCart";
 
@@ -90,57 +90,62 @@ export function UserProvider({
   useEffect(() => {
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
-      // EDGE CASE: Stop execution if running inside an OAuth popup
-      if (typeof window !== "undefined" && window.opener) return;
-
-      if (!isMounted.current) return;
-
-      const sessionUser = session?.user ?? null;
-
-      if (sessionUser?.id !== user?.id) {
-        setUser(sessionUser);
-      }
-
-      if (event === "SIGNED_IN" && sessionUser) {
-        if (syncedUserRef.current !== sessionUser.id) {
-          // 1. Check for Pending Item (Fresh Login Flow)
-          let pendingItem: CartItem | null = null;
-          const storedItem = localStorage.getItem("sfc-pending-plan");
-          if (storedItem) {
-            try {
-              pendingItem = JSON.parse(storedItem);
-              localStorage.removeItem("sfc-pending-plan");
-            } catch (e) {
-              console.error("Failed to parse pending item", e);
-            }
-          }
-
-          // 2. Determine Silence
-          // If we have a pendingItem, user JUST acted, so we are NOT silent (Cases 1 & 2).
-          // If no pendingItem, check if this is just a page refresh (Case 5).
-          const isRestoringSession =
-            isFirstMount.current && initialUser?.id === sessionUser.id;
-          const shouldBeSilent = !pendingItem && isRestoringSession;
-
-          await mergeCart(sessionUser.id, {
-            silent: shouldBeSilent,
-            pendingItem: pendingItem,
-          });
-
-          syncedUserRef.current = sessionUser.id;
+    } = supabase.auth.onAuthStateChange(
+      async (event: AuthChangeEvent, session: Session | null) => {
+        if (
+          typeof window !== "undefined" &&
+          window.location.pathname.startsWith("/popup-callback")
+        ) {
+          return;
         }
-      }
 
-      if (event === "SIGNED_OUT") {
-        disconnectCart();
-        setProfile(null);
-        syncedUserRef.current = null;
-      }
+        if (typeof window !== "undefined" && window.opener) {
+        }
 
-      isFirstMount.current = false;
-      setIsLoading(false);
-    });
+        if (!isMounted.current) return;
+
+        const sessionUser = session?.user ?? null;
+
+        if (sessionUser?.id !== user?.id) {
+          setUser(sessionUser);
+        }
+
+        if (event === "SIGNED_IN" && sessionUser) {
+          if (syncedUserRef.current !== sessionUser.id) {
+            let pendingItem: CartItem | null = null;
+            const storedItem = localStorage.getItem("sfc-pending-plan");
+            if (storedItem) {
+              try {
+                pendingItem = JSON.parse(storedItem);
+                localStorage.removeItem("sfc-pending-plan");
+              } catch (e) {
+                console.error("Failed to parse pending item", e);
+              }
+            }
+
+            const isRestoringSession =
+              isFirstMount.current && initialUser?.id === sessionUser.id;
+            const shouldBeSilent = !pendingItem && isRestoringSession;
+
+            await mergeCart(sessionUser.id, {
+              silent: shouldBeSilent,
+              pendingItem: pendingItem,
+            });
+
+            syncedUserRef.current = sessionUser.id;
+          }
+        }
+
+        if (event === "SIGNED_OUT") {
+          disconnectCart();
+          setProfile(null);
+          syncedUserRef.current = null;
+        }
+
+        isFirstMount.current = false;
+        setIsLoading(false);
+      }
+    );
 
     return () => subscription.unsubscribe();
   }, [user, supabase, mergeCart, disconnectCart, initialUser]);

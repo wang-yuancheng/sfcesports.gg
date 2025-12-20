@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import {
   DropdownMenu,
@@ -18,12 +17,11 @@ import profileIcon from "@/assets/icons/circle-user-round.svg";
 export default function NavbarProfile() {
   const { user, profile, isLoading } = useUser();
   const [open, setOpen] = useState(false);
-  const router = useRouter();
   const supabase = createClient();
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.refresh();
+    window.location.href = "/";
   };
 
   if (isLoading) return null;
@@ -47,7 +45,6 @@ export default function NavbarProfile() {
                 alt="Profile"
                 fill
                 className="object-cover"
-        
               />
             </div>
           ) : (
