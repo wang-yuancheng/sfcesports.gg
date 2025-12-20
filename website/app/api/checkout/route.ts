@@ -63,7 +63,7 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           error:
-            "You already have an active subscription. Please manage it in your account settings.",
+            "You already have an active subscription. Please manage it in your account settings or update your plan in the shop.",
         },
         { status: 400 }
       );

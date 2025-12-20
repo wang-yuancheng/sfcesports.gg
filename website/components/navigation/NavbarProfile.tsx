@@ -28,6 +28,11 @@ export default function NavbarProfile() {
 
   if (isLoading) return null;
 
+  const avatarUrl =
+    profile?.avatar_url ||
+    user?.user_metadata?.picture ||
+    user?.user_metadata?.avatar_url;
+
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
@@ -35,17 +40,16 @@ export default function NavbarProfile() {
           className="relative items-center flex cursor-pointer rounded-md p-2 sm:hover:bg-gray-100 transition-colors"
           suppressHydrationWarning={true}
         >
-          {user && profile?.avatar_url ? (
-            <div
-              className="rounded-full bg-cover bg-center bg-no-repeat bg-gray-200 border border-gray-200"
-              style={{
-                width: "24px",
-                height: "24px",
-                minWidth: "24px",
-                minHeight: "24px",
-                backgroundImage: `url('${profile.avatar_url}')`,
-              }}
-            />
+          {user && avatarUrl ? (
+            <div className="relative w-6 h-6 rounded-full overflow-hidden bg-gray-200">
+              <Image
+                src={avatarUrl}
+                alt="Profile"
+                fill
+                className="object-cover"
+        
+              />
+            </div>
           ) : (
             <Image src={profileIcon} alt="Profile" width={22} height={22} />
           )}

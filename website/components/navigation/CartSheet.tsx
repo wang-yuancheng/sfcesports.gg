@@ -28,28 +28,20 @@ export function CartSheet({
   children,
   contentClassName,
 }: CartSheetProps) {
-  // 1. Destructure removeItem and clearCart
   const { isOpen, setOpen, items, removeItem, clearCart } = useCart();
   const itemCount = items?.length || 0;
-
-  // 2. Add Hooks for cleanup logic
   const searchParams = useSearchParams();
   const { profile } = useUser();
 
-  // --- FIX 1: Clear cart immediately on Stripe Success return ---
-  // This runs on the icon itself, so the number "1" disappears instantly.
   useEffect(() => {
     if (searchParams.get("success") === "true") {
       clearCart();
-      // Optional: Clean URL
       const newUrl = new URL(window.location.href);
       newUrl.searchParams.delete("success");
       window.history.replaceState({}, "", newUrl.toString());
     }
   }, [searchParams, clearCart]);
 
-  // --- FIX 2: Reactive Cleanup (Ghost Item Fix) ---
-  // If the profile loads and matches the item in the cart, remove it silently.
   useEffect(() => {
     if (!profile || itemCount === 0) return;
 

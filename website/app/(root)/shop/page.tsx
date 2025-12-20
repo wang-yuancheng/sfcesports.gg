@@ -37,14 +37,26 @@ export default function Shop() {
     price: number,
     priceId: string
   ) => {
+    // --- CASE 1: GUEST USER (Save to LocalStorage & Redirect) ---
     if (!user) {
+      const itemToAdd = {
+        id: `membership-${tier.toLowerCase()}`,
+        name: `${tier} Membership`,
+        price: price,
+        priceId: priceId,
+        type: "membership" as const,
+      };
+
+      // Save the pending plan so useUser can pick it up after login
+      localStorage.setItem("sfc-pending-plan", JSON.stringify(itemToAdd));
+
       router.push("/login?next=/shop");
       return;
     }
 
     setLoadingId(tier);
 
-    // --- CASE A: EXISTING SUBSCRIBER (Redirect to Update Portal) ---
+    // --- CASE 2: EXISTING SUBSCRIBER (Redirect to Update Portal) ---
     if (hasActivePlan) {
       try {
         const res = await fetch("/api/portal", {
@@ -68,7 +80,7 @@ export default function Shop() {
       return;
     }
 
-    // --- CASE B: NEW SUBSCRIBER (Add to Cart) ---
+    // --- CASE 3: NEW SUBSCRIBER (Add to Cart) ---
     addItem({
       id: `membership-${tier.toLowerCase()}`,
       name: `${tier} Membership`,

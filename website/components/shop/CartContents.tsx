@@ -40,7 +40,9 @@ export default function CartContents() {
       const data = await res.json();
 
       if (!res.ok || data.error) {
-        throw new Error(data.error || "Something went wrong during checkout.");
+        toast.error(data.error || "Something went wrong during checkout.");
+        setLoading(false);
+        return;
       }
 
       if (data.url) {
@@ -51,8 +53,8 @@ export default function CartContents() {
         setLoading(false);
       }
     } catch (error: any) {
-      console.error("Checkout failed", error);
-      toast.error(error.message || "Checkout failed.");
+      console.error("Unexpected checkout error:", error);
+      toast.error("An unexpected error occurred. Please try again.");
       setLoading(false);
     }
   };

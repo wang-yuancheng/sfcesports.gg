@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
     const currentTier = profile?.membership_tier || "free";
 
-    // 2. Map Tiers to Price IDs
+    // Map Tiers to Price IDs
     const TIER_PRICE_MAP: Record<string, string | undefined> = {
       Starter: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_STARTER,
       Pro: process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO,
@@ -30,136 +30,87 @@ export async function POST(req: Request) {
     };
 
     const currentPriceId = TIER_PRICE_MAP[currentTier];
-    let planRemoved = false; // TRACKER
-    let conflictResolved = false; // TRACKER: Replaced existing DB item
+    let planRemoved = false;
 
-    // 3. Filter Local Items: Remove if matches current plan
+    // 2. Filter Local Items: Remove if matches current plan (Scenario C)
     const validLocalItems = (localItems as CartItem[]).filter((item) => {
       if (item.type === "membership" && item.priceId === currentPriceId) {
-        planRemoved = true; // Mark as removed
+        planRemoved = true;
         return false;
       }
       return true;
     });
 
-    // 4. Fetch DB Items
+    // 3. Fetch DB Items
     const { data: dbRows } = await supabase
       .from("cart_items")
       .select("*")
       .eq("user_id", user.id);
 
-    // CHECK: Was the DB cart empty before we started?
-    const dbWasEmpty = !dbRows || dbRows.length === 0;
+    const dbItems = dbRows || [];
+    const dbWasEmpty = dbItems.length === 0;
 
-    const dbItemsMap = new Map();
-    const itemsToDelete: string[] = [];
-
-    // 5. Filter DB Items
-    if (dbRows) {
-      dbRows.forEach((row) => {
-        // If DB has the item user is currently subscribed to, mark for deletion
-        if (row.type === "membership" && row.price_id === currentPriceId) {
-          itemsToDelete.push(row.price_id);
-          return;
+    // 4. SCENARIO B: Account Cart ALREADY Has Items
+    // Action: The Account Cart takes priority. Ignore guest items.
+    if (!dbWasEmpty) {
+      // Map DB rows back to CartItem shape
+      const existingItems: CartItem[] = [];
+      for (const row of dbItems) {
+        // Handle quantity (expand to individual items for frontend)
+        for (let i = 0; i < (row.quantity || 1); i++) {
+          existingItems.push({
+            id: crypto.randomUUID(),
+            name: row.name,
+            price: Number(row.price),
+            priceId: row.price_id || row.priceId,
+            type: row.type as "membership" | "one-time",
+          });
         }
-        dbItemsMap.set(row.price_id, row);
-      });
-    }
-
-    // 6. Logic to ensure only 1 membership exists in the final cart
-    const localMembership = validLocalItems.find(
-      (i) => i.type === "membership"
-    );
-
-    if (localMembership) {
-      dbItemsMap.forEach((row) => {
-        // If DB has a membership different from the one we are adding, remove it
-        if (
-          row.type === "membership" &&
-          row.price_id !== localMembership.priceId
-        ) {
-          itemsToDelete.push(row.price_id);
-          dbItemsMap.delete(row.price_id);
-          conflictResolved = true; // Mark conflict as resolved
-        }
-      });
-    }
-
-    // 7. Calculate Counts & Upserts
-    const localCounts = new Map<string, { count: number; item: CartItem }>();
-    validLocalItems.forEach((item) => {
-      const current = localCounts.get(item.priceId);
-      if (current) current.count += 1;
-      else localCounts.set(item.priceId, { count: 1, item });
-    });
-
-    const upserts = [];
-
-    for (const [priceId, data] of localCounts.entries()) {
-      const dbItem = dbItemsMap.get(priceId);
-
-      let newQuantity = data.count;
-      if (dbItem) {
-        newQuantity += dbItem.quantity;
       }
 
-      if (data.item.type === "membership") newQuantity = 1;
+      return NextResponse.json({
+        items: existingItems,
+        planRemoved, // Pass flag so frontend can warn user if they tried to add a duplicate plan
+        addedToEmpty: false,
+      });
+    }
 
-      upserts.push({
+    // 5. SCENARIO A: Account Cart is Empty
+    // Action: Add Guest/Pending items to database.
+    if (validLocalItems.length > 0) {
+      const inserts = validLocalItems.map((item) => ({
         user_id: user.id,
-        price_id: priceId,
-        name: data.item.name,
-        price: data.item.price,
-        type: data.item.type,
-        quantity: newQuantity,
-      });
+        price_id: item.priceId,
+        name: item.name,
+        price: item.price,
+        type: item.type,
+        quantity: 1, // Start with 1
+      }));
 
-      if (dbItem) {
-        dbItem.quantity = newQuantity;
-      } else {
-        dbItemsMap.set(priceId, { ...data.item, quantity: newQuantity });
-      }
-    }
+      // Note: In a real app you might want to aggregate quantities here if duplicates exist in guest cart
+      // For now, we insert them as is.
+      const { error } = await supabase.from("cart_items").insert(inserts);
 
-    // 8. Execute DB Operations
-    if (itemsToDelete.length > 0) {
-      await supabase
-        .from("cart_items")
-        .delete()
-        .eq("user_id", user.id)
-        .in("price_id", itemsToDelete);
-    }
-
-    if (upserts.length > 0) {
-      const { error } = await supabase
-        .from("cart_items")
-        .upsert(upserts, { onConflict: "user_id, price_id" });
       if (error) throw error;
+
+      // Return the items we just inserted (assigning new IDs for frontend state)
+      const newItems = validLocalItems.map((item) => ({
+        ...item,
+        id: crypto.randomUUID(),
+      }));
+
+      return NextResponse.json({
+        items: newItems,
+        planRemoved,
+        addedToEmpty: true,
+      });
     }
 
-    // 9. Return Final List
-    const finalItems: CartItem[] = [];
-    for (const [priceId, row] of dbItemsMap.entries()) {
-      const currentPriceId = row.price_id || row.priceId || priceId;
-      for (let i = 0; i < row.quantity; i++) {
-        finalItems.push({
-          id: crypto.randomUUID(),
-          name: row.name,
-          price: Number(row.price),
-          priceId: currentPriceId,
-          type: row.type as "membership" | "one-time",
-        });
-      }
-    }
-
-    // Determine if we successfully added items to a previously empty cart
-    const addedToEmpty = dbWasEmpty && validLocalItems.length > 0;
-
+    // Fallback: DB empty and no valid local items
     return NextResponse.json({
-      items: finalItems,
+      items: [],
       planRemoved,
-      conflictResolved,
-      addedToEmpty,
+      addedToEmpty: false,
     });
   } catch (error: any) {
     console.error("Merge error:", error);

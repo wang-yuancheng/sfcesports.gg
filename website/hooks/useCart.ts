@@ -21,7 +21,10 @@ interface CartStore {
   closeCart: () => void;
   setOpen: (open: boolean) => void;
   syncToDb: () => void;
-  mergeCart: (userId: string) => Promise<void>;
+  mergeCart: (
+    userId: string,
+    options?: { silent?: boolean; pendingItem?: CartItem | null }
+  ) => Promise<void>;
   disconnectCart: () => void;
 }
 
@@ -76,39 +79,46 @@ export const useCart = create<CartStore>()(
       closeCart: () => set({ isOpen: false }),
       setOpen: (open) => set({ isOpen: open }),
 
-      mergeCart: async (userId: string) => {
-        const { items } = get();
+      mergeCart: async (userId: string, options) => {
+        const { items: currentItems } = get();
+
+        // MERGE LOGIC: Combine existing guest items with the pending item (if any)
+        const localItems = [...currentItems];
+        if (options?.pendingItem) {
+          localItems.push(options.pendingItem);
+        }
+
         try {
           const response = await fetch("/api/cart/merge", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ localItems: items }),
+            body: JSON.stringify({ localItems }),
           });
 
           if (response.ok) {
             const data = await response.json();
             set({ items: data.items });
 
-            // Toast 1: Prevent duplicate subscription (Warning/Info)
+            if (options?.silent) return;
+
+            // Case 3: Plan Removed (Already subscribed)
             if (data.planRemoved) {
               toast.info(
                 "Removed plan from cart because you are already subscribed to it."
               );
+              // We return here to avoid showing "Cart synced" on top of this warning
+              return;
             }
 
-            // Toast 2: Conflict resolution (Guest wins)
-            if (data.conflictResolved) {
-              toast.success(
-                "Cart updated. We replaced your saved items with your new selection."
-              );
-            }
-            // Toast 3: New Logic - Item added to previously empty cart
-            else if (data.addedToEmpty) {
-              toast.success("Item added to cart.");
-            }
-            // Toast 4: General merge (Synced)
-            else if (items.length > 0) {
-              toast.success("Cart synced with your account.");
+            // Decide on Toast based on if we HAD items to sync
+            if (localItems.length > 0) {
+              if (data.addedToEmpty) {
+                // Case 1: DB was empty -> Guest item added
+                toast.success("Item added to cart.");
+              } else {
+                // Case 2: DB had items -> Guest item ignored
+                toast.success("Cart synced with your account.");
+              }
             }
           }
         } catch (error) {
