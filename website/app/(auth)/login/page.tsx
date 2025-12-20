@@ -190,7 +190,7 @@ export default function LoginPage() {
                     type="button"
                     onClick={handleResendVerification}
                     disabled={resendCooldown > 0 || isResending}
-                    className="text-sm font-bold underline underline-offset-2 hover:text-red-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="text-sm font-[500] underline underline-offset-2 hover:text-red-800 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isResending
                       ? "Sending..."
@@ -260,7 +260,7 @@ export default function LoginPage() {
           <Button
             type="submit"
             disabled={isLoading}
-            className="h-12 w-full bg-black text-base font-bold text-white hover:bg-gray-800 rounded-md transition-colors"
+            className="h-12 w-full bg-black text-base font-[500] text-white hover:bg-gray-800 rounded-md transition-colors"
           >
             {isLoading ? "Logging in..." : "Log In"}
           </Button>

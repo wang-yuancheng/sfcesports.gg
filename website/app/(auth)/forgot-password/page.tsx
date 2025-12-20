@@ -37,18 +37,15 @@ export default function ForgotPasswordPage() {
     const supabase = createClient();
 
     try {
-      // 2. Supabase Logic
+      // Use window.location.origin to dynamically get the base URL
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/confirm?next=/update-password`,
       });
 
       if (error) throw error;
-
       setSuccess(true);
-    } catch (error: unknown) {
-      setAuthError(
-        error instanceof Error ? error.message : "An error occurred"
-      );
+    } catch (error: any) {
+      setAuthError(error.message || "An error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -83,7 +80,7 @@ export default function ForgotPasswordPage() {
           />
         </div>
 
-        <h1 className="font-druk w-[400] font-[500] text-xl md:text-2xl uppercase tracking-wide text-black text-center leading-none">
+        <h1 className="font-druk w-[400] font-[500] text-xl md:text-2xl uppercase tracking-wide text-black text-center leading-none md:leading-none">
           {success ? "Check Your Email" : "Forgotten Your Password?"}
         </h1>
 
@@ -103,7 +100,7 @@ export default function ForgotPasswordPage() {
       <div className="w-full max-w-[450px] flex flex-col items-center px-6 mb-10">
         {success ? (
           // SUCCESS STATE UI
-          <div className="w-full space-y-6">
+          <div className="w-full space-y-6 pt-4">
             <Link href="/login">
               <Button className="h-12 w-full bg-black text-base font-bold text-white hover:bg-gray-800 rounded-md transition-colors">
                 Return to Login
@@ -177,7 +174,7 @@ export default function ForgotPasswordPage() {
             <Button
               type="submit"
               disabled={isLoading}
-              className="h-12 w-full bg-black text-base font-bold text-white hover:bg-gray-800 rounded-md transition-colors"
+              className="h-12 w-full bg-black text-base font-[500] text-white hover:bg-gray-800 rounded-md transition-colors"
             >
               {isLoading ? "Sending..." : "Send Reset Email"}
             </Button>

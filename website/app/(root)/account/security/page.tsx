@@ -148,7 +148,7 @@ export default function SecurityPage() {
             {/* Message Display */}
             {message && (
               <div
-                className={`text-sm font-medium text-center py-3 ${
+                className={`text-sm font-medium text-center py-3 -mb-2 ${
                   message.type === "success"
                     ? "bg-green-50 text-green-600"
                     : "bg-red-50 text-red-600"

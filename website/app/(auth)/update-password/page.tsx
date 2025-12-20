@@ -1,119 +1,109 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect, Suspense } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
-function UpdatePasswordContent() {
+export default function UpdatePasswordPage() {
   const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const isRecovery = searchParams.get("type") === "recovery";
-
-  useEffect(() => {
-    if (!isRecovery) {
-      router.replace("/account"); 
-    }
-  }, [isRecovery, router]);
-
-  if (!isRecovery) return null;
 
   const handleUpdatePassword = async (e: React.FormEvent) => {
     e.preventDefault();
-    const supabase = createClient();
-    setIsLoading(true);
     setError(null);
+    setIsLoading(true);
 
-    if (password !== repeatPassword) {
+    if (password !== confirmPassword) {
       setError("Passwords do not match");
       setIsLoading(false);
       return;
     }
 
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters long.");
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
       setIsLoading(false);
       return;
     }
+
+    const supabase = createClient();
 
     try {
       const { error } = await supabase.auth.updateUser({
         password: password,
       });
+
       if (error) throw error;
+
+      await supabase.auth.signOut();
+
       setSuccess(true);
-      // Redirect to profile to confirm they are logged in and verified
+
       setTimeout(() => {
-        router.push("/account");
+        router.push("/login");
       }, 2000);
-    } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+    } catch (error: any) {
+      setError(error.message || "An error occurred");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="w-full max-w-sm">
-      {success ? (
-        <>
-          <h2 className="text-2xl font-bold mb-4">Success!</h2>
-          <p className="text-gray-600">Your password has been updated. Redirecting to your profile...</p>
-        </>
-      ) : (
-        <form onSubmit={handleUpdatePassword} noValidate className="space-y-4">
-          <h2 className="text-2xl font-bold">Update Password</h2>
-          <p className="text-gray-600 mb-4">Enter your new password below.</p>
-
-          <div className="space-y-2">
-            <label htmlFor="password">New Password</label>
-            <input
-              id="password"
-              type="password"
-              required
-              className="w-full border p-2 rounded"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label htmlFor="repeat-password">Confirm New Password</label>
-            <input
-              id="repeat-password"
-              type="password"
-              required
-              className="w-full border p-2 rounded"
-              value={repeatPassword}
-              onChange={(e) => setRepeatPassword(e.target.value)}
-            />
-          </div>
-
-          {error && <p className="text-red-500 text-sm">{error}</p>}
-
-          <button 
-            type="submit" 
-            disabled={isLoading}
-            className="w-full bg-black text-white p-2 rounded hover:bg-gray-800 disabled:opacity-50"
-          >
-            {isLoading ? "Updating..." : "Update password"}
-          </button>
-        </form>
-      )}
-    </div>
-  );
-}
-
-export default function UpdatePasswordPage() {
-  return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <Suspense fallback={<div>Loading...</div>}>
-        <UpdatePasswordContent />
-      </Suspense>
+      <div className="w-full max-w-sm space-y-6">
+        <div className="flex flex-col items-center gap-2 text-center">
+          <h1 className="text-2xl font-bold">Set new password</h1>
+          <p className="text-sm text-gray-500">
+            Enter your new password below. You will be asked to log in again.
+          </p>
+        </div>
+
+        {success ? (
+          <div className="rounded-md bg-green-50 p-4 text-center text-green-600">
+            <p className="font-medium">Success!</p>
+            <p className="text-sm mt-1">Redirecting you to the login page...</p>
+          </div>
+        ) : (
+          <form onSubmit={handleUpdatePassword} className="space-y-4">
+            <div className="space-y-2">
+              <label htmlFor="password">New Password</label>
+              <Input
+                id="password"
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+
+            {error && (
+              <div className="rounded-md bg-red-50 p-3 text-sm text-red-600">
+                {error}
+              </div>
+            )}
+
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Updating..." : "Update Password"}
+            </Button>
+          </form>
+        )}
+      </div>
     </div>
   );
 }
