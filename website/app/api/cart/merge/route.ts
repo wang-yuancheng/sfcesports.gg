@@ -31,6 +31,7 @@ export async function POST(req: Request) {
 
     const currentPriceId = TIER_PRICE_MAP[currentTier];
     let planRemoved = false; // TRACKER
+    let conflictResolved = false; // TRACKER: Replaced existing DB item
 
     // 3. Filter Local Items: Remove if matches current plan
     const validLocalItems = (localItems as CartItem[]).filter((item) => {
@@ -47,6 +48,9 @@ export async function POST(req: Request) {
       .select("*")
       .eq("user_id", user.id);
 
+    // CHECK: Was the DB cart empty before we started?
+    const dbWasEmpty = !dbRows || dbRows.length === 0;
+
     const dbItemsMap = new Map();
     const itemsToDelete: string[] = [];
 
@@ -56,9 +60,6 @@ export async function POST(req: Request) {
         // If DB has the item user is currently subscribed to, mark for deletion
         if (row.type === "membership" && row.price_id === currentPriceId) {
           itemsToDelete.push(row.price_id);
-          // We don't necessarily need to flag 'planRemoved' here if it was just sitting in the DB,
-          // but if you want to notify them that their DB cart was cleaned, you could set it to true.
-          // Usually we only notify if the USER's local action (the merge) caused a removal.
           return;
         }
         dbItemsMap.set(row.price_id, row);
@@ -72,12 +73,14 @@ export async function POST(req: Request) {
 
     if (localMembership) {
       dbItemsMap.forEach((row) => {
+        // If DB has a membership different from the one we are adding, remove it
         if (
           row.type === "membership" &&
           row.price_id !== localMembership.priceId
         ) {
           itemsToDelete.push(row.price_id);
           dbItemsMap.delete(row.price_id);
+          conflictResolved = true; // Mark conflict as resolved
         }
       });
     }
@@ -149,7 +152,15 @@ export async function POST(req: Request) {
       }
     }
 
-    return NextResponse.json({ items: finalItems, planRemoved });
+    // Determine if we successfully added items to a previously empty cart
+    const addedToEmpty = dbWasEmpty && validLocalItems.length > 0;
+
+    return NextResponse.json({
+      items: finalItems,
+      planRemoved,
+      conflictResolved,
+      addedToEmpty,
+    });
   } catch (error: any) {
     console.error("Merge error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

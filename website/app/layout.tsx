@@ -39,7 +39,7 @@ export default async function RootLayout({
       <body>
         <UserProvider initialUser={user} initialProfile={userProfile}>
           <InitialFontWrapper>{children}</InitialFontWrapper>
-          <Toaster /> 
+          <Toaster position="top-left" />
         </UserProvider>
       </body>
     </html>

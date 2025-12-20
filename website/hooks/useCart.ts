@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import debounce from "lodash.debounce";
-import { toast } from "sonner"; // Import toast
+import { toast } from "sonner";
 
 export interface CartItem {
   id: string;
@@ -89,11 +89,26 @@ export const useCart = create<CartStore>()(
             const data = await response.json();
             set({ items: data.items });
 
-            // Toast feedback for Case 2
+            // Toast 1: Prevent duplicate subscription (Warning/Info)
             if (data.planRemoved) {
               toast.info(
-                "Your existing membership plan was removed from the cart. You cannot purchase the same membership twice."
+                "Removed plan from cart because you are already subscribed to it."
               );
+            }
+
+            // Toast 2: Conflict resolution (Guest wins)
+            if (data.conflictResolved) {
+              toast.success(
+                "Cart updated. We replaced your saved items with your new selection."
+              );
+            }
+            // Toast 3: New Logic - Item added to previously empty cart
+            else if (data.addedToEmpty) {
+              toast.success("Item added to cart.");
+            }
+            // Toast 4: General merge (Synced)
+            else if (items.length > 0) {
+              toast.success("Cart synced with your account.");
             }
           }
         } catch (error) {

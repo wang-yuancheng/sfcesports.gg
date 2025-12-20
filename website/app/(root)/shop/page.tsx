@@ -78,7 +78,6 @@ export default function Shop() {
     });
 
     openCart();
-    toast.success("Added to cart");
     setLoadingId(null);
   };
 
