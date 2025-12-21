@@ -141,7 +141,7 @@
 
 @layer components {
   .logo-ticker-image {
-    flex: 0 0 16.6667%; /* one‑sixth of the row */
+    flex: 0 0 16.6667%;
     height: auto;
     object-fit: contain;
   }

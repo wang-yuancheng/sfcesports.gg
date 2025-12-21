@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/client";
@@ -12,10 +12,12 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/DropdownMenu";
 import { useUser } from "@/hooks/useUser";
+import { useCart } from "@/hooks/useCart";
 import profileIcon from "@/assets/icons/circle-user-round.svg";
 
 export default function NavbarProfile() {
   const { user, profile, isLoading } = useUser();
+  const { setOpen: setCartOpen } = useCart();
   const [open, setOpen] = useState(false);
   const supabase = createClient();
 
@@ -23,6 +25,15 @@ export default function NavbarProfile() {
     await supabase.auth.signOut();
     window.location.href = "/";
   };
+
+  // Close dropdown on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (open) setOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [open]);
 
   if (isLoading) return null;
 
@@ -76,6 +87,18 @@ export default function NavbarProfile() {
                 Membership
               </DropdownMenuItem>
             </Link>
+
+            {/* Mobile Only Cart Trigger */}
+            <DropdownMenuItem
+              className="cursor-pointer md:hidden"
+              onClick={() => {
+                setCartOpen(true);
+                setOpen(false);
+              }}
+            >
+              Cart
+            </DropdownMenuItem>
+
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={handleLogout}
@@ -97,6 +120,17 @@ export default function NavbarProfile() {
                 Create an account
               </DropdownMenuItem>
             </Link>
+            
+            {/* Mobile Only Cart Trigger */}
+            <DropdownMenuItem
+              className="cursor-pointer md:hidden"
+              onClick={() => {
+                setCartOpen(true);
+                setOpen(false);
+              }}
+            >
+              Cart
+            </DropdownMenuItem>
           </>
         )}
       </DropdownMenuContent>

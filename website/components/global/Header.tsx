@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <>
       {/* Mobile Header */}
-      <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-md border-b border-white/10 transition-all duration-300 mr-1">
+      <header className="sticky top-0 z-50 bg-background/60 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div className="flex flex-col h-fit min-h-[58px] flex-shrink-0 md:hidden">
           <div className="w-full h-14 flex justify-between items-center px-4 flex-shrink-0">
             {/* Left */}
@@ -37,9 +37,12 @@ export default function Header() {
             </Link>
             {/* Right */}
             <div className="flex items-center gap-1">
-              <CartSheetResponsive>
-                <CartContents />
-              </CartSheetResponsive>
+              {/* Hidden Cart Sheet to ensure it is mounted and can be opened via Profile Dropdown */}
+              <div className="hidden">
+                <CartSheetResponsive>
+                  <CartContents />
+                </CartSheetResponsive>
+              </div>
               <NavbarProfile />
             </div>
           </div>
