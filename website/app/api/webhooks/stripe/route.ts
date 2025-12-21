@@ -1,7 +1,9 @@
-import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createClient } from "@supabase/supabase-js";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-12-15.clover",
@@ -16,7 +18,13 @@ const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
 export async function POST(req: Request) {
   const body = await req.text();
-  const sig = (await headers()).get("stripe-signature") as string;
+  const sig = req.headers.get("stripe-signature");
+  if (!sig) {
+    return NextResponse.json(
+      { error: "Missing stripe-signature" },
+      { status: 400 }
+    );
+  }
 
   let event;
 
@@ -30,13 +38,14 @@ export async function POST(req: Request) {
     );
   }
 
-  console.log(`[Webhook] Processing event type: ${event.type}`);
-
   try {
     switch (event.type) {
       case "customer.subscription.deleted": {
         const subscription = event.data.object as Stripe.Subscription;
-        const customerId = subscription.customer as string;
+        const customerId =
+          typeof subscription.customer === "string"
+            ? subscription.customer
+            : subscription.customer.id;
 
         console.log(
           `[Webhook] Subscription deleted for customer: ${customerId}`
@@ -54,9 +63,11 @@ export async function POST(req: Request) {
       case "customer.subscription.updated":
       case "customer.subscription.created": {
         const subscription = event.data.object as Stripe.Subscription;
-        const customerId = subscription.customer as string;
+        const customerId =
+          typeof subscription.customer === "string"
+            ? subscription.customer
+            : subscription.customer.id;
 
-        console.log(`[Webhook] Looking for customer: ${customerId}`);
         // 1. Handle Past Due / Unpaid
         if (
           subscription.status === "past_due" ||
@@ -92,13 +103,24 @@ export async function POST(req: Request) {
           .update({ membership_tier: tierName })
           .eq("stripe_customer_id", customerId);
 
-        if (profileError) throw profileError;
+        if (profileError) {
+          console.error("Supabase profile update failed:", {
+            customerId,
+            tierName,
+            profileError,
+          });
+          throw profileError;
+        }
 
-        const { data: profile } = await supabaseAdmin
+        const { data: profile, error: profileLookupError } = await supabaseAdmin
           .from("profiles")
           .select("id")
           .eq("stripe_customer_id", customerId)
-          .single();
+          .maybeSingle();
+
+        if (profileLookupError) {
+          console.error("Profile lookup failed:", profileLookupError);
+        }
 
         if (profile) {
           await supabaseAdmin

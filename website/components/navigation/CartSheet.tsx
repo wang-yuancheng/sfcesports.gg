@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useCart } from "@/hooks/useCart";
-import { useUser } from "@/hooks/useUser"; // Added
+import { useUser } from "@/hooks/useUser"; 
 import { Button } from "@/components/ui/Button";
 import {
   Sheet,
