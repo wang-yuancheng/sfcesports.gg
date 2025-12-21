@@ -43,13 +43,12 @@ export function SocialButtons() {
   const handleSocialLogin = async (provider: string) => {
     setLoading(provider);
 
-    // 1. OPEN POPUP IMMEDIATELY (Fixes Popup Blocker)
+    // 1. OPEN POPUP IMMEDIATELY
     const width = 500;
     const height = 600;
     const left = window.screen.width / 2 - width / 2;
     const top = window.screen.height / 2 - height / 2;
 
-    // Open a blank window first
     const popup = window.open(
       "about:blank",
       "SFC_OAuth_Popup",
@@ -57,7 +56,6 @@ export function SocialButtons() {
     );
 
     try {
-      // 2. GET URL FROM SUPABASE
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: provider as Provider,
         options: {
@@ -69,7 +67,6 @@ export function SocialButtons() {
       if (error) throw error;
       if (!data.url) throw new Error("No URL returned");
 
-      // 3. UPDATE POPUP URL (Navigate the blank window)
       if (popup) {
         popup.location.href = data.url;
 
@@ -82,7 +79,6 @@ export function SocialButtons() {
       }
     } catch (error) {
       console.error("Error logging in:", error);
-      // Close the blank popup if we failed
       popup?.close();
       setLoading(null);
     }
@@ -106,9 +102,9 @@ export function SocialButtons() {
         isLoading={loading === "twitter"}
       />
       <SocialButton
-        provider="facebook"
-        onClick={() => handleSocialLogin("facebook")}
-        isLoading={loading === "facebook"}
+        provider="github"
+        onClick={() => handleSocialLogin("github")}
+        isLoading={loading === "github"}
       />
     </div>
   );
@@ -125,9 +121,9 @@ function SocialButton({
 }) {
   const styles: Record<string, string> = {
     google: "border border-gray-200 bg-white hover:bg-gray-50",
-    discord: "bg-[#5865F2] text-white hover:opacity-90",
-    twitter: "bg-[#1DA1F2] text-white hover:opacity-90",
-    facebook: "bg-[#1877F2] text-white hover:opacity-90",
+    discord: "bg-[#5865F2] text-white hover:opacity-80",
+    twitter: "bg-[#1DA1F2] text-white hover:opacity-80",
+    github: "bg-[#24292F] text-white hover:opacity-80",
   };
 
   return (

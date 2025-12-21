@@ -17,7 +17,7 @@ const PROVIDERS = [
   { id: "google", name: "Google" },
   { id: "discord", name: "Discord" },
   { id: "twitter", name: "Twitter" },
-  { id: "facebook", name: "Facebook" },
+  { id: "github", name: "Github" },
 ];
 
 export default function ConnectionsForm({
