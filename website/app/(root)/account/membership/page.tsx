@@ -12,14 +12,14 @@ export default function MembershipPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const isSubscribed = profile?.membership_tier !== "free";
+  const isSubscribed =
+    profile && profile.membership_tier && profile.membership_tier !== "free";
 
   const handleManageSubscription = async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/portal", {
         method: "POST",
-        // CRITICAL: We tell the API we want the "General" flow (Home page)
         body: JSON.stringify({ flowType: "general" }),
       });
       const data = await res.json();

@@ -110,12 +110,12 @@ export const helvetica = localFont({
 export const druk = localFont({
   src: [
     {
-      path: "./DrukWideWeb/DrukWideWebMedium.woff2",
+      path: "./DrukWideWeb/DrukWideMedium.ttf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "./DrukWideWeb/DrukWideWebBold.woff2",
+      path: "./DrukWideWeb/DrukWideBold.ttf",
       weight: "700",
       style: "normal",
     },
