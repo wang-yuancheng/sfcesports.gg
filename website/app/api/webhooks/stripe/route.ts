@@ -30,6 +30,8 @@ export async function POST(req: Request) {
     );
   }
 
+  console.log(`[Webhook] Processing event type: ${event.type}`);
+
   try {
     switch (event.type) {
       case "customer.subscription.deleted": {
@@ -54,6 +56,7 @@ export async function POST(req: Request) {
         const subscription = event.data.object as Stripe.Subscription;
         const customerId = subscription.customer as string;
 
+        console.log(`[Webhook] Looking for customer: ${customerId}`);
         // 1. Handle Past Due / Unpaid
         if (
           subscription.status === "past_due" ||
