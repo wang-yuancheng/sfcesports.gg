@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ChevronDown from "@/assets/icons/chevron-down.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,25 +46,12 @@ export default function FooterDropdown({
       >
         {dropdownContent.map((item, index) => (
           <li key={index}>
-            {item.href ? (
-              <Link
-                href={item.href}
-                className="flex flex-col justify-center text-sm text-gray-600 hover:text-black py-1"
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  console.log(`Switch currency to: ${item.label}`);
-                  // TODO: Add your global state logic here later
-                }}
-                className="flex flex-col justify-center text-sm text-gray-600 hover:text-black py-1 cursor-pointer w-full text-left"
-              >
-                {item.label}
-              </button>
-            )}
+            <Link
+              href={item.href}
+              className="flex flex-col justify-center text-sm text-gray-600 hover:text-black py-1"
+            >
+              {item.label}
+            </Link>
           </li>
         ))}
       </ul>

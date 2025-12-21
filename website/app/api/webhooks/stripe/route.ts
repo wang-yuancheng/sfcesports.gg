@@ -47,10 +47,6 @@ export async function POST(req: Request) {
             ? subscription.customer
             : subscription.customer.id;
 
-        console.log(
-          `[Webhook] Subscription deleted for customer: ${customerId}`
-        );
-
         const { error } = await supabaseAdmin
           .from("profiles")
           .update({ membership_tier: "free" })
@@ -93,10 +89,6 @@ export async function POST(req: Request) {
           tierName = "Elite";
         }
 
-        console.log(
-          `[Webhook] Updating customer ${customerId} to tier: ${tierName}`
-        );
-
         // 3. Update Profile
         const { error: profileError } = await supabaseAdmin
           .from("profiles")
@@ -128,10 +120,6 @@ export async function POST(req: Request) {
             .delete()
             .eq("user_id", profile.id)
             .eq("type", "membership");
-
-          console.log(
-            `[Webhook] Cleared membership cart items for user ${profile.id}`
-          );
         }
 
         break;

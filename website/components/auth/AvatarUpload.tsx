@@ -54,7 +54,6 @@ export default function AvatarUpload({
       onUpload(publicUrl);
     } catch (error) {
       alert("Error uploading avatar!");
-      console.log(error);
     } finally {
       setUploading(false);
     }

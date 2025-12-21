@@ -12,7 +12,6 @@ export async function POST(req: Request) {
     } = await supabase.auth.getUser();
 
     if (!user) {
-      console.log("Sync skipped: No user found");
       return NextResponse.json({ success: true });
     }
 

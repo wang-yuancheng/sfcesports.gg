@@ -61,7 +61,7 @@ export interface FooterDropdownProps {
 }
 interface FooterDropdownItem {
   label: string;
-  href?: string;
+  href: string;
 }
 
 // To open or close Menu
