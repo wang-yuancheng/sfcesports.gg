@@ -26,7 +26,6 @@ export default function NavbarProfile() {
     window.location.href = "/";
   };
 
-  // Close dropdown on window resize
   useEffect(() => {
     const handleResize = () => {
       if (open) setOpen(false);

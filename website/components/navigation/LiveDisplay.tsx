@@ -1,19 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import {
   LiveContentBack,
   LiveContentFront,
 } from "@/components/navigation/LiveContent";
 
 export function LongLiveDisplay() {
+  const pathname = usePathname();
+
   const backVariant = {
     closed: { scale: 0.97, y: 5 },
     open: { scale: 1, y: 65 },
   };
 
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <div className="flex justify-center pb-8 sm:pb-5">
@@ -102,8 +109,8 @@ export function ShortLiveDisplay() {
   };
 
   const hoverHitboxVariant = {
-    initial: { height: 52 },   
-    hover: { height: 112 },     
+    initial: { height: 52 },
+    hover: { height: 112 },
   };
 
   return (
