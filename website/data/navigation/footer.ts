@@ -49,5 +49,6 @@ export const footerActivity = [
 ];
 export const termsAndPolicies = [
   { label: "All Terms and Policies", href: "/policies" },
+  { label: "Privacy Policy", href: "/policies/privacy" },
 ];
 export const copyright = `© 2021 - ${new Date().getFullYear()}, ShibeFanClub, All rights reserved`;

@@ -38,6 +38,26 @@ export const policies: {
         ],
       },
       {
+        type: "subsubheading",
+        text: "Team Branding & Impersonation",
+      },
+      {
+        type: "paragraph",
+        text: "You are strictly prohibited from using the 'ShibeFanClub' (SFC) name, logo, or tag to register for any external tournaments, leagues, or scrims without explicit written permission from an SFC owner. This includes:",
+      },
+      {
+        type: "list",
+        items: [
+          "Registering a team named 'SFC [YourName]' or similar variations.",
+          "Using the SFC clan tag or logo in a way that implies you are a contracted professional player for the organization.",
+          "Impersonating official roster members to gain entry into events or obtain scrim codes.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Violation of this policy will result in an immediate permanent ban from all SFC services and may lead to us contacting the external tournament organizer to have your team disqualified.",
+      },
+      {
         type: "subheading",
         text: "3. USER CONDUCT",
       },
@@ -89,6 +109,22 @@ export const policies: {
         type: "paragraph",
         text: "If you have any questions about these Terms, please contact us via our official Discord server or email us at tankifighter@gmail.com.",
       },
+      {
+        type: "subheading",
+        text: "8. AMENDMENTS TO TERMS",
+      },
+      {
+        type: "paragraph",
+        text: "We reserve the right to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.",
+      },
+      {
+        type: "subheading",
+        text: "9. FORCE MAJEURE",
+      },
+      {
+        type: "paragraph",
+        text: "SFC shall not be liable for any delay or failure to perform resulting from causes outside its reasonable control, including, but not limited to, acts of God, war, terrorism, riots, embargos, acts of civil or military authorities, fire, floods, accidents, strikes, or shortages of transportation facilities, fuel, energy, labor, or materials, or the failure of third-party game servers (e.g., Steam, Riot Direct, Tencent Cloud).",
+      },
     ],
   },
   {
@@ -125,15 +161,19 @@ export const policies: {
       },
       {
         type: "subheading",
-        text: "3. PRIZE CONDITIONS",
+        text: "3. PRIZE PAYMENT & TAXES",
       },
       {
         type: "paragraph",
-        text: "Prizes are non-transferable and non-exchangeable. If a prize is unavailable due to unforeseen circumstances, SFC reserves the right to substitute it for a prize of equal or greater value.",
+        text: "Prizes are non-transferable. Cash prizes are typically processed within 30-45 days of the tournament conclusion, provided the winner has submitted all necessary information.",
       },
       {
-        type: "paragraph",
-        text: "Cash prizes are typically processed within 30 days of the tournament conclusion. Winners are responsible for providing accurate payment details (e.g., PayPal, Bank Transfer info). SFC is not liable for failed transfers due to incorrect information provided by the winner.",
+        type: "list",
+        items: [
+          "Tax Forms: Winners may be required to complete tax documentation (e.g., W-8BEN or local equivalents) before payouts are released.",
+          "Transaction Fees: Transaction fees (e.g., PayPal fees, Bank Wire charges) and currency conversion rates are the sole responsibility of the winner and may be deducted from the final prize amount.",
+          "Forfeiture: Failure to claim a prize or provide valid payment details within 90 days of the notification will result in forfeiture of the prize.",
+        ],
       },
       {
         type: "subheading",
@@ -330,6 +370,23 @@ export const policies: {
           "Chargebacks: Unauthorized chargebacks will result in a permanent ban from SFC and reporting to industry blacklists.",
         ],
       },
+      {
+        type: "subheading",
+        text: "6. INDEMNIFICATION",
+      },
+      {
+        type: "paragraph",
+        text: "You agree to defend, indemnify, and hold harmless ShibeFanClub and its contractors from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees) arising from:",
+      },
+      {
+        type: "list",
+        items: [
+          "Your use of and access to the Boosting Service.",
+          "Your violation of any term of these Terms.",
+          "Your violation of any third-party right, including without limitation any copyright, property, or privacy right.",
+          "Any claim that your use of the service caused damage to a third party (including game developers).",
+        ],
+      },
     ],
   },
   {
@@ -359,7 +416,7 @@ export const policies: {
       {
         type: "list",
         items: [
-          "Identity Data: Name, username, gamer tags (e.g., Riot ID, PUBG Mobile ID), and Discord ID.",
+          "Identity Data: Name, username, Google Profile Information (if logging in via Google), gamer tags (e.g., Riot ID, PUBG Mobile ID), and Discord ID.",
           "Contact Data: Email address and social media handles.",
           "Financial Data: Payment card details (processed via third parties like PayPal/Stripe) and transaction history.",
           "Technical Data: IP address, browser type, time zone setting, and device data when you access our website.",
@@ -442,7 +499,19 @@ export const policies: {
       },
       {
         type: "subheading",
-        text: "8. YOUR LEGAL RIGHTS",
+        text: "8. THIRD-PARTY LINKS AND SERVICES",
+      },
+      {
+        type: "paragraph",
+        text: "Our Service contains links to other sites that are not operated by us (e.g., Discord, Stripe, YouTube, Twitch). If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.",
+      },
+      {
+        type: "paragraph",
+        text: "We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.",
+      },
+      {
+        type: "subheading",
+        text: "9. YOUR LEGAL RIGHTS",
       },
       {
         type: "paragraph",
@@ -450,11 +519,49 @@ export const policies: {
       },
       {
         type: "subheading",
-        text: "9. CONTACT US",
+        text: "10. CONTACT US",
       },
       {
         type: "paragraph",
         text: "If you have any questions about this privacy policy or our privacy practices, please contact us via our official Discord server or email: tankifighter@gmail.com.",
+      },
+    ],
+  },
+  {
+    id: "cookie-policy",
+    title: "Cookie Policy",
+    content: [
+      {
+        type: "subheading",
+        text: "1. WHAT ARE COOKIES?",
+      },
+      {
+        type: "paragraph",
+        text: "Cookies are small text files that are placed on your computer or mobile device when you visit a website. ShibeFanClub ('SFC') uses cookies to make our website work efficiently and to provide information to us.",
+      },
+      {
+        type: "subheading",
+        text: "2. TYPES OF COOKIES WE USE",
+      },
+      {
+        type: "list",
+        items: [
+          "Essential Cookies: These are necessary for the website to function (e.g., keeping you logged in, processing Stripe payments, and securing forms). You cannot opt-out of these.",
+          "Analytics Cookies: We use services like Google Analytics to track visitor numbers and behavior anonymously. This helps us improve our tournament pages.",
+          "Functionality Cookies: These remember your preferences, such as your region or language settings.",
+        ],
+      },
+      {
+        type: "subheading",
+        text: "3. MANAGING COOKIES",
+      },
+      {
+        type: "paragraph",
+        text: "Most web browsers allow some control of most cookies through the browser settings. To find out more about cookies, including how to see what cookies have been set and how to manage and delete them, visit www.aboutcookies.org.",
+      },
+      {
+        type: "paragraph",
+        text: "Please note that disabling Essential Cookies may break critical features of the SFC platform, such as purchasing memberships or registering for events.",
       },
     ],
   },
@@ -542,6 +649,61 @@ export const policies: {
       {
         type: "paragraph",
         text: "If you witness a breach of these rules or have a dispute regarding a moderation decision, please contact us at tankifighter@gmail.com.",
+      },
+    ],
+  },
+  {
+    id: "fan-content",
+    title: "Fan Content Guidelines",
+    content: [
+      {
+        type: "subheading",
+        text: "1. INTRODUCTION",
+      },
+      {
+        type: "paragraph",
+        text: "We love seeing our community get creative. These guidelines allow you to use ShibeFanClub ('SFC') intellectual property (IP) to create Fan Content, such as fan art, videos, streams, and social media posts, without worrying about copyright strikes, provided you follow these rules.",
+      },
+      {
+        type: "subheading",
+        text: "2. WHAT IS PERMITTED?",
+      },
+      {
+        type: "paragraph",
+        text: "You are allowed to create and share content using our logos, gameplay footage, and branding for **non-commercial, personal use**.",
+      },
+      {
+        type: "list",
+        items: [
+          "Streaming: You may stream our tournaments (unless a specific event has exclusive broadcast rights), provided you add a standard delay to prevent 'stream sniping'.",
+          "Fan Art: You may create digital or physical art featuring our team or logos for personal display.",
+          "Social Media: You may use our GIFs, clips, and memes on your personal channels.",
+        ],
+      },
+      {
+        type: "subheading",
+        text: "3. RESTRICTIONS (THE 'NO' LIST)",
+      },
+      {
+        type: "paragraph",
+        text: "While we want you to have fun, you must not:",
+      },
+      {
+        type: "list",
+        items: [
+          "Commercialize: You cannot sell merchandise (e.g., T-shirts, mugs) featuring SFC logos or assets.",
+          "Paywall: You cannot put SFC content behind a paywall (e.g., Patreon-exclusive access to our tournament VODs).",
+          "Mislead: You cannot imply that your content is 'Official' or endorsed by SFC.",
+          "Offend: You cannot use our IP in content that is racist, sexist, homophobic, or promotes illegal drugs/gambling.",
+        ],
+      },
+      {
+        type: "subheading",
+        text: "4. BRAND ASSETS",
+      },
+      {
+        type: "paragraph",
+        text: "If you use the SFC Logo, please do not alter the proportions, colors, or distort the image. You should not modify our logo to include your own team name or sponsor overlays.",
       },
     ],
   },
