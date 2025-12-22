@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import sfcxnovaBanner from "@/assets/pictures/tourmedia/sfcxnova/sfcxnova.png";
+import sfcxnovaBanner from "@/assets/pictures/tourmedia/sfcxnova/sfcxnova.webp";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";

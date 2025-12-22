@@ -1,7 +1,7 @@
-import worldgunslingerThumbnail from "@/assets/pictures/thumbnails/worldgunslingerthumbnail.jpg";
-import atcs17Thumbnail from "@/assets/pictures/thumbnails/atcs17thumbnail.jpg";
-import gamelingThumbnail from "@/assets/pictures/thumbnails/gamelingthumbnail.jpg";
-import ultimateRoyaleThumbnail from "@/assets/pictures/thumbnails/ultimateroyalerank1thumbnail.jpg";
+import worldgunslingerThumbnail from "@/assets/pictures/thumbnails/worldgunslingerthumbnail.webp";
+import atcs17Thumbnail from "@/assets/pictures/thumbnails/atcs17thumbnail.webp";
+import gamelingThumbnail from "@/assets/pictures/thumbnails/gamelingthumbnail.webp";
+import ultimateRoyaleThumbnail from "@/assets/pictures/thumbnails/ultimateroyalerank1thumbnail.webp";
 
 import { VideoItem } from "@/lib/types";
 

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
-import pubgmLogo from "@/assets/logos/pubgm.svg";
+import pubgmLogo from "@/assets/logos/pubgm.webp";
 import novaLogo from "@/assets/logos/nova.webp";
 import ChevronRight from "@/assets/icons/chevron-right.svg";
 import Link from "next/link";

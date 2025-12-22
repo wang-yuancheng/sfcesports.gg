@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import greenCheckMark from "@/assets/icons/greencheckmark.png";
+import greenCheckMark from "@/assets/icons/greencheckmark.webp";
 
 export default function WelcomePage() {
   return (

@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import sfcBanner from "@/assets/pictures/sfcbanner.png";
+import sfcBanner from "@/assets/pictures/sfcbanner.webp";
 import type { GameCategories } from "@/lib/types";
 
 type Props = {

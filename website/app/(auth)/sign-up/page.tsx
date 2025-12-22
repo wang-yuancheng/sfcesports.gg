@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
-import confirmationEmailPicture from "@/assets/pictures/confirmationemail.png";
+import confirmationEmailPicture from "@/assets/pictures/confirmationemail.webp";
 import { SocialButtons } from "@/components/auth/SocialButtons";
 import { useUser } from "@/hooks/useUser";
 

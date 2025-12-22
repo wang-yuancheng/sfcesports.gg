@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import shopHero from "@/assets/pictures/shophero.png";
+import shopHero from "@/assets/pictures/shophero.webp";
 import Link from "next/link";
 import { useCart } from "@/hooks/useCart";
 import { useUser } from "@/hooks/useUser";

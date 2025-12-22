@@ -1,49 +1,44 @@
-import tenyear0 from "@/assets/pictures/media/10year-0.png";
-import tenyear1 from "@/assets/pictures/media/10year-1.png";
-import tenyear2 from "@/assets/pictures/media/10year-2.png";
-import tenyear3 from "@/assets/pictures/media/10year-3.png";
-import tenyear4 from "@/assets/pictures/media/10year-4.png";
-import tenyear5 from "@/assets/pictures/media/10year-5.png";
-import tenyear6 from "@/assets/pictures/media/10year-6.png";
-import tenyear7 from "@/assets/pictures/media/10year-7.png";
-import tenyear8 from "@/assets/pictures/media/10year-8.png";
-import tenyear9 from "@/assets/pictures/media/10year-9.jpg";
-import tenyear10 from "@/assets/pictures/media/10year-10.jpg";
-import tdms1 from "@/assets/pictures/media/1v1s1.png";
-import tdms2m24 from "@/assets/pictures/media/1v1s2m24.png";
-import tdms2m4 from "@/assets/pictures/media/1v1s2m416.png";
-import tdms3semi from "@/assets/pictures/media/1v1s3semi.jpeg";
-import tdms4champion from "@/assets/pictures/media/1v1s4champion.jpeg";
-import tdms4semi from "@/assets/pictures/media/1v1s4semi.jpg";
-import tdms5bracket from "@/assets/pictures/media/1v1s5bracket.jpeg";
-import tdms5final from "@/assets/pictures/media/1v1s5final.jpeg";
-import atcqualifier from "@/assets/pictures/media/atcqualifier.png";
-import atcs1 from "@/assets/pictures/media/atcs1.png";
-import atcs16_1 from "@/assets/pictures/media/atcs16-1.png";
-import atcs16_2 from "@/assets/pictures/media/atcs16-2.png";
-import atcs16_3 from "@/assets/pictures/media/atcs16-3.png";
-import atcs16_4 from "@/assets/pictures/media/atcs16-4.png";
-import events from "@/assets/pictures/media/events.png";
-import gameling from "@/assets/pictures/media/gameling.png";
-import gamelingPoster from "@/assets/pictures/media/gamelingPoster.png";
-import gamelingFinal from "@/assets/pictures/media/gamelingFinal.jpg";
-import gamelingSemi from "@/assets/pictures/media/gamelingSemi.jpg";
-import gamelingRevival from "@/assets/pictures/media/gamelingRevival.png";
-import gamelingR2 from "@/assets/pictures/media/gamelingR2.jpg";
-import gamelingR1 from "@/assets/pictures/media/gamelingR1.jpg";
-import matchresult from "@/assets/pictures/media/matchresult.png";
-import ourcompetitivehighlights from "@/assets/pictures/media/ourcompetitivehighlights.png";
-import rank1 from "@/assets/pictures/media/rank1.png";
-import sccs2finalposter from "@/assets/pictures/media/sccs2finalposter.jpg";
-import sccs1poster from "@/assets/pictures/media/sccs1poster.jpg";
-import sccs1final from "@/assets/pictures/media/sccs1final.jpg";
-import sccs2final from "@/assets/pictures/media/sccs2final.jpeg";
-import sfcxnova from "@/assets/pictures/media/sfcxnova.jpeg";
-import thm from "@/assets/pictures/media/thm.png";
-import ultimateRoyaleRank1 from "@/assets/pictures/media/ultimateroyalerank1.jpg";
-import worldseason1 from "@/assets/pictures/media/worldseason1.png";
-import worldtitle1 from "@/assets/pictures/media/worldtitle1.png";
-import wowfinal from "@/assets/pictures/media/wowfinal.jpeg";
+import tenyear0 from "@/assets/pictures/media/10year-0.webp";
+import tenyear1 from "@/assets/pictures/media/10year-1.webp";
+import tenyear2 from "@/assets/pictures/media/10year-2.webp";
+import tenyear3 from "@/assets/pictures/media/10year-3.webp";
+import tenyear4 from "@/assets/pictures/media/10year-4.webp";
+import tenyear5 from "@/assets/pictures/media/10year-5.webp";
+import tenyear6 from "@/assets/pictures/media/10year-6.webp";
+import tenyear7 from "@/assets/pictures/media/10year-7.webp";
+import tenyear8 from "@/assets/pictures/media/10year-8.webp";
+import tenyear9 from "@/assets/pictures/media/10year-9.webp";
+import tenyear10 from "@/assets/pictures/media/10year-10.webp";
+import tdms1 from "@/assets/pictures/media/1v1s1.webp";
+import tdms2m24 from "@/assets/pictures/media/1v1s2m24.webp";
+import tdms2m4 from "@/assets/pictures/media/1v1s2m416.webp";
+import tdms3semi from "@/assets/pictures/media/1v1s3semi.webp";
+import tdms4semi from "@/assets/pictures/media/1v1s4semi.webp";
+import tdms5bracket from "@/assets/pictures/media/1v1s5bracket.webp";
+import tdms5final from "@/assets/pictures/media/1v1s5final.webp";
+import atcqualifier from "@/assets/pictures/media/atcqualifier.webp";
+import atcs1 from "@/assets/pictures/media/atcs1.webp";
+import atcs16_1 from "@/assets/pictures/media/atcs16-1.webp";
+import atcs16_2 from "@/assets/pictures/media/atcs16-2.webp";
+import atcs16_3 from "@/assets/pictures/media/atcs16-3.webp";
+import events from "@/assets/pictures/media/events.webp";
+import gameling from "@/assets/pictures/media/gameling.webp";
+import gamelingPoster from "@/assets/pictures/media/gamelingPoster.webp";
+import gamelingFinal from "@/assets/pictures/media/gamelingFinal.webp";
+import gamelingSemi from "@/assets/pictures/media/gamelingSemi.webp";
+import gamelingRevival from "@/assets/pictures/media/gamelingRevival.webp";
+import gamelingR2 from "@/assets/pictures/media/gamelingR2.webp";
+import gamelingR1 from "@/assets/pictures/media/gamelingR1.webp";
+import ourcompetitivehighlights from "@/assets/pictures/media/ourcompetitivehighlights.webp";
+import rank1 from "@/assets/pictures/media/rank1.webp";
+import sccs2finalposter from "@/assets/pictures/media/sccs2finalposter.webp";
+import sccs1poster from "@/assets/pictures/media/sccs1poster.webp";
+import sccs1final from "@/assets/pictures/media/sccs1final.webp";
+import sccs2final from "@/assets/pictures/media/sccs2final.webp";
+import thm from "@/assets/pictures/media/thm.webp";
+import ultimateRoyaleRank1 from "@/assets/pictures/media/ultimateroyalerank1.webp";
+import worldseason1 from "@/assets/pictures/media/worldseason1.webp";
+import worldtitle1 from "@/assets/pictures/media/worldtitle1.webp";
 import { MediaItem } from "@/lib/types";
 
 export const mediaItems: MediaItem[] = [
@@ -609,6 +604,16 @@ export const mediaItems: MediaItem[] = [
       {
         type: "paragraph",
         text: "From playing browser games in a bedroom to competing in the PUBG Mobile scene, the last decade has been a test of persistence. We started this just for fun, and today it’s become a recognized organization. We learned that if you keep evolving and treating the community right, the results will follow.",
+      },
+      {
+        type: "image",
+        src: tenyear10,
+        alt: "",
+        caption: "Shibe's 100k Subscribers Plaque",
+      },
+      {
+        type: "paragraph",
+        text: "From the bottom of our heart, thank you all so much for the unwavering support.",
       },
     ],
   },

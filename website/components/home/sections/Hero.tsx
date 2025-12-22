@@ -2,8 +2,8 @@ import atcBanner from "@/assets/pictures/atc/atc.webp";
 import cardHero from "@/assets/pictures/card-hero-gradient.png";
 import ShortHero from "@/components/home/ShortHero";
 import LongHero from "@/components/home/LongHero";
-import boosting from "@/assets/pictures/media/rank1.png";
-import subscription from "@/assets/pictures/subscription.png";
+import boosting from "@/assets/pictures/media/rank1.webp";
+import subscription from "@/assets/pictures/subscription.webp";
 import BasicHero from "@/components/home/BasicHero";
 import { tournamentHighlights } from "@/data/home/highlights";
 

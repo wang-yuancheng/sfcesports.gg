@@ -1,8 +1,8 @@
 import sfcLogo from "@/assets/icons/shibe-pinkbright.svg";
 import novaLogo from "@/assets/logos/nova.webp";
-import sfcxnovaThumbnail from "@/assets/pictures/thumbnails/sfcxnovathumbnail.png";
-import sfcxnovaMedia1 from "@/assets/pictures/tourmedia/sfcxnova/sfcxnovaday1result.png";
-import sfcxnovaMedia2 from "@/assets/pictures/tourmedia/sfcxnova/sfcxnovaday2result.png";
+import sfcxnovaThumbnail from "@/assets/pictures/thumbnails/sfcxnovathumbnail.webp";
+import sfcxnovaMedia1 from "@/assets/pictures/tourmedia/sfcxnova/sfcxnovaday1result.webp";
+import sfcxnovaMedia2 from "@/assets/pictures/tourmedia/sfcxnova/sfcxnovaday2result.webp";
 import { MatchType, VideoItem, Leaderboard } from "@/lib/types";
 import type { StaticImageData } from "next/image";
 

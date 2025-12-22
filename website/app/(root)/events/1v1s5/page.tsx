@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import tdms5Banner from "@/assets/pictures/tourmedia/1v1s5/1v1s5banner.png";
+import tdms5Banner from "@/assets/pictures/tourmedia/1v1s5/1v1s5banner.webp";
 import { useMemo, useState } from "react";
 import { useYoutubeViews } from "@/hooks/useYoutubeViews";
 import { VideoItem } from "@/lib/types";

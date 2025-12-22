@@ -1,9 +1,8 @@
 import PageHeaderImage from "@/components/global/PageHeaderImage";
-import React from "react";
-import weWin from "@/assets/pictures/about-wewin.png";
-import weCreate from "@/assets/pictures/about-wecreate.png";
-import weHost from "@/assets/pictures/about-wehost.png";
-import sfcbanner from "@/assets/pictures/shibefanclubaboutbanner.png";
+import weWin from "@/assets/pictures/about-wewin.webp";
+import weCreate from "@/assets/pictures/about-wecreate.webp";
+import weHost from "@/assets/pictures/about-wehost.webp";
+import sfcbanner from "@/assets/pictures/shibefanclubcompanybanner.webp";
 import ImageAndTextBlock from "@/components/global/ImageAndTextBlock";
 
 export default function Company() {

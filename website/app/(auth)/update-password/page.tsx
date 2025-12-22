@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import shibeLogo from "@/assets/icons/shibe-pinkbright.svg";
-import greenCheckMark from "@/assets/icons/greencheckmark.png";
+import greenCheckMark from "@/assets/icons/greencheckmark.webp";
 
 export default function UpdatePasswordPage() {
   const [password, setPassword] = useState("");

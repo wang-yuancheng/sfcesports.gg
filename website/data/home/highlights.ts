@@ -1,13 +1,13 @@
-import royalEsportsLogo from "@/assets/logos/tour/royalesports.png";
-import kohaiCupLogo from "@/assets/logos/tour/kohaicup.png";
-import gamelingLogo from "@/assets/logos/tour/gameling.png";
-import kodLogo from "@/assets/logos/tour/kod.png";
-import nyzLogo from "@/assets/logos/tour/nyz.png";
-import thmLogo from "@/assets/logos/tour/thm.png";
-import dlyLogo from "@/assets/logos/tour/dly.png";
-import xbossLogo from "@/assets/logos/tour/xboss.png";
-import reaperzLogo from "@/assets/logos/tour/reaperz.png";
-import sgscLogo from "@/assets/logos/tour/sgsc.png";
+import royalEsportsLogo from "@/assets/logos/tour/royalesports.webp";
+import kohaiCupLogo from "@/assets/logos/tour/kohaicup.webp";
+import gamelingLogo from "@/assets/logos/tour/gameling.webp";
+import kodLogo from "@/assets/logos/tour/kod.webp";
+import nyzLogo from "@/assets/logos/tour/nyz.webp";
+import thmLogo from "@/assets/logos/tour/thm.webp";
+import dlyLogo from "@/assets/logos/tour/dly.webp";
+import xbossLogo from "@/assets/logos/tour/xboss.webp";
+import reaperzLogo from "@/assets/logos/tour/reaperz.webp";
+import sgscLogo from "@/assets/logos/tour/sgsc.webp";
 
 import { TournamentHighlight } from "@/lib/types";
 
