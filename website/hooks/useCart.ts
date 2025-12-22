@@ -81,8 +81,6 @@ export const useCart = create<CartStore>()(
 
       mergeCart: async (userId: string, options) => {
         const { items: currentItems } = get();
-
-        // MERGE LOGIC: Combine existing guest items with the pending item (if any)
         const localItems = [...currentItems];
         if (options?.pendingItem) {
           localItems.push(options.pendingItem);
@@ -101,22 +99,16 @@ export const useCart = create<CartStore>()(
 
             if (options?.silent) return;
 
-            // Case 3: Plan Removed (Already subscribed)
             if (data.planRemoved) {
               toast.info(
                 "Removed plan from cart because you are already subscribed to it."
-              );
-              // We return here to avoid showing "Cart synced" on top of this warning
-              return;
+              );              return;
             }
 
-            // Decide on Toast based on if we HAD items to sync
             if (localItems.length > 0) {
               if (data.addedToEmpty) {
-                // Case 1: DB was empty -> Guest item added
                 toast.success("Item added to cart.");
               } else {
-                // Case 2: DB had items -> Guest item ignored
                 toast.success("Cart synced with your account.");
               }
             }
