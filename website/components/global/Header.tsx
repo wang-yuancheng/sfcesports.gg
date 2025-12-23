@@ -37,7 +37,6 @@ export default function Header() {
             </Link>
             {/* Right */}
             <div className="flex items-center gap-1">
-              {/* Hidden Cart Sheet to ensure it is mounted and can be opened via Profile Dropdown */}
               <div className="hidden">
                 <CartSheetResponsive>
                   <CartContents />

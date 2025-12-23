@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 import shibeFanClubBanner from "@/assets/logos/shibefanclubbanner.png";
 import shibeLogoBlack from "@/assets/icons/shibe-black.svg";
@@ -13,7 +12,11 @@ import {
 } from "@/data/navigation/footer";
 import Link from "next/link";
 
-export default function Footer() {
+interface FooterProps {
+  onNavClick?: () => void;
+}
+
+export default function Footer({ onNavClick }: FooterProps) {
   return (
     <>
       {/* Mobile Footer  */}
@@ -29,11 +32,20 @@ export default function Footer() {
           />
         </div>
 
-        <FooterDropdown trigger="About" dropdownContent={footerAbout} />
-        <FooterDropdown trigger="Activity" dropdownContent={footerActivity} />
+        <FooterDropdown
+          trigger="About"
+          dropdownContent={footerAbout}
+          onLinkClick={onNavClick}
+        />
+        <FooterDropdown
+          trigger="Activity"
+          dropdownContent={footerActivity}
+          onLinkClick={onNavClick}
+        />
         <FooterDropdown
           trigger="Terms and Policies"
           dropdownContent={termsAndPolicies}
+          onLinkClick={onNavClick}
         />
 
         {/* social icons – mobile */}

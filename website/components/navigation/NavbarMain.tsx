@@ -3,7 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 
-// const navText = "font-[600] text-[15px]";
 const navItems = [
   { name: "Teams", href: "/teams" },
   { name: "Events", href: "/events" },
@@ -12,7 +11,6 @@ const navItems = [
   { name: "Shop", href: "/shop" },
 ];
 
-// Check if a given link is for the current page for highlighting navbar
 function isCurrent(pathname: string, href: string) {
   return pathname === href;
 }

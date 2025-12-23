@@ -97,7 +97,6 @@ export default function NavbarProfile() {
             >
               Cart
             </DropdownMenuItem>
-
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={handleLogout}
@@ -119,7 +118,7 @@ export default function NavbarProfile() {
                 Create an account
               </DropdownMenuItem>
             </Link>
-            
+            <DropdownMenuSeparator className="md:hidden" />
             {/* Mobile Only Cart Trigger */}
             <DropdownMenuItem
               className="cursor-pointer md:hidden"

@@ -9,7 +9,8 @@ import { FooterDropdownProps } from "@/lib/types";
 export default function FooterDropdown({
   trigger,
   dropdownContent,
-}: FooterDropdownProps) {
+  onLinkClick,
+}: FooterDropdownProps & { onLinkClick?: () => void }) {
   const [open, setOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -48,6 +49,10 @@ export default function FooterDropdown({
           <li key={index}>
             <Link
               href={item.href}
+              onClick={() => {
+                setOpen(false);
+                onLinkClick?.();
+              }}
               className="flex flex-col justify-center text-sm text-gray-600 hover:text-black py-1"
             >
               {item.label}

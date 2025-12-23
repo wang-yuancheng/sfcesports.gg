@@ -79,7 +79,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
               ))}
             </div>
             <div>
-              <Footer />
+              <Footer onNavClick={() => onOpenChange?.(false)} />
             </div>
           </SheetContent>
         </Sheet>
