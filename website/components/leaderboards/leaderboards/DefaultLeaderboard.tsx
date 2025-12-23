@@ -16,7 +16,7 @@ export default function DefaultLeaderboard({ rows }: { rows: Leaderboard[] }) {
               </th>
               <th
                 className={`px-3 md:px-16 py-2 whitespace-nowrap uppercase text-white text-start text-[10px] md:text-xs w-auto font-druk font-[400] ${
-                  hasLogos ? "px-9 md:px-16" : "px-3 md:px-6"
+                  hasLogos ? "px-3 [@media_(min-width:380px)]:px-9 md:px-16" : "px-3 md:px-6"
                 }`}
               >
                 Team
@@ -54,7 +54,7 @@ export default function DefaultLeaderboard({ rows }: { rows: Leaderboard[] }) {
                       <Image
                         src={r.logo}
                         alt=""
-                        className="hidden xs:flex size-6 md:size-8"
+                        className="hidden [@media_(min-width:380px)]:flex size-6 md:size-8"
                       />
                     ) : null}
                     <p className="text-start text-xs md:text-[19px] uppercase">

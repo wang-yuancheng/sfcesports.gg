@@ -1,6 +1,5 @@
 import { Standing } from "@/lib/types";
 import { ordinal } from "@/lib/utils";
-import React from "react";
 
 export default function EventDialogLeaderboard({ rows }: { rows: Standing[] }) {
   const hasPrize = rows.some((r) => !!r.prize);

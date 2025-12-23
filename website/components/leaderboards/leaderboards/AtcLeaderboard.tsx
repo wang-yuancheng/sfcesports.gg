@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ATCLeaderboard({ rows }: { rows: Leaderboard[] }) {
   const hasLogos = rows.some((r) => r.logo !== undefined && r.logo !== null);
-  
+
   return (
     <div className="w-full">
       <div className="rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-[0_1px_5px_-1px_rgba(0,0,0,0.1)] bg-white">
@@ -16,7 +16,9 @@ export default function ATCLeaderboard({ rows }: { rows: Leaderboard[] }) {
               </th>
               <th
                 className={`px-3 md:px-16 py-2 whitespace-nowrap uppercase text-white text-start text-[10px] md:text-xs w-auto font-druk font-[400] ${
-                  hasLogos ? "px-9 md:px-16" : ""
+                  hasLogos
+                    ? "px-3 [@media_(min-width:380px)]:px-9 md:px-16"
+                    : ""
                 }`}
               >
                 Team
@@ -52,7 +54,7 @@ export default function ATCLeaderboard({ rows }: { rows: Leaderboard[] }) {
                       <Image
                         src={r.logo}
                         alt=""
-                        className="hidden xs:flex size-6 md:size-8 brightness-110"
+                        className="hidden [@media_(min-width:380px)]:flex size-6 md:size-8 brightness-110"
                       />
                     ) : null}
                     <p className="text-start text-xs md:text-[19px] uppercase">
