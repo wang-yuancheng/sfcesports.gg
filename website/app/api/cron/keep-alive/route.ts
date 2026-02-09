@@ -6,14 +6,13 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
   );
 
   const { data, error } = await supabase
-    .from("profiles")
-    .select("id")
-    .limit(1)
-    .single();
+    .from("_keep_alive")
+    .upsert({ id: 1, last_ping: new Date().toISOString() })
+    .select();
 
   if (error) {
     console.error("Ping Failed:", error);
@@ -21,7 +20,7 @@ export async function GET() {
   }
 
   return NextResponse.json({
-    message: "Ping successful",
+    message: "Ping successful (Write operation)",
     timestamp: new Date().toISOString(),
   });
 }
