@@ -58,6 +58,16 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
             </SheetHeader>
 
             <div className="flex flex-col">
+              <Link
+                href="/"
+                className={`border-b border-b-gray-200 w-full flex items-center ${
+                  isCurrent(pathname, "/") ? "text-pink-bright" : ""
+                } h-16 text-[16px]`}
+                onClick={() => onOpenChange?.(false)}
+              >
+                Home
+              </Link>
+
               <MenuDropdown
                 heading="Teams"
                 viewAllHref="/teams"
@@ -90,7 +100,7 @@ export function MenuSheet({ open, onOpenChange }: MenuSheetProps) {
 
 // Responsive Wrapper: Hides sheet when viewport grows past mobile size
 export function MenuSheetResponsive(
-  props: Omit<MenuSheetProps, "open" | "onOpenChange">
+  props: Omit<MenuSheetProps, "open" | "onOpenChange">,
 ) {
   const isMobile = useMediaQuery({ max: 768 });
   const [open, setOpen] = useState(false);
