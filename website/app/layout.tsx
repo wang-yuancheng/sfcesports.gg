@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { UserProvider } from "@/hooks/useUser";
 import { Toaster } from "@/components/ui/Sonner";
 import { helvetica, druk } from "@/fonts";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sfcesports.gg"),
@@ -90,6 +91,8 @@ export default async function RootLayout({
           {children}
           <Toaster position="top-left" />
         </UserProvider>
+
+        <Analytics />
       </body>
     </html>
   );
