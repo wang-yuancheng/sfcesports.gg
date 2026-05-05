@@ -1,3 +1,1 @@
-[![banner.webp](/banner.webp)](https://www.sfcesports.gg)
-
-## sfcesports.gg
+[![banner.png](/banner.png)](https://www.sfcesports.gg)
